@@ -1,0 +1,73 @@
+baseURL: https://example.org/
+languageCode: zh-cn
+title: 零露云
+module:
+  proxy: direct
+  hugoVersion:
+    extended: true
+    min: 0.73.0
+  imports:
+    - path: github.com/google/docsy
+      disable: false
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# 顶级菜单设置
+# 图标 https://fontawesome.com/
+menu:
+  main:
+    - name: 关于
+      weight: 100
+      url: '/about'
+      pre: <i class="fa-solid fa-house"></i>
+
+    - name: 文档
+      weight: 200
+      url: '/docs'
+      pre: <i class="fa-solid fa-book"></i>
+
+    - name: 博客
+      weight: 300
+      url: '/blog'
+      pre: <i class="fa-solid fa-blog"></i>
+
+    - weight: 400
+      url: 'https://github.com/google/docsy/'
+      pre: <i class='fa-brands fa-github'></i>
+# 
+params:
+  mermaid:
+    version: 10.9.0
+
+  ui:
+    sidebar_menu_compact: true
+    sidebar_menu_foldable: true
+    ul_show: 1 
+    sidebar_cache_limit: 1000
+    breadcrumb_disable: false
+    taxonomy_breadcrumb_disable: true
+
+    showLightDarkModeMenu: true
+
+# footer 设置
+  links:
+    developer:
+      - name: 联系我
+        url: '/about/#联系方式'
+        icon: fa fa-envelope
+        desc: 联系我
+      - name: 微信
+        url: '/about/#联系方式'
+        icon: fa-brands fa-weixin
+        desc: 微信联系我
+
+copyright: 零露云©2025版权所有
+
+outputs:
+  section:
+    - HTML
+    - RSS
+    - print

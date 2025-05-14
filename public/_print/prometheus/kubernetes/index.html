@@ -1,0 +1,1710 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="http://localhost:1313/prometheus/kubernetes/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/prometheus/kubernetes/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>kubernetes | 零露云</title>
+<meta name="description" content="exporter|prometheus">
+<meta property="og:url" content="http://localhost:1313/prometheus/kubernetes/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="kubernetes">
+  <meta property="og:description" content="exporter|prometheus">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="kubernetes">
+  <meta itemprop="description" content="exporter|prometheus">
+  <meta itemprop="datePublished" content="2025-05-12T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-12T00:00:00+00:00">
+  <meta itemprop="keywords" content="Prometheus,Exporter">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="kubernetes">
+  <meta name="twitter:description" content="exporter|prometheus">
+<link href="/scss/main.css" rel="stylesheet">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/prometheus/kubernetes/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">kubernetes</h1>
+<div class="lead">exporter|prometheus</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-373d42c67c5f814e2befd160221b4648">kube-apiserver</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-1da29c135b06dc89e8f9ceecfa33b65e">kube-controller</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-6359e837921d494620bfd540a354563b">kube-controller</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-b819d5283327c10df9f30d0823638718">kube-proxy</a></li>
+
+
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-4124e663de61749b5e6b5f819e82765a">kubelet</a></li>
+
+
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-d73cdd4325206fa9ca6ae5774388b56f">etcd</a></li>
+
+
+    
+  
+    
+    
+	
+<li>7: <a href="#pg-e6bb5d94e22fa22e4815c83b20bc980c">coredns</a></li>
+
+
+    
+  
+    
+    
+	
+<li>8: <a href="#pg-16213f51cff6044f7ebe2d762e4fe105">cadvisor</a></li>
+
+
+    
+  
+    
+    
+	
+<li>9: <a href="#pg-7244d196e34ecffa174cec381ed14dbb">kube-state-metrics</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-373d42c67c5f814e2befd160221b4648">1 - kube-apiserver</h1>
+    <div class="lead">exporter|prometheus</div>
+	<ol>
+<li>
+<p>部署安装</p>
+</li>
+<li>
+<p>添加prometheus配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kube-apiserver</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">honor_timestamps</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scrape_interval</span>: <span style="color:#ae81ff">1m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scrape_timeout</span>: <span style="color:#ae81ff">1m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metrics_path</span>: <span style="color:#ae81ff">/metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">follow_redirects</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enable_http2</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">targets</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">192.168.0.244</span>:<span style="color:#ae81ff">6443</span>
+</span></span></code></pre></div></li>
+<li>
+<p>常用指标</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cacert /etc/kubernetes/ssl/ca.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cert /etc/kubernetes/ssl/apiserver-kubelet-client.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--key /etc/kubernetes/ssl/apiserver-kubelet-client.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>https://10.4.7.12:6443/metrics
+</span></span></code></pre></div></blockquote>
+<ul>
+<li>
+<p>apiserver 进程是否正常</p>
+<pre tabindex="0"><code>up{job=&#34;kube-apiserver&#34;}
+</code></pre></li>
+<li>
+<p>每秒QPS</p>
+</li>
+<li>
+<p>API调用延时</p>
+</li>
+<li>
+<p>ETCD调用延时</p>
+</li>
+</ul>
+</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>指标名</th>
+          <th>含义</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>apiserver_request_total</td>
+          <td>请求总数</td>
+          <td>counter</td>
+      </tr>
+      <tr>
+          <td>apiserver_audit_event_total</td>
+          <td>包含所有暴露的审计事件数量的指标。</td>
+          <td>counter</td>
+      </tr>
+      <tr>
+          <td>apiserver_audit_error_total</td>
+          <td>在暴露时由于发生错误而被丢弃的事件的数量</td>
+          <td>counter</td>
+      </tr>
+      <tr>
+          <td>apiserver_request_duration_seconds_sum</td>
+          <td>请求耗时</td>
+          <td>gauge</td>
+      </tr>
+      <tr>
+          <td>apiserver_request_duration_seconds_count</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>authentication_attempts</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>apiserver_tls_handshake_errors_total</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>apiserver_client_certificate_expiration_seconds_sum</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p><a href="https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/monitor-kube-apiserver">kube-apiserver组件监控介绍和常见异常指标_容器服务Kubernetes版(ACK)-阿里云帮助中心 (aliyun.com)</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1da29c135b06dc89e8f9ceecfa33b65e">2 - kube-controller</h1>
+    <div class="lead">exporter|prometheus</div>
+	
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-6359e837921d494620bfd540a354563b">3 - kube-controller</h1>
+    <div class="lead">exporter|prometheus</div>
+	
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b819d5283327c10df9f30d0823638718">4 - kube-proxy</h1>
+    <div class="lead">exporter|prometheus</div>
+	<p>kube-proxy 监听在   http://127.0.0.1:10249/metrics</p>
+<p>scheduler 监听在 https://127.0.0.1:10259/metrics</p>
+<p>controller-manager监听在 https://127.0.0.1:10257/metrics</p>
+<p>coredns http://172.168.0.10:9153/metric</p>
+<p>收集k8s事件到mongodb  <a href="https://github.com/AliyunContainerService/kube-eventer">GitHub - AliyunContainerService/kube-eventer: kube-eventer emit kubernetes events to sinks</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>我来解释如何在 Kubernetes 中持久化事件（Events）。
+</span></span><span style="display:flex;"><span>Kubernetes 事件默认只保留1小时，如果要持久化存储事件，有以下几种主要方案：
+</span></span><span style="display:flex;"><span>使用 Event Exporter
+</span></span><span style="display:flex;"><span>这是一个比较常用的方案，可以将 k8s 事件导出到外部存储系统。例如使用官方的 event-exporter：
+</span></span><span style="display:flex;"><span>使用 Event Logger
+</span></span><span style="display:flex;"><span>apiVersion: apps/v1
+</span></span><span style="display:flex;"><span>kind: Deployment
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  name: event-exporter
+</span></span><span style="display:flex;"><span>  namespace: monitoring
+</span></span><span style="display:flex;"><span>spec:
+</span></span><span style="display:flex;"><span>  replicas: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  template:
+</span></span><span style="display:flex;"><span>    spec:
+</span></span><span style="display:flex;"><span>      containers:
+</span></span><span style="display:flex;"><span>      - name: event-exporter
+</span></span><span style="display:flex;"><span>        image: gcr.io/google-containers/event-exporter:v0.3.1
+</span></span><span style="display:flex;"><span>        command:
+</span></span><span style="display:flex;"><span>        - /event-exporter
+</span></span><span style="display:flex;"><span>        - --sink-opts<span style="color:#f92672">=</span>elasticsearch?hosts<span style="color:#f92672">=</span>http://elasticsearch:9200
+</span></span><span style="display:flex;"><span>可以部署一个自定义的 event logger，监听集群事件并写入到持久化存储中：
+</span></span><span style="display:flex;"><span>修改 kube-apiserver 配置
+</span></span><span style="display:flex;"><span>apiVersion: apps/v1
+</span></span><span style="display:flex;"><span>kind: Deployment
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  name: event-logger
+</span></span><span style="display:flex;"><span>spec:
+</span></span><span style="display:flex;"><span>  template:
+</span></span><span style="display:flex;"><span>    spec:
+</span></span><span style="display:flex;"><span>      containers:
+</span></span><span style="display:flex;"><span>      - name: event-logger
+</span></span><span style="display:flex;"><span>        image: k8s-event-logger
+</span></span><span style="display:flex;"><span>        env:
+</span></span><span style="display:flex;"><span>        - name: STORAGE_TYPE
+</span></span><span style="display:flex;"><span>          value: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>
+</span></span><span style="display:flex;"><span>        - name: ES_HOST
+</span></span><span style="display:flex;"><span>          value: <span style="color:#e6db74">&#34;elasticsearch-service:9200&#34;</span>
+</span></span><span style="display:flex;"><span>可以通过修改 kube-apiserver 的配置来延长事件保留时间：
+</span></span><span style="display:flex;"><span>apiVersion: v1
+</span></span><span style="display:flex;"><span>kind: Pod
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  name: kube-apiserver
+</span></span><span style="display:flex;"><span>spec:
+</span></span><span style="display:flex;"><span>  containers:
+</span></span><span style="display:flex;"><span>  - command:
+</span></span><span style="display:flex;"><span>    - kube-apiserver
+</span></span><span style="display:flex;"><span>    - --event-ttl<span style="color:#f92672">=</span>168h <span style="color:#75715e"># 保留7天</span>
+</span></span><span style="display:flex;"><span>常见的事件持久化存储后端包括：
+</span></span><span style="display:flex;"><span>Elasticsearch
+</span></span><span style="display:flex;"><span>InfluxDB
+</span></span><span style="display:flex;"><span>MongoDB
+</span></span><span style="display:flex;"><span>MySQL/PostgreSQL
+</span></span><span style="display:flex;"><span>建议：
+</span></span><span style="display:flex;"><span>根据实际需求选择合适的存储后端
+</span></span><span style="display:flex;"><span>注意设置合理的数据保留策略，避免存储空间耗尽
+</span></span><span style="display:flex;"><span>考虑事件过滤，只存储重要事件
+</span></span><span style="display:flex;"><span>建立监控告警，及时发现异常事件
+</span></span><span style="display:flex;"><span>如果你需要具体某个存储方案的详细配置，我可以为你展开说明。
+</span></span></code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-4124e663de61749b5e6b5f819e82765a">5 - kubelet</h1>
+    <div class="lead">exporter|prometheus</div>
+	<p>kubelet 还会在 <code>/metrics/cadvisor</code>， <code>/metrics/resource</code> 和 <code>/metrics/probes</code> 端点中公开度量值</p>
+<p>curl 127.0.0.1:10248/healthz</p>
+<p>curl 127.0.0.1:10250/healthz</p>
+<ol>
+<li>
+<p>部署安装</p>
+<p>参见部署k8s</p>
+</li>
+<li>
+<p>添加prometheus配置</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> prometheus 部署在k8s 内，需要提前rbac授权</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bearer_tonken_file</span>: <span style="color:#ae81ff">/var/run/secrets/kubernetes.io/serviceaccount/token  </span>
+</span></span></code></pre></div><ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> prometheus 部署在k8s 外</p>
+<blockquote>
+<p>kubernetes_sd_configs 支持通过 api_server 或 kubeconfig_file 方式，二选一</p></blockquote>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cacert /etc/kubernetes/pki/ca.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cert /etc/kubernetes/pki/apiserver-kubelet-client.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--key /etc/kubernetes/pki/apiserver-kubelet-client.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>https://192.168.0.243:10250/metrics
+</span></span></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kubelet</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">kubeconfig_file</span>: <span style="color:#ae81ff">config</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:10250&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span></code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -k  -H <span style="color:#e6db74">&#34;Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Ik5jb3R0bGdBVmwtalBuVW9JR0h3VG5nblRkMmVJZUFMdDRVaDd6U1ZNMDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImFkbWluLXRva2VuLTduejlwIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYzEyNjYyNDktMWFkNS00ZjA1LTljZDUtYjhjNTdjYWU2NDkzIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OmRlZmF1bHQ6YWRtaW4ifQ.TXZNfk12OsTh5Z_dkOJOHmIGxV_YNS6QEB-ItgddleoQrlz85S43OMED7mPfnxt9CTuDuuTjRRThXwiw1CF4cdtmwj789IU0z67LyDbkdHC4uUwMnqnQrw3aeSv_dgEHlCJr1btqIImRlxHzxvRsP3Yeqb95hjOqDIMVN_HgfYdk835foAHawrOksHdneMwtoOlpiqjVm9bzjIjEF5ckdVX86hwBu3xB1Ml4R4xZwGIecs06nQoBEKO6MlSARgq8e5VQqdRVip7WJuoAlyq80AYW1gAR7I6RvXJVWECu2NpXzQoTROZ132VyCLAhVQVqf_yLrpnQTTxdOKgvS1tskA&#34;</span> https://192.168.0.243:10250/metrics
+</span></span></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kubelet</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">authorization</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Bearer</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">#提前创建RBAC ,提取sa的secret 中token并保存到文件中 </span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">#kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:admin</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">credentials_file</span>: <span style="color:#ae81ff">token</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">kubeconfig_file</span>: <span style="color:#ae81ff">config</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:10250&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span></code></pre></div></li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> 通过api_server 执行动态发现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kubelet</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">authorization</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Bearer</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">#提前创建RBAC ,提取sa的secret 中token并保存到文件中 </span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">#kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:admin</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">credentials_file</span>: <span style="color:#ae81ff">token</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://127.0.0.1:6443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.pem</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/cert.pem</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/cert.key</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:10250&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>常用指标</p>
+<p>各节点running容器数量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubelet_running_containers<span style="color:#f92672">{</span>container_state<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;running&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>各个节点运行pod数量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubelet_running_pods
+</span></span></code></pre></div><p>各个节点运行ds数量</p>
+<p>各个节点运行sts数量</p>
+<p>各个节点运行job数量</p>
+<p>各个节点运行cronjob数量</p>
+<p>各个节点运行pvc数量</p>
+<p>各个节点运行pv数量</p>
+<p>各个节点容器日志占用量</p>
+<p>kubelet 内存使用量</p>
+<p>kubelet cpu使用量</p>
+<p>节点是否ready</p>
+<p>告警</p>
+<p>kubelet 进程异常告警</p>
+<p>有pod 被驱逐时告警</p>
+<p>pod 、cpu 、memory数量即将超过限额告警</p>
+<p>Kubelet是Kubernetes集群中的一个核心组件，用于管理和监控运行在节点上的容器。Kubelet会通过暴露一些监控指标来提供关于其自身和节点的健康状况、资源使用情况和性能数据。以下是一些kubelet暴露的常见监控指标：</p>
+<ol>
+<li>
+<p>kubelet_runtime_operations_errors_total：Kubelet在容器运行时处理期间遇到的错误数。</p>
+</li>
+<li>
+<p>kubelet_runtime_operations_latency_seconds：Kubelet处理容器运行时操作的延迟时间。</p>
+</li>
+<li>
+<p>kubelet_volume_stats_available_bytes：节点上可用的存储卷容量。</p>
+</li>
+<li>
+<p>kubelet_volume_stats_capacity_bytes：存储卷的总容量。</p>
+</li>
+<li>
+<p>kubelet_volume_stats_used_bytes：已使用的存储卷容量。</p>
+</li>
+<li>
+<p>kubelet_node_status_capacity_cpu_cores：节点上可用的CPU核心数量。</p>
+</li>
+<li>
+<p>kubelet_node_status_capacity_memory_bytes：节点上可用的内存容量。</p>
+</li>
+<li>
+<p>kubelet_node_status_allocatable_cpu_cores：节点上分配给Pod的可用CPU核心数量。</p>
+</li>
+<li>
+<p>kubelet_node_status_allocatable_memory_bytes：节点上分配给Pod的可用内存容量。</p>
+</li>
+<li>
+<p>kubelet_node_status_kubelet_version：Kubelet的版本信息。</p>
+</li>
+<li>
+<p>kubelet_node_status_machine_id：节点的机器ID。</p>
+</li>
+<li>
+<p>kubelet_node_status_system_uptime：节点的系统运行时间。</p>
+</li>
+<li>
+<p>kubelet_volume_stats_inodes：存储卷的Inode使用情况。</p>
+</li>
+</ol>
+<p>这些指标可以通过Prometheus等监控系统进行收集和分析，以监控和调优Kubernetes集群中的节点和容器的运行情况。</p>
+</li>
+</ol>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d73cdd4325206fa9ca6ae5774388b56f">6 - etcd</h1>
+    <div class="lead">exporter|prometheus</div>
+	<ol>
+<li>
+<p>部署安装</p>
+<p>参见部署k8s</p>
+<blockquote>
+<p><sub>【参数说明】</sub></p>
+<p><sub>snapshot-count  每50000次修改执行一次snapshot</sub></p>
+<p><sub>auto-compaction-retention  自动压缩，默认为 0 不开启</sub></p>
+<p><sub>max-request-bytes 单个请求最大字节，默认1.5MB</sub></p>
+<p><sub>quota-backend-bytes  指定数据库在磁盘上的配额大小，默认2GB</sub></p>
+<p><sub>heartbeat-interval leader向leaner发送心跳周期，默认 100ms</sub></p>
+<p><sub>election-timeout  选举超时,默认1s</sub></p>
+<p><sub>max-snapshots 最大保留快照数，默认 5 个</sub></p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>/opt/kube/bin/etcd <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name<span style="color:#f92672">=</span>master3 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --cert-file<span style="color:#f92672">=</span>/etc/etcd/ssl/etcd.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --key-file<span style="color:#f92672">=</span>/etc/etcd/ssl/etcd-key.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --peer-cert-file<span style="color:#f92672">=</span>/etc/etcd/ssl/etcd.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --peer-key-file<span style="color:#f92672">=</span>/etc/etcd/ssl/etcd-key.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --trusted-ca-file<span style="color:#f92672">=</span>/etc/kubernetes/ssl/ca.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --peer-trusted-ca-file<span style="color:#f92672">=</span>/etc/kubernetes/ssl/ca.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --initial-advertise-peer-urls<span style="color:#f92672">=</span>https://10.4.7.12:2380 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --listen-peer-urls<span style="color:#f92672">=</span>https://10.4.7.12:2380 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --listen-client-urls<span style="color:#f92672">=</span>https://10.4.7.12:2379,http://127.0.0.1:2379 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --advertise-client-urls<span style="color:#f92672">=</span>https://10.4.7.12:2379 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --initial-cluster-token<span style="color:#f92672">=</span>etcd-cluster-0 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --initial-cluster<span style="color:#f92672">=</span>master1<span style="color:#f92672">=</span>https://10.4.7.22:2380,master2<span style="color:#f92672">=</span>https://10.4.7.21:2380,master3<span style="color:#f92672">=</span>https://10.4.7.12:2380 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --initial-cluster-state<span style="color:#f92672">=</span>new <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --data-dir<span style="color:#f92672">=</span>/var/lib/etcd/ <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --snapshot-count<span style="color:#f92672">=</span><span style="color:#ae81ff">50000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --auto-compaction-retention<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --max-request-bytes<span style="color:#f92672">=</span><span style="color:#ae81ff">10485760</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --enable-v2<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --quota-backend-bytes<span style="color:#f92672">=</span><span style="color:#ae81ff">8589934592</span>
+</span></span><span style="display:flex;"><span>Restart<span style="color:#f92672">=</span>always
+</span></span><span style="display:flex;"><span>RestartSec<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>LimitNOFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">65535</span>
+</span></span><span style="display:flex;"><span>OOMScoreAdjust<span style="color:#f92672">=</span>-999
+</span></span></code></pre></div></li>
+<li>
+<p>添加prometheus配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#e6db74">&#39;etcd&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/etcd/ca.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/etcd/peer.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/etcd/peer.key</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">targets</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;192.168.0.244:2379&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><a href="https://etcd.io/docs/v3.6/metrics/">监控指标</a></p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cacert /etc/kubernetes/pki/etcd/ca.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cert /etc/kubernetes/pki/etcd/peer.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--key /etc/kubernetes/pki/etcd/peer.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>https://10.4.7.12:2379/metrics
+</span></span></code></pre></div></blockquote>
+<p>指标主要包含 ：</p>
+<ul>
+<li><strong>Server</strong>相关，所有指标以<code>etcd_server</code> 开头。</li>
+<li><strong>Disk</strong>相关，所有指标以`etcd_disk 开头</li>
+<li><strong>Network</strong>相关，所有指标以<code>etcd_network</code> 开头</li>
+<li><strong>mvcc</strong>相关 ，所有指标以<code>etcd_mvcc</code> 开头</li>
+<li><strong>snap</strong>相关，所有指标以<code>etcd_snap</code> 开头</li>
+<li><strong>degugging</strong>相关，所有指标以<code>etcd_degugging</code> 开头</li>
+</ul>
+<p><strong>Server</strong>相关，所有指标以<code>etcd_server</code> 开头</p>
+<table>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>描述</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>etcd_server_has_leader</code></td>
+          <td>是否存在leader。1表示存在，0表示不存在</td>
+          <td>Gauge</td>
+      </tr>
+      <tr>
+          <td><code>etcd_server_leader_changes_seen_total</code></td>
+          <td>主从切换的总次数</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td><code>etcd_server_proposals_committed_total</code></td>
+          <td>协商一致提交的请求</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td><code>etcd_server_proposals_applied_total</code></td>
+          <td>协商一致处理的请求</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td><code>etcd_server_proposals_pending</code></td>
+          <td>排队等待提交的提案数量</td>
+          <td>Gauge</td>
+      </tr>
+      <tr>
+          <td><code>etcd_server_proposals_failed_total</code></td>
+          <td>失败的提案</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td><code>etcd_server_quota_backend_bytes</code></td>
+          <td>数据库配额（磁盘）</td>
+          <td>Gauge</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Disk</strong>相关，所有指标以`etcd_disk 开头</p>
+<table>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>描述</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>etcd_disk_wal_fsync_duration_seconds</code></td>
+          <td>wal 写入磁盘延迟时长</td>
+          <td>Histogram</td>
+      </tr>
+      <tr>
+          <td>etcd_disk_<code>backend_commit_duration_seconds</code></td>
+          <td>增量快照写入磁盘延迟时长</td>
+          <td>Histogram</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>描述</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>etcd_debugging_mvcc_keys_total</code></td>
+          <td>key数量</td>
+          <td>Gauge</td>
+      </tr>
+      <tr>
+          <td>etcd_debugging_mvcc_db_total_size_in_bytes</td>
+          <td>数据库大小</td>
+          <td>Gauge</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Network</strong>相关，所有指标以<code>etcd_network</code> 开头</p>
+<table>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>描述</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>peer_sent_bytes_total</td>
+          <td>The total number of bytes sent to the peer with ID <code>To</code>.</td>
+          <td>Counter(To)</td>
+      </tr>
+      <tr>
+          <td>peer_received_bytes_total</td>
+          <td>The total number of bytes received from the peer with ID <code>From</code>.</td>
+          <td>Counter(From)</td>
+      </tr>
+      <tr>
+          <td>peer_sent_failures_total</td>
+          <td>The total number of send failures from the peer with ID <code>To</code>.</td>
+          <td>Counter(To)</td>
+      </tr>
+      <tr>
+          <td>peer_received_failures_total</td>
+          <td>The total number of receive failures from the peer with ID <code>From</code>.</td>
+          <td>Counter(From)</td>
+      </tr>
+      <tr>
+          <td>peer_round_trip_time_seconds</td>
+          <td>Round-Trip-Time histogram between peers.</td>
+          <td>Histogram(To)</td>
+      </tr>
+      <tr>
+          <td>client_grpc_sent_bytes_total</td>
+          <td>The total number of bytes sent to grpc clients.</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td>client_grpc_received_bytes_total</td>
+          <td>The total number of bytes received to grpc clients.</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td>process_open_fds</td>
+          <td>Number of open file descriptors.</td>
+          <td>Gauge</td>
+      </tr>
+      <tr>
+          <td>process_max_fds</td>
+          <td>Maximum number of open file descriptors.</td>
+          <td>Gauge</td>
+      </tr>
+      <tr>
+          <td>etcd_server_proposals_applied_total</td>
+          <td>接收到的客户端请求</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td>etcd_server_etcd_network_peer_sent_bytes_total</td>
+          <td>etcd 成员之间发送的请求</td>
+          <td>Counter</td>
+      </tr>
+      <tr>
+          <td>etcd_server_etcd_network_peer_latency_seconds</td>
+          <td>etcd 成员之间网络延迟</td>
+          <td>Gauge</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>告警规则</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Etcd&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 主从切换</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#e6db74">&#34;EtcdLeaderSwitch&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">etcd_server_is_leader != etcd_server_is_leader offset 10m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#e6db74">&#34;5m&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">etcd</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#e6db74">&#34;warnning&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">summary</span>: <span style="color:#e6db74">&#34;Etcd Role changes&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;{{ $labels.instace }}&#39;s Role changes before 10 minute,now is {{ $value }}.&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 宕机    </span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#e6db74">&#34;EtcdDown&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">up{job=~&#34;.*etcd.*&#34;} == 0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#e6db74">&#34;5m&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">etcd</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#e6db74">&#34;critical&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">summary</span>: <span style="color:#e6db74">&#34;Etcd is down &#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;{{ $labels.instace }} is down for more than 5 minute.&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 缺少leader    </span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#e6db74">&#34;EtcdNoLeader&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">etcd_server_has_leader == 0 </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#e6db74">&#34;5m&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">etcd</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#e6db74">&#34;critical&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">summary</span>: <span style="color:#e6db74">&#34;Etcd no leader&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;{{ $labels.instace }} no leader for more than 5 minute.&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<p><a href="https://zhuanlan.zhihu.com/p/466274302">etcd 问题、调优、监控 - 知乎 (zhihu.com)</a></p>
+<p><a href="http://www.xuyasong.com/?p=1706">etcd 原理解析：读《etcd 技术内幕》 | Vermouth | 博客 | docker | k8s | python | go | 开发 (xuyasong.com)</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e6bb5d94e22fa22e4815c83b20bc980c">7 - coredns</h1>
+    <div class="lead">exporter|prometheus</div>
+	
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-16213f51cff6044f7ebe2d762e4fe105">8 - cadvisor</h1>
+    <div class="lead">exporter|prometheus</div>
+	<ol>
+<li>
+<p><a href="https://github.com/google/cadvisor">部署安装</a> cadvisor提供容器资源cpu，内存、网络、文件系统等方面的信息，在k8s环境中通过daemonset 资源来部署相关资源</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VERSION<span style="color:#f92672">=</span>v0.36.0 <span style="color:#75715e"># use the latest release version from https://github.com/google/cadvisor/releases</span>
+</span></span><span style="display:flex;"><span>sudo docker run <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --volume<span style="color:#f92672">=</span>/:/rootfs:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --volume<span style="color:#f92672">=</span>/var/run:/var/run:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --volume<span style="color:#f92672">=</span>/sys:/sys:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --volume<span style="color:#f92672">=</span>/var/lib/docker/:/var/lib/docker:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --volume<span style="color:#f92672">=</span>/dev/disk/:/dev/disk:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --publish<span style="color:#f92672">=</span>8080:8080 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --detach<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name<span style="color:#f92672">=</span>cadvisor <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --privileged <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --device<span style="color:#f92672">=</span>/dev/kmsg <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  gcr.io/cadvisor/cadvisor:$VERSION
+</span></span></code></pre></div></li>
+<li>
+<p>添加prometheus配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>- job_name: cadvisor
+</span></span><span style="display:flex;"><span>  static_configs:
+</span></span><span style="display:flex;"><span>  - targets:
+</span></span><span style="display:flex;"><span>    - 10.4.7.251:8080
+</span></span></code></pre></div></li>
+<li>
+<p>常用指标</p>
+<table>
+  <thead>
+      <tr>
+          <th>指标</th>
+          <th>注释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>rate(container_cpu_usage_seconds_total{name=&quot;cadvisor&quot;}[1m])</code></td>
+          <td>cup负载</td>
+      </tr>
+      <tr>
+          <td><code>container_memory_usage_bytes{name=&quot;cadvisor&quot;}</code></td>
+          <td>内存使用率</td>
+      </tr>
+      <tr>
+          <td><code>rate(container_network_transmit_bytes_total{name=&quot;cadvisor&quot;}[1m])</code></td>
+          <td>网络发送</td>
+      </tr>
+      <tr>
+          <td><code>rate(container_network_receive_bytes_total{name=&quot;cadvisor&quot;}[1m])</code></td>
+          <td>网络接收</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ol>
+<p>应用自身指标暴露</p>
+<pre tabindex="0"><code>annotations:
+  prometheus.io/port: &#34;9153&#34;
+  prometheus.io/scrape: &#34;true&#34;
+</code></pre><p>github 和招商银行内部使用了内嵌入的cadvisor 配置方式</p>
+<ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> 通过apiserver</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kubernetes-cadvisor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">scrape_interval</span>: <span style="color:#ae81ff">30s</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">scrape_timeout</span>: <span style="color:#ae81ff">10s</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">metrics_path</span>: <span style="color:#ae81ff">/metrics</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">api_server</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">namespaces</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">names</span>: []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">bearer_token_file</span>: <span style="color:#ae81ff">/var/run/secrets/kubernetes.io/serviceaccount/token</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">separator</span>: <span style="color:#ae81ff">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">__meta_kubernetes_node_label_(.+)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">replacement</span>: <span style="color:#ae81ff">$1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">action</span>: <span style="color:#ae81ff">labelmap</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">separator</span>: <span style="color:#ae81ff">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">replacement</span>: <span style="color:#ae81ff">kubernetes.default.svc:443</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">action</span>: <span style="color:#ae81ff">replace</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__meta_kubernetes_node_name]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">separator</span>: <span style="color:#ae81ff">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.+)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__metrics_path__</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">replacement</span>: <span style="color:#ae81ff">/api/v1/nodes/${1}/proxy/metrics/cadvisor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">action</span>: <span style="color:#ae81ff">replace</span>
+</span></span></code></pre></div></li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> cadvisor 内嵌在kubelet 中</p>
+<blockquote>
+<p><em>prometheus运行在k8s外部</em></p>
+<p>kubernetes_sd_configs:</p>
+<p>​	<code>kubeconfig_file</code> 和 <code>api_server</code> 二选其一</p>
+<p>https 可以通过证书方式认证或通过token 方法是认证</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">cadvisor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metrics_path</span>: <span style="color:#ae81ff">/metrics/cadvisor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#authorization:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#  type: Bearer</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#  credentials_file: token</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">kubeconfig_file</span>: <span style="color:#ae81ff">config</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:10250&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">cadvisor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metrics_path</span>: <span style="color:#ae81ff">/metrics/cadvisor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#  cert_file: /etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#  key_file: /etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">authorization</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Bearer</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">credentials_file</span>: <span style="color:#ae81ff">token</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://192.168.0.244:6443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:10250&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span></code></pre></div></li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7244d196e34ecffa174cec381ed14dbb">9 - kube-state-metrics</h1>
+    <div class="lead">exporter|prometheus</div>
+	<p><a href="https://github.com/kubernetes/kube-state-metrics">kube-state-metrics</a> 通过监听kube-apiserver生成资源状态指标。包括node、pod、container、deplpyment、statefulset、job、pv、pvc 等。</p>
+<p>kube-state-metrics 使用client-go与kubernetes集成，因此在安装时需要选择对应的kubernetes版本。</p>
+<blockquote>
+<ul>
+<li><code>✓</code>完全支持的版本范围。</li>
+<li><code>-</code>Kubernetes 集群具有 client-go 库无法使用的功能（额外的 API 对象、已弃用的 API 等）。</li>
+</ul></blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>kube-state-metrics 指标</th>
+          <th><strong>Kubernetes 1.20 版本</strong></th>
+          <th><strong>Kubernetes 1.21 版本</strong></th>
+          <th><strong>Kubernetes 1.22 版本</strong></th>
+          <th><strong>Kubernetes 1.23 版本</strong></th>
+          <th><strong>Kubernetes 1.24 版本</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>2.3.0 版</strong></td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><strong>2.4.2 版</strong></td>
+          <td>-/✓</td>
+          <td>-/✓</td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><strong>2.5.0 版</strong></td>
+          <td>-/✓</td>
+          <td>-/✓</td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+      </tr>
+      <tr>
+          <td><strong>2.6.0 版</strong></td>
+          <td>-/✓</td>
+          <td>-/✓</td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>本示例kubernetes 版本 v1.23，kube-state-metrics版本2.6.0</p>
+<blockquote>
+<p>资源清单位置：kube-state-metrics/examples/standard</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">automountServiceAccountToken</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">exporter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/version</span>: <span style="color:#ae81ff">2.6.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRole</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">exporter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/version</span>: <span style="color:#ae81ff">2.6.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">configmaps</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">secrets</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">nodes</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">pods</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">services</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">serviceaccounts</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">resourcequotas</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">replicationcontrollers</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">limitranges</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">persistentvolumeclaims</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">persistentvolumes</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">namespaces</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">endpoints</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">apps</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">statefulsets</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">daemonsets</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">deployments</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">replicasets</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">batch</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cronjobs</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">jobs</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">autoscaling</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">horizontalpodautoscalers</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">authentication.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">tokenreviews</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">create</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">authorization.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">subjectaccessreviews</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">create</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">policy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">poddisruptionbudgets</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">certificates.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">certificatesigningrequests</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">storage.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">storageclasses</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">volumeattachments</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">admissionregistration.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">mutatingwebhookconfigurations</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">validatingwebhookconfigurations</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">networking.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">networkpolicies</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">ingresses</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">coordination.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">leases</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">clusterrolebindings</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">clusterroles</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">rolebindings</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">roles</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRoleBinding</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">exporter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/version</span>: <span style="color:#ae81ff">2.6.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">roleRef</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">apiGroup</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRole</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">subjects</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">exporter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/version</span>: <span style="color:#ae81ff">2.6.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">exporter</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app.kubernetes.io/version</span>: <span style="color:#ae81ff">2.6.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">automountServiceAccountToken</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.6.0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">livenessProbe</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">httpGet</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/healthz</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">initialDelaySeconds</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">timeoutSeconds</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http-metrics</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8081</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">telemetry</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">readinessProbe</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">httpGet</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8081</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">initialDelaySeconds</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">timeoutSeconds</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">securityContext</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">allowPrivilegeEscalation</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">capabilities</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">drop</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">ALL</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">readOnlyRootFilesystem</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">runAsUser</span>: <span style="color:#ae81ff">65534</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">nodeSelector</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">kubernetes.io/os</span>: <span style="color:#ae81ff">linux</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">serviceAccountName</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">exporter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/version</span>: <span style="color:#ae81ff">2.6.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">prometheus.io/external</span>: <span style="color:#ae81ff">192.168.0.243</span> <span style="color:#75715e"># 为项目改造</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">prometheus.io/ports</span>: <span style="color:#e6db74">&#34;32080&#34;</span> <span style="color:#75715e"># 为项目改造</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">32080</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">http-metrics</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">telemetry</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8081</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">telemetry</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span></code></pre></div><ol>
+<li>
+<p>部署安装</p>
+<blockquote>
+<p>8080 端口提供k8s 指标</p>
+<p>8081 端口提供kube_state_metrics 自身指标</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl apply -f kube-state-metrics.yml
+</span></span></code></pre></div></li>
+<li>
+<p>添加prometheus配置</p>
+<p>静态配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  <span style="color:#f92672">scrape_configs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#e6db74">&#34;kube-state-metrics&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">targets</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;192.168.0.244:8080&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 添加所属环境</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">replacement</span>: <span style="color:#ae81ff">dev</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">environment</span>
+</span></span></code></pre></div><p>基于k8s动态发现</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --cacert /etc/kubernetes/pki/ca.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	 --cert /etc/kubernetes/pki/apiserver-kubelet-client.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	 --key /etc/kubernetes/pki/apiserver-kubelet-client.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	 https://192.168.0.244:6443/api/v1/services?limit<span style="color:#f92672">=</span>100&amp;resourceVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p><code>kubeconfig_file</code>和 <code>api_server</code> 二者选一</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://192.168.0.244:6443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 测试改成false也没问题</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">service</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#e6db74">&#34;__meta_kubernetes_service_name&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>: <span style="color:#ae81ff">keep</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#e6db74">&#34;kube-state-metrics&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#e6db74">&#34;__meta_kubernetes_service_label_prometheus_io_external&#34;</span>,<span style="color:#e6db74">&#34;__meta_kubernetes_service_label_prometheus_io_ports&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">([0-9\.]+);(\d+)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#ae81ff">$1:$2</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>: <span style="color:#ae81ff">replace</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span></code></pre></div><pre tabindex="0"><code>  - job_name: kube-state-metrics
+    kubernetes_sd_configs:
+    - kubeconfig_file: config
+      role: service
+    relabel_configs:
+    - source_labels: [&#34;__meta_kubernetes_service_name&#34;]
+      action: keep
+      regex: &#34;kube-state-metrics&#34;
+    - source_labels: [&#34;__meta_kubernetes_service_label_prometheus_io_external&#34;,&#34;__meta_kubernetes_service_label_prometheus_io_ports&#34;]
+      regex: ([0-9\.]+);(\d+)
+      replacement: $1:$2
+      action: replace
+      target_label: __address__
+</code></pre></li>
+<li>
+<p>常用指标
+集群状态指标是哪个
+svc 状态（缺少endpoint）</p>
+<ul>
+<li>
+<p>node</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#节点 数量</span>
+</span></span><span style="display:flex;"><span>sum<span style="color:#f92672">(</span>kube_node_info<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#不可调度的节点数量</span>
+</span></span><span style="display:flex;"><span>sum<span style="color:#f92672">(</span>kube_node_spec_unschedulable<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 集群cpu 数量</span>
+</span></span><span style="display:flex;"><span>sum<span style="color:#f92672">(</span>kube_node_status_capacity<span style="color:#f92672">{</span>resource<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cpu&#34;</span><span style="color:#f92672">})</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 集群内存 数量</span>
+</span></span><span style="display:flex;"><span>sum<span style="color:#f92672">(</span>kube_node_status_capacity<span style="color:#f92672">{</span>resource<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;memory&#34;</span><span style="color:#f92672">})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 磁盘存在压力的节点</span>
+</span></span><span style="display:flex;"><span>kube_node_status_condition<span style="color:#f92672">{</span>condition<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;DiskPressure&#34;</span>,status<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 内存存在压力的节点</span>
+</span></span><span style="display:flex;"><span>kube_node_status_condition<span style="color:#f92672">{</span>condition<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MemoryPressure&#34;</span>,status<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pid存在压力的节点</span>
+</span></span><span style="display:flex;"><span>kube_node_status_condition<span style="color:#f92672">{</span>condition<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;PIDPressure&#34;</span>,status<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 存在网络不可达节点</span>
+</span></span><span style="display:flex;"><span>kube_node_status_condition<span style="color:#f92672">{</span>condition<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;NetworkUnavailable&#34;</span>,status<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>namespace</p>
+</li>
+<li>
+<p>pod</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kube_pod_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Failed&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_pod_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Pending&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_pod_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Running&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_pod_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Succeeded&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_pod_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Unknown&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>container</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 容器状态</span>
+</span></span><span style="display:flex;"><span>kube_pod_container_status_running
+</span></span><span style="display:flex;"><span>kube_pod_container_status_waiting
+</span></span><span style="display:flex;"><span>kube_pod_container_status_ready
+</span></span><span style="display:flex;"><span>kube_pod_container_status_terminated
+</span></span><span style="display:flex;"><span>kube_pod_container_status_terminated_reason
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 30分钟内重启过的pod</span>
+</span></span><span style="display:flex;"><span>changes<span style="color:#f92672">(</span>kube_pod_container_status_restarts_total<span style="color:#f92672">[</span>30m<span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 容器资源配额</span>
+</span></span><span style="display:flex;"><span>kube_pod_container_resource_requests<span style="color:#f92672">{</span>resource<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cpu&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_pod_container_resource_limits<span style="color:#f92672">{</span>resource<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cpu&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_pod_container_resource_requests<span style="color:#f92672">{</span>resource<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;memory&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_pod_container_resource_limits<span style="color:#f92672">{</span>resource<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;memory&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>replicaset</p>
+</li>
+<li>
+<p>deploy</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#各个deployment的副本数量</span>
+</span></span><span style="display:flex;"><span>kube_deployment_status_replicas
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#各个deployment不可用的副本数量</span>
+</span></span><span style="display:flex;"><span>kube_deployment_status_replicas_unavailable
+</span></span></code></pre></div></li>
+<li>
+<p>daemonset</p>
+</li>
+<li>
+<p>sts</p>
+</li>
+<li>
+<p>job</p>
+</li>
+<li>
+<p>cronjob</p>
+</li>
+<li>
+<p>service</p>
+</li>
+<li>
+<p>endpoint</p>
+</li>
+<li>
+<p>ingress</p>
+</li>
+<li>
+<p>storageclass</p>
+</li>
+<li>
+<p>persistentvolume</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kube_persistentvolume_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Available&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_persistentvolume_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Bound&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_persistentvolume_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Failed&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_persistentvolume_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Pending&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_persistentvolume_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Released&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>persistentvolumeclaim</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kube_persistentvolumeclaim_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Bound&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_persistentvolumeclaim_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Lost&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>kube_persistentvolumeclaim_status_phase<span style="color:#f92672">{</span>phase<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Pending&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>configmap</p>
+</li>
+<li>
+<p>secret</p>
+</li>
+<li>
+<p>poddisruptionbudget</p>
+</li>
+<li>
+<p>horizontalpodautoscaler</p>
+</li>
+<li>
+<p>networkpolicy</p>
+</li>
+<li>
+<p>lease</p>
+</li>
+<li>
+<p>limitrange</p>
+</li>
+<li>
+<p>mutatingwebhookconfiguration</p>
+</li>
+<li>
+<p>validatingwebhookconfiguration</p>
+</li>
+<li>
+<p>volumeattachment</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">groups</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">KubeStateMetricsListErrors</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">kube-state-metrics is experiencing errors at an elevated rate in list operations. This is likely causing it to not be able to expose metrics about Kubernetes objects correctly or at all.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">summary</span>: <span style="color:#ae81ff">kube-state-metrics is experiencing errors in list operations.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      (sum(rate(kube_state_metrics_list_total{job=&#34;kube-state-metrics&#34;,result=&#34;error&#34;}[5m]))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        /
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      sum(rate(kube_state_metrics_list_total{job=&#34;kube-state-metrics&#34;}[5m])))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &gt; 0.01</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">15m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">KubeStateMetricsWatchErrors</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">kube-state-metrics is experiencing errors at an elevated rate in watch operations. This is likely causing it to not be able to expose metrics about Kubernetes objects correctly or at all.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">summary</span>: <span style="color:#ae81ff">kube-state-metrics is experiencing errors in watch operations.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      (sum(rate(kube_state_metrics_watch_total{job=&#34;kube-state-metrics&#34;,result=&#34;error&#34;}[5m]))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        /
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      sum(rate(kube_state_metrics_watch_total{job=&#34;kube-state-metrics&#34;}[5m])))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &gt; 0.01</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">15m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">KubeStateMetricsShardingMismatch</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">kube-state-metrics pods are running with different --total-shards configuration, some Kubernetes objects may be exposed multiple times or not exposed at all.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">summary</span>: <span style="color:#ae81ff">kube-state-metrics sharding is misconfigured.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      stdvar (kube_state_metrics_total_shards{job=&#34;kube-state-metrics&#34;}) != 0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">15m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">KubeStateMetricsShardsMissing</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">kube-state-metrics shards are missing, some Kubernetes objects are not being exposed.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">summary</span>: <span style="color:#ae81ff">kube-state-metrics shards are missing.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      2^max(kube_state_metrics_total_shards{job=&#34;kube-state-metrics&#34;}) - 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        -
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      sum( 2 ^ max by (shard_ordinal) (kube_state_metrics_shard_ordinal{job=&#34;kube-state-metrics&#34;}) )
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      != 0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">15m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span></code></pre></div>
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.js"></script>
+<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

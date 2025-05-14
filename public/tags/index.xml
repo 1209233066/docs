@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 零露云</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Wed, 14 May 2025 15:32:48 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes</title>
+      <link>http://localhost:1313/tags/kubernetes/</link>
+      <pubDate>Wed, 14 May 2025 15:32:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RBAC</title>
+      <link>http://localhost:1313/tags/rbac/</link>
+      <pubDate>Wed, 14 May 2025 15:32:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/rbac/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Alertmanager</title>
+      <link>http://localhost:1313/tags/alertmanager/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/alertmanager/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Amtool</title>
+      <link>http://localhost:1313/tags/amtool/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/amtool/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Exporter</title>
+      <link>http://localhost:1313/tags/exporter/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Grafana</title>
+      <link>http://localhost:1313/tags/grafana/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/grafana/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Install</title>
+      <link>http://localhost:1313/tags/install/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/install/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prometheus</title>
+      <link>http://localhost:1313/tags/prometheus/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>夜莺·监控系统</title>
+      <link>http://localhost:1313/tags/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blackbox</title>
+      <link>http://localhost:1313/tags/blackbox/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/blackbox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Consul_sd_configs</title>
+      <link>http://localhost:1313/tags/consul_sd_configs/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/consul_sd_configs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Federation</title>
+      <link>http://localhost:1313/tags/federation/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/federation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jmx_exporter</title>
+      <link>http://localhost:1313/tags/jmx_exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/jmx_exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes_sd_configs</title>
+      <link>http://localhost:1313/tags/kubernetes_sd_configs/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kubernetes_sd_configs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Minio</title>
+      <link>http://localhost:1313/tags/minio/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/minio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mongo-Exporter</title>
+      <link>http://localhost:1313/tags/mongo-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mongo-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mysql-Exporter</title>
+      <link>http://localhost:1313/tags/mysql-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mysql-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx-Exporter</title>
+      <link>http://localhost:1313/tags/nginx-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/nginx-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Node_exporter</title>
+      <link>http://localhost:1313/tags/node_exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/node_exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PromeQL</title>
+      <link>http://localhost:1313/tags/promeql/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/promeql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prometheus-Sdk</title>
+      <link>http://localhost:1313/tags/prometheus-sdk/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/prometheus-sdk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pushgateway</title>
+      <link>http://localhost:1313/tags/pushgateway/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/pushgateway/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Redis-Exporter</title>
+      <link>http://localhost:1313/tags/redis-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/redis-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Victorametrics</title>
+      <link>http://localhost:1313/tags/victorametrics/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/victorametrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>VictoriaMetrics</title>
+      <link>http://localhost:1313/tags/victoriametrics/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/victoriametrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>安装</title>
+      <link>http://localhost:1313/tags/%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%AE%89%E8%A3%85/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>配置</title>
+      <link>http://localhost:1313/tags/%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>附录</title>
+      <link>http://localhost:1313/tags/%E9%99%84%E5%BD%95/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E9%99%84%E5%BD%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flag</title>
+      <link>http://localhost:1313/tags/flag/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/flag/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fmt</title>
+      <link>http://localhost:1313/tags/fmt/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/fmt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Golang</title>
+      <link>http://localhost:1313/tags/golang/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/golang/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>http://localhost:1313/tags/hugo/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Io</title>
+      <link>http://localhost:1313/tags/io/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/io/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Net/Http</title>
+      <link>http://localhost:1313/tags/net/http/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/net/http/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Os</title>
+      <link>http://localhost:1313/tags/os/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/os/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Path</title>
+      <link>http://localhost:1313/tags/path/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/path/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shortcode</title>
+      <link>http://localhost:1313/tags/shortcode/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/shortcode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Time</title>
+      <link>http://localhost:1313/tags/time/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/time/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>函数</title>
+      <link>http://localhost:1313/tags/%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%87%BD%E6%95%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>变量</title>
+      <link>http://localhost:1313/tags/%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%8F%98%E9%87%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>常量</title>
+      <link>http://localhost:1313/tags/%E5%B8%B8%E9%87%8F/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%B8%B8%E9%87%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>库</title>
+      <link>http://localhost:1313/tags/%E5%BA%93/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%BA%93/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>建站</title>
+      <link>http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>接口</title>
+      <link>http://localhost:1313/tags/%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%8E%A5%E5%8F%A3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>数据类型</title>
+      <link>http://localhost:1313/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>流程控制语句</title>
+      <link>http://localhost:1313/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>环境设置</title>
+      <link>http://localhost:1313/tags/%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>结构体</title>
+      <link>http://localhost:1313/tags/%E7%BB%93%E6%9E%84%E4%BD%93/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E7%BB%93%E6%9E%84%E4%BD%93/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

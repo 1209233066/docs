@@ -1,0 +1,689 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>环境安装 | 零露云</title>
+<meta name="description" content="go|开发环境">
+<meta property="og:url" content="http://localhost:1313/golang/install.html">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="环境安装">
+  <meta property="og:description" content="go|开发环境">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2025-05-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-09T00:00:00+00:00">
+    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="环境设置">
+
+  <meta itemprop="name" content="环境安装">
+  <meta itemprop="description" content="go|开发环境">
+  <meta itemprop="datePublished" content="2025-05-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-09T00:00:00+00:00">
+  <meta itemprop="wordCount" content="182">
+  <meta itemprop="keywords" content="Golang,环境设置">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="环境安装">
+  <meta name="twitter:description" content="go|开发环境">
+<link href="/scss/main.css" rel="stylesheet">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+  <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">docs</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docshugo-li">
+  <input type="checkbox" id="m-docshugo-check"/>
+  <label for="m-docshugo-check"><a href="/docs/hugo/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docshugo"><i class="fa-solid fa-screwdriver-wrench"></i><span class="">hugo</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugobuild-sitehtml-li">
+  <input type="checkbox" id="m-hugobuild-sitehtml-check"/>
+  <label for="m-hugobuild-sitehtml-check"><a href="/hugo/build-site.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-hugobuild-sitehtml"><span class="">建站</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugoshortcodehtml-li">
+  <input type="checkbox" id="m-hugoshortcodehtml-check"/>
+  <label for="m-hugoshortcodehtml-check"><a href="/hugo/shortcode.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-hugoshortcodehtml"><span class="">shortcode</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docskubernetes-li">
+  <input type="checkbox" id="m-docskubernetes-check"/>
+  <label for="m-docskubernetes-check"><a href="/docs/kubernetes/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docskubernetes"><i class="fa-solid fa-ship"></i><span class="">kubernetes</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesrbachtml-li">
+  <input type="checkbox" id="m-kubernetesrbachtml-check"/>
+  <label for="m-kubernetesrbachtml-check"><a href="/kubernetes/rbac.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesrbachtml"><span class="">RBAC实践</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsgolang-li">
+  <input type="checkbox" id="m-docsgolang-check" checked/>
+  <label for="m-docsgolang-check"><a href="/docs/golang/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsgolang"><i class="fa-brands fa-golang"></i><span class="">golang</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-golanginstallhtml-li">
+  <input type="checkbox" id="m-golanginstallhtml-check" checked/>
+  <label for="m-golanginstallhtml-check"><a href="/golang/install.html" title="环境安装" class="align-left ps-0  active td-sidebar-link td-sidebar-link__page" id="m-golanginstallhtml"><span class="td-sidebar-nav-active-item">go环境安装</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangvariablehtml-li">
+  <input type="checkbox" id="m-golangvariablehtml-check"/>
+  <label for="m-golangvariablehtml-check"><a href="/golang/variable.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangvariablehtml"><span class="">常量和变量</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangtypehtml-li">
+  <input type="checkbox" id="m-golangtypehtml-check"/>
+  <label for="m-golangtypehtml-check"><a href="/golang/type.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangtypehtml"><span class="">数据类型</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangcontrolhtml-li">
+  <input type="checkbox" id="m-golangcontrolhtml-check"/>
+  <label for="m-golangcontrolhtml-check"><a href="/golang/control.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangcontrolhtml"><span class="">流程控制语句</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangfunctionhtml-li">
+  <input type="checkbox" id="m-golangfunctionhtml-check"/>
+  <label for="m-golangfunctionhtml-check"><a href="/golang/function.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangfunctionhtml"><span class="">函数</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangstructhtml-li">
+  <input type="checkbox" id="m-golangstructhtml-check"/>
+  <label for="m-golangstructhtml-check"><a href="/golang/struct.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangstructhtml"><span class="">结构体</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golanginterfacehtml-li">
+  <input type="checkbox" id="m-golanginterfacehtml-check"/>
+  <label for="m-golanginterfacehtml-check"><a href="/golang/interface.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golanginterfacehtml"><span class="">接口</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsgolangpackage-li">
+  <input type="checkbox" id="m-docsgolangpackage-check"/>
+  <label for="m-docsgolangpackage-check"><a href="/docs/golang/package/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsgolangpackage"><span class="">package</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagepackagehtml-li">
+  <input type="checkbox" id="m-golangpackagepackagehtml-check"/>
+  <label for="m-golangpackagepackagehtml-check"><a href="/golang/package/package.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagepackagehtml"><span class="">包管理</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagefmthtml-li">
+  <input type="checkbox" id="m-golangpackagefmthtml-check"/>
+  <label for="m-golangpackagefmthtml-check"><a href="/golang/package/fmt.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagefmthtml"><span class="">fmt</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageoshtml-li">
+  <input type="checkbox" id="m-golangpackageoshtml-check"/>
+  <label for="m-golangpackageoshtml-check"><a href="/golang/package/os.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageoshtml"><span class="">os</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagepathhtml-li">
+  <input type="checkbox" id="m-golangpackagepathhtml-check"/>
+  <label for="m-golangpackagepathhtml-check"><a href="/golang/package/path.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagepathhtml"><span class="">path</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageiohtml-li">
+  <input type="checkbox" id="m-golangpackageiohtml-check"/>
+  <label for="m-golangpackageiohtml-check"><a href="/golang/package/io.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageiohtml"><span class="">io</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagetimehtml-li">
+  <input type="checkbox" id="m-golangpackagetimehtml-check"/>
+  <label for="m-golangpackagetimehtml-check"><a href="/golang/package/time.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagetimehtml"><span class="">time</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagehttphtml-li">
+  <input type="checkbox" id="m-golangpackagehttphtml-check"/>
+  <label for="m-golangpackagehttphtml-check"><a href="/golang/package/http.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagehttphtml"><span class="">net/http</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageflaghtml-li">
+  <input type="checkbox" id="m-golangpackageflaghtml-check"/>
+  <label for="m-golangpackageflaghtml-check"><a href="/golang/package/flag.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageflaghtml"><span class="">flag</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsprometheus-li">
+  <input type="checkbox" id="m-docsprometheus-check"/>
+  <label for="m-docsprometheus-check"><a href="/docs/prometheus/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsprometheus"><i class="fa-solid fa-bell"></i><span class="">prometheus</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusinstallhtml-li">
+  <input type="checkbox" id="m-prometheusinstallhtml-check"/>
+  <label for="m-prometheusinstallhtml-check"><a href="/prometheus/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusinstallhtml"><span class="">install</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusprometheus-operatorhtml-li">
+  <input type="checkbox" id="m-prometheusprometheus-operatorhtml-check"/>
+  <label for="m-prometheusprometheus-operatorhtml-check"><a href="/prometheus/prometheus-operator.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusprometheus-operatorhtml"><span class="">operator</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusconfightml-li">
+  <input type="checkbox" id="m-prometheusconfightml-check"/>
+  <label for="m-prometheusconfightml-check"><a href="/prometheus/config.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusconfightml"><span class="">config</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetes-sd-configshtml-li">
+  <input type="checkbox" id="m-prometheuskubernetes-sd-configshtml-check"/>
+  <label for="m-prometheuskubernetes-sd-configshtml-check"><a href="/prometheus/kubernetes-sd-configs.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetes-sd-configshtml"><span class="">kubernetes_sd_configs</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusconsul-sd-configshtml-li">
+  <input type="checkbox" id="m-prometheusconsul-sd-configshtml-check"/>
+  <label for="m-prometheusconsul-sd-configshtml-check"><a href="/prometheus/consul-sd-configs.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusconsul-sd-configshtml"><span class="">consul_sd_configs</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuspromeqlhtml-li">
+  <input type="checkbox" id="m-prometheuspromeqlhtml-check"/>
+  <label for="m-prometheuspromeqlhtml-check"><a href="/prometheus/promeql.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuspromeqlhtml"><span class="">PromeQL</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusn9ehtml-li">
+  <input type="checkbox" id="m-prometheusn9ehtml-check"/>
+  <label for="m-prometheusn9ehtml-check"><a href="/prometheus/n9e.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusn9ehtml"><span class="">夜莺·监控系统</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusfederationhtml-li">
+  <input type="checkbox" id="m-prometheusfederationhtml-check"/>
+  <label for="m-prometheusfederationhtml-check"><a href="/prometheus/federation.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusfederationhtml"><span class="">federation</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusappendixhtml-li">
+  <input type="checkbox" id="m-prometheusappendixhtml-check"/>
+  <label for="m-prometheusappendixhtml-check"><a href="/prometheus/appendix.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusappendixhtml"><span class="">附录</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusexporter-li">
+  <input type="checkbox" id="m-prometheusexporter-check"/>
+  <label for="m-prometheusexporter-check"><a href="/prometheus/exporter/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusexporter"><span class="">exporter</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporternode_exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporternode_exporterhtml-check"/>
+  <label for="m-prometheusexporternode_exporterhtml-check"><a href="/prometheus/exporter/node_exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporternode_exporterhtml"><span class="">node_exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterblackboxhtml-li">
+  <input type="checkbox" id="m-prometheusexporterblackboxhtml-check"/>
+  <label for="m-prometheusexporterblackboxhtml-check"><a href="/prometheus/exporter/blackbox.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterblackboxhtml"><span class="">blackbox</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterjmx_exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporterjmx_exporterhtml-check"/>
+  <label for="m-prometheusexporterjmx_exporterhtml-check"><a href="/prometheus/exporter/jmx_exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterjmx_exporterhtml"><span class="">jmx_exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporternginx-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporternginx-exporterhtml-check"/>
+  <label for="m-prometheusexporternginx-exporterhtml-check"><a href="/prometheus/exporter/nginx-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporternginx-exporterhtml"><span class="">nginx-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterminiohtml-li">
+  <input type="checkbox" id="m-prometheusexporterminiohtml-check"/>
+  <label for="m-prometheusexporterminiohtml-check"><a href="/prometheus/exporter/minio.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterminiohtml"><span class="">minio</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterredis-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporterredis-exporterhtml-check"/>
+  <label for="m-prometheusexporterredis-exporterhtml-check"><a href="/prometheus/exporter/redis-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterredis-exporterhtml"><span class="">redis-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexportermysql-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexportermysql-exporterhtml-check"/>
+  <label for="m-prometheusexportermysql-exporterhtml-check"><a href="/prometheus/exporter/mysql-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexportermysql-exporterhtml"><span class="">mysql-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexportermongo-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexportermongo-exporterhtml-check"/>
+  <label for="m-prometheusexportermongo-exporterhtml-check"><a href="/prometheus/exporter/mongo-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexportermongo-exporterhtml"><span class="">mongo-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterprometheus-sdkhtml-li">
+  <input type="checkbox" id="m-prometheusexporterprometheus-sdkhtml-check"/>
+  <label for="m-prometheusexporterprometheus-sdkhtml-check"><a href="/prometheus/exporter/prometheus-sdk.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterprometheus-sdkhtml"><span class="">prometheus-sdk</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusalertmanager-li">
+  <input type="checkbox" id="m-prometheusalertmanager-check"/>
+  <label for="m-prometheusalertmanager-check"><a href="/prometheus/alertmanager/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusalertmanager"><span class="">alertmanager</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusalertmanagerinstallhtml-li">
+  <input type="checkbox" id="m-prometheusalertmanagerinstallhtml-check"/>
+  <label for="m-prometheusalertmanagerinstallhtml-check"><a href="/prometheus/alertmanager/install.html" title="部署alertmanager" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusalertmanagerinstallhtml"><span class="">install</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusalertmanagerconfightml-li">
+  <input type="checkbox" id="m-prometheusalertmanagerconfightml-check"/>
+  <label for="m-prometheusalertmanagerconfightml-check"><a href="/prometheus/alertmanager/config.html" title="配置alertmanager" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusalertmanagerconfightml"><span class="">config</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusalertmanageramtoolhtml-li">
+  <input type="checkbox" id="m-prometheusalertmanageramtoolhtml-check"/>
+  <label for="m-prometheusalertmanageramtoolhtml-check"><a href="/prometheus/alertmanager/amtool.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusalertmanageramtoolhtml"><span class="">amtool</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusgrafana-li">
+  <input type="checkbox" id="m-prometheusgrafana-check"/>
+  <label for="m-prometheusgrafana-check"><a href="/prometheus/grafana/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusgrafana"><span class="">grafana</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusgrafanaquitstarthtml-li">
+  <input type="checkbox" id="m-prometheusgrafanaquitstarthtml-check"/>
+  <label for="m-prometheusgrafanaquitstarthtml-check"><a href="/prometheus/grafana/quitstart.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusgrafanaquitstarthtml"><span class="">quitstart</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusmonitor-li">
+  <input type="checkbox" id="m-prometheusmonitor-check"/>
+  <label for="m-prometheusmonitor-check"><a href="/prometheus/monitor/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusmonitor"><span class="">monitor</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusmonitorprometheushtml-li">
+  <input type="checkbox" id="m-prometheusmonitorprometheushtml-check"/>
+  <label for="m-prometheusmonitorprometheushtml-check"><a href="/prometheus/monitor/prometheus.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusmonitorprometheushtml"><span class="">prometheus</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusmonitoralertmanagerhtml-li">
+  <input type="checkbox" id="m-prometheusmonitoralertmanagerhtml-check"/>
+  <label for="m-prometheusmonitoralertmanagerhtml-check"><a href="/prometheus/monitor/alertmanager.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusmonitoralertmanagerhtml"><span class="">alertmanager</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusmonitorpushgatewayhtml-li">
+  <input type="checkbox" id="m-prometheusmonitorpushgatewayhtml-check"/>
+  <label for="m-prometheusmonitorpushgatewayhtml-check"><a href="/prometheus/monitor/pushgateway.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusmonitorpushgatewayhtml"><span class="">pushgateway</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusvictorametrics-li">
+  <input type="checkbox" id="m-prometheusvictorametrics-check"/>
+  <label for="m-prometheusvictorametrics-check"><a href="/prometheus/victorametrics/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusvictorametrics"><span class="">victorametrics</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusvictoriametricsvictoriametricshtml-li">
+  <input type="checkbox" id="m-prometheusvictoriametricsvictoriametricshtml-check"/>
+  <label for="m-prometheusvictoriametricsvictoriametricshtml-check"><a href="/prometheus/victoriaMetrics/victoriaMetrics.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusvictoriametricsvictoriametricshtml"><span class="">victoriaMetrics</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheuskubernetes-li">
+  <input type="checkbox" id="m-prometheuskubernetes-check"/>
+  <label for="m-prometheuskubernetes-check"><a href="/prometheus/kubernetes/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheuskubernetes"><span class="">kubernetes</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-apiserverhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-apiserverhtml-check"/>
+  <label for="m-prometheuskuberneteskube-apiserverhtml-check"><a href="/prometheus/kubernetes/kube-apiserver.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-apiserverhtml"><span class="">kube-apiserver</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-controllerhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-controllerhtml-check"/>
+  <label for="m-prometheuskuberneteskube-controllerhtml-check"><a href="/prometheus/kubernetes/kube-controller.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-controllerhtml"><span class="">kube-controller</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-controllerhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-controllerhtml-check"/>
+  <label for="m-prometheuskuberneteskube-controllerhtml-check"><a href="/prometheus/kubernetes/kube-controller.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-controllerhtml"><span class="">kube-controller</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-proxyhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-proxyhtml-check"/>
+  <label for="m-prometheuskuberneteskube-proxyhtml-check"><a href="/prometheus/kubernetes/kube-proxy.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-proxyhtml"><span class="">kube-proxy</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskubelethtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskubelethtml-check"/>
+  <label for="m-prometheuskuberneteskubelethtml-check"><a href="/prometheus/kubernetes/kubelet.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskubelethtml"><span class="">kubelet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetesetcdhtml-li">
+  <input type="checkbox" id="m-prometheuskubernetesetcdhtml-check"/>
+  <label for="m-prometheuskubernetesetcdhtml-check"><a href="/prometheus/kubernetes/etcd.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetesetcdhtml"><span class="">etcd</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetescorednshtml-li">
+  <input type="checkbox" id="m-prometheuskubernetescorednshtml-check"/>
+  <label for="m-prometheuskubernetescorednshtml-check"><a href="/prometheus/kubernetes/coredns.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetescorednshtml"><span class="">coredns</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetescadvisorhtml-li">
+  <input type="checkbox" id="m-prometheuskubernetescadvisorhtml-check"/>
+  <label for="m-prometheuskubernetescadvisorhtml-check"><a href="/prometheus/kubernetes/cadvisor.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetescadvisorhtml"><span class="">cadvisor</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-state-metricshtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-state-metricshtml-check"/>
+  <label for="m-prometheuskuberneteskube-state-metricshtml-check"><a href="/prometheus/kubernetes/kube-state-metrics.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-state-metricshtml"><span class="">kube-state-metrics</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+<a id="print" href="/docs/golang/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#windows环境安装">windows环境安装</a></li>
+        <li><a href="#在linux环境安装">在linux环境安装</a></li>
+        <li><a href="#demo">demo</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            <div class="taxonomy taxonomy-terms-cloud taxo-categories">
+      <h5 class="taxonomy-title">Categories</h5>
+      <ul class="taxonomy-terms">
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/alertmanager/" data-taxonomy-term="alertmanager"><span class="taxonomy-label">Alertmanager</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/exporter/" data-taxonomy-term="exporter"><span class="taxonomy-label">Exporter</span><span class="taxonomy-count">23</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/golang/" data-taxonomy-term="golang"><span class="taxonomy-label">Golang</span><span class="taxonomy-count">15</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/grafana/" data-taxonomy-term="grafana"><span class="taxonomy-label">Grafana</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/hugo/" data-taxonomy-term="hugo"><span class="taxonomy-label">Hugo</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/kubernetes/" data-taxonomy-term="kubernetes"><span class="taxonomy-label">Kubernetes</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/prometheus/" data-taxonomy-term="prometheus"><span class="taxonomy-label">Prometheus</span><span class="taxonomy-count">37</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/victorametrics/" data-taxonomy-term="victorametrics"><span class="taxonomy-label">Victorametrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/victoriametrics/" data-taxonomy-term="victoriametrics"><span class="taxonomy-label">VictoriaMetrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/" data-taxonomy-term="%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="taxonomy-label">夜莺·监控系统</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/%E5%BA%93/" data-taxonomy-term="%E5%BA%93"><span class="taxonomy-label">库</span><span class="taxonomy-count">7</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/categories/%E7%9B%91%E6%8E%A7/" data-taxonomy-term="%E7%9B%91%E6%8E%A7"><span class="taxonomy-label">监控</span><span class="taxonomy-count">30</span></a></li>
+        </ul>
+    </div>
+  <div class="taxonomy taxonomy-terms-cloud taxo-tags">
+      <h5 class="taxonomy-title">Tags</h5>
+      <ul class="taxonomy-terms">
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/alertmanager/" data-taxonomy-term="alertmanager"><span class="taxonomy-label">Alertmanager</span><span class="taxonomy-count">4</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/amtool/" data-taxonomy-term="amtool"><span class="taxonomy-label">Amtool</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/blackbox/" data-taxonomy-term="blackbox"><span class="taxonomy-label">Blackbox</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/consul_sd_configs/" data-taxonomy-term="consul_sd_configs"><span class="taxonomy-label">Consul_sd_configs</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/exporter/" data-taxonomy-term="exporter"><span class="taxonomy-label">Exporter</span><span class="taxonomy-count">23</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/federation/" data-taxonomy-term="federation"><span class="taxonomy-label">Federation</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/flag/" data-taxonomy-term="flag"><span class="taxonomy-label">Flag</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/fmt/" data-taxonomy-term="fmt"><span class="taxonomy-label">Fmt</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/golang/" data-taxonomy-term="golang"><span class="taxonomy-label">Golang</span><span class="taxonomy-count">15</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/grafana/" data-taxonomy-term="grafana"><span class="taxonomy-label">Grafana</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/hugo/" data-taxonomy-term="hugo"><span class="taxonomy-label">Hugo</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/install/" data-taxonomy-term="install"><span class="taxonomy-label">Install</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/io/" data-taxonomy-term="io"><span class="taxonomy-label">Io</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/jmx_exporter/" data-taxonomy-term="jmx_exporter"><span class="taxonomy-label">Jmx_exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/kubernetes/" data-taxonomy-term="kubernetes"><span class="taxonomy-label">Kubernetes</span><span class="taxonomy-count">10</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/kubernetes_sd_configs/" data-taxonomy-term="kubernetes_sd_configs"><span class="taxonomy-label">Kubernetes_sd_configs</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/minio/" data-taxonomy-term="minio"><span class="taxonomy-label">Minio</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/mongo-exporter/" data-taxonomy-term="mongo-exporter"><span class="taxonomy-label">Mongo-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/mysql-exporter/" data-taxonomy-term="mysql-exporter"><span class="taxonomy-label">Mysql-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/net/http/" data-taxonomy-term="net/http"><span class="taxonomy-label">Net/Http</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/nginx-exporter/" data-taxonomy-term="nginx-exporter"><span class="taxonomy-label">Nginx-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/node_exporter/" data-taxonomy-term="node_exporter"><span class="taxonomy-label">Node_exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/os/" data-taxonomy-term="os"><span class="taxonomy-label">Os</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/path/" data-taxonomy-term="path"><span class="taxonomy-label">Path</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/promeql/" data-taxonomy-term="promeql"><span class="taxonomy-label">PromeQL</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/prometheus/" data-taxonomy-term="prometheus"><span class="taxonomy-label">Prometheus</span><span class="taxonomy-count">37</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/prometheus-sdk/" data-taxonomy-term="prometheus-sdk"><span class="taxonomy-label">Prometheus-Sdk</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/pushgateway/" data-taxonomy-term="pushgateway"><span class="taxonomy-label">Pushgateway</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/rbac/" data-taxonomy-term="rbac"><span class="taxonomy-label">RBAC</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/redis-exporter/" data-taxonomy-term="redis-exporter"><span class="taxonomy-label">Redis-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/shortcode/" data-taxonomy-term="shortcode"><span class="taxonomy-label">Shortcode</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/time/" data-taxonomy-term="time"><span class="taxonomy-label">Time</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/victorametrics/" data-taxonomy-term="victorametrics"><span class="taxonomy-label">Victorametrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/victoriametrics/" data-taxonomy-term="victoriametrics"><span class="taxonomy-label">VictoriaMetrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E5%87%BD%E6%95%B0/" data-taxonomy-term="%E5%87%BD%E6%95%B0"><span class="taxonomy-label">函数</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E5%8F%98%E9%87%8F/" data-taxonomy-term="%E5%8F%98%E9%87%8F"><span class="taxonomy-label">变量</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/" data-taxonomy-term="%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="taxonomy-label">夜莺·监控系统</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E5%AE%89%E8%A3%85/" data-taxonomy-term="%E5%AE%89%E8%A3%85"><span class="taxonomy-label">安装</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E5%B8%B8%E9%87%8F/" data-taxonomy-term="%E5%B8%B8%E9%87%8F"><span class="taxonomy-label">常量</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E5%BA%93/" data-taxonomy-term="%E5%BA%93"><span class="taxonomy-label">库</span><span class="taxonomy-count">8</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/" data-taxonomy-term="%E5%BB%BA%E7%AB%99"><span class="taxonomy-label">建站</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E6%8E%A5%E5%8F%A3/" data-taxonomy-term="%E6%8E%A5%E5%8F%A3"><span class="taxonomy-label">接口</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-taxonomy-term="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="taxonomy-label">数据类型</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/" data-taxonomy-term="%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="taxonomy-label">流程控制语句</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/" data-taxonomy-term="%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE"><span class="taxonomy-label">环境设置</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" data-taxonomy-term="%E7%BB%93%E6%9E%84%E4%BD%93"><span class="taxonomy-label">结构体</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E9%85%8D%E7%BD%AE/" data-taxonomy-term="%E9%85%8D%E7%BD%AE"><span class="taxonomy-label">配置</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E9%99%84%E5%BD%95/" data-taxonomy-term="%E9%99%84%E5%BD%95"><span class="taxonomy-label">附录</span><span class="taxonomy-count">1</span></a></li>
+        </ul>
+    </div>
+  
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/docs/">docs</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/golang/">golang</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    go环境安装</li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>环境安装</h1>
+	<div class="lead">go|开发环境</div>
+	<header class="article-meta">
+		<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    <li><a class="taxonomy-term" href="http://localhost:1313/categories/golang/" data-taxonomy-term="golang"><span class="taxonomy-label">Golang</span></a></li>
+    </ul>
+</div>
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    <li><a class="taxonomy-term" href="http://localhost:1313/tags/golang/" data-taxonomy-term="golang"><span class="taxonomy-label">Golang</span></a></li>
+    <li><a class="taxonomy-term" href="http://localhost:1313/tags/%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/" data-taxonomy-term="%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE"><span class="taxonomy-label">环境设置</span></a></li>
+    </ul>
+</div>
+
+</header>
+	<h3 id="windows环境安装">windows环境安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>GO111MODULE<span style="color:#f92672">=</span>on
+</span></span><span style="display:flex;"><span>GOPATH<span style="color:#f92672">=</span>d:<span style="color:#ae81ff">\g</span>opath
+</span></span><span style="display:flex;"><span>GOPROXY<span style="color:#f92672">=</span>https://goproxy.cn
+</span></span><span style="display:flex;"><span>GOROOT<span style="color:#f92672">=</span>D:<span style="color:#ae81ff">\g</span>o
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go version
+</span></span><span style="display:flex;"><span>go env
+</span></span></code></pre></div><h3 id="在linux环境安装">在linux环境安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># centos 启动桌面环境</span>
+</span></span><span style="display:flex;"><span>yum groupinstall <span style="color:#e6db74">&#34;X Window System&#34;</span>
+</span></span><span style="display:flex;"><span>yum groupinstall -y <span style="color:#e6db74">&#34;GNOME Desktop&#34;</span>
+</span></span><span style="display:flex;"><span>init <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ubuntu server 启动桌面环境</span>
+</span></span><span style="display:flex;"><span>sudo apt install ubuntu-desktop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>init <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>安装golang</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#https://studygolang.com/dl</span>
+</span></span><span style="display:flex;"><span>wget https://golang.google.cn/dl/go1.19.6.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar xf go1.19.6.linux-amd64.tar.gz -C /opt/
+</span></span><span style="display:flex;"><span>mkdir /home/pc/golang -p
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@golang:~# ls /opt/go/
+</span></span><span style="display:flex;"><span>api  codereview.cfg   doc  LICENSE  PATENTS  README.md    src   VERSION
+</span></span><span style="display:flex;"><span>bin  CONTRIBUTING.md  lib  misc     pkg      SECURITY.md  test
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;&gt;/etc/profile <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export GOROOT=/opt/go
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export GOPATH=/opt/gopath
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export PATH=\$GOROOT/bin:$PATH
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export GO111MODULE=&#34;on&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export GOPROXY=&#34;https://goproxy.cn&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source /etc/profile
+</span></span><span style="display:flex;"><span>go version
+</span></span><span style="display:flex;"><span>go env
+</span></span></code></pre></div><p>安装vscode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://vscode.download.prss.microsoft.com/dbazure/download/stable/019f4d1419fbc8219a181fab7892ebccf7ee29a2/code-stable-x64-1709077346.tar.gz
+</span></span></code></pre></div><p>启动vscode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/VSCode-linux-x64/code --no-sandbox
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+</span></span><span style="display:flex;"><span>sudo sh -c <span style="color:#e6db74">&#39;echo -e &#34;[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc&#34; &gt; /etc/yum.repos.d/vscode.repo&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>yum check-update
+</span></span><span style="display:flex;"><span>sudo yum install code
+</span></span></code></pre></div><p>vscode golang插件安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ctrl + shift + p 
+</span></span><span style="display:flex;"><span>输入 install/Update Tools
+</span></span><span style="display:flex;"><span>选择所有提示安装的插件
+</span></span></code></pre></div><h3 id="demo">demo</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p lvminfo/<span style="color:#f92672">{</span>utils,cmd<span style="color:#f92672">}</span> 
+</span></span><span style="display:flex;"><span>go mod init wangendao.com/lvminfo
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lvminfo/
+</span></span><span style="display:flex;"><span>├── cmd
+</span></span><span style="display:flex;"><span>│   └── main.go		<span style="color:#75715e"># 入口文件</span>
+</span></span><span style="display:flex;"><span>├── go.mod
+</span></span><span style="display:flex;"><span>└── utils			<span style="color:#75715e"># 内部包存放目录</span>
+</span></span><span style="display:flex;"><span>    └── getinfo.go
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// utils/getinfo.go</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">utils</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;os/exec&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Getlvinfo</span>() []<span style="color:#66d9ef">byte</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">lvs</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">exec</span>.<span style="color:#a6e22e">Command</span>(<span style="color:#e6db74">&#34;lvs&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">lvs</span>.<span style="color:#a6e22e">Output</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// cmd/main.go</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;wangendao.com/lvminfo/utils&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">Getlvinfo</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(string(<span style="color:#a6e22e">a</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.js"></script>
+<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

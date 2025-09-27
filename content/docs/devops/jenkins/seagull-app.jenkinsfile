@@ -1,0 +1,200 @@
+currentBuild.displayName ="构建分支：${env.branch}"
+currentBuild.description="部署主机： ${env.hosts}"
+pipeline {
+    agent {
+        label "nodejs"
+    }
+    options {
+      buildDiscarder logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '5', daysToKeepStr: '1', numToKeepStr: '5')
+      disableConcurrentBuilds()
+      timeout(time: 2,unit: 'HOURS')
+    }
+    parameters {
+        
+        choice choices: ['master'], description: '''master 对应dev环境
+yanlian 对应uat环境''', name: 'branch'
+
+        activeChoice choiceType: 'PT_CHECKBOX', description: '选择要部署的主机',
+         filterLength: 1, filterable: true, name: 'hosts',
+         randomName: 'choice-parameter-78253821059628',
+          script: groovyScript(
+            fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], 
+            script: [classpath: [], oldScript: '', sandbox: true, 
+            script: '''return ["seagullcore-dev-s3:selected","seagullcore01-dev-s2", "pcloud-dev05gz","pcloud-dev06gz",
+            "seagullcore01-uat-s2:disabled"]'''
+            ])
+        booleanParam defaultValue: false, description: '是否执行代码扫描，默认不执行代码扫描', name: 'scancode'
+    }
+    stages {
+
+        stage('checkout-ui') {
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'git',
+                gitToolName: 'git-tool')]) {
+                    sh '''
+                    git clone https://gitee.com/bj-pytc/pcloud-webui.git ${BUILD_NUMBER}/pcloud-webui
+                    cd ${BUILD_NUMBER}/pcloud-webui
+                    git checkout ${branch}
+                    git pull origin ${branch}
+                    git branch -v
+                    '''
+                }
+            }
+        }
+
+        stage('codeScan-ui') {
+            environment {
+              SONAR_SCANNER_HOME = "/opt/sonar-scanner"
+              PATH = "${SONAR_SCANNER_HOME}/bin:/opt/node/bin:$PATH"
+            }
+            steps {
+                script {
+
+                    if (scancode=="true"){
+
+                        withSonarQubeEnv(installationName: 'sonarQube',credentialsId: 'sonarQubetoken') {
+                            script {
+                                sh '''
+                                cd "${BUILD_NUMBER}"
+                                sonar-scanner \
+                                -Dsonar.host.url=http://1.12.224.225:9000 \
+                                -Dsonar.projectKey=seagull-ui \
+                                -Dsonar.projectName=seagull-ui \
+                                -Dsonar.projectVersion="${branch}" \
+                                -Dsonar.login="${SONAR_AUTH_TOKEN}" \
+                                -Dsonar.ws.timeout=30 \
+                                -Dsonar.projectDescription='seagull-ui' \
+                                -Dsonar.links.homepage=https://e.gitee.com/bj-pytc/repos/bj-pytc/pcloud-webui/sources \
+                                -Dsonar.links.ci=http://1.12.224.225:18080/job/seagull-app \
+                                -Dsonar.sourceEncoding=UTF-8 \
+                                -Dsonar.sources=pcloud-webui/src \
+                                -Dsonar.branch.name=${branch}
+                                '''
+                            }
+                        }                     
+                    }
+                }
+            }
+        }
+        stage('build-ui') {
+            environment {
+              SONAR_SCANNER_HOME = "/opt/sonar-scanner"
+              PATH = "${SONAR_SCANNER_HOME}/bin:/opt/node/bin:$PATH"
+            }
+            steps {
+                sh '''
+                cd "${BUILD_NUMBER}/pcloud-webui"
+                source /etc/profile &>/dev/null
+                # 设置NPM源，提升安装速度
+                rm -f .npmrc
+                npm config set registry http://192.168.0.246:8081/repository/seagull-npm/
+                npm config get registry
+                # 执行编译命令
+                #git checkout ${branch}
+                git branch -v
+                npm install --force && npm run build
+                '''
+            }
+        }
+
+        // core
+        stage('checkout-core') {
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'git',
+                gitToolName: 'git-tool')]) {
+                    sh '''
+                    git clone https://gitee.com/bj-pytc/pcloud-core.git ${BUILD_NUMBER}/pcloud-core
+                    cd ${BUILD_NUMBER}/pcloud-core
+                    git checkout ${branch}
+                    git pull origin ${branch}
+                    git branch -v
+                    '''
+                }
+            }
+        }
+        stage('codeScan-core') {
+            environment {
+              SONAR_SCANNER_HOME = "/opt/sonar-scanner"
+              PATH = "${SONAR_SCANNER_HOME}/bin:$PATH"
+            }
+            steps {
+                script {
+                    if (scancode=="true"){
+                        withSonarQubeEnv(installationName: 'sonarQube',credentialsId: 'sonarQubetoken') {
+                            script {
+                                sh '''
+                                sonar-scanner \
+                                -Dsonar.host.url=http://1.12.224.225:9000 \
+                                -Dsonar.projectKey=seagull-core \
+                                -Dsonar.projectName=seagull-core \
+                                -Dsonar.projectVersion="${branch}" \
+                                -Dsonar.login="${SONAR_AUTH_TOKEN}" \
+                                -Dsonar.ws.timeout=30 \
+                                -Dsonar.projectDescription='seagull-core' \
+                                -Dsonar.links.homepage=https://e.gitee.com/bj-pytc/repos/bj-pytc/pcloud-core/sources \
+                                -Dsonar.links.ci=http://1.12.224.225:18080/job/seagull-app \
+                                -Dsonar.sourceEncoding=UTF-8 \
+                                -Dsonar.branch.name=${branch}
+                                '''
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('build-core') {
+            steps {
+                sh '''
+                source /etc/profile &>/dev/null
+                go install github.com/rakyll/statik@latest
+                statik -f -src=${BUILD_NUMBER}/pcloud-webui/pub -dest=${BUILD_NUMBER}/pcloud-core/front
+                cd ${BUILD_NUMBER}/pcloud-core
+                go mod tidy
+                make build-linux-amd64
+                tar czf  seagullCore.tar.gz seagullCore'''
+            }
+        }
+        stage('deploy') {
+                parallel {
+                    stage('deploy2host') {
+                        steps {
+                            sh '''
+                            cd ${BUILD_NUMBER}/pcloud-core
+                            IFS=',' read -r -a H <<< "$hosts";
+
+                            for host in  ${H[@]};
+                            do 
+                                scp -rp seagullCore.tar.gz ${host}:/tmp/ &&
+                                ssh ${host} "tar xvf /tmp/seagullCore.tar.gz -C /opt/seagullCore/ && systemctl restart seagullCore.service && systemctl status seagullCore.service"
+                                
+                            done
+                            '''
+                        }
+                    }
+
+                    stage('release') {
+                        steps {
+                            sh '''
+                            cd ${BUILD_NUMBER}/pcloud-core
+                            if [ ${branch} == "master" ];then
+                                scp -rp seagullCore.tar.gz pcloud-dev02gz:/opt/download/seagull/dev/
+                            elif [ ${branch} == "yanlian" ];then
+                                scp -rp seagullCore.tar.gz pcloud-dev02gz:/opt/download/seagull/uat/
+                            fi
+                            '''
+                        }
+                    }
+                }
+            }
+
+        }
+        post{
+            always {
+                // 保留最近两次构建
+                    sh '''
+                    rm -fr `expr  ${BUILD_NUMBER} - 2`
+                    '''
+                }
+
+        }
+}

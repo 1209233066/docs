@@ -5,7 +5,7 @@ date: 2025-05-09
 
 toc_hide: false   #隐藏左侧菜单
 hide_summary: true #隐藏描述
-weight: 3
+weight: 1
 description: >
   使用hugo & docsy 构建站点
 
@@ -13,32 +13,45 @@ tags: ["hugo","建站"]
 categories: ["hugo"]
 url: hugo/build-site.html
 ---
----
-前置条件
 
-+ `go version 1.18+`
 
-+ `nodejs`
 
-+ `hugo_extended  version 0.110.0+`
+{{% alert title="内容概要" color="" %}}
 
-+ `git`
+- 安装、配置hugo&docsy环境
 
-+ ```bash
-  npm install -D autoprefixer
-  npm install -D postcss-cli
-  npm install -D postcss
-  ```
+  
 
-### 初始化站点
+{{% /alert %}}
+
+
+
+{{< tabpane text=true right=false >}}
+  {{% tab header="**初始化站点**:" disabled=true /%}}
+  {{% tab header="前置条件" lang="en" %}}
+
+1. `go version 1.18+`
+
+2. `nodejs`
+
+   ```bash
+   npm install -D autoprefixer
+   npm install -D postcss-cli
+   npm install -D postcss
+   ```
+
+3. `hugo_extended  version 0.110.0+`
+
+4. `git`
+
+
+
+  {{% /tab %}}
+  {{% tab header="初始化站点" lang="en" %}}
+
 ```bash
-hugo new site my-new-site --format yaml
-cd  my-new-site
-git init
-hugo mod init github.com/me/my-new-site
-hugo mod get github.com/google/docsy@v0.11.0
-
-cat >> hugo.yaml <<EOL
+cat > hugo.yaml <<EOL
+enableEmoji: true # 支持emoji
 module:
   proxy: direct
   hugoVersion:
@@ -57,11 +70,28 @@ markup:
       escapedSpace: true            # 保留空格转义
 
 EOL
-
-
-hugo server
-
 ```
+
+```bash
+hugo new site my-new-site --format yaml
+cd  my-new-site
+git init
+hugo mod init github.com/me/my-new-site
+hugo mod get github.com/google/docsy@v0.11.0
+
+#
+hugo server
+```
+
+  
+
+  {{% /tab %}}
+{{< /tabpane >}}
+
+
+
+
+
 
 
 ### 初始化顶级菜单 
@@ -92,7 +122,7 @@ menu:
 
 ### 增加内容页面
 
-网站内容页目录结构
+网站content目录结构
 ```bash
 content
 ├─_index.md
@@ -100,7 +130,7 @@ content
 ├─blog
 |  |_ _index.md
 └─docs
-    |_ _index.md
+    |- _index.md
     ├─golang
     |  |- _index.md
     |  |_ package
@@ -109,7 +139,26 @@ content
        |_ _index.md
 ```
 
-菜单导航结构 `docs/hugo/_index.md`
+**_index.md**文件至关重要，负责初始化目录结构。以下是相对于content目录下创建的_index.md文件内容:
+
+{{< tabpane text=true right=false >}}
+  {{% tab header="**索引文件配置**:" disabled=true /%}}
+  {{% tab header="_index.md" lang="en" %}}
+```yaml
+---
+title: "HOME"
+---
+```
+  {{% /tab %}}
+  {{% tab header="docs/_index.md" lang="en" %}}
+```yaml
+---
+title: "docs"
+---
+```
+  {{% /tab %}}
+
+  {{% tab header="docs/hugo/_index.md" lang="en" %}}
 ```yaml
 ---
 title: ""
@@ -122,8 +171,9 @@ description: >
 icon: fa-solid fa-screwdriver-wrench
 ---
 ```
+  {{% /tab %}}
+  {{% tab header="docs/golang/_index.md" lang="en" %}}
 
-菜单导航结构 `docs/golang/_index.md`
 ```yaml
 ---
 title: ""
@@ -136,6 +186,10 @@ description: >
 icon: fa-brands fa-golang
 ---
 ```
+  {{% /tab %}}
+{{< /tabpane >}}
+
+
 
 
 新增加第一个页面 `content/docs/hugo/hugo.md`
@@ -180,12 +234,25 @@ params:
 
 页面设置，同样可以在页面 front matter 中设置页面的图标
 
-_index.md 或 <具体文档>.md
+> 位置：_index.md 或 <具体文档>.md
+
 ```yaml
 ---
 icon: fa-solid fa-screwdriver-wrench  # 图标 https://fontawesome.com/
 ---
 ```
+
+### 本地搜索
+
+hugo.yaml
+
+```yaml
+params:
+  offlineSearch: true
+  offlineSearchSummaryLength: 200
+  offlineSearchMaxResults: 25
+```
+
 
 
 ### Mermaid 渲染
@@ -321,3 +388,16 @@ outputs:
     - RSS
     - print
 ```
+
+### 新标签页打开外部链接
+
+位置：`layouts/_default/_markup/render-link.html`
+```html
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}>{{ .Text }}</a>
+```
+
+
+
+### 评论系统
+
+评论系统：[Waline | Waline](https://waline.js.org/)

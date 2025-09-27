@@ -12,5 +12,8 @@ description: >
 tags: ["golang","包管理"]
 categories: ["golang"]
 url: golang/package/package.html
+author: "wangendao"
 ---
 
+
+ ![](https://rpic.origz.com/api.php?category=photography)

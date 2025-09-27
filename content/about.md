@@ -1,17 +1,15 @@
 ---
-type: blog
-title: 关于本站
 date: 2024-03-20T16:00:00+08:00
 draft: false
 url: /about
+toc_hide: true
+hide_summary: true
 icon: fa-solid fa-house
 ---
 
-
-了解本站的技术实现和内容介绍
-
-Wednesday, March 20, 2024
-
+{{% alert title="" color="" %}}
+*梅西说，他想像孩子一样开心地踢球。毕加索也说，他穷尽一生追求像孩子一样画画。其实，我们也应该去追求孩子般的生活，看到燕子归来便兴奋不已，看到蚂蚁搬家便期待一场酣雨。*
+{{% /alert %}}
 
 
 ## 技术栈

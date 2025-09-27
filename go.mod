@@ -2,4 +2,7 @@ module github.com/me/my-new-site
 
 go 1.20
 
-require github.com/google/docsy v0.11.0 // indirect
+require (
+	github.com/google/docsy v0.11.0 // indirect
+	github.com/twitter/twemoji v14.0.2+incompatible // indirect
+)

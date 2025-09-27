@@ -1,0 +1,81 @@
+<!-- 添加状态显示区域 -->
+<div id="status" style="padding: 10px; text-align: center; font-weight: bold;"></div>
+<img id="video" style="max-width: 100%; margin: 0 auto; display: block;" />
+
+<script>
+const statusElement = document.getElementById('status');
+const audioContext = new (window.AudioContext || window.webkitAudioContext)(); // 新增：音频上下文
+let ws;
+let reconnectTimeout;
+const RECONNECT_DELAY = 5000; // 5秒重连间隔
+
+function updateStatus(text, color) {
+    statusElement.textContent = text;
+    statusElement.style.backgroundColor = color;
+}
+
+function connectWebSocket() {
+    // 清除之前的重连计时器（避免重复连接）
+    clearTimeout(reconnectTimeout);
+    
+    ws = new WebSocket('ws://100.64.0.3:9000/ws');
+    ws.binaryType = 'arraybuffer';
+
+    // 连接建立时
+    ws.onopen = () => {
+        updateStatus('已连接到视频流', '#dff0d8'); // 绿色背景
+    };
+
+    // 接收视频帧时
+    ws.onmessage = (event) => {
+        const data = new Uint8Array(event.data);
+        const type = data[0];
+        const payload = data.slice(1);
+
+        if (type === 0) { // 视频处理保持不变
+            const img = document.getElementById('video');
+            if (img.src) URL.revokeObjectURL(img.src);
+            const blob = new Blob([payload], { type: 'image/jpeg' });
+            img.src = URL.createObjectURL(blob);
+        } else if (type === 1) { // 音频处理修改为手动创建AudioBuffer
+            // 将Uint8Array转换为Int16Array（匹配后端paInt16格式）
+            const pcmData = new Int16Array(payload.buffer);
+            
+            // 创建AudioBuffer（参数需与后端采样率/通道数一致）
+            const audioBuffer = audioContext.createBuffer(
+                1,                 // 单声道（与后端channels=1一致）
+                pcmData.length,    // 数据长度
+                44100              // 采样率44.1kHz（与后端rate=44100一致）
+            );
+            
+            // 将PCM数据复制到AudioBuffer通道
+            audioBuffer.copyToChannel(pcmData, 0);
+            
+            // 播放音频
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(audioContext.destination);
+            source.start(0);
+        }
+    };
+
+    // 连接错误时
+    ws.onerror = (error) => {
+        updateStatus('连接错误，正在尝试重连...', '#f2dede'); // 红色背景
+        ws.close();
+        reconnectTimeout = setTimeout(connectWebSocket, RECONNECT_DELAY);
+    };
+
+    // 连接关闭时（正常或异常）
+    ws.onclose = (event) => {
+        if (!event.wasClean) { // 非正常关闭时触发重连
+            updateStatus('连接断开，正在尝试重连...', '#fcf8e3'); // 黄色背景
+            reconnectTimeout = setTimeout(connectWebSocket, RECONNECT_DELAY);
+        }
+    };
+}
+
+// 初始连接
+updateStatus('正在连接视频流...', '#d9edf7'); // 蓝色背景
+connectWebSocket();
+</script>

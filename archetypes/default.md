@@ -11,4 +11,7 @@ description: >
 tags: ["kubernetes"]
 categories: ["kubernetes"]
 url: kubernetes/{{.File.ContentBaseName }}.html
+author: "wangendao"
 ---
+
+![](https://rpic.origz.com/api.php?category=photography)

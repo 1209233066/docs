@@ -1,0 +1,1709 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/docs/database/elasticsearch/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/docs/database/elasticsearch/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>零露云</title>
+<meta name="description" content="前言 · ELKstack 中文指南 老男孩教育倾向于运维 尚硅谷讲解通过restful操作elasticsearch 07.Elasticsearch快速入门之基本概念_哔哩哔哩_bilibili 千锋教育ElasticSearch教程（深入讲解,一套掌握）_哔哩哔哩_bilibili ElasticSearch面试50问保姆级教程入门到精通（基于ELK技术栈elasticsearch 7.17.3最新教程通俗易懂）_哔哩哔哩_bilibili 马士兵教育ELK保姆级教程，从入门到精通！ElasticSearch&#43;Logstash&#43;Kibana精讲_哔哩哔哩_bilibili 【全网最细】耗时72小时整理的ElasticSearch教程入门到精通，让你少走99%的弯路！！_哔哩哔哩_bilibili 各组件兼容性： https://www.elastic.co/cn/support/matrix#matrix_compatibility 操作系统兼容性：https://www.elastic.co/cn/support/matrix 龙腾出行公司elasticsearch版本： 7.17.3
+日志量每天1.5TB
+面试题 使用的什么版本 日志量 遇到过哪些坑 elasticsearch 集群选主、数据复制原理">
+<meta property="og:url" content="https://zero-dew.netlify.app/docs/database/elasticsearch/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="零露云">
+  <meta property="og:description" content="前言 · ELKstack 中文指南 老男孩教育倾向于运维 尚硅谷讲解通过restful操作elasticsearch 07.Elasticsearch快速入门之基本概念_哔哩哔哩_bilibili 千锋教育ElasticSearch教程（深入讲解,一套掌握）_哔哩哔哩_bilibili ElasticSearch面试50问保姆级教程入门到精通（基于ELK技术栈elasticsearch 7.17.3最新教程通俗易懂）_哔哩哔哩_bilibili 马士兵教育ELK保姆级教程，从入门到精通！ElasticSearch&#43;Logstash&#43;Kibana精讲_哔哩哔哩_bilibili 【全网最细】耗时72小时整理的ElasticSearch教程入门到精通，让你少走99%的弯路！！_哔哩哔哩_bilibili 各组件兼容性： https://www.elastic.co/cn/support/matrix#matrix_compatibility 操作系统兼容性：https://www.elastic.co/cn/support/matrix 龙腾出行公司elasticsearch版本： 7.17.3
+日志量每天1.5TB
+面试题 使用的什么版本 日志量 遇到过哪些坑 elasticsearch 集群选主、数据复制原理">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="零露云">
+  <meta itemprop="description" content="前言 · ELKstack 中文指南 老男孩教育倾向于运维 尚硅谷讲解通过restful操作elasticsearch 07.Elasticsearch快速入门之基本概念_哔哩哔哩_bilibili 千锋教育ElasticSearch教程（深入讲解,一套掌握）_哔哩哔哩_bilibili ElasticSearch面试50问保姆级教程入门到精通（基于ELK技术栈elasticsearch 7.17.3最新教程通俗易懂）_哔哩哔哩_bilibili 马士兵教育ELK保姆级教程，从入门到精通！ElasticSearch&#43;Logstash&#43;Kibana精讲_哔哩哔哩_bilibili 【全网最细】耗时72小时整理的ElasticSearch教程入门到精通，让你少走99%的弯路！！_哔哩哔哩_bilibili 各组件兼容性： https://www.elastic.co/cn/support/matrix#matrix_compatibility 操作系统兼容性：https://www.elastic.co/cn/support/matrix 龙腾出行公司elasticsearch版本： 7.17.3
+日志量每天1.5TB
+面试题 使用的什么版本 日志量 遇到过哪些坑 elasticsearch 集群选主、数据复制原理">
+  <meta itemprop="datePublished" content="2025-05-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-25T00:00:00+00:00">
+  <meta itemprop="wordCount" content="24">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="零露云">
+  <meta name="twitter:description" content="前言 · ELKstack 中文指南 老男孩教育倾向于运维 尚硅谷讲解通过restful操作elasticsearch 07.Elasticsearch快速入门之基本概念_哔哩哔哩_bilibili 千锋教育ElasticSearch教程（深入讲解,一套掌握）_哔哩哔哩_bilibili ElasticSearch面试50问保姆级教程入门到精通（基于ELK技术栈elasticsearch 7.17.3最新教程通俗易懂）_哔哩哔哩_bilibili 马士兵教育ELK保姆级教程，从入门到精通！ElasticSearch&#43;Logstash&#43;Kibana精讲_哔哩哔哩_bilibili 【全网最细】耗时72小时整理的ElasticSearch教程入门到精通，让你少走99%的弯路！！_哔哩哔哩_bilibili 各组件兼容性： https://www.elastic.co/cn/support/matrix#matrix_compatibility 操作系统兼容性：https://www.elastic.co/cn/support/matrix 龙腾出行公司elasticsearch版本： 7.17.3
+日志量每天1.5TB
+面试题 使用的什么版本 日志量 遇到过哪些坑 elasticsearch 集群选主、数据复制原理">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/database/elasticsearch/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title"></h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-3ae4dfccf1d4f425261aade622c853db">单机版本安装</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-2d9ddeb9ab30ddfb699011cd96663611">集群版本安装</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-0211872ddd3d7ac997b074513c5e8671">配置文件</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-2457b5f6d965f967eb0a2d2d273f1823">RestfullAPI</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <ul>
+<li><input disabled="" type="checkbox"> <a href="https://elkguide.elasticsearch.cn/" target="_blank">前言 · ELKstack 中文指南</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1ZL411k7HK/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">老男孩教育倾向于运维</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1hh411D7sb/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">尚硅谷讲解通过restful操作elasticsearch</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1iJ411c7Az/?spm_id_from=333.788.player.switch&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&amp;p=7" target="_blank">07.Elasticsearch快速入门之基本概念_哔哩哔哩_bilibili</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1Zz4y1R7tq/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">千锋教育ElasticSearch教程（深入讲解,一套掌握）_哔哩哔哩_bilibili</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1rG411x71e/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">ElasticSearch面试50问保姆级教程入门到精通（基于ELK技术栈elasticsearch 7.17.3最新教程通俗易懂）_哔哩哔哩_bilibili</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1pY411F7QW/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">马士兵教育ELK保姆级教程，从入门到精通！ElasticSearch+Logstash+Kibana精讲_哔哩哔哩_bilibili</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1Cd4y1773M/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">【全网最细】耗时72小时整理的ElasticSearch教程入门到精通，让你少走99%的弯路！！_哔哩哔哩_bilibili</a></li>
+</ul>
+<ul>
+<li>各组件兼容性： <a href="https://www.elastic.co/cn/support/matrix#matrix_compatibility" target="_blank">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></li>
+<li>操作系统兼容性：https://www.elastic.co/cn/support/matrix</li>
+</ul>
+<p>龙腾出行公司elasticsearch版本： 7.17.3</p>
+<p>日志量每天1.5TB</p>
+<h3 id="面试题">面试题</h3>
+<ol>
+<li>使用的什么版本</li>
+<li>日志量</li>
+<li>遇到过哪些坑</li>
+<li>elasticsearch 集群选主、数据复制原理</li>
+</ol>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-3ae4dfccf1d4f425261aade622c853db">单机版本安装</h1>
+	<div class="lead">使用elasticsearch</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-27" class="text-body-secondary">Saturday, September 27, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>elasticsearch版本： <code>7.15.0</code>、<code>7.17.27</code></p>
+<hr>
+<p>【注意事项】| <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/index.html" target="_blank">doc</a></p>
+<ul>
+<li>
+<p>elasticsearch 依赖jdk 环境，<a href="https://www.elastic.co/cn/support/matrix#matrix_jvm" target="_blank">如果无法判断使用哪个版本jdk</a>。可以<a href="https://www.elastic.co/cn/downloads/past-releases#elasticsearch" target="_blank">下载</a>/<a href="https://repo.huaweicloud.com" target="_blank">国内下载镜像</a>带有jdk版本的elasticsearch。</p>
+</li>
+<li>
+<p>elasticsearch默认监听9200（提供restfull风格的服务） 和 9300 （集群内部选举和数据同步）</p>
+</li>
+<li>
+<p>elasticsearch 属于io密集型应用，尽可能把数据目录单独挂载出来。并使用高性能磁盘。</p>
+</li>
+</ul>
+
+
+</div>
+
+<h3 id="部署环境准备">部署环境准备</h3>
+<p><strong>内存映射</strong></p>
+<blockquote>
+<p>内存映射（Memory Mapping）是一种在应用程序地址空间和物理存储器之间建立映射关系的技术</p>
+<p><code>max_map_count</code> 参数是用于限制每个进程能够使用的最大内存映射区域数量。</p>
+<p>如果不修改，启动时提示错误： <em>max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</em></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sysctl -w vm.max_map_count<span style="color:#f92672">=</span><span style="color:#ae81ff">655360</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;vm.max_map_count=655360&#39;</span> &gt;&gt;/etc/sysctl.conf
+</span></span></code></pre></div><p><strong>内存锁定</strong></p>
+<blockquote>
+<p><font color=red>当开启内存锁定后，以下参数必须设定</font>报错信息： <code>memory locking requested for elasticsearch process but memory is not locked</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;DefaultLimitMEMLOCK=infinity&#34;</span> &gt;&gt;/etc/systemd/system.conf
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 该命令会重启systemd 进程</span>
+</span></span><span style="display:flex;"><span>systemctl daemon-reexec
+</span></span></code></pre></div><p><strong>文件描述符设置</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;&gt;/etc/security/limits.conf<span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">* soft nofile 65536
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">* hard nofile 65536
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">* soft nproc 32000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">* hard nproc 32000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">* hard memlock unlimited
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">* soft memlock unlimited
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat &gt;&gt; /etc/systemd/system.conf<span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">DefaultLimitNOFILE=65536
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">DefaultLimitNPROC=32000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">DefaultLimitMEMLOCK=infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><h3 id="安装部署">安装部署</h3>
+<ol>
+<li>
+<p>创建服务账号</p>
+<blockquote>
+<p><font color=red>elasticsearch 无法以root用户启动</font></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>useradd  elasticsearch
+</span></span></code></pre></div></li>
+<li>
+<p>安装elasticsearch</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>version<span style="color:#f92672">=</span>7.17.29
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>-linux-x86_64.tar.gz
+</span></span><span style="display:flex;"><span>tar -xzf elasticsearch-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>-linux-x86_64.tar.gz -C /data/elk
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># $ES_HOME 对应/data/elk/elasticsearch</span>
+</span></span><span style="display:flex;"><span>ln -svf /data/elk/<span style="color:#f92672">{</span>elasticsearch-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>,elasticsearch<span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>创建日志和数据目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /data/elk/instance1/<span style="color:#f92672">{</span>data,log,config<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>chown -R elasticsearch:elasticsearch /data/elk/<span style="color:#f92672">{</span>elasticsearch-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>,elasticsearch<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>chown -R elasticsearch:elasticsearch /data/elk/instance1
+</span></span></code></pre></div></li>
+<li>
+<p>启动elasticsearch</p>
+<blockquote>
+<p><em>本示例实现单机多实例的部署，因此需要实现在配置文件、日志文件、数据文件上隔离。Elasticsearch 有三个配置文件：</em></p>
+<ul>
+<li><em><code>elasticsearch.yml</code>用于配置 Elasticsearch</em></li>
+<li><em><code>jvm.options</code>用于配置 Elasticsearch JVM 设置</em></li>
+<li><em><code>log4j2.properties</code>用于配置 Elasticsearch 日志记录</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -vE <span style="color:#e6db74">&#34;^#|^</span>$<span style="color:#e6db74">&#34;</span> /data/elk/elasticsearch/config/jvm.options &gt;/data/elk/instance1/config/jvm.options
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grep -vE <span style="color:#e6db74">&#34;^#|^</span>$<span style="color:#e6db74">&#34;</span> /data/elk/elasticsearch/config/log4j2.properties &gt;/data/elk/instance1/config/log4j2.properties
+</span></span></code></pre></div></blockquote>
+<p>主配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /data/elk/instance1/config/elasticsearch.yml <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">path:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  data: /data/elk/instance1/data  # 等同path.data: /data/elk/instance1/data，其他依次类推
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  logs: /data/elk/instance1/log
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">node:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: node-1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">cluster:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: cluster-alerts
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  initial_master_nodes: [&#34;node-1&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">bootstrap: 						# 是否在程序启动时立即分配指定大小内存给elasticsearch进程
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  memory_lock: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">network:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  host: 0.0.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">http:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  port: 9200
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ingest:                        # 关闭geoip 组件下载
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  geoip:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    downloader:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      enabled: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><p><em>systemd 管理服务</em></p>
+<blockquote>
+<p>测试启动命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># *命令行传参启动，在参数前添加`-E`来覆盖配置文件对应参数*</span>
+</span></span><span style="display:flex;"><span>su - elasticsearch -c <span style="color:#e6db74">&#34;export ES_PATH_CONF=/data/elk/instance1/config ;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export ES_JAVA_HOME=/data/elk/elasticsearch/jdk ;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/data/elk/elasticsearch/bin/elasticsearch \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">-Ehttp.port=8200&#34;</span>
+</span></span></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /etc/systemd/system/elasticsearch.service <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description= elasticsearch service
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Documentation=https://www.elastic.co/docs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Environment=&#34;ES_PATH_CONF=/data/elk/instance1/config&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Environment=&#34;ES_JAVA_HOME=/data/elk/elasticsearch/jdk&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/data/elk/elasticsearch/bin/elasticsearch
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=elasticsearch
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">LimitNOFILE=65535
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>systemctl enable elasticsearch --now
+</span></span><span style="display:flex;"><span>systemctl status elasticsearch
+</span></span></code></pre></div></li>
+<li>
+<p>验证集群状态</p>
+<p>通常情况下使用 <code>elasticsearch-head</code> 插件来监听elasticsearch。也可以使用<a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_cluster_health.html" target="_blank">api接口来查询</a></p>
+
+
+<div class="alert alert-primary" role="alert">
+
+
+    <ul>
+<li>通过chrome 商店安装，需要vpn</li>
+<li>通过github上提供的docker 镜像启动</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#由于前后端服务做了分离，因此需要开启elasticsearch跨域请求</span>
+</span></span><span style="display:flex;"><span>http.cors.enabled: true 
+</span></span><span style="display:flex;"><span>http.cors.allow-origin: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it -p9100:9100 mobz/elasticsearch-head:5-alpine
+</span></span></code></pre></div>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://127.0.0.1:9200/_cat/nodes?v
+</span></span><span style="display:flex;"><span>curl -s  http://127.0.0.1:9200/_cluster/health?pretty<span style="color:#f92672">=</span>true |jq <span style="color:#e6db74">&#34;.status&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="安全设置">安全设置</h3>
+<ul>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/security-minimal-setup.html" target="_blank"><strong>开启用户认证</strong></a></p>
+
+
+<div class="alert alert-warning" role="alert">
+
+
+    <p>&#x26a0;&#xfe0f;</p>
+<p>ERROR: [1] bootstrap checks failed. You must address the points described in the following [1] lines before starting Elasticsearch.
+bootstrap check failure [1] of [1]: Transport SSL must be enabled if security is enabled on a [basic] license. Please set [xpack.security.transport.ssl.enabled] to [true] or disable security by setting [xpack.security.enabled] to [false]</p>
+
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">xpack</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">security</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">transport</span>:  <span style="color:#75715e"># xpack.security.enabled 依赖xpack.security.transport.ssl.enabled 功能开启，实现在9300端口的https,而不是9200</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ssl</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>设置密码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/data/elk/elasticsearch/bin/elasticsearch-setup-passwords interactive
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># /data/elk/elasticsearch/bin/elasticsearch-setup-passwords interactive -u  http://100.64.0.5:8200</span>
+</span></span><span style="display:flex;"><span>warning: usage of JAVA_HOME is deprecated, use ES_JAVA_HOME
+</span></span><span style="display:flex;"><span>Initiating the setup of passwords <span style="color:#66d9ef">for</span> reserved users elastic,apm_system,kibana,kibana_system,logstash_system,beats_system,remote_monitoring_user.
+</span></span><span style="display:flex;"><span>You will be prompted to enter passwords as the process progresses.
+</span></span><span style="display:flex;"><span>Please confirm that you would like to <span style="color:#66d9ef">continue</span> <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Enter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>elastic<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Reenter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>elastic<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Enter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>apm_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Reenter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>apm_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Enter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>kibana_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Reenter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>kibana_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Enter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>logstash_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Reenter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>logstash_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Enter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>beats_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Reenter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>beats_system<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Enter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>remote_monitoring_user<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Reenter password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>remote_monitoring_user<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Changed password <span style="color:#66d9ef">for</span> user <span style="color:#f92672">[</span>apm_system<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Changed password <span style="color:#66d9ef">for</span> user <span style="color:#f92672">[</span>kibana_system<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Changed password <span style="color:#66d9ef">for</span> user <span style="color:#f92672">[</span>kibana<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Changed password <span style="color:#66d9ef">for</span> user <span style="color:#f92672">[</span>logstash_system<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Changed password <span style="color:#66d9ef">for</span> user <span style="color:#f92672">[</span>beats_system<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Changed password <span style="color:#66d9ef">for</span> user <span style="color:#f92672">[</span>remote_monitoring_user<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Changed password <span style="color:#66d9ef">for</span> user <span style="color:#f92672">[</span>elastic<span style="color:#f92672">]</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>开启https</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 生成ca</span>
+</span></span><span style="display:flex;"><span>su - elasticsearch -c <span style="color:#e6db74">&#34;/data/elk/elasticsearch/bin/elasticsearch-certutil ca \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--out /data/elk/instance1/config/certs/ca.crt --pass mypass&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 生成公钥</span>
+</span></span><span style="display:flex;"><span>su - elasticsearch -c <span style="color:#e6db74">&#34;/data/elk/elasticsearch/bin/elasticsearch-certutil cert --ca /data/elk/instance1/config/certs/ca.crt \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--out /data/elk/instance1/config/certs/server.crt --ca-pass mypass&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xpack.security.http.ssl.enabled: true
+</span></span><span style="display:flex;"><span>xpack.security.http.ssl.keystore.path: certs/server.crt
+</span></span></code></pre></div></li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-2d9ddeb9ab30ddfb699011cd96663611">集群版本安装</h1>
+	<div class="lead">部署集群版本elasticsearch</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-06-12" class="text-body-secondary">Thursday, June 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>elasticsearch版本： <code>7.15.0</code>、<code>7.17.27</code></p>
+<hr>
+<p>【注意事项】| <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/index.html" target="_blank">doc</a></p>
+<ul>
+<li>
+<p>elasticsearch 依赖jdk 环境，<a href="https://www.elastic.co/cn/support/matrix#matrix_jvm" target="_blank">如果无法判断使用哪个版本jdk</a>。可以<a href="https://www.elastic.co/cn/downloads/past-releases#elasticsearch" target="_blank">下载</a>/<a href="https://repo.huaweicloud.com" target="_blank">国内下载镜像</a>带有jdk版本的elasticsearch。</p>
+</li>
+<li>
+<p>elasticsearch默认监听9200（提供restfull风格的服务） 和 9300 （集群内部选举和数据同步）</p>
+</li>
+<li>
+<p>elasticsearch 属于io密集型应用，尽可能把数据目录单独挂载出来。并使用高性能磁盘。</p>
+</li>
+<li>
+<p><font color=red>关闭防火墙、selinux、swap。并时间同步。</font></p>
+</li>
+</ul>
+
+
+</div>
+
+<h3 id="集群部署">集群部署</h3>
+<table>
+  <thead>
+      <tr>
+          <th>节点名称</th>
+          <th>ip</th>
+          <th>elasticsearch集群名</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>node-1</code></td>
+          <td><code>192.168.0.151</code></td>
+          <td><code>cluster-alerts</code></td>
+      </tr>
+      <tr>
+          <td><code>node-2</code></td>
+          <td><code>192.168.0.152</code></td>
+          <td><code>cluster-alerts</code></td>
+      </tr>
+      <tr>
+          <td><code>node-3</code></td>
+          <td><code>192.168.0.153</code></td>
+          <td><code>cluster-alerts</code></td>
+      </tr>
+  </tbody>
+</table>
+
+  
+  
+  
+
+  
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          aria-controls="tabs-01-00" aria-selected="false">
+        <strong>集群配置文件</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="**节点一**" aria-controls="tabs-01-01" aria-selected="true">
+        <strong>节点一</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="**节点二**" aria-controls="tabs-01-02" aria-selected="false">
+        <strong>节点二</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-03" role="tab"
+          data-td-tp-persist="**节点三**" aria-controls="tabs-01-03" aria-selected="false">
+        <strong>节点三</strong>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /data/elk/instance1/config/elasticsearch.yml <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">path:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  data: /data/elk/instance1/data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  logs: /data/elk/instance1/log
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">node:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: node-1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  master: true                   # 节点可以是master角色
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  data: true                     # 节点可以是data角色
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">discovery:    # 启动时向哪些主机进行宣告，进行集群选举，集群内的主机都要填写上。包括自己
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  seed_hosts: [&#34;192.168.0.151&#34;,&#34;192.168.0.152&#34;,&#34;192.168.0.153&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">cluster:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: cluster-alerts
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  initial_master_nodes: [&#34;192.168.0.151&#34;,&#34;192.168.0.152&#34;,&#34;192.168.0.153&#34;] #初始化时哪些节点可以被选举为master ，集群内的主机可以都填写上，也可以填写部分主机。支持使用 `node.name` 或者 `ip地址`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  routing:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allocation:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      cluster_concurrent_rebalance: 16         # 集群内同时启动的数据任务个数，默认是2个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      node_concurrent_recoveries: 16           # 添加或删除节点及负载均衡时并发恢复的线程个数，默认4个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      node_initial_primaries_recoveries: 16    # 初始化数据恢复时，并发恢复线程的个数，默认4个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">network:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  host: 0.0.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  tcp:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    keep_alive: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    no_delay: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">http:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  port: 9200
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  max_content_length: 200mb
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  cors: # 允许跨域请求9200
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    enabled: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allow-origin: &#34;*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gateway:               # 当集群进行数据恢复时必须大于指定数量的节点在线，才可以进行数据恢复。通常设置为 (集群节点数量/2+1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  recover_after_nodes: 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">transport:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  tcp:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    compress: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">bootstrap: # 是否在程序启动时立即分配指定大小内存给elasticsearch进程
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  memory_lock: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ingest:             # 关闭geoip 组件下载
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  geoip:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    downloader:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      enabled: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /data/elk/instance1/config/elasticsearch.yml <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">path:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  data: /data/elk/instance1/data  # 等同path.data: /data/elk/instance1/data，其他依次类推
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  logs: /data/elk/instance1/log
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">node:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: node-2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  master: true                   # 节点可以是master角色
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  data: true                     # 节点可以是data角色
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">discovery:    # 启动时向哪些主机进行宣告，进行集群选举，集群内的主机都要填写上。包括自己
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  seed_hosts: [&#34;192.168.0.151&#34;,&#34;192.168.0.152&#34;,&#34;192.168.0.153&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">cluster:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: cluster-alerts
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  initial_master_nodes: [&#34;192.168.0.151&#34;,&#34;192.168.0.152&#34;,&#34;192.168.0.153&#34;] #初始化时哪些节点可以被选举为master ，集群内的主机可以都填写上，也可以填写部分主机。支持使用 `node.name` 或者 `ip地址`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  routing:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allocation:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      cluster_concurrent_rebalance: 16         # 集群内同时启动的数据任务个数，默认是2个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      node_concurrent_recoveries: 16           # 添加或删除节点及负载均衡时并发恢复的线程个数，默认4个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      node_initial_primaries_recoveries: 16    # 初始化数据恢复时，并发恢复线程的个数，默认4个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">network:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  host: 0.0.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  tcp:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    keep_alive: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    no_delay: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">http:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  port: 9200
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  max_content_length: 200mb
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  cors: # 允许跨域请求9200
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    enabled: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allow-origin: &#34;*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gateway:               # 当集群进行数据恢复时必须大于指定数量的节点在线，才可以进行数据恢复。通常设置为 (集群节点数量/2+1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  recover_after_nodes: 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">transport:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  tcp:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    compress: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">bootstrap: # 是否在程序启动时立即分配指定大小内存给elasticsearch进程
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  memory_lock: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ingest:             # 关闭geoip 组件下载
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  geoip:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    downloader:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      enabled: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-03" role="tabpanel" aria-labelled-by="tabs-01-03-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /data/elk/instance1/config/elasticsearch.yml <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">path:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  data: /data/elk/instance1/data  # 等同path.data: /data/elk/instance1/data，其他依次类推
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  logs: /data/elk/instance1/log
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">node:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: node-3
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  master: true                   # 节点可以是master角色
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  data: true                     # 节点可以是data角色
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">discovery:    # 启动时向哪些主机进行宣告，进行集群选举，集群内的主机都要填写上。包括自己
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  seed_hosts: [&#34;192.168.0.151&#34;,&#34;192.168.0.152&#34;,&#34;192.168.0.153&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">cluster:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: cluster-alerts
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  initial_master_nodes: [&#34;192.168.0.151&#34;,&#34;192.168.0.152&#34;,&#34;192.168.0.153&#34;] #初始化时哪些节点可以被选举为master ，集群内的主机可以都填写上，也可以填写部分主机。支持使用 `node.name` 或者 `ip地址`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  routing:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allocation:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      cluster_concurrent_rebalance: 16         # 集群内同时启动的数据任务个数，默认是2个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      node_concurrent_recoveries: 16           # 添加或删除节点及负载均衡时并发恢复的线程个数，默认4个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      node_initial_primaries_recoveries: 16    # 初始化数据恢复时，并发恢复线程的个数，默认4个
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">network:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  host: 0.0.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  tcp:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    keep_alive: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    no_delay: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">http:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  port: 9200
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  max_content_length: 200mb
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  cors: # 允许跨域请求9200
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    enabled: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allow-origin: &#34;*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gateway:               # 当集群进行数据恢复时必须大于指定数量的节点在线，才可以进行数据恢复。通常设置为 (集群节点数量/2+1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  recover_after_nodes: 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">transport:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  tcp:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    compress: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">bootstrap: # 是否在程序启动时立即分配指定大小内存给elasticsearch进程
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  memory_lock: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ingest:             # 关闭geoip 组件下载
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  geoip:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    downloader:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      enabled: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p>如果可以查看到node信息，则集群节点创建成功</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 127.0.0.1:9200/_cat/nodes
+</span></span></code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">集群选举失败</h4>
+
+    <hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Nov <span style="color:#ae81ff">25</span> 16: 12: <span style="color:#ae81ff">10</span> node-2 elasticsearch<span style="color:#f92672">[</span>8964<span style="color:#f92672">]</span>: <span style="color:#f92672">[</span>2025-11-25T16: 12: 10,131<span style="color:#f92672">][</span>WARN<span style="color:#f92672">][</span>o.e.c.c.ClusterFormationFailureHelper<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>node-2<span style="color:#f92672">]</span> master not discovered or elected yet, an election requires at least <span style="color:#ae81ff">2</span> nodes with ids from <span style="color:#f92672">[</span>VBlfeDBuQ0aKmj6sXYYDCA, YqHqBfh_TtSeyx8ToGC7cA, lsEs2XMTTRmteL7yxEiuOg<span style="color:#f92672">]</span>, have only discovered non-quorum <span style="color:#f92672">[{</span>node-2<span style="color:#f92672">}{</span>YqHqBfh_TtSeyx8ToGC7cA<span style="color:#f92672">}{</span>qOajkkUJQH6ks4hwaZ02Lw<span style="color:#f92672">}{</span>192.168.0.152<span style="color:#f92672">}{</span>192.168.0.152: 9300<span style="color:#f92672">}{</span>cdfhilmrstw<span style="color:#f92672">}]</span>; discovery will <span style="color:#66d9ef">continue</span> using <span style="color:#f92672">[</span>192.168.0.151: 9300,192.168.0.153: 9300<span style="color:#f92672">]</span> from hosts providers and <span style="color:#f92672">[{</span>node-2<span style="color:#f92672">}{</span>YqHqBfh_TtSeyx8ToGC7cA<span style="color:#f92672">}{</span>qOajkkUJQH6ks4hwaZ02Lw<span style="color:#f92672">}{</span>192.168.0.152<span style="color:#f92672">}{</span>192.168.0.152: 9300<span style="color:#f92672">}{</span>cdfhilmrstw<span style="color:#f92672">}]</span> from last-known cluster state; node term 4, last-accepted version <span style="color:#ae81ff">1272</span> in term <span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><hr>
+<p>解决方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  检查9300集群通讯端口是否互访正常。例如<span style="color:#e6db74">`</span>telnet 192.168.0.152 9300<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  关闭selinux 和 firewalld
+</span></span></code></pre></div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-0211872ddd3d7ac997b074513c5e8671">配置文件</h1>
+	<div class="lead">elasticsearch支持restfull 方式的CRUD</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-06-12" class="text-body-secondary">Thursday, June 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>elasticsearch版本： <code>7.15.0</code>、<code>7.17.27</code></p>
+<hr>
+<p><strong>elasticsearch 包含三个主要的配置:</strong></p>
+<p>大多数配置可以在运行时通过<a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/cluster-update-settings.html" target="_blank">api</a>热修改，配置文件默认在<code>$ES_HOME/config</code> 目录下，可以通过变量 <code>export ES_PATH_CONF=/path/to/my/config</code> 自定义配置文件的路径</p>
+<ul>
+<li><code>elasticsearch.yml</code>用于配置 Elasticsearch</li>
+<li><code>jvm.options</code>用于配置 Elasticsearch JVM</li>
+<li><code>log4j2.properties</code>用于配置 Elasticsearch 日志记录</li>
+</ul>
+
+
+</div>
+
+<p>集群管理</p>
+<p>节点管理</p>
+<p>数据和日志路径管理</p>
+<p>内存管理</p>
+<p>网络管理</p>
+<p>自动发现</p>
+<p><strong>数据/日志目录配置</strong></p>
+
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="yaml" aria-controls="tabs-01-00" aria-selected="true">
+        yaml
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="yaml扁平格式" aria-controls="tabs-01-01" aria-selected="false">
+        yaml扁平格式
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">path</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">data</span>: <span style="color:#ae81ff">/data/elk/instance1/data</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">logs</span>: <span style="color:#ae81ff">/data/elk/instance1/log</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">path.data</span>: <span style="color:#ae81ff">/data/elk/instance1/data</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">path.logs</span>: <span style="color:#ae81ff">/data/elk/instance1/log</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p><strong>集群名称</strong> 不同的集群用名字来区分，配置成相同集群名字的各个节点形成一个集群</p>
+
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          data-td-tp-persist="yaml" aria-controls="tabs-02-00" aria-selected="true">
+        yaml
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="yaml扁平格式" aria-controls="tabs-02-01" aria-selected="false">
+        yaml扁平格式
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-2-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">cluster</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cluster-alerts</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">cluster.name</span>: <span style="color:#ae81ff">cluster-alerts</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p><strong>节点名称</strong> 可以不定义此参数，这时，Elasticsearch自动选择一个唯一的名称</p>
+
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-3" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
+          data-td-tp-persist="yaml" aria-controls="tabs-03-00" aria-selected="true">
+        yaml
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-03-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-01" role="tab"
+          data-td-tp-persist="yaml扁平格式" aria-controls="tabs-03-01" aria-selected="false">
+        yaml扁平格式
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-3-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">node</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">node-1</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-01" role="tabpanel" aria-labelled-by="tabs-03-01-tab" tabindex="3">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">node.name</span>: <span style="color:#ae81ff">node-1</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p><strong>网络设置</strong></p>
+
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-4" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
+          data-td-tp-persist="yaml" aria-controls="tabs-04-00" aria-selected="true">
+        yaml
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-04-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-01" role="tab"
+          data-td-tp-persist="yaml扁平格式" aria-controls="tabs-04-01" aria-selected="false">
+        yaml扁平格式
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-4-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">network</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">host</span>: <span style="color:#ae81ff">0.0.0.0</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-04-01" role="tabpanel" aria-labelled-by="tabs-04-01-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">network.host</span>: <span style="color:#ae81ff">0.0.0.0</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p><strong>自动创建索引</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 关闭自动创建索引，默认为true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">action.auto_create_index</span>: <span style="color:#66d9ef">false</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 允许自动创建a开头但不能是an开头的索引</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">action.auto_create_index</span>: -<span style="color:#ae81ff">an*,+a,-*</span>
+</span></span></code></pre></div><p><strong>跨域请求</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#由于前后端服务做了分离，因此需要开启elasticsearch跨域请求</span>
+</span></span><span style="display:flex;"><span>http.cors.enabled: true 
+</span></span><span style="display:flex;"><span>http.cors.allow-origin: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@node-1 bin<span style="color:#f92672">]</span><span style="color:#75715e"># /data/elk/elasticsearch/bin/elasticsearch-plugin  install https://get.infini.cloud/elasticsearch/analysis-ik/7.17.29</span>
+</span></span><span style="display:flex;"><span>-&gt; Installing https://get.infini.cloud/elasticsearch/analysis-ik/7.17.29
+</span></span><span style="display:flex;"><span>-&gt; Downloading https://get.infini.cloud/elasticsearch/analysis-ik/7.17.29
+</span></span><span style="display:flex;"><span>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span></span><span style="display:flex;"><span>@     WARNING: plugin requires additional permissions     @
+</span></span><span style="display:flex;"><span>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span></span><span style="display:flex;"><span>* java.net.SocketPermission * connect,resolve
+</span></span><span style="display:flex;"><span>See https://docs.oracle.com/javase/8/docs/technotes/guides/security/permissions.html
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> descriptions of what these permissions allow and the associated risks.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Continue with installation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>y
+</span></span><span style="display:flex;"><span>-&gt; Installed analysis-ik
+</span></span><span style="display:flex;"><span>-&gt; Please restart Elasticsearch to activate any plugins installed
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -XPOST http://192.168.0.151:9200/_analyze <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;analyzer&#34;: &#34;ik_max_word&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;text&#34;: &#34;千锋教育&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>su - elasticsearch -c <span style="color:#e6db74">&#34;export ES_PATH_CONF=/data/elk/instance1/config ;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export ES_JAVA_HOME=/data/elk/elasticsearch/jdk ;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/data/elk/elasticsearch/bin/elasticsearch-plugin list &#34;</span>
+</span></span></code></pre></div><h3 id="mapping">mapping</h3>
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-5" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-05-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-00" role="tab"
+          data-td-tp-persist="**定义索引分片和副本数量**" aria-controls="tabs-05-00" aria-selected="true">
+        <strong>定义索引分片和副本数量</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-05-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-01" role="tab"
+          data-td-tp-persist="**定义数据类型**" aria-controls="tabs-05-01" aria-selected="false">
+        <strong>定义数据类型</strong>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-5-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-05-00" role="tabpanel" aria-labelled-by="tabs-05-00-tab" tabindex="5">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;settings&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;number_of_shards&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;number_of_replicas&#34;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-05-01" role="tabpanel" aria-labelled-by="tabs-05-01-tab" tabindex="5">
+        <p>支持的数据类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mappings&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;properties&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;keyword&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;index&#34;</span>: <span style="color:#66d9ef">false</span>  <span style="color:#75715e">// false 表示不创建索引不支持查询
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;integer&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;describe&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>, <span style="color:#75715e">// 支持分词检索
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;fields&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;keyword&#34;</span>: { <span style="color:#75715e">// 保留原始值，用于聚合/排序/精确查询
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;keyword&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;ignore_above&#34;</span>: <span style="color:#ae81ff">256</span> <span style="color:#75715e">// 长度超限就忽略，防止膨胀
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PUT 127.0.0.1:9200/alerts <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d<span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;mappings&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;properties&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;name&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;type&#34;: &#34;keyword&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;index&#34;: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;value&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;type&#34;: &#34;integer&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;describe&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;type&#34;: &#34;text&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;fields&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;keyword&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                        &#34;type&#34;: &#34;keyword&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                        &#34;ignore_above&#34;: 256
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;settings&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;number_of_shards&#34;: 1,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;number_of_replicas&#34;: 0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><p>示例：动态调整分片的副本数量</p>
+<blockquote>
+<p>分片数量创建后不可以调整除非删除重建索引。副本数量可以动态调整</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PUT 127.0.0.1:9200/alerts/_settings <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d<span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;number_of_replicas&#34; : 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+</span></span></code></pre></div><h3 id="index-template">index template</h3>
+<p>分片数量在index创建后不能调整，一旦创建好索引，更改分片数量的唯一途径就是创建另一个索引并重新索引数据。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -XGET http://192.168.0.151:9200/_cluster/state/nodes/
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cluster_name&#34;</span>: <span style="color:#e6db74">&#34;cluster-alerts&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cluster_uuid&#34;</span>: <span style="color:#e6db74">&#34;sel1D22xQzWTiq_vZYiGow&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;nodes&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;KrYRJaO-Qwq0FmnCETRnrw&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;node-3&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;ephemeral_id&#34;</span>: <span style="color:#e6db74">&#34;gOriln-aRNWmGg_6JdwkRA&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;transport_address&#34;</span>: <span style="color:#e6db74">&#34;192.168.0.153:9300&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;attributes&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.machine_memory&#34;</span>: <span style="color:#e6db74">&#34;8182120448&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.max_open_jobs&#34;</span>: <span style="color:#e6db74">&#34;512&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;xpack.installed&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.max_jvm_size&#34;</span>: <span style="color:#e6db74">&#34;1073741824&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;transform.node&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;roles&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_cold&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_content&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_frozen&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_hot&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_warm&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ingest&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;master&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;remote_cluster_client&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;transform&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;j1aQHoGtSGORdRYqSrosIQ&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;node-2&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;ephemeral_id&#34;</span>: <span style="color:#e6db74">&#34;bDT3W7RzTVyvXbRfbznVvQ&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;transport_address&#34;</span>: <span style="color:#e6db74">&#34;192.168.0.152:9300&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;attributes&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.machine_memory&#34;</span>: <span style="color:#e6db74">&#34;8182112256&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.max_open_jobs&#34;</span>: <span style="color:#e6db74">&#34;512&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;xpack.installed&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.max_jvm_size&#34;</span>: <span style="color:#e6db74">&#34;1073741824&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;transform.node&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;roles&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_cold&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_content&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_frozen&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_hot&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_warm&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ingest&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;master&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;remote_cluster_client&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;transform&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;28LwCUt0RmqDo0zSbmo8cg&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;node-1&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;ephemeral_id&#34;</span>: <span style="color:#e6db74">&#34;D8-vfrz0SY6uHru_WC84Dg&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;transport_address&#34;</span>: <span style="color:#e6db74">&#34;192.168.0.151:9300&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;attributes&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.machine_memory&#34;</span>: <span style="color:#e6db74">&#34;8182120448&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;xpack.installed&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;transform.node&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.max_open_jobs&#34;</span>: <span style="color:#e6db74">&#34;512&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml.max_jvm_size&#34;</span>: <span style="color:#e6db74">&#34;1073741824&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;roles&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_cold&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_content&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_frozen&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_hot&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;data_warm&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ingest&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;master&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ml&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;remote_cluster_client&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;transform&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>&#x2753; 主节点和工作节点，主节点承担了什么任务，通过哪种协议选举出的主节点</p>
+<ol>
+<li>分片数量不超过节点熟练的3倍</li>
+<li>内存分配不超过操作系统的50%，但最大不超过32GB</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -XPUT http://192.168.0.151:9200/a/_settings <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d<span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;settings&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;index.unassigned.node_left.delayed_timeout&#34;: &#34;5m&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-2457b5f6d965f967eb0a2d2d273f1823">RestfullAPI</h1>
+	<div class="lead">elasticsearch支持restfull 方式的CRUD</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-06-12" class="text-body-secondary">Thursday, June 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>elasticsearch版本： <code>7.15.0</code>、<code>7.17.27</code></p>
+
+
+</div>
+
+<h3 id="概念">概念</h3>
+<p>Elasticsearch 是一个分布式文档存储，使用一种全文搜索的倒排索引，倒排索引列出任何文档中出现的每个唯一单词，并标识所有 每个单词都出现在文档中。</p>
+<p>索引可以被认为是文档的集合，每个文档 document 是字段的集合</p>
+<p>默认情况下，Elasticsearch 会索引每个字段和每个索引中的所有数据字段具有专用的、优化的数据结构。例如，文本字段是存储在倒排索引中，数字和地理字段存储在 BKD 树中。</p>
+<ul>
+<li>
+<p>Lucene 是 Apache 软件基金会下的一个「<strong>纯 Java 编写的开源全文检索引擎库</strong>」。
+它本身不是一套完整的搜索服务器，而是一组「<strong>jar 包</strong>」：你的应用把 Lucene 的代码直接引入，就能在 JVM 进程里完成倒排索引的构建、分词、打分、查询、高亮、拼写检查等全部搜索相关功能。换句话说，Lucene 是「<strong>搜索引擎的内核</strong>」。</p>
+</li>
+<li>
+<p>Elasticsearch 是对Lucene 的封装,在Lucene功能的基础上实现了数据分片、副本、REST API、聚合、SQL、安全、监控等。</p>
+</li>
+<li>
+<p>Index（索引）物理上就是一组 Segment 文件，内部采用「倒排索引」结构，保证关键词 → 文档列表的快速映射。</p>
+</li>
+<li>
+<p>Document（文档）一条可被搜索的业务数据，由多个 Field 组成，等价于 ES 里的一条 JSON 记录。</p>
+</li>
+</ul>
+<h3 id="index操作">index操作</h3>
+<ul>
+<li>
+<p>创建索引<code>alerts</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># curl -X PUT 127.0.0.1:9200/alerts</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PUT 127.0.0.1:9200/alerts <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d<span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;mappings&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;properties&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;name&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;type&#34;: &#34;keyword&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;value&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;type&#34;: &#34;integer&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;describe&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;type&#34;: &#34;text&#34;,               // 支持分词检索
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;fields&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;keyword&#34;: {                // 保留原始值，用于聚合/排序/精确查询
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;type&#34;: &#34;keyword&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;ignore_above&#34;: 256       // 长度超限就忽略，防止膨胀
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>列出所有索引</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X GET 127.0.0.1:9200/_cat/indices
+</span></span></code></pre></div></li>
+<li>
+<p>列出索引<code>alerts</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X GET 127.0.0.1:9200/alerts?pretty
+</span></span></code></pre></div></li>
+<li>
+<p>删除索引<code>alerts</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X DELETE 127.0.0.1:9200/alerts
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="document操作">document操作</h3>
+<ul>
+<li>
+<p>写入一条数据</p>
+<blockquote>
+<p>格式： <code>127.0.0.1:9200/{索引名称}/{文档类型}/{文档id}</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST 127.0.0.1:9200/alerts/_doc/1001 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;name&#34;: &#34;MemHigh&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;value&#34;: &#34;80&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;describe&#34;: &#34;instance [node-1] memory high,please recheck&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>写入多条数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST 127.0.0.1:9200/alerts/_bulk <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/x-ndjson&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d<span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{ &#34;index&#34; : { &#34;_index&#34; : &#34;alerts&#34;, &#34;_id&#34; : &#34;1002&#34; } }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{ &#34;name&#34; : &#34;MemHigh&#34;, &#34;value&#34; : 85 ,&#34;describe&#34; : &#34;instance [node-2] memory high,please recheck[cpu/diskio/memory]&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{ &#34;index&#34; : { &#34;_index&#34; : &#34;alerts&#34;, &#34;_id&#34; : &#34;1003&#34; } }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{ &#34;name&#34; : &#34;CpuHigh&#34;, &#34;value&#34; : 95 ,&#34;describe&#34; : &#34;instance [node-3] cpu high,please recheck[cpu/diskio/memory]&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>               <span style="color:#75715e"># ← 这里隐含 \n，确保最后有空行</span>
+</span></span></code></pre></div></li>
+<li>
+<p>查看数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_doc/1001?pretty
+</span></span></code></pre></div>
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+  <ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="*查找所有文档*" aria-controls="tabs-01-00" aria-selected="true">
+        <em>查找所有文档</em>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="*分页显示*和排序" aria-controls="tabs-01-01" aria-selected="false">
+        <em>分页显示</em>和排序
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="*仅展示指定字段*" aria-controls="tabs-01-02" aria-selected="false">
+        <em>仅展示指定字段</em>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-03" role="tab"
+          data-td-tp-persist="*范围查找*" aria-controls="tabs-01-03" aria-selected="false">
+        <em>范围查找</em>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-04-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-04" role="tab"
+          data-td-tp-persist="*关键字查找和高亮显示*" aria-controls="tabs-01-04" aria-selected="false">
+        <em>关键字查找和高亮显示</em>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-05-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-05" role="tab"
+          data-td-tp-persist="*全文匹配*" aria-controls="tabs-01-05" aria-selected="false">
+        <em>全文匹配</em>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-06-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-06" role="tab"
+          data-td-tp-persist="*聚合查询*" aria-controls="tabs-01-06" aria-selected="false">
+        <em>聚合查询</em>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;match_all&#34;: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;match_all&#34;: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;from&#34;: 0,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;size&#34;: 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;match_all&#34;: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;from&#34;: 0,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;size&#34;: 2,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;sort&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;value&#34;: {&#34;order&#34;:&#34;desc&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;match_all&#34;: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;from&#34;: 0,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;size&#34;: 2,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;sort&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;value&#34;: {&#34;order&#34;:&#34;desc&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;_source&#34;: [&#34;name&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-03" role="tabpanel" aria-labelled-by="tabs-01-03-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;range&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;value&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;gte&#34;: 85,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;lt&#34;: 100
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-04" role="tabpanel" aria-labelled-by="tabs-01-04-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查找 name=&#34;MemHigh&#34;</span>
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;name&#34;: &#34;MemHigh&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 多条件查找，name=&#34;MemHigh&#34; and value=85</span>
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;bool&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;must&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;name&#34;: &#34;MemHigh&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;value&#34;: &#34;85&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 高亮显示name字段值。适用于keyword类型字段</span>
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;bool&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;must&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;name&#34;: &#34;MemHigh&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;value&#34;: &#34;85&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;highlight&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;fields&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;name&#34;: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-05" role="tabpanel" aria-labelled-by="tabs-01-05-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># match 分词后不考虑`cpu` `High` 分词的顺序只要出现过的都会匹配到</span>
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;describe&#34;:&#34;cpu High&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># match_phrase 分词后考虑`cpu` `High` 分词的顺序，只有完全符合的会匹配到</span>
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;match_phrase&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;describe&#34;:&#34;cpu  High&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-06" role="tabpanel" aria-labelled-by="tabs-01-06-tab" tabindex="1">
+        <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html" target="_blank">文档参考</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 按照name 聚合计数</span>
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;aggs&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;count_high&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;terms&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">             &#34;field&#34;: &#34;name&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 求内存告警中最大值,类推 max / min / avg / sum</span>
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:9200/alerts/_search?pretty <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;name&#34;:&#34;MemHigh&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;aggs&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;mem_max&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;max&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">             &#34;field&#34;: &#34;value&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;_source&#34;: false // 不显示原始数据
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+</li>
+<li>
+<p>修改数据</p>
+
+
+    
+    
+  <ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          data-td-tp-persist="*全量覆盖1001*" aria-controls="tabs-02-00" aria-selected="true">
+        <em>全量覆盖1001</em>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="*更新其中某些字段*" aria-controls="tabs-02-01" aria-selected="false">
+        <em>更新其中某些字段</em>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-2-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PUT 127.0.0.1:9200/alerts/_doc/1001 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;name&#34;: &#34;MemHigh&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;value&#34;: &#34;80&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST 127.0.0.1:9200/alerts/_update/1001 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d<span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;doc&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;value&#34;: &#34;88&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+</li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

@@ -1,0 +1,213 @@
+currentBuild.displayName ="构建分支：${env.branch}"
+currentBuild.description="部署主机： ${env.hosts}"
+// seagull-agent
+pipeline {
+    agent any
+    options {
+      buildDiscarder logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '5', daysToKeepStr: '1', numToKeepStr: '5')
+      disableConcurrentBuilds()
+    }
+    parameters {
+         choice choices: ['master', 'yanlian'], description: '''master 对应dev环境
+yanlian 对应uat环境''', name: 'branch'
+
+         activeChoice choiceType: 'PT_SINGLE_SELECT',
+          description: '选择发布到哪个环境', 
+          filterLength: 1, filterable: false, 
+          name: 'envirment', 
+          randomName: 'choice-parameter-26043236877113', 
+          script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: true, script: '''return [
+            \'dev\',
+            \'uat\'
+        ]'''])
+            reactiveChoice choiceType: 'PT_CHECKBOX', description: '选择发布到哪台机器', filterLength: 1, filterable: true, name: 'hosts', randomName: 'choice-parameter-26043242534733', referencedParameters: 'envirment', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: true, script: '''
+        
+        if (envirment== "dev") {
+          return ["db2-dev02-s1",
+            "db2-dev03-s1",
+            "mongodb-dev01-s1",
+            "mongodb-dev02-s1",
+            "mongodb-dev03-s1",
+            "mongodb-dev04-s1",
+            "mongodb-dev05-s1",
+            "mongodb-dev06-s1",
+            "mysql-dev01-s1",
+            "mysql-dev02-s1",
+            "mysql-dev03-s1",
+            "mysql-dev04-s1",
+            "mysql-dev05-s1",
+            "pcloud-dev01gz",
+            "pcloud-dev01sz",
+            "pcloud-dev02gz",
+            "pcloud-dev02sz",
+            "pcloud-dev03gz",
+            "pcloud-dev03sz",
+            "pcloud-dev04gz",
+            "pcloud-dev04sz",
+            "pcloud-dev05gz",
+            "pcloud-dev05sz",
+            "pcloud-dev06gz",
+            "pcloud-dev06sz",
+            "redis-dev01-s1",
+            "redis-dev02-s1",
+            "redis-dev03-s1",
+            "redis-dev04-s1",
+            "redis-dev05-s1",
+            "redis-dev06-s1",
+            "seagullcore01-dev-s2",
+            "seagullloki01-dev-s2",
+            "seagullmongodb01-dev-s2",
+            "seagullredis01-dev-s2",
+            "seagullvictora01-dev-s2"]
+        } else if (envirment== "uat") {
+          return ["db2-uat01-s1",
+        "db2-uat02-s1",
+        "db2-uat03-s1",
+        "db2-uat04-s1",
+        "mongodb-uat01-s1",
+        "mongodb-uat02-s1",
+        "mongodb-uat03-s1",
+        "mongodb-uat04-s1",
+        "mongodb-uat05-s1",
+        "mongodb-uat06-s1",
+        "mysql-uat01-s1",
+        "mysql-uat02-s1",
+        "mysql-uat03-s1",
+        "mysql-uat04-s1",
+        "mysql-uat05-s1",
+        "redis-uat01-s1",
+        "redis-uat02-s1",
+        "redis-uat03-s1",
+        "redis-uat04-s1",
+        "redis-uat05-s1",
+        "redis-uat06-s1",
+        "seagullcore01-uat-s2",
+        "seagullloki01-uat-s2",
+        "seagullmongodb01-uat-s2",
+        "seagullredis01-uat-s2",
+        "seagullvictora01-uat-s2"]
+        
+        } else {
+          return ["请选择环境"]
+        }'''])
+    }
+          
+    stages {
+
+        stage('checkout') {
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'git',
+                gitToolName: 'git-tool')]) {
+                    script {
+                        sh '''
+                        git clone https://gitee.com/bj-pytc/pcloud-agent.git ${BUILD_NUMBER}
+                        cd ${BUILD_NUMBER}
+                        git checkout ${branch}
+                        git pull origin ${branch}
+                        git branch -v
+                        '''
+                    }
+                }
+            }
+        }
+       stage('sonarqube') {
+            environment {
+              SONAR_SCANNER_HOME = "/opt/sonar-scanner"
+              PATH = "${SONAR_SCANNER_HOME}/bin:$PATH"
+            }
+            steps {
+              withCredentials([usernamePassword(
+                credentialsId: 'sonarQube', 
+                passwordVariable: 'password', 
+                usernameVariable: 'username')]) {
+                  script {
+                      sh '''
+                      sonar-scanner \
+                      -Dsonar.host.url=http://175.178.65.213:9000 \
+                      -Dsonar.projectKey=seagull-agent \
+                      -Dsonar.projectName=seagull-agent \
+                      -Dsonar.projectVersion=“${branch}” \
+                      -Dsonar.login="${username}" \
+                      -Dsonar.password="${password}" \
+                      -Dsonar.ws.timeout=30 \
+                      -Dsonar.projectDescription='seagull-agent' \
+                      -Dsonar.links.homepage=https://e.gitee.com/bj-pytc/repos/bj-pytc/pcloud-agent/sources \
+                      -Dsonar.links.ci=http://175.178.65.213:18080/job/seagull-agent/job/seagull-agent/ \
+                      -Dsonar.sourceEncoding=UTF-8 \
+                      -Dsonar.branch.name=${branch}
+                      '''
+                  }
+                }
+
+            }
+        }
+        stage('build') {
+            steps {
+                script {
+                    sh '''
+                    cd ${BUILD_NUMBER}
+                    source /etc/profile &>/dev/null
+                    go mod tidy
+                    make build-linux
+                    tar -czvf  seagullagent.tar.gz seagullagent'''
+                }
+            }
+        }
+        stage('deploy'){
+            parallel {
+                stage('deploytohost') {
+                    steps {
+                        script {
+                            sh '''
+                            cd ${BUILD_NUMBER}
+                            IFS=',' read -r -a H <<< "$hosts" 
+                            for host in  ${H[@]};
+                            do
+                                scp -rp seagullagent.tar.gz ${host}:/tmp/ &&
+                                ssh ${host} "tar xvf /tmp/seagullagent.tar.gz -C /opt/seagullagent/ && systemctl restart seagullagent.service && systemctl status seagullagent.service"
+                            done
+                            
+                            '''
+                        }
+                    }
+                }
+
+                stage('release') {
+                    steps {
+                        script {
+                            sh '''
+                            cd ${BUILD_NUMBER}
+                            tar --exclude 'conf/input.promtail' \
+                            --exclude 'conf/input.redis*' \
+                            --exclude 'conf/input.mysql' \
+                            --exclude 'conf/input.mongodb' \
+                            --exclude 'conf/config.toml' \
+                            --exclude 'conf/input.prometheus' \
+                            -czvf  seagullagent.tar.gz  conf seagullagent &&\
+                            if [ ${branch} == "master" ];then
+                                scp -rp seagullagent.tar.gz pcloud-dev02gz:/opt/download/seagull/dev/
+                            elif [ ${branch} == "yanlian" ];then
+                                scp -rp seagullagent.tar.gz pcloud-dev02gz:/opt/download/seagull/uat/
+                            fi
+                            '''
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+    }
+    post{
+        always {
+            // 保留最近两次构建
+                script {
+                    sh '''
+                    rm -fr `expr  ${BUILD_NUMBER} - 2`
+                '''
+                }
+            }
+
+    }
+}

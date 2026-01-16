@@ -1,0 +1,1728 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/docs/database/redis/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/docs/database/redis/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>零露云</title>
+<meta name="description" content="特性 开源版 企业版 部署与管理 手动部署、配置复杂 支持多种部署模式，提供管理工具（GUI/CLI/API） - 自建环境（软件安装） - Kubernetes - 托管服务（DBaaS） - 多云/混合云 扩展性 扩展需手动分片，可能停机 支持在线水平和垂直扩容 数据同步 无内置数据同步工具 RDI 自动同步关系数据库 - RDI（Redis Data Integration）自动同步关系型数据库 - 支持 Write Behind 模式 技术支持 社区支持 24x7 原厂 &#43; 虹科技术支持 监控与运维 需自行集成监控工具 内置可观测性，支持多种监控平台 - 集成 Prometheus、Grafana、DataDog、Dynatrace 等 - 提供 Admin GUI、CLI、REST API、Terraform 安全性 基础认证，无企业级加密与审计 全链路加密、ACL、LDAP、SSO、合规支持 多租户 - 支持多租户，资源隔离 Proxy支持 - 内置高性能 Proxy，简化客户端接入 AI/ML支持 - 完整向量数据库与特征存储 - 向量数据库（Vector Database） - 特征存储（Feature Store） - 加速大语言模型（LLM）应用 双主架构 - 支持Active-Active系统架构 常见问题 redis 主从切换 1.由于主节点阻塞通讯异常导致的主从切换 ==&gt; 检查慢查询命令（批量写入、批量删除、lua脚本等）、bigkeys">
+<meta property="og:url" content="https://zero-dew.netlify.app/docs/database/redis/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="零露云">
+  <meta property="og:description" content="特性 开源版 企业版 部署与管理 手动部署、配置复杂 支持多种部署模式，提供管理工具（GUI/CLI/API） - 自建环境（软件安装） - Kubernetes - 托管服务（DBaaS） - 多云/混合云 扩展性 扩展需手动分片，可能停机 支持在线水平和垂直扩容 数据同步 无内置数据同步工具 RDI 自动同步关系数据库 - RDI（Redis Data Integration）自动同步关系型数据库 - 支持 Write Behind 模式 技术支持 社区支持 24x7 原厂 &#43; 虹科技术支持 监控与运维 需自行集成监控工具 内置可观测性，支持多种监控平台 - 集成 Prometheus、Grafana、DataDog、Dynatrace 等 - 提供 Admin GUI、CLI、REST API、Terraform 安全性 基础认证，无企业级加密与审计 全链路加密、ACL、LDAP、SSO、合规支持 多租户 - 支持多租户，资源隔离 Proxy支持 - 内置高性能 Proxy，简化客户端接入 AI/ML支持 - 完整向量数据库与特征存储 - 向量数据库（Vector Database） - 特征存储（Feature Store） - 加速大语言模型（LLM）应用 双主架构 - 支持Active-Active系统架构 常见问题 redis 主从切换 1.由于主节点阻塞通讯异常导致的主从切换 ==&gt; 检查慢查询命令（批量写入、批量删除、lua脚本等）、bigkeys">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="零露云">
+  <meta itemprop="description" content="特性 开源版 企业版 部署与管理 手动部署、配置复杂 支持多种部署模式，提供管理工具（GUI/CLI/API） - 自建环境（软件安装） - Kubernetes - 托管服务（DBaaS） - 多云/混合云 扩展性 扩展需手动分片，可能停机 支持在线水平和垂直扩容 数据同步 无内置数据同步工具 RDI 自动同步关系数据库 - RDI（Redis Data Integration）自动同步关系型数据库 - 支持 Write Behind 模式 技术支持 社区支持 24x7 原厂 &#43; 虹科技术支持 监控与运维 需自行集成监控工具 内置可观测性，支持多种监控平台 - 集成 Prometheus、Grafana、DataDog、Dynatrace 等 - 提供 Admin GUI、CLI、REST API、Terraform 安全性 基础认证，无企业级加密与审计 全链路加密、ACL、LDAP、SSO、合规支持 多租户 - 支持多租户，资源隔离 Proxy支持 - 内置高性能 Proxy，简化客户端接入 AI/ML支持 - 完整向量数据库与特征存储 - 向量数据库（Vector Database） - 特征存储（Feature Store） - 加速大语言模型（LLM）应用 双主架构 - 支持Active-Active系统架构 常见问题 redis 主从切换 1.由于主节点阻塞通讯异常导致的主从切换 ==&gt; 检查慢查询命令（批量写入、批量删除、lua脚本等）、bigkeys">
+  <meta itemprop="datePublished" content="2025-05-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-25T00:00:00+00:00">
+  <meta itemprop="wordCount" content="95">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="零露云">
+  <meta name="twitter:description" content="特性 开源版 企业版 部署与管理 手动部署、配置复杂 支持多种部署模式，提供管理工具（GUI/CLI/API） - 自建环境（软件安装） - Kubernetes - 托管服务（DBaaS） - 多云/混合云 扩展性 扩展需手动分片，可能停机 支持在线水平和垂直扩容 数据同步 无内置数据同步工具 RDI 自动同步关系数据库 - RDI（Redis Data Integration）自动同步关系型数据库 - 支持 Write Behind 模式 技术支持 社区支持 24x7 原厂 &#43; 虹科技术支持 监控与运维 需自行集成监控工具 内置可观测性，支持多种监控平台 - 集成 Prometheus、Grafana、DataDog、Dynatrace 等 - 提供 Admin GUI、CLI、REST API、Terraform 安全性 基础认证，无企业级加密与审计 全链路加密、ACL、LDAP、SSO、合规支持 多租户 - 支持多租户，资源隔离 Proxy支持 - 内置高性能 Proxy，简化客户端接入 AI/ML支持 - 完整向量数据库与特征存储 - 向量数据库（Vector Database） - 特征存储（Feature Store） - 加速大语言模型（LLM）应用 双主架构 - 支持Active-Active系统架构 常见问题 redis 主从切换 1.由于主节点阻塞通讯异常导致的主从切换 ==&gt; 检查慢查询命令（批量写入、批量删除、lua脚本等）、bigkeys">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/database/redis/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title"></h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-e77814dc865bc892f94ffc02d54f2cfc">安装部署</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-c15fb40811dca9bb931163d78690c06b">redis-shake2.1.2</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-6ddb86c8e13cf6905967891813012ff5">redis-shake3.1.11</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-9171779f07ad97b25103d1ce9ca3b8a7">redis数据库搬迁方案2</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-a9beb947715b173b615f76eaebc63922">Redis8.4.0版本</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>开源版</th>
+          <th>企业版</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>部署与管理</td>
+          <td>手动部署、配置复杂</td>
+          <td>支持多种部署模式，提供管理工具（GUI/CLI/API）  - 自建环境（软件安装） - Kubernetes - 托管服务（DBaaS） - 多云/混合云</td>
+      </tr>
+      <tr>
+          <td>扩展性</td>
+          <td>扩展需手动分片，可能停机</td>
+          <td>支持在线水平和垂直扩容</td>
+      </tr>
+      <tr>
+          <td>数据同步</td>
+          <td>无内置数据同步工具</td>
+          <td>RDI 自动同步关系数据库 - RDI（Redis Data Integration）自动同步关系型数据库 - 支持 Write Behind 模式</td>
+      </tr>
+      <tr>
+          <td>技术支持</td>
+          <td>社区支持</td>
+          <td>24x7 原厂 + 虹科技术支持</td>
+      </tr>
+      <tr>
+          <td>监控与运维</td>
+          <td>需自行集成监控工具</td>
+          <td>内置可观测性，支持多种监控平台 - 集成 Prometheus、Grafana、DataDog、Dynatrace 等 - 提供 Admin GUI、CLI、REST API、Terraform</td>
+      </tr>
+      <tr>
+          <td>安全性</td>
+          <td>基础认证，无企业级加密与审计</td>
+          <td>全链路加密、ACL、LDAP、SSO、合规支持</td>
+      </tr>
+      <tr>
+          <td>多租户</td>
+          <td>-</td>
+          <td>支持多租户，资源隔离</td>
+      </tr>
+      <tr>
+          <td>Proxy支持</td>
+          <td>-</td>
+          <td>内置高性能 Proxy，简化客户端接入</td>
+      </tr>
+      <tr>
+          <td>AI/ML支持</td>
+          <td>-</td>
+          <td>完整向量数据库与特征存储 - 向量数据库（Vector Database） - 特征存储（Feature Store） - 加速大语言模型（LLM）应用</td>
+      </tr>
+      <tr>
+          <td>双主架构</td>
+          <td>-</td>
+          <td>支持Active-Active系统架构</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="常见问题">常见问题</h3>
+<p>redis 主从切换
+1.由于主节点阻塞通讯异常导致的主从切换 ==&gt; 检查慢查询命令（批量写入、批量删除、lua脚本等）、bigkeys</p>
+<pre><code>2.主节点所在机器硬件故障导致的主从切换 ==》 检查主节点是否宕机，等待机器修复；检查服务器日志是否存在硬件报错
+</code></pre>
+<p>redis 内存使用率过高 ==》 检查是否存在内存泄漏（如：缓存未过期、缓存未命中等）；检查是否存在bigkeys（如：hash、list、set、zset等）
+==》 redis节点扩容内存</p>
+<p>redis 连接数过高 ==》 导出客户端连接明细给开发分析，分析是否存在异常连接数增加的客户端或者调整最大连接数配置</p>
+<p>redis 响应时间过高 ==》 检查是否存在慢查询命令（如：批量写入、批量删除、lua脚本等）</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-e77814dc865bc892f94ffc02d54f2cfc">安装部署</h1>
+	<div class="lead">redis部署安装</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-08-01" class="text-body-secondary">Friday, August 01, 2025</time>
+        
+	</div>
+	<p>redis（<em>remote dictionary server</em>） 是开源的k-v<a href="https://db-engines.com/en/ranking" target="_blank">数据库</a>，使用内存存储，主要定位为数据缓存。除此之外还可以用于 <em>session 共享</em>，<em>排行榜、计数器</em>，<em>消息队列</em></p>
+
+  
+  
+  
+
+  
+   
+     
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          aria-controls="tabs-00-00" aria-selected="false">
+        <strong>安装部署</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="单节点" aria-controls="tabs-00-01" aria-selected="true">
+        单节点
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-02" role="tab"
+          data-td-tp-persist="主从" aria-controls="tabs-00-02" aria-selected="false">
+        主从
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-03" role="tab"
+          data-td-tp-persist="哨兵" aria-controls="tabs-00-03" aria-selected="false">
+        哨兵
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-04-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-04" role="tab"
+          data-td-tp-persist="集群" aria-controls="tabs-00-04" aria-selected="false">
+        集群
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <p><span id=redis部署之单节点><font color=red size=4px>redis部署之单节点</font></span></p>
+<ol>
+<li>
+<p>部署安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://download.redis.io/releases/redis-5.0.14.tar.gz
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar xf redis-5.0.14.tar.gz <span style="color:#f92672">&amp;&amp;</span> cd redis-5.0.14
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make <span style="color:#f92672">&amp;&amp;</span> make PREFIX<span style="color:#f92672">=</span>/opt/redis install 
+</span></span></code></pre></div><p>二进制文件介绍</p>
+<table>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>释义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>redis-server</code></td>
+          <td>启动server</td>
+      </tr>
+      <tr>
+          <td><code>redis-cli</code></td>
+          <td>客户端工具</td>
+      </tr>
+      <tr>
+          <td><code>redis-benchmark</code></td>
+          <td>基准测试工具</td>
+      </tr>
+      <tr>
+          <td><code>redis-check-aof</code></td>
+          <td>aof 检测和修复工具</td>
+      </tr>
+      <tr>
+          <td><code>redis-check-dump</code></td>
+          <td>rdb 检测和修复工具</td>
+      </tr>
+      <tr>
+          <td><code>redis-sentinel</code></td>
+          <td>启动 sentinel</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>启动服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server
+</span></span></code></pre></div></li>
+</ol>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-02" role="tabpanel" aria-labelled-by="tabs-00-02-tab" tabindex="0">
+        <p><span id=redis部署之主从><font color=red size=4px>redis部署之主从</font></span></p>
+<blockquote>
+<p><sub>主从架构在单节点基础上提供了数据的冗余能力，提升了redis的读取能力</sub></p>
+</blockquote>
+<ol>
+<li>
+<p>部署安装</p>
+<p>参照 <a href=#redis部署之单节点>redis部署之单节点</a></p>
+</li>
+<li>
+<p>启动服务</p>
+<blockquote>
+<p><sub>【支持三种配置方式：】</sub></p>
+<p><sub>1. 在启动命令中添加<code> --SLAVEOF 10.4.7.251 6379</code></sub></p>
+<p><sub>2. 通过redis-cli 登录到redis 执行 <code>slaveof 10.4.7.251 6379</code></sub></p>
+<p><sub>3. 在redis.conf配置文件中写入 <code>slaveof 10.4.7.251 6379</code></sub></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6379</span> --daemonize yes --protected-mode no 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6380</span> --daemonize yes  --protected-mode no --SLAVEOF 10.4.7.251 <span style="color:#ae81ff">6379</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6381</span> --daemonize yes  --protected-mode no --SLAVEOF 10.4.7.251 <span style="color:#ae81ff">6379</span>
+</span></span></code></pre></div><p>确认主从关系</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># /opt/redis/bin/redis-cli -h 10.4.7.251 -p 6379 info replication</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Replication</span>
+</span></span><span style="display:flex;"><span>role:master
+</span></span><span style="display:flex;"><span>connected_slaves:2
+</span></span><span style="display:flex;"><span>slave0:ip<span style="color:#f92672">=</span>10.4.7.251,port<span style="color:#f92672">=</span>6380,state<span style="color:#f92672">=</span>online,offset<span style="color:#f92672">=</span>56,lag<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>slave1:ip<span style="color:#f92672">=</span>10.4.7.251,port<span style="color:#f92672">=</span>6381,state<span style="color:#f92672">=</span>online,offset<span style="color:#f92672">=</span>56,lag<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div></li>
+<li>
+<p>测试主从切换</p>
+<p>首先观察从节点复制偏移量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6380</span> info replication|grep master_repl_offset
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6381</span> info replication|grep master_repl_offset
+</span></span></code></pre></div><p>选择一个偏移量最大的从节点，执行切换为主节点。当前环境我们把 <code>10.4.7.251:6381</code>切换为新的主节点。其他节点从新建立与该节点的主从关系</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6381</span> slaveof no one
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6381</span> role
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6379</span> SLAVEOF 10.4.7.251 <span style="color:#ae81ff">6381</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6380</span> SLAVEOF 10.4.7.251 <span style="color:#ae81ff">6381</span>
+</span></span></code></pre></div></li>
+<li>
+<p>复制原理及相关参数</p>
+<p><strong>复制原理</strong></p>
+<pre><code>1. 从库通过slaveof 指令连接到master，并发起sync请求
+2. master确认后，派生子线程bgsave生成rdb快照，并将快照传递给salve
+3. salve接收到rdb快照后，清空本机rdb,加载主库传递过来的rdb 到内存
+4. 以上完成后，master 会将变更数据缓存到本地 buffer中，按照一定规则传递给slave。允许从节点在短时间与主节点断开。
+</code></pre>
+<table>
+  <thead>
+      <tr>
+          <th>复制相关参数</th>
+          <th>解释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>repl-backlog-szie 1M</code></td>
+          <td>环形复制积压缓冲区。最小值16k</td>
+      </tr>
+      <tr>
+          <td><code>repl-diskless-sync yes</code></td>
+          <td>开启无盘复制</td>
+      </tr>
+      <tr>
+          <td><code>repl-diskless-sync-delay 5</code></td>
+          <td>无盘复制延迟等待时长</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ol>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-03" role="tabpanel" aria-labelled-by="tabs-00-03-tab" tabindex="0">
+        <p><span id=redis部署之哨兵><a herf=https://redis.io/docs/management/sentinel/><font color=red size=4px>redis部署之哨兵</font></a></span></p>
+<blockquote>
+<p><sub>哨兵集群是对主从的扩展，提供了主节点故障的自动转移并通知应用方能力。Redis从2.8开始正式 提供了Redis Sentinel</sub></p>
+</blockquote>
+<p>架构：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>       +----+
+</span></span><span style="display:flex;"><span>       | M1 |
+</span></span><span style="display:flex;"><span>       | S1 |
+</span></span><span style="display:flex;"><span>       +----+
+</span></span><span style="display:flex;"><span>          |
+</span></span><span style="display:flex;"><span>+----+    |    +----+
+</span></span><span style="display:flex;"><span>| R2 |----+----| R3 |
+</span></span><span style="display:flex;"><span>| S2 |         | S3 |
+</span></span><span style="display:flex;"><span>+----+         +----+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Configuration: quorum <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><ol>
+<li>
+<p>部署安装</p>
+<p>参照<a href=#redis部署之单节点>redis部署之单节点</a></p>
+</li>
+<li>
+<p>启动服务</p>
+<p>参照<a href=#redis部署之主从>redis部署之主从</a></p>
+</li>
+<li>
+<p>配置sentinel</p>
+<blockquote>
+<p><sub>Master-specific configuration parameters are modified using：<code>SENTINEL SET</code></sub></p>
+<p><sub>Global configuration parameters are modified using <code>SENTINEL CONFIG SET</code>.</sub></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee redis-sentinel.conf <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">daemonize yes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># mymaster 为该集群起一个别名。一个sentinel 可以同时监控多个集群，因此使用别名区分
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># redis master的地址和端口10.4.7.251 6379
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 2 表示有2个sentinel 判断master失败后才进行主从切换
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sentinel monitor mymaster 10.4.7.251 6379 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 每个Sentinel节点都要通过定期发送ping命令来判断Redis数据节点和其
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 余Sentinel节点是否可达，如果超过了down-after-milliseconds配置的时间且没
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 有有效的回复，则判定节点不可达 30000ms
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sentinel down-after-milliseconds mymaster 30000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 选举出新的主节点后，同时向主节点执行psync的从节点个数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sentinel parallel-syncs mymaster 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 故障转移超时时间 180000ms（选举新的主节点+从节点完成主从复制）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sentinel failover-timeout mymaster 180000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 设置sentinel 密码
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sentinel auth-pass mymaster 123456
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#sentinel auth-pass mymaster 12345
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### 一组sentinel 支持多个主从集群
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#sentinel monitor resque 192.168.1.3 6380 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#sentinel down-after-milliseconds resque 10000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#sentinel failover-timeout resque 180000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#sentinel parallel-syncs resque 5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div></li>
+<li>
+<p>启动sentinel【默认监听26379】</p>
+<blockquote>
+<p><sub>【sentinel 的启动方式有2种：】</sub></p>
+<p><sub><code>redis-sentinel /path/to/sentinel.conf</code></sub></p>
+<p><sub><code>redis-server /path/to/sentinel.conf --sentinel</code></sub></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /tmp/<span style="color:#f92672">{</span>26379,26380,26381<span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server redis-sentinel.conf --sentinel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bind 10.4.7.251 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--port <span style="color:#ae81ff">26379</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--dir /tmp/26379 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--logfile /tmp/26379.log
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server redis-sentinel.conf --sentinel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bind 10.4.7.251 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--port <span style="color:#ae81ff">26380</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--dir /tmp/26380 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--logfile /tmp/26380.log
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server redis-sentinel.conf --sentinel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bind 10.4.7.251 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--port <span style="color:#ae81ff">26381</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--dir /tmp/26381 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--logfile /tmp/26381.log
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis-4.2/bin/redis-server ./redis-4.0.2/redis-sentinel17778.conf --port <span style="color:#ae81ff">17778</span> --sentinel --protected-mode no  --logfile /tmp/17778.log 
+</span></span><span style="display:flex;"><span>/opt/redis-4.2/bin/redis-server ./redis-4.0.2/redis-sentinel17779.conf --port <span style="color:#ae81ff">17779</span> --sentinel --protected-mode no --logfile /tmp/17779.log
+</span></span><span style="display:flex;"><span>/opt/redis-4.2/bin/redis-server ./redis-4.0.2/redis-sentinel17777.conf --port <span style="color:#ae81ff">17777</span> --sentinel --protected-mode no --logfile /tmp/17777.log
+</span></span></code></pre></div></li>
+<li>
+<p>验证状态</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># /opt/redis/bin/redis-cli -p 26379 -h 10.4.7.251</span>
+</span></span><span style="display:flex;"><span>10.4.7.251:26379&gt; info sentinel
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sentinel</span>
+</span></span><span style="display:flex;"><span>sentinel_masters:1
+</span></span><span style="display:flex;"><span>sentinel_tilt:0
+</span></span><span style="display:flex;"><span>sentinel_running_scripts:0
+</span></span><span style="display:flex;"><span>sentinel_scripts_queue_length:0
+</span></span><span style="display:flex;"><span>sentinel_simulate_failure_flags:0
+</span></span><span style="display:flex;"><span>master0:name<span style="color:#f92672">=</span>mymaster,status<span style="color:#f92672">=</span>ok,address<span style="color:#f92672">=</span>10.4.7.251:6379,slaves<span style="color:#f92672">=</span>2,sentinels<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ok  状态正常</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sdown 主观下线</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#odown 客观下线</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Redis Sentinel 有两种不同的宕机概念，一种称为 主观上为 Down 条件 （SDOWN），并且是 local 添加到给定的 Sentinel 实例。另一个称为客观关闭条件 （ODOWN），当有足够的 Sentinel（至少 number 配置为被监控 master 的参数）具有 SDOWN 条件</span>
+</span></span></code></pre></div></li>
+<li>
+<p>验证主宕机</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -p <span style="color:#ae81ff">6379</span> -h 10.4.7.251 shutdown 
+</span></span></code></pre></div><p>sentinel 节点30s 后标记节点主观（Subjectively）下线</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sentinel1_1  | 1:X <span style="color:#ae81ff">15</span> Apr <span style="color:#ae81ff">2024</span> 08:40:26.982 <span style="color:#75715e"># +sdown master mymaster 10.4.7.251 6379</span>
+</span></span><span style="display:flex;"><span>sentinel2_1  | 1:X <span style="color:#ae81ff">15</span> Apr <span style="color:#ae81ff">2024</span> 08:40:26.983 <span style="color:#75715e"># +sdown master mymaster 10.4.7.251 6379</span>
+</span></span><span style="display:flex;"><span>sentinel3_1  | 1:X <span style="color:#ae81ff">15</span> Apr <span style="color:#ae81ff">2024</span> 08:40:27.032 <span style="color:#75715e"># +sdown master mymaster 10.4.7.251 6379</span>
+</span></span></code></pre></div><p>等待30s 后选出主节&hellip;.</p>
+<p>重新启动宕机的节点，会自动加入到该主从中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> /opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6379</span> --daemonize yes
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>解释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>sentinel master mymaster</code></td>
+          <td>查询主节点状态</td>
+      </tr>
+      <tr>
+          <td><code>sentinel slaves mymaster</code></td>
+          <td>查询从节点状态。或者命令 <code>sentinel replicas mymaster</code></td>
+      </tr>
+      <tr>
+          <td><code>sentinel sentinels mymaster</code></td>
+          <td>查询除自己外的sentinel节点信息</td>
+      </tr>
+      <tr>
+          <td><code>sentinel get-master--by-name mymaster</code></td>
+          <td>查询主节点的ip:port</td>
+      </tr>
+      <tr>
+          <td><code> sentinel ckquorum mymaster</code></td>
+          <td>检查哨兵集群是否满足切换需求</td>
+      </tr>
+      <tr>
+          <td><code>sentinel flushconfig</code></td>
+          <td>强制将sentinel 配置写入磁盘</td>
+      </tr>
+      <tr>
+          <td><code>sentinel failover mymaster</code></td>
+          <td>强制主从切换</td>
+      </tr>
+      <tr>
+          <td><code>sentinel info-cache</code></td>
+          <td>返回master-slave的缓存信息</td>
+      </tr>
+      <tr>
+          <td><code>sentinel config get *</code></td>
+          <td>获取sentinel 配置信息 &gt;=6.2</td>
+      </tr>
+      <tr>
+          <td><code>sentinel config set &lt;key&gt; &lt;value&gt;</code></td>
+          <td>动态设置sentinel 配置 &gt;=6.2</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ol>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-04" role="tabpanel" aria-labelled-by="tabs-00-04-tab" tabindex="0">
+        <p><span id=redis部署之集群><font color=red size=4px>redis部署之集群</font></span></p>
+<blockquote>
+<p><sub>redis cluster 是redis 的分布式解决方案，在3.0后正式推出。其主要解决<strong>单节点写能力</strong>和<strong>存储能力</strong>受限的问题。</sub></p>
+<p><sub>Redis集群相对单机在功能上存在一些限制，需要开发人员提前了解， 在使用时做好规避。限制如下：</sub></p>
+<p><sub>1）key批量操作支持有限。如mset、mget，目前只支持具有相同slot值的 key执行批量操作。对于映射为不同slot值的key由于执行mset、mget等操作可能存在于多个节点上因此不被支持。<br>2）key事务操作支持有限。同理只支持多key在同一节点上的事务操作，当多个key分布在不同的节点上时无法使用事务功能。<br>3）key作为数据分区的最小粒度，因此不能将一个大的键值对象如 hash、list等映射到不同的节点。<br>4）不支持多数据库空间。单机下的Redis可以支持16个数据库，集群模式下只能使用一个数据库空间，即db0。<br>5）复制结构只支持一层，从节点只能复制主节点，不支持嵌套树状复制结构。</sub></p>
+</blockquote>
+<p><strong>部署方法一：</strong></p>
+<ol>
+<li>
+<p>部署安装</p>
+<p>参照 <a href=#redis部署之单节点>redis部署之单节点</a></p>
+</li>
+<li>
+<p>启动服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> port in <span style="color:#f92672">{</span>6379,6380,6381,7379,7380,7381<span style="color:#f92672">}</span>;<span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    mkdir -p /opt/redis_<span style="color:#e6db74">${</span>port<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>	/opt/redis/bin/redis-server <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--bind 0.0.0.0 --port <span style="color:#e6db74">${</span>port<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--daemonize yes <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--cluster-enabled yes <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--cluster-config-file /opt/redis_<span style="color:#e6db74">${</span>port<span style="color:#e6db74">}</span>/nodes.conf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--logfile  /opt/redis_<span style="color:#e6db74">${</span>port<span style="color:#e6db74">}</span>/redis.log <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--cluster-node-timeout <span style="color:#ae81ff">1500</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--requirepass pytc@2024
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div></li>
+<li>
+<p>创建集群</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo yes |/opt/redis/bin/redis-cli -a pytc@2024 --cluster create <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cluster-replicas <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>192.168.0.161:6379 192.168.0.161:6380 192.168.0.161:6381 192.168.0.161:7379 192.168.0.161:7380 192.168.0.161:7381 
+</span></span></code></pre></div></li>
+</ol>
+<p><strong>部署方法二：</strong></p>
+<ol>
+<li>
+<p>部署安装</p>
+<p>参照 <a href=#redis部署之单节点>redis部署之单节点</a></p>
+</li>
+<li>
+<p>启动服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6379</span> --daemonize yes  --cluster-enabled yes --cluster-config-file nodes-6379.conf --cluster-node-timeout <span style="color:#ae81ff">1500</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6380</span> --daemonize yes  --cluster-enabled yes --cluster-config-file nodes-6380.conf --cluster-node-timeout <span style="color:#ae81ff">1500</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6381</span> --daemonize yes  --cluster-enabled yes --cluster-config-file nodes-6381.conf --cluster-node-timeout <span style="color:#ae81ff">1500</span>
+</span></span></code></pre></div></li>
+<li>
+<p>安装ruby环境</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rpm -e ruby --nodeps
+</span></span><span style="display:flex;"><span>wget https://github.com/postmodern/ruby-install/archive/refs/tags/v0.8.5.tar.gz
+</span></span><span style="display:flex;"><span>tar xf v0.8.5.tar.gz
+</span></span><span style="display:flex;"><span>cd ruby-install-0.8.5/
+</span></span><span style="display:flex;"><span>make install
+</span></span><span style="display:flex;"><span>ruby-install --system ruby 2.6.10
+</span></span></code></pre></div></li>
+<li>
+<p>安装redis-trib 工具</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># gem 是ruby的包管理工具，可以类比python的pip</span>
+</span></span><span style="display:flex;"><span>yum install rubygems redis-trib -y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gem sources
+</span></span><span style="display:flex;"><span>gem sources --remove https://rubygems.org/
+</span></span><span style="display:flex;"><span>gem sources -a https://mirrors.aliyun.com/rubygems/
+</span></span><span style="display:flex;"><span>gem install redis
+</span></span></code></pre></div></li>
+<li>
+<p>创建集群</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-trib create --replicas <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>10.4.7.251:6379 10.4.7.251:6380 10.4.7.251:6381
+</span></span></code></pre></div></li>
+</ol>
+<p><strong>部署方法三：</strong></p>
+<ol>
+<li>
+<p>部署安装</p>
+<p>参照 <a href=#redis部署之单节点>redis部署之单节点</a></p>
+</li>
+<li>
+<p>启动服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6379</span> --daemonize yes  --cluster-enabled yes --cluster-config-file nodes-6379.conf --cluster-node-timeout <span style="color:#ae81ff">1500</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6380</span> --daemonize yes  --cluster-enabled yes --cluster-config-file nodes-6380.conf --cluster-node-timeout <span style="color:#ae81ff">1500</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-server --bind 10.4.7.251 --port <span style="color:#ae81ff">6381</span> --daemonize yes  --cluster-enabled yes --cluster-config-file nodes-6381.conf --cluster-node-timeout <span style="color:#ae81ff">1500</span>
+</span></span></code></pre></div></li>
+<li>
+<p>加入集群</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 cluster meet 10.4.7.251 <span style="color:#ae81ff">6380</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 cluster meet 10.4.7.251 <span style="color:#ae81ff">6381</span>
+</span></span></code></pre></div></li>
+<li>
+<p>分配槽位</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 cluster addslots <span style="color:#f92672">{</span>0..5460<span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6380</span> cluster addslots <span style="color:#f92672">{</span>5461..10921<span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/redis/bin/redis-cli -h 10.4.7.251 -p <span style="color:#ae81ff">6381</span> cluster addslots <span style="color:#f92672">{</span>10922..16383<span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>建立主从关系</p>
+</li>
+</ol>
+<p><strong>新增分片</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli --cluster add-node 127.0.0.1:7006 127.0.0.1:7000
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ redis-cli -p <span style="color:#ae81ff">7000</span> cluster nodes
+</span></span><span style="display:flex;"><span>46a768cfeadb9d2aee91ddd882433a1798f53271 127.0.0.1:7006@17006 master - <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1616754504000</span> <span style="color:#ae81ff">0</span> connected
+</span></span><span style="display:flex;"><span>1f2bc068c7ccc9e408161bd51b695a9a47b890b2 127.0.0.1:7003@17003 slave a138f48fe038b93ea2e186e7a5962fb1fa6e34fa <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1616754504551</span> <span style="color:#ae81ff">3</span> connected
+</span></span><span style="display:flex;"><span>5b4e4be56158cf6103ffa3035024a8d820337973 127.0.0.1:7001@17001 master - <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1616754505584</span> <span style="color:#ae81ff">2</span> connected 5461-10922
+</span></span><span style="display:flex;"><span>a138f48fe038b93ea2e186e7a5962fb1fa6e34fa 127.0.0.1:7002@17002 master - <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1616754505000</span> <span style="color:#ae81ff">3</span> connected 10923-16383
+</span></span><span style="display:flex;"><span>71e078dab649166dcbbcec51520742bc7a5c1992 127.0.0.1:7005@17005 slave 5b4e4be56158cf6103ffa3035024a8d820337973 <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1616754505584</span> <span style="color:#ae81ff">2</span> connected
+</span></span><span style="display:flex;"><span>f224ecabedf39d1fffb34fb6c1683f8252f3b7dc 127.0.0.1:7000@17000 myself,master - <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1616754502000</span> <span style="color:#ae81ff">1</span> connected 0-5460
+</span></span><span style="display:flex;"><span>04d71d5eb200353713da475c5c4f0a4253295aa4 127.0.0.1:7004@17004 slave f224ecabedf39d1fffb34fb6c1683f8252f3b7dc <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1616754505896</span> <span style="color:#ae81ff">1</span> connect
+</span></span></code></pre></div><p>添加从节点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ redis-cli -p <span style="color:#ae81ff">7000</span> --cluster add-node 127.0.0.1:7007 127.0.0.1:7000 --cluster-slave --cluster-master-id 46a768cfeadb9d2aee91ddd882433a1798f53271
+</span></span></code></pre></div><p>为新分片分配slot</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ redis-cli -p <span style="color:#ae81ff">7000</span> --cluster reshard 127.0.0.1:7000
+</span></span><span style="display:flex;"><span>....
+</span></span><span style="display:flex;"><span>....
+</span></span><span style="display:flex;"><span>....
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>How many slots <span style="color:#66d9ef">do</span> you want to move <span style="color:#f92672">(</span>from <span style="color:#ae81ff">1</span> to 16384<span style="color:#f92672">)</span>? <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>What is the receiving node ID? 46a768cfeadb9d2aee91ddd882433a1798f53271
+</span></span><span style="display:flex;"><span>Please enter all the source node IDs.
+</span></span><span style="display:flex;"><span>  Type <span style="color:#e6db74">&#39;all&#39;</span> to use all the nodes as source nodes <span style="color:#66d9ef">for</span> the hash slots.
+</span></span><span style="display:flex;"><span>  Type <span style="color:#e6db74">&#39;done&#39;</span> once you entered all the source nodes IDs.
+</span></span><span style="display:flex;"><span>Source node <span style="color:#75715e">#1: all</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Ready to move <span style="color:#ae81ff">4096</span> slots.
+</span></span><span style="display:flex;"><span>  Source nodes:
+</span></span><span style="display:flex;"><span>	M: f224ecabedf39d1fffb34fb6c1683f8252f3b7dc 127.0.0.1:7000
+</span></span><span style="display:flex;"><span>   	slots:<span style="color:#f92672">[</span>0-5460<span style="color:#f92672">]</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">5461</span> slots<span style="color:#f92672">)</span> master
+</span></span><span style="display:flex;"><span>   	<span style="color:#ae81ff">1</span> additional replica<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	M: 5b4e4be56158cf6103ffa3035024a8d820337973 127.0.0.1:7001
+</span></span><span style="display:flex;"><span>   	slots:<span style="color:#f92672">[</span>5461-10922<span style="color:#f92672">]</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">5462</span> slots<span style="color:#f92672">)</span> master
+</span></span><span style="display:flex;"><span>   	<span style="color:#ae81ff">1</span> additional replica<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	M: a138f48fe038b93ea2e186e7a5962fb1fa6e34fa 127.0.0.1:7002
+</span></span><span style="display:flex;"><span>   	slots:<span style="color:#f92672">[</span>10923-16383<span style="color:#f92672">]</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">5461</span> slots<span style="color:#f92672">)</span> master
+</span></span><span style="display:flex;"><span>   	<span style="color:#ae81ff">1</span> additional replica<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Destination node:
+</span></span><span style="display:flex;"><span>	M: 46a768cfeadb9d2aee91ddd882433a1798f53271 127.0.0.1:7006
+</span></span><span style="display:flex;"><span>   	slots: <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> slots<span style="color:#f92672">)</span> master
+</span></span><span style="display:flex;"><span>   	<span style="color:#ae81ff">1</span> additional replica<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Resharding plan:
+</span></span><span style="display:flex;"><span>	Moving slot <span style="color:#ae81ff">5461</span> from 5b4e4be56158cf6103ffa3035024a8d820337973
+</span></span><span style="display:flex;"><span>	Moving slot <span style="color:#ae81ff">5462</span> from 5b4e4be56158cf6103ffa3035024a8d820337973
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Do you want to proceed with the proposed reshard plan <span style="color:#f92672">(</span>yes/no<span style="color:#f92672">)</span>? 
+</span></span><span style="display:flex;"><span>Moving slot <span style="color:#ae81ff">5461</span> from 127.0.0.1:7001 to 127.0.0.1:7006:
+</span></span><span style="display:flex;"><span>Moving slot <span style="color:#ae81ff">5462</span> from 127.0.0.1:7001 to 127.0.0.1:7006:
+</span></span><span style="display:flex;"><span>Moving slot <span style="color:#ae81ff">5463</span> from 127.0.0.1:7001 to 127.0.0.1:7006:
+</span></span></code></pre></div>
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-c15fb40811dca9bb931163d78690c06b">redis-shake2.1.2</h1>
+	<div class="lead">redis-shake2.1.2 docker镜像构建</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-08-01" class="text-body-secondary">Friday, August 01, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    redis-shake2.1.2 版本支持 redis 2.x to 6.x
+
+</div>
+
+<p><strong>参数</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>变量名</th>
+          <th>可选值（举例）</th>
+          <th><strong>备注</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>sourceType</td>
+          <td>standalone sentinel cluster proxy</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>sourceAddress</td>
+          <td>10.1.1.1:20331;10.1.1.2:20441</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>sourcePassword</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>targetType</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>targetAddress</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>targetPassword</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>keyExists</td>
+          <td>rewrite none ignore</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>filterKeyWhitelist</td>
+          <td>&ldquo;abc;bzz&rdquo;</td>
+          <td>filterKeyWhitelist 和 filterKeyBlacklist 不能同时设置</td>
+      </tr>
+      <tr>
+          <td>filterKeyBlacklist</td>
+          <td>&ldquo;abc;bzz&rdquo;</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>filterDbWhitelist</td>
+          <td>0;5;10</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>filterDbBlacklist</td>
+          <td>0;5;10</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="构建镜像">构建镜像</h3>
+
+<details>
+  <summary>Details</summary>
+  <p>启动脚本<code>entrypoint.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>set -ex
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config<span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>cat &gt;/etc/redis-shake.conf <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">conf.version = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">id = redis-shake
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">system_profile = 9310
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">http_profile = 9320
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">parallel = 32
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">source.type = ${sourceType:- &#34;cluster&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">source.address = ${sourceAddress}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">source.password_raw = ${sourcePassword}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">source.auth_type = auth
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">target.type = ${targetType:- &#34;cluster&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">target.address = ${targetAddress}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">target.password_raw = ${targetPassword}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">target.auth_type = auth
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">target.db = -1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">key_exists = ${keyExists:-&#34;ignore&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filter.db.whitelist = ${filterDbWhitelist}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filter.db.blacklist = ${filterDbBlacklist}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filter.key.whitelist = ${filterKeyWhitelist}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filter.key.blacklist = ${filterKeyBlacklist}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">big_key_threshold = 524288000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metric = true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metric.print_log = false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sender.size = 104857600
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sender.count = 4095
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sender.delay_channel_size = 65535
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">keep_alive = 0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">scan.key_number = 50
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">scan.special_cloud =
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">scan.key_file =
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">qps = 200000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">resume_from_break_point = false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">replace_hash_tag = false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exec <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div></details>
+
+
+<details>
+  <summary>Details</summary>
+  <p><code>Dockerfile.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FROM alpine:3.13
+</span></span><span style="display:flex;"><span>ARG version<span style="color:#f92672">=</span>2.1.2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN sed -i s#dl-cdn.alpinelinux.org#mirrors.tuna.tsinghua.edu.cn#g /etc/apk/repositories <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\ </span>
+</span></span><span style="display:flex;"><span>    apk update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apk add vim curl python3 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    alias python<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    rm -rf /var/cache/apk/*
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#wget https://github.com/tair-opensource/RedisShake/releases/download/release-v2.1.2-20220329/release-v2.1.2-20220329.tar.gz</span>
+</span></span><span style="display:flex;"><span>COPY entrypoint.sh /
+</span></span><span style="display:flex;"><span>COPY redis-shake.linux /usr/bin/redis-shake.linux
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">9320</span>
+</span></span><span style="display:flex;"><span>ENTRYPOINT <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/entrypoint.sh&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div></details>
+
+<p>构建镜像</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x  entrypoint.sh
+</span></span><span style="display:flex;"><span>docker build . -t redis-shake:2.1.2-alpine
+</span></span></code></pre></div><h3 id="迁移示例">迁移示例</h3>
+<ol>
+<li>
+<p>docker环境测试变量解析</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee env<span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sourceType=cluster
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sourceAddress=127.0.0.1:6379;127.0.0.1:6380;127.0.0.1:6381;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sourcePassword=123
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">targetType=cluster
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">targetAddress= 127.0.0.1:6479;127.0.0.1:6480;127.0.0.1:6481;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">targetPassword=456
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">keyExists=rewrite
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filterKeyWhitelist=&#34;abc;bzz&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filterKeyBlacklist=&#34;abc;bzz&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filterDbWhitelist=0;5;10
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filterKeyBlacklist=0;5;10
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it  --env-file env redis-shak:2.1.2-alpine sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it  --env-file env redis-shak:2.1.2-alpine redis-shake.linux -type<span style="color:#f92672">=</span>sync -conf<span style="color:#f92672">=</span>/etc/redis-shake.conf
+</span></span></code></pre></div></li>
+<li>
+<p>资源压力测试</p>
+<table>
+  <thead>
+      <tr>
+          <th>源端（版本5.0）</th>
+          <th>目标端（版本5.0）</th>
+          <th>数据量</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8分片</td>
+          <td>3分片</td>
+          <td>12GB</td>
+      </tr>
+  </tbody>
+</table>
+<p>2.1 在源端生成数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 约12G数据</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nodelist<span style="color:#f92672">=(</span>
+</span></span><span style="display:flex;"><span>node01
+</span></span><span style="display:flex;"><span>node02
+</span></span><span style="display:flex;"><span>node03
+</span></span><span style="display:flex;"><span>node04
+</span></span><span style="display:flex;"><span>node05
+</span></span><span style="display:flex;"><span>node06
+</span></span><span style="display:flex;"><span>node07
+</span></span><span style="display:flex;"><span>node08
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#e6db74">${</span>nodelist[@]<span style="color:#e6db74">}</span>;<span style="color:#66d9ef">do</span> redis-cli -a <span style="color:#ae81ff">123</span> -h $i debug populate <span style="color:#ae81ff">12000000</span> $i;<span style="color:#66d9ef">done</span>
+</span></span></code></pre></div>
+     
+     
+<ul class="nav nav-tabs" id="tabs-3" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
+          data-td-tp-persist="资源使用情况1" aria-controls="tabs-03-00" aria-selected="true">
+        资源使用情况1
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-03-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-01" role="tab"
+          data-td-tp-persist="资源使用情况2" aria-controls="tabs-03-01" aria-selected="false">
+        资源使用情况2
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-3-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
+        <p>2.2.1  配置同步</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --net<span style="color:#f92672">=</span>host --env-file env nosql.registry.io:5000/redis-shak:2.1.2-alpine redis-shake.linux -type<span style="color:#f92672">=</span>sync -conf<span style="color:#f92672">=</span>/etc/redis-shake.conf
+</span></span></code></pre></div><p>2.3.1 资源使用情况和同步耗时</p>
+<p><img src="/docs/database/redis/%E8%B5%84%E6%BA%90%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B52.png" alt=""></p>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-01" role="tabpanel" aria-labelled-by="tabs-03-01-tab" tabindex="3">
+        <p>2.2.1  配置同步，限制为 3c 4g</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --cpus<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> -m 4G --net<span style="color:#f92672">=</span>host --env-file env nosql.registry.io:5000/redis-shak:2.1.2-alpine redis-shake.linux -type<span style="color:#f92672">=</span>sync -conf<span style="color:#f92672">=</span>/etc/redis-shake.conf
+</span></span></code></pre></div><p>2.3.1 资源使用情况和同步耗时</p>
+<p><img src="/docs/database/redis/%E8%B5%84%E6%BA%90%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5.png" alt=""></p>
+
+    </div>
+</div>
+
+</li>
+</ol>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-6ddb86c8e13cf6905967891813012ff5">redis-shake3.1.11</h1>
+	<div class="lead">redis-shake3.1.11 docker镜像构建</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-08-01" class="text-body-secondary">Friday, August 01, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    Tested on Redis 5.0, Redis 6.0 and Redis 7.0
+
+</div>
+
+<p><strong>参数</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>变量名</th>
+          <th>可选值（举例）</th>
+          <th>备注</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>redisSourceVersion</td>
+          <td>such as 2.8, 4.0, 5.0, 6.0, 6.2, 7.0, &hellip;</td>
+          <td>浮点类型，赋值不需要加引号</td>
+      </tr>
+      <tr>
+          <td>sourceAddress</td>
+          <td>10.1.1.1:20331</td>
+          <td>字符串类型，赋值需要加引号。集群中任意节点</td>
+      </tr>
+      <tr>
+          <td>sourcePassword</td>
+          <td></td>
+          <td>字符串类型，赋值需要加引号</td>
+      </tr>
+      <tr>
+          <td>targetType</td>
+          <td>&ldquo;standalone&rdquo; or &ldquo;cluster&rdquo;</td>
+          <td>字符串类型，赋值需要加引号</td>
+      </tr>
+      <tr>
+          <td>redisTargetVersion</td>
+          <td>such as 2.8, 4.0, 5.0, 6.0, 6.2, 7.0, &hellip;</td>
+          <td>浮点类型，赋值不需要加引号</td>
+      </tr>
+      <tr>
+          <td>targetAddress</td>
+          <td>10.1.1.1:20331</td>
+          <td>如果是集群模式，只写其中一个node,其他node信息redis-shake 通过 <code>cluster nodes</code>获取</td>
+      </tr>
+      <tr>
+          <td>targetPassword</td>
+          <td></td>
+          <td>字符串类型，赋值需要加引号</td>
+      </tr>
+      <tr>
+          <td>keyExists</td>
+          <td>rewrite panic ignore</td>
+          <td>字符串类型，赋值需要加引号</td>
+      </tr>
+      <tr>
+          <td>prefixfilter</td>
+          <td>true false</td>
+          <td>确定前缀后后缀匹配</td>
+      </tr>
+      <tr>
+          <td>filterKey</td>
+          <td>{&ldquo;ABC&rdquo;,&ldquo;abc&rdquo;,&ldquo;def&rdquo;,&ldquo;def_&rdquo;}</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>blackfilter</td>
+          <td>true false</td>
+          <td>确定是黑名单还是白名单过滤</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="构建镜像">构建镜像</h3>
+
+<details>
+  <summary>Details</summary>
+  <p>启动脚本<code>entrypoint.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>set -ex
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config<span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>cat &gt;/etc/sync.toml <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">type = &#34;sync&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[source]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">version = ${redisSourceVersion}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">address = ${sourceAddress}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">username = &#34;&#34; # keep empty if not using ACL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">password = ${sourcePassword}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">tls = false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[target]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">type = ${targetType}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">version = ${redisTargetVersion}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">address = ${targetAddress}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">username = &#34;&#34; # keep empty if not using ACL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">password = ${targetPassword}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">tls = false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[advanced]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dir = &#34;data&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># runtime.GOMAXPROCS, 0 means use runtime.NumCPU() cpu cores
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ncpu = 4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">pprof_port = 9310
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metrics_port = 9320
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">rdb_restore_command_behavior = ${keyExists:-&#34;ignore&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">pipeline_count_limit = 1024
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">target_redis_client_max_querybuf_len = 1024_000_000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">target_redis_proto_max_bulk_len = 512_000_000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#array = {&#34;ABC&#34;,&#34;abc&#34;,&#34;def&#34;,&#34;def_&#34;}</span>
+</span></span><span style="display:flex;"><span>array<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>filterKey<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;{}&#34;</span><span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#e6db74">${</span>prefixfilter<span style="color:#e6db74">}</span>;<span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#34;^&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>    suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#34;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#34;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>    suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#e6db74">${</span>blackfilter<span style="color:#e6db74">}</span>;<span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    allow<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    disallow<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    allow<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    disallow<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>cat &gt;/etc/filter.lua<span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">function filter(id, is_base, group, cmd_name, keys, slots, db_id, timestamp_ms)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -- 对mset多key的判断
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    if #keys ~= 1 then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        for _k,key in ipairs(keys)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        do
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            for k,v in ipairs(${array})
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            do
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                -- if string.match(key,string.format(&#34;^%s&#34;,v)) then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                if string.match(key,string.format(&#34;%s%s%s&#34;,${prefix:-&#34;&#34;},v,${suffix:-&#34;&#34;})) then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    -- print(key,v)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    return ${allow:-0}, db_id -- 0 is  allow
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                end
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            end
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        end
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        return ${disallow:-0}, db_id --1 is disallow
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    end
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    for k,v in ipairs(${array})
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    do
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        -- if string.sub(keys[1], -3, -1) == v then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if string.match(keys[1],string.format(&#34;%s%s%s&#34;,${prefix},v,${suffix})) then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            return ${allow:-0}, db_id -- allow
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        end
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    end
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    return ${disallow:-0}, db_id -- disallow
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">end
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exec <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div></details>
+
+
+<details>
+  <summary>Details</summary>
+  <p><code>Dockerfile.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FROM alpine:3.13
+</span></span><span style="display:flex;"><span>ARG version<span style="color:#f92672">=</span>3.1.11
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN sed -i s#dl-cdn.alpinelinux.org#mirrors.tuna.tsinghua.edu.cn#g /etc/apk/repositories <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\ </span>
+</span></span><span style="display:flex;"><span>    apk update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apk add vim curl python3 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    alias python<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    rm -rf /var/cache/apk/*
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#wget https://github.com/tair-opensource/RedisShake/releases/download/v3.1.11/redis-shake-linux-amd64.tar.gz</span>
+</span></span><span style="display:flex;"><span>COPY entrypoint.sh /
+</span></span><span style="display:flex;"><span>COPY redis-shake /usr/bin/redis-shake
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">9320</span>
+</span></span><span style="display:flex;"><span>ENTRYPOINT <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/entrypoint.sh&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div></details>
+
+<p>构建镜像</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x  entrypoint.sh
+</span></span><span style="display:flex;"><span>docker build . -t redis-shake:3.1.11-alpine 
+</span></span></code></pre></div><h3 id="迁移示例">迁移示例</h3>
+<ol>
+<li>
+<p>docker环境测试变量解析</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee env<span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">redisSourceVersion=5.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sourceAddress=&#34;127.0.0.1:6379&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sourcePassword=&#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">redisTargetVersion=5.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">targetType=&#34;cluster&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">targetAddress=&#34;127.0.0.1:6479&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">targetPassword=&#34;456&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">keyExists=&#34;rewrite&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">prefixfilter=true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">filterKey={&#34;ABC&#34;,&#34;abc&#34;,&#34;def&#34;,&#34;def_&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">blackfilter=false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it  --env-file env redis-shake:3.1.11-alpine sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it  --env-file env redis-shake:3.1.11-alpine  redis-shake /etc/sync.toml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it  --env-file env redis-shake:3.1.11-alpine  redis-shake /etc/sync.toml /etc/filter.lua
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec -it 36e54 curl 127.0.0.1:9320/metrics|python -m json.tool
+</span></span></code></pre></div><p>指标监控：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>syncing aof. allowOps<span style="color:#f92672">=[</span>0.60<span style="color:#f92672">]</span>, disallowOps<span style="color:#f92672">=[</span>0.00<span style="color:#f92672">]</span>, entryId<span style="color:#f92672">=[</span>2<span style="color:#f92672">]</span>, InQueueEntriesCount<span style="color:#f92672">=[</span>0<span style="color:#f92672">]</span>, unansweredBytesCount<span style="color:#f92672">=[</span>0<span style="color:#f92672">]</span>bytes, diff<span style="color:#f92672">=[</span>0<span style="color:#f92672">]</span>, aofReceivedOffset<span style="color:#f92672">=[</span>9808<span style="color:#f92672">]</span>, aofAppliedOffset<span style="color:#f92672">=[</span>9808<span style="color:#f92672">]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>allowOps：代表每秒向目的端发送多少条命令
+</span></span><span style="display:flex;"><span>disallowOps：代表每秒有多少条命令被过滤掉
+</span></span><span style="display:flex;"><span>entryId：从 <span style="color:#ae81ff">1</span> 开始计数，代表 redis-shake 从启动开始总共处理多少条命令
+</span></span><span style="display:flex;"><span>InQueueEntriesCount：代表多少条命令待发送
+</span></span><span style="display:flex;"><span>unansweredBytesCount：代表多少 bytes 命令已经发送了，但是对端还没有答复
+</span></span><span style="display:flex;"><span>diff：aofReceivedOffset-aofAppliedOffset
+</span></span><span style="display:flex;"><span>aofReceivedOffset：已经从源端接收到的点位
+</span></span><span style="display:flex;"><span>aofAppliedOffset：已经在目的端恢复的点位
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>一般当 allowOps 为 <span style="color:#ae81ff">0</span> 时，代表数据迁移完成，可以停止 redis-shake。⚠️注意，因为源端会定时发送 PING 命令，所以哪怕源端没有写入，allowOps 偶尔也会不是 0。
+</span></span></code></pre></div></li>
+<li>
+<p>资源压力测试</p>
+<table>
+  <thead>
+      <tr>
+          <th>源端（版本5.0）</th>
+          <th>目标端（版本5.0）</th>
+          <th>数据量</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8分片</td>
+          <td>3分片</td>
+          <td>12GB</td>
+      </tr>
+  </tbody>
+</table>
+<p>测试结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>单pod 消耗 220% cpu
+</span></span><span style="display:flex;"><span>单pod 消耗 12MB memory
+</span></span><span style="display:flex;"><span>全量同步耗时 6分钟
+</span></span></code></pre></div></li>
+</ol>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-9171779f07ad97b25103d1ce9ca3b8a7">redis数据库搬迁方案2</h1>
+	<div class="lead">数据中心搬迁，龙腾出行redis数据库迁移</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-08-01" class="text-body-secondary">Friday, August 01, 2025</time>
+        
+	</div>
+	<table>
+  <thead>
+      <tr>
+          <th>旧环境</th>
+          <th>新环境</th>
+          <th>密码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>192.168.100.66、192.168.100.67 11G</td>
+          <td>10.128.100.66（主）、10.128.100.67（从）</td>
+          <td>YSxeEr3e4ZdF</td>
+      </tr>
+      <tr>
+          <td>192.168.100.34 11G</td>
+          <td>10.128.100.34(主）、10.128.99.34(从)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>192.168.100.57, 192.168.100.58, 192.168.100.59  6G</td>
+          <td>10.128.100.57, 10.128.100.58, 10.128.100.59</td>
+          <td>xb91830913039bhdk</td>
+      </tr>
+  </tbody>
+</table>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">内存空余的情况下，被同步的源端执行</h4>
+
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 默认 256m 64m 60 调整为 512m 128m 60</span>
+</span></span><span style="display:flex;"><span>CONFIG set client-output-buffer-limit <span style="color:#e6db74">&#34;slave 536870912 134217728 60&#34;</span>
+</span></span><span style="display:flex;"><span>CONFIG GET client-output-buffer-limit 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 默认1m 调整为1gb</span>
+</span></span><span style="display:flex;"><span>config set repl-backlog-size <span style="color:#ae81ff">1073741824</span>
+</span></span><span style="display:flex;"><span>CONFIG GET repl-backlog-size
+</span></span></code></pre></div>
+
+</div>
+
+<h3 id="切换">切换</h3>
+
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="redis01" aria-controls="tabs-01-00" aria-selected="true">
+        redis01
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="redis02" aria-controls="tabs-01-01" aria-selected="false">
+        redis02
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <p><strong>redis01登录 10.128.100.66 杀连接</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.100.66/ &amp;&amp; !/10.128.100.67/ {print &#34;client kill&#34;, $4}&#39;</span>| redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.100.66/ &amp;&amp; !/10.128.100.67/ {print &#34;client kill&#34;, $4}&#39;</span>
+</span></span></code></pre></div><p><strong>停同步</strong></p>
+<p>数据校验</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 info keyspace
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66 info keyspace
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis_check.sh --source-ip 192.168.100.67 --source-pwd YSxeEr3e4ZdF <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --target-ip 10.128.100.66 --target-pwd YSxeEr3e4ZdF <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --compare-mode <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --qps <span style="color:#ae81ff">5000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --db-file redis01.db
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66 client list
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66 slaveof no one 
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66 info replication
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;set a b\n del a&#34;</span> | redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66
+</span></span></code></pre></div><p>添加从节点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.67 slaveof 10.128.100.66 <span style="color:#ae81ff">6379</span>
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.67 info replication
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <p><strong>redis02登录 10.128.99.34 杀连接</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h 192.168.100.34 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.99.34/ &amp;&amp; !/10.128.100.34/{print &#34;client kill&#34;, $4}&#39;</span>|redis-cli -h 192.168.100.34
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>redis-cli -h 192.168.100.34 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.99.34/ &amp;&amp; !/10.128.100.34/{print &#34;client kill&#34;, $4}&#39;</span>
+</span></span></code></pre></div><p><strong>停同步</strong></p>
+<p>数据校验</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h 192.168.100.34 info keyspace
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.34 info keyspace
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis_check.sh --source-ip 192.168.100.34 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --target-ip 10.128.100.34 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --compare-mode <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --qps <span style="color:#ae81ff">5000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --db-file redis02.db
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h 10.128.100.34 client list
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.34 slaveof no one 
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.34 info replication
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;set a b\n del a&#34;</span> | redis-cli -h 10.128.100.34  
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="回退">回退</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">## redis01登录 10.128.100.66 清理旧库数据</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 bgsave </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># mv /dump.rdb /dump.rdb.$(date +%F\ %H:%M:%S)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 确认没有从节点连接</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 info replication </span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 slaveof 10.128.100.66 6379 </span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 info replication</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">## redis02登录 10.128.99.34 清理旧库数据 </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -h 192.168.100.34 bgsave </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># mv /dump.rdb /dump.rdb.$(date +%F\ %H:%M:%S)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 确认没有从节点连接</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -h 192.168.100.34 info replication </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -a YSxeEr3e4ZdF -h 192.168.100.34 slaveof 10.128.100.34 6379 </span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># redis-cli -a YSxeEr3e4ZdF -h 192.168.100.34 info replication</span>
+</span></span></code></pre></div>
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          data-td-tp-persist="redis01" aria-controls="tabs-02-00" aria-selected="true">
+        redis01
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="redis02" aria-controls="tabs-02-01" aria-selected="false">
+        redis02
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-2-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        <p><strong>redis01登录 10.128.100.66 杀连接</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.100.66/ &amp;&amp; !/10.128.100.67/ &amp;&amp; !/192.168.100.66/{print &#34;client kill&#34;, $4}&#39;</span>| redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.100.66/ &amp;&amp; !/10.128.100.67/ &amp;&amp; !/192.168.100.66/{print &#34;client kill&#34;, $4}&#39;</span>
+</span></span></code></pre></div><p><strong>停同步</strong></p>
+<p>数据校验</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 info keyspace
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 10.128.100.66 info keyspace
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis_check.sh --source-ip 10.128.100.66 --source-pwd YSxeEr3e4ZdF <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --target-ip 192.168.100.66 --target-pwd YSxeEr3e4ZdF <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --compare-mode <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --qps <span style="color:#ae81ff">50000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>               --db-file redis01.db
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 client list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 slaveof no one 
+</span></span><span style="display:flex;"><span>redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 info replication
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;set a b\n del a&#34;</span> | redis-cli -a YSxeEr3e4ZdF -h 192.168.100.66 
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        <p><strong>redis02登录 10.128.99.34 杀连接</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># redis02登录 10.128.99.34 杀连接</span>
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.34 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.99.34/ &amp;&amp; !/192.168.100.34/{print &#34;client kill&#34;, $4}&#39;</span>|redis-cli -h 10.128.100.34
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.34 client list|awk -F <span style="color:#e6db74">&#34; |=&#34;</span>  <span style="color:#e6db74">&#39;!/127.0.0.1/ &amp;&amp; !/10.128.99.34/ &amp;&amp; !/192.168.100.34/{print &#34;client kill&#34;, $4}&#39;</span>
+</span></span></code></pre></div><p><strong>停同步</strong></p>
+<p>数据校验</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h 192.168.100.34 info keyspace
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.34 info keyspace
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis_check.sh --source-ip 10.128.100.34 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --target-ip 192.168.100.34 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --compare-mode <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --qps <span style="color:#ae81ff">50000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 --db-file redis02.db
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 停同步</span>
+</span></span><span style="display:flex;"><span>redis-cli -h 192.168.100.34  client list
+</span></span><span style="display:flex;"><span>redis-cli -h 192.168.100.34 slaveof no one 
+</span></span><span style="display:flex;"><span>redis-cli -h 192.168.100.34 info replication
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;set a b\n del a&#34;</span> | redis-cli -h 192.168.100.34 
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="收尾工作">收尾工作</h3>
+<ol>
+<li>
+<p>停止集群的同步工具</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/Data/redis7/redis7_6379/bin/redis-cli -a xb91830913039bhdk --cluster call 192.168.100.58:6379 dbsize
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl status redis_sync_cluster01
+</span></span></code></pre></div></li>
+<li>
+<p>从节点接入到master</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h 10.128.99.34 slaveof 10.128.100.34 <span style="color:#ae81ff">6379</span>
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.67 -a YSxeEr3e4ZdF slaveof 10.128.100.66 <span style="color:#ae81ff">6379</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h 10.128.99.34 config set save <span style="color:#e6db74">&#34;900 1 300 10 60 10000&#34;</span>
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.99.34 config rewirte
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h 10.128.100.67 -a YSxeEr3e4ZdF config set save <span style="color:#e6db74">&#34;900 1 300 10 60 10000&#34;</span>
+</span></span><span style="display:flex;"><span>redis-cli -h 10.128.100.67 -a YSxeEr3e4ZdF config rewirte
+</span></span></code></pre></div></li>
+</ol>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-a9beb947715b173b615f76eaebc63922">Redis8.4.0版本</h1>
+	<div class="lead">背景:Redis5.0.14 被爆出存在多种安全漏洞，为规避漏洞考虑升级为8.4.0</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-12-23" class="text-body-secondary">Tuesday, December 23, 2025</time>
+        
+	</div>
+	<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network create 8.4.0 --subnet 100.100.1.0/24
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>2..7<span style="color:#f92672">}</span>;<span style="color:#66d9ef">do</span> docker rm -fv cmbredis<span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>;<span style="color:#66d9ef">done</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>2..7<span style="color:#f92672">}</span>;<span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>docker run -d <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--name<span style="color:#f92672">=</span>cmbredis<span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--net<span style="color:#f92672">=</span>8.4.0 --ip<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;100.100.1.</span><span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e SALT_MASTER_IP_LIST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;192.168.0.1&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e RENAME_CMD_CONFIG<span style="color:#f92672">=</span>pcloud_config <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e RENAME_CMD_BGSAVE<span style="color:#f92672">=</span>bgsave <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e RENAME_CMD_DEBUG<span style="color:#f92672">=</span>debug <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e RENAME_CMD_SAVE<span style="color:#f92672">=</span>save <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e RENAME_CMD_SHUTDOWN<span style="color:#f92672">=</span>shutdown <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e RENAME_CMD_SLAVEOF<span style="color:#f92672">=</span>slaveof <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e RENAME_CMD_BGREWRITEAOF<span style="color:#f92672">=</span>bgrewriteaof <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-e REDIS_PASSWORD<span style="color:#f92672">=</span><span style="color:#ae81ff">123</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>cmb-redis:8.4.0-alpine313;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec -it cmbredis2  redis-cli --user default -a <span style="color:#ae81ff">123</span> --cluster create <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cluster-replicas <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>100.100.1.2:6379 100.100.1.3:6379 100.100.1.4:6379 100.100.1.5:6379 100.100.1.6:6379 100.100.1.7:6379
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

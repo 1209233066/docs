@@ -1,0 +1,1208 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/docs/code/python/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/docs/code/python/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>零露云</title>
+<meta name="description" content="python 文档中心">
+<meta property="og:url" content="https://zero-dew.netlify.app/docs/code/python/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="零露云">
+  <meta property="og:description" content="python 文档中心">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="零露云">
+  <meta itemprop="description" content="python 文档中心">
+  <meta itemprop="datePublished" content="2025-05-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-09T00:00:00+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="零露云">
+  <meta name="twitter:description" content="python 文档中心">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section td-blog">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5 pe-md-4" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/code/python/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title"></h1>
+<div class="lead">python 文档中心</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-af8116099787cbfdb086e33c1d1479f2"></a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1.1: <a href="#pg-6e010b4e4ced28817e2d4a2b8fdfa68c">包管理</a></li>
+
+
+    
+  
+    
+    
+	
+<li>1.2: <a href="#pg-1868e7f697cc3be5aa5025000f20291f">kafka</a></li>
+
+
+    
+  
+    
+    
+	
+<li>1.3: <a href="#pg-da72bccd00d9cae50240b122f9fef791">kubernetes</a></li>
+
+
+    
+  
+    
+    
+	
+<li>1.4: <a href="#pg-a954c348f509983e05c14c4953dddd9c">kopf</a></li>
+
+
+    
+  
+
+    </ul>
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-af8116099787cbfdb086e33c1d1479f2">1 - </h1>
+    <div class="lead">package 文档中心</div>
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-6e010b4e4ced28817e2d4a2b8fdfa68c">1.1 - 包管理</h1>
+    <div class="lead">库|python</div>
+	<h3 id="常用库">常用库</h3>
+<p>把源码包打包成 whl 文件,减少安装依赖</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip3 install --upgrade setuptools wheel
+</span></span><span style="display:flex;"><span>pip3 wheel . --wheel-dir<span style="color:#f92672">=</span>dist
+</span></span><span style="display:flex;"><span>ls dist/ibm_db-3.2.3-cp36-cp36m-linux_x86_64.whl
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>库名</th>
+          <th>来源</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>os</td>
+          <td>标准库</td>
+          <td>标准库提供与操作系统进行交互的功能，例如文件和目录操作</td>
+      </tr>
+      <tr>
+          <td>sys</td>
+          <td>标准库</td>
+          <td>标准库提供访问 Python 解释器的能力，处理命令行参数和环境设置</td>
+      </tr>
+      <tr>
+          <td>io</td>
+          <td>标准库</td>
+          <td>处理流式I/O操作</td>
+      </tr>
+      <tr>
+          <td>subprocess</td>
+          <td>标准库</td>
+          <td>用于执行子进程，允许调用外部程序和命令(Shell)</td>
+      </tr>
+      <tr>
+          <td>shutil</td>
+          <td>标准库</td>
+          <td>标准库文件和目录的高级操作，例如复制、移动和删除</td>
+      </tr>
+      <tr>
+          <td>time</td>
+          <td>标准库</td>
+          <td>提供与时间相关的功能，例如获取当前时间和暂停程序执行</td>
+      </tr>
+      <tr>
+          <td>datetime</td>
+          <td>标准库</td>
+          <td>提供处理日期和时间的类和方法</td>
+      </tr>
+      <tr>
+          <td>random</td>
+          <td>标准库</td>
+          <td>生成随机数和随机选择元素的工具</td>
+      </tr>
+      <tr>
+          <td>json</td>
+          <td>标准库</td>
+          <td>用于处理 JSON 数据，提供解析和生成 JSON 的方法</td>
+      </tr>
+      <tr>
+          <td>re</td>
+          <td>标准库</td>
+          <td>提供正则表达式支持，用于字符串模式匹配和处理</td>
+      </tr>
+      <tr>
+          <td>platform</td>
+          <td>标准库</td>
+          <td>获取操作系统和平台信息，例如版本号、架构等</td>
+      </tr>
+      <tr>
+          <td>fcntl</td>
+          <td>标准库</td>
+          <td>文件控制（Unix系统文件描述符操作）</td>
+      </tr>
+      <tr>
+          <td>optparse</td>
+          <td>标准库</td>
+          <td>命令行选项解析（已弃用，推荐使用<code>argparse</code>）</td>
+      </tr>
+      <tr>
+          <td>glob</td>
+          <td><code>optparse</code>标准库</td>
+          <td>文件名模式匹配工具，用于查找符合特定模式的文件</td>
+      </tr>
+      <tr>
+          <td>ast</td>
+          <td>标准库</td>
+          <td>抽象语法树操作</td>
+      </tr>
+      <tr>
+          <td>socket</td>
+          <td>标准库</td>
+          <td>网络套接字通信</td>
+      </tr>
+      <tr>
+          <td>math</td>
+          <td>标准库</td>
+          <td>数学运算函数</td>
+      </tr>
+      <tr>
+          <td>decimal</td>
+          <td>标准库</td>
+          <td>十进制高精度计算（标准库中的<code>Decimal</code>类）</td>
+      </tr>
+      <tr>
+          <td>base64</td>
+          <td>标准库</td>
+          <td>Base64编解码</td>
+      </tr>
+      <tr>
+          <td>random</td>
+          <td>标准库</td>
+          <td>生成伪随机数</td>
+      </tr>
+      <tr>
+          <td>traceback</td>
+          <td>标准库</td>
+          <td>异常堆栈跟踪处理</td>
+      </tr>
+      <tr>
+          <td>urlib</td>
+          <td>标准库</td>
+          <td>处理 URL 请求和响应的工具，用于网络操作</td>
+      </tr>
+      <tr>
+          <td>smtplib</td>
+          <td>标准库</td>
+          <td>与SMTP服务器交互，用于发送邮件</td>
+      </tr>
+      <tr>
+          <td>requests</td>
+          <td>第三方</td>
+          <td>对http 发起请求</td>
+      </tr>
+      <tr>
+          <td>psutil</td>
+          <td>第三方</td>
+          <td>获取操作系统级别 cpu / mem /disk 等基础信息</td>
+      </tr>
+      <tr>
+          <td>Paramiko</td>
+          <td>第三方</td>
+          <td>库基于 SSH 的客户端库，用于远程服务器自动化控制</td>
+      </tr>
+      <tr>
+          <td>Ansible</td>
+          <td>第三方</td>
+          <td>IT 自动化工具，用于配置管理、应用部署和任务白动化</td>
+      </tr>
+      <tr>
+          <td>Crontab</td>
+          <td>第三方</td>
+          <td>提供与 Linux cron 服务的交互，方便创建和管理定时任务</td>
+      </tr>
+      <tr>
+          <td>Docker</td>
+          <td>第三方</td>
+          <td>管理 Docker 容器和镜像的 API 库，支持创建、管理和监控容器</td>
+      </tr>
+      <tr>
+          <td>Kubernetes</td>
+          <td>第三方</td>
+          <td>与K8s API 进行交互，管理K8s集群和资源</td>
+      </tr>
+      <tr>
+          <td>pyg2plot</td>
+          <td>第三方</td>
+          <td>数据可视化</td>
+      </tr>
+      <tr>
+          <td>redis</td>
+          <td>第三方</td>
+          <td>redis数据库驱动</td>
+      </tr>
+      <tr>
+          <td>mysql.connector</td>
+          <td>第三方</td>
+          <td>MySQL官方数据库连接</td>
+      </tr>
+      <tr>
+          <td>pymsql</td>
+          <td>第三方</td>
+          <td>纯Python实现的MySQL客户端</td>
+      </tr>
+      <tr>
+          <td>pymongo</td>
+          <td>第三方</td>
+          <td>MongoDB数据库驱动</td>
+      </tr>
+      <tr>
+          <td>bson</td>
+          <td></td>
+          <td>MongoDB BSON格式处理（Binary JSON）</td>
+      </tr>
+      <tr>
+          <td>oracledb</td>
+          <td>第三方</td>
+          <td>Oracle数据库连接（原cx_Oracle）</td>
+      </tr>
+      <tr>
+          <td>pyodbc</td>
+          <td>第三方</td>
+          <td>ODBC数据库连接</td>
+      </tr>
+      <tr>
+          <td>kazoo</td>
+          <td>第三方</td>
+          <td>zookeeper</td>
+      </tr>
+      <tr>
+          <td>kafka-python</td>
+          <td>第三方</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>rabbitMQ</td>
+          <td>第三方</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>argparse</td>
+          <td>第三方</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>typer</td>
+          <td>第三方</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>uvicorn</td>
+          <td>第三方</td>
+          <td>异步 Web 服务</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1868e7f697cc3be5aa5025000f20291f">1.2 - kafka</h1>
+    <div class="lead">库|python</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    <p>kafka版本: <code>0.9+</code></p>
+<p>python版本：<code>2.7+</code></p>
+<p>安装：<code>pip install kafka-python==2.2.15</code></p>
+<p>文档：<code>https://kafka-python.readthedocs.io/en/master/apidoc/KafkaProducer.html</code></p>
+
+
+</div>
+
+
+  
+  
+  
+
+  
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          aria-controls="tabs-01-00" aria-selected="false">
+        <strong>API</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="**生产者**" aria-controls="tabs-01-01" aria-selected="true">
+        <strong>生产者</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="**消费者**" aria-controls="tabs-01-02" aria-selected="false">
+        <strong>消费者</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-03" role="tab"
+          data-td-tp-persist="**管理kafka**" aria-controls="tabs-01-03" aria-selected="false">
+        <strong>管理kafka</strong>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <hr>
+<p><font color=red><strong>bootstrap_servers</strong>  </font></p>
+<blockquote>
+<p>数据类型 <code>str|list</code></p>
+<p>Kafka 集 群 的 连 接 字 符 串,至少填写kafka 集群中的一个节点。</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># producer = KafkaProducer(bootstrap_servers=[&#39;192.168.0.151:9092&#39;,&#39;192.168.0.152:9092&#39;,&#39;192.168.0.153:9092&#39;])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()  <span style="color:#75715e"># 强制把缓冲区消息发出去</span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()  <span style="color:#75715e"># 优雅关闭</span>
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>acks</strong></font></p>
+<blockquote>
+<p>指定了必须要有多少个副本收到消息，才会向生产者返回写入成功</p>
+<ul>
+<li><code>acks=0</code>	生产者不等待kafka server 确认写入成功</li>
+<li><code>acks=1</code>	生产者等待leader副本写入成功,生产者就会收到一个来自kafka服务器的成功响应</li>
+<li><code>acks='all' 或 acks=-1</code> 生产者等待所有副本写入成功，生产者才会收到一个来自kafka服务器的成功响应</li>
+</ul>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    acks<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>retries | retry_backoff_ms</strong>  </font></p>
+<blockquote>
+<p>生产者向broker 发送消息时，broker 可以返回一个成功响应码或者一个错误响应码。错误响应码可以 分为两种，一种是在重试之后可以解决的，还有一种是无法通过重试解决的。例如，如果broker 返回的是 LEADER_NOT_AVAILABLE 错误，生产者可以尝试重新发送消息。也许在这个时候一个新的首领被选举出来了，那么这次发送就会成功。</p>
+<p><code>retries </code> 定义最大重试次数</p>
+<p><code>retry_backoff_ms </code> 定义重试的间隔，默认值100</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    acks<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    retry_backoff_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>enable_idempotence</strong></font></p>
+<blockquote>
+<p>开启该功能需要设置 <code>acks=-1</code>或 <code>acks='all'</code></p>
+<p>当开启<code>acks</code> 和 <code>retries </code> 后可能造成生产者重复发送数据到kafka，可以通过开启幂等性进行优化。默认为false</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    acks<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    retry_backoff_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>    enable_idempotence<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>max_in_flight_requests_per_connection</strong>  </font></p>
+<blockquote>
+<p>【前提】</p>
+<ul>
+<li><code>acks='all'</code> 或 <code>acks=-1</code></li>
+<li><code>reties=3 不能小于1</code></li>
+</ul>
+<p>生产者在收到broker响应之前可以继续发送多少条消息，但是在开启<code>reties</code> 功能后需要将<code>max_in_flight_requests_per_connection=1</code> 设置为1，从而保证消息的顺序。默认值5（此功能在于提高吞吐量）</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    acks<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    retry_backoff_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>    enable_idempotence<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    max_in_flight_requests_per_connection<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>compression_type</strong>  </font></p>
+<blockquote>
+<p>指定了消息被发送给 broker 之前使用哪一种压缩算法进行压缩，有效的压缩算法包括‘<em>gzip</em>’, ‘<em>snappy</em>’, ‘<em>lz4</em>’, ‘<em>zstd</em>’ or <em>None</em>。默认值为None</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    acks<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    retry_backoff_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>    enable_idempotence<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    max_in_flight_requests_per_connection<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    compression_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gzip&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>batch_size | linger_ms</strong>  </font></p>
+<blockquote>
+<p>当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里。KafkaProducer 会在批次填满或 linger_ms 达到上限时把批次发送出去</p>
+<p><code>batch_size </code>参数指定了一个批次可以使用的内存大小，按照字节数计算。当批次被填满，批次里的所有消息会被一次性发送出去。</p>
+<p><code>linger_ms</code> 指定了生产者发送批次的时间间隔</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    acks<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    retry_backoff_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>    enable_idempotence<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    max_in_flight_requests_per_connection<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    compression_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gzip&#39;</span>,
+</span></span><span style="display:flex;"><span>    batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">10240</span>,
+</span></span><span style="display:flex;"><span>    linger_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>key_serializer|value_serializer</strong>  </font></p>
+<blockquote>
+<p>kafka只接受字节数据，生产者执行序列化，消费者对应反序列化</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    acks<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    retry_backoff_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>    enable_idempotence<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    max_in_flight_requests_per_connection<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    compression_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gzip&#39;</span>,
+</span></span><span style="display:flex;"><span>    batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">10240</span>,
+</span></span><span style="display:flex;"><span>    linger_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>,
+</span></span><span style="display:flex;"><span>    key_serializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> k: json<span style="color:#f92672">.</span>dumps(k)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#66d9ef">if</span> k <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    value_serializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> v: json<span style="color:#f92672">.</span>dumps(v)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#66d9ef">if</span> v <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>    producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;foobar&#39;</span>, <span style="color:#e6db74">&#39;some_message_bytes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>max_block_ms</strong>  </font></p>
+<blockquote>
+<p>该参数用来设置生产者内存缓冲区的大小，生产者用它缓冲要发送到服务器的消息。如果应用程序发送消息的速度超过发送到服务器的速度，会导致生产者空间不足。这个时候，send() 方法调用要么被阻塞，要么抛出异常。max.block.ms表示在抛出异常之前可以阻塞一段时间 默认60000</p>
+</blockquote>
+<p><font color=red><strong>client_id</strong>  </font></p>
+<blockquote>
+<p>可以是任意的字符串，服务器会用它来识别消息的来源</p>
+</blockquote>
+<p><font color=red><strong>request_timeout_ms</strong>  </font></p>
+<blockquote>
+<p>生产者在发送数据时等待服务器返回响应的时间 ，默认 30000</p>
+</blockquote>
+<p><font color=red><strong>max_request_size</strong>  </font></p>
+<blockquote>
+<p>能发送的单个消息的最大值。小于等于broker中 <code>message.max.bytes</code> 配置，否则可能被broker拒绝</p>
+</blockquote>
+<p><font color=red><strong>max_request_size | receive_buffer_bytes | send_buffer_bytes</strong>  </font></p>
+<blockquote>
+<p>TCP socket 接收和发送数据包的缓冲区大小。</p>
+<p>如果它们被设为 -1，就使用操作系统的默认值。如果生产者或消费者与 broker 处于不同的数据中心，那么可以适当增大这些值，因为跨数据中心的网络一般都有比较高的延迟和比较低的带宽。</p>
+</blockquote>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <hr>
+<p><font color=red><strong>bootstrap_servers</strong>  </font></p>
+<blockquote>
+<p>数据类型 <code>str|list</code></p>
+<p>Kafka 集 群 的 连 接 字 符 串,至少填写kafka 集群中的一个节点。</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>counsumer <span style="color:#f92672">=</span> KafkaConsumer(bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092,192.168.0.152:9092,192.168.0.153:9092&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># producer = KafkaConsumer(bootstrap_servers=[&#39;192.168.0.151:9092&#39;,&#39;192.168.0.152:9092&#39;,&#39;192.168.0.153:9092&#39;])</span>
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>client_id</strong></font></p>
+<blockquote>
+<p>数据类型 <code>str</code></p>
+<p>可以是任意字符串，broker 用它来标识从客户端发送过来的消息，通常被用在日志、度量指标和配额里。</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;consumer-1&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>group_id</strong></font></p>
+<blockquote>
+<p>数据类型 <code>str</code></p>
+<p>标识消费者组名称</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;consumer-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>enable_auto_commit | auto_commit_interval_ms</strong></font></p>
+<blockquote>
+<p>enable_auto_commit 数据类型 <code>bool</code></p>
+<p>指定了消费者是否自动提交偏移量，默认值是 true。为了尽量避免出现重复数据和数据丢失，可以把它设为 false，由自己控制何时提交偏移量。如果把它设为 true，还可以通过配置 <code>auto_commit_interval_ms</code>	属性来控制提交的频率。</p>
+<hr>
+<p><code>auto_commit_interval_ms</code> 自动提交的间隔 默认值5000（5s）</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;consumer-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>auto_offset_reset</strong></font></p>
+<blockquote>
+<p>可选类型 <code>'earliest'</code>、<code>  'latest'</code></p>
+<p>指定了消费者在读取一个没有偏移量的分区或者偏移量无效的情况下（因消费者长时间失效，包含偏移量的记录已经过时并被删除）该作何处理。它的默认值是 latest</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;client-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>key_deserializer | value_deserializer</strong></font></p>
+<blockquote>
+<p>Any callable that takes a raw message key and returns a deserialized key.</p>
+<p>key的反序列化，与生产者中<code>key_serializer</code> 对应</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;client-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>,
+</span></span><span style="display:flex;"><span>    key_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    value_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red> <strong>fetch_min_bytes | fetch_max_wait_ms</strong></font>  目的是在性能和延迟之间找到一个均衡</p>
+<blockquote>
+<p><code>fetch_min_bytes </code>broker 在收到消费者的数据请求时，如果可用的数据量小于 fetch_min_bytes 指定的大小，那么它会等到有足够的可用数据时才把它返回给消费者。该参数为了减少网络io</p>
+<hr>
+<p><code>fetch_max_wait_ms</code>  指定broker最大等待多少ms将响应数据发送给consumer，默认是 500ms。例如：fetch_min_bytes被设为 1MB，fetch_max_wait_ms被设为 100ms, 那么 Kafka 在收到消费者的请求后，要么返回 1MB 数据，要么在 100ms 后返回所有可用的数据，就看哪个条件先得到满足。</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;client-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>,
+</span></span><span style="display:flex;"><span>    key_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    value_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    fetch_min_bytes<span style="color:#f92672">=</span><span style="color:#ae81ff">1024000</span>,
+</span></span><span style="display:flex;"><span>    fetch_max_wait_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>session_timeout_ms | heartbeat_interval_ms</strong></font> 用于检测消费组中消费者是否断开，是否需要执行在均衡</p>
+<blockquote>
+<p><code>session_timeout_ms </code>指定了消费者在被认为死亡之前可以与服务器断开连接的时间，默认是 3s。如果消费者没有<code>session_timeout_ms</code> 指定的时间内发送心跳给群组协调器，就被认为已经死亡，协调器就会触发再均衡，把它的分区分配给群组里的其他消费者。</p>
+<hr>
+<p><code>heartbeat_interval_ms</code>  指定了 poll() 方法向协调器发送心跳的频率</p>
+<p>,一般需要同时修改这两个属性通常 <code>heartbeat_interval_ms</code>  = 1/3 * <code>session_timeout_ms</code></p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;client-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>,
+</span></span><span style="display:flex;"><span>    key_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    value_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    fetch_min_bytes<span style="color:#f92672">=</span><span style="color:#ae81ff">1024000</span>,
+</span></span><span style="display:flex;"><span>    fetch_max_wait_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    session_timeout_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    heartbeat_interval_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>max_poll_records</strong></font></p>
+<blockquote>
+<p>属性用于控制单次调用 call() 方法能够返回的记录数量，可以帮你控制在轮询里需要处理的数据量。默认500</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;client-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>,
+</span></span><span style="display:flex;"><span>    key_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    value_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    fetch_min_bytes<span style="color:#f92672">=</span><span style="color:#ae81ff">1024000</span>,
+</span></span><span style="display:flex;"><span>    fetch_max_wait_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    session_timeout_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    heartbeat_interval_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    max_poll_records<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>partition_assignment_strategy</strong></font></p>
+<blockquote>
+<p>根据给定的消费者和主题，决定哪些分区应该被分配给哪个消费者</p>
+<p>Range</p>
+<p>该策略会把主题的若干个连续的分区分配给消费者。假设消费者 C1 和消费者 C2 同时</p>
+<p>订阅了主题 T1 和主题 T2，并且每个主题有 3 个分区。那么消费者 C1 有可能分配到这</p>
+<p>两个主题的分区 0 和分区 1，而消费者 C2 分配到这两个主题的分区 2。因为每个主题</p>
+<p>拥有奇数个分区，而分配是在主题内独立完成的，第一个消费者最后分配到比第二个消</p>
+<p>费者更多的分区。只要使用了 Range 策略，而且分区数量无法被消费者数量整除，就会</p>
+<p>出现这种情况。</p>
+<p>RoundRobin</p>
+<p>该策略把主题的所有分区逐个分配给消费者。如果使用 RoundRobin 策略来给消费者 C1</p>
+<p>和消费者 C2 分配分区，那么消费者 C1 将分到主题 T1 的分区 0 和分区 2 以及主题 T2</p>
+<p>的分区 1，消费者 C2 将分配到主题 T1 的分区 1 以及主题 T2 的分区 0 和分区 2。一般</p>
+<p>来说，如果所有消费者都订阅相同的主题（这种情况很常见），RoundRobin 策略会给所</p>
+<p>有消费者分配相同数量的分区（或最多就差一个分区）。</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka.coordinator.assignors.roundrobin <span style="color:#f92672">import</span> RoundRobinPartitionAssignor 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka.coordinator.assignors.range <span style="color:#f92672">import</span> RangePartitionAssignor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;client-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>,
+</span></span><span style="display:flex;"><span>    key_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    value_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    fetch_min_bytes<span style="color:#f92672">=</span><span style="color:#ae81ff">1024000</span>,
+</span></span><span style="display:flex;"><span>    fetch_max_wait_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    session_timeout_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    heartbeat_interval_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    max_poll_records<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>,
+</span></span><span style="display:flex;"><span>    partition_assignment_strategy<span style="color:#f92672">=</span>[RoundRobinPartitionAssignor,RangePartitionAssignor]
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>receive.buffer.bytes | send.buffer.bytes</strong></font></p>
+<blockquote>
+<p>socket 在读写数据时用到的 TCP 缓冲区也可以设置大小。如果它们被设为 -1，就使用操</p>
+<p>作系统的默认值。如果生产者或消费者与 broker 处于不同的数据中心内，可以适当增大这</p>
+<p>些值，因为跨数据中心的网络一般都有比较高的延迟和比较低的带宽。</p>
+</blockquote>
+<p><em>示例：</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka.coordinator.assignors.roundrobin <span style="color:#f92672">import</span> RoundRobinPartitionAssignor 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka.coordinator.assignors.range <span style="color:#f92672">import</span> RangePartitionAssignor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(
+</span></span><span style="display:flex;"><span>    bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>,
+</span></span><span style="display:flex;"><span>    client_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;client-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;group-1&#39;</span>,
+</span></span><span style="display:flex;"><span>    enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>,
+</span></span><span style="display:flex;"><span>    key_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    value_deserializer<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> m: json<span style="color:#f92672">.</span>loads(m<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)) <span style="color:#66d9ef">if</span> m <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    fetch_min_bytes<span style="color:#f92672">=</span><span style="color:#ae81ff">1024000</span>,
+</span></span><span style="display:flex;"><span>    fetch_max_wait_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    session_timeout_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">30000</span>,
+</span></span><span style="display:flex;"><span>    heartbeat_interval_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">2000</span>,
+</span></span><span style="display:flex;"><span>    max_poll_records<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>,
+</span></span><span style="display:flex;"><span>    partition_assignment_strategy<span style="color:#f92672">=</span>[RoundRobinPartitionAssignor,RangePartitionAssignor],
+</span></span><span style="display:flex;"><span>    receive_buffer_bytes<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    send_buffer_bytes<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 订阅topic</span>
+</span></span><span style="display:flex;"><span>consumer<span style="color:#f92672">.</span>subscribe([<span style="color:#e6db74">&#39;test&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 拉取topic数据</span>
+</span></span><span style="display:flex;"><span>        msg<span style="color:#f92672">=</span>consumer<span style="color:#f92672">.</span>poll(timeout_ms<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>,
+</span></span><span style="display:flex;"><span>                    max_records<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> msg<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> m <span style="color:#f92672">in</span> v:
+</span></span><span style="display:flex;"><span>                print(m<span style="color:#f92672">.</span>value)
+</span></span><span style="display:flex;"><span>        consumer<span style="color:#f92672">.</span>commit_async()        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># time.sleep(10)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">KeyboardInterrupt</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>    consumer<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><hr>
+<p><font color=red><strong>max_partition_fetch_bytes</strong></font></p>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-03" role="tabpanel" aria-labelled-by="tabs-01-03-tab" tabindex="1">
+        <hr>
+<p><font color=red><strong>create_topics</strong></font></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaAdminClient
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka.admin <span style="color:#f92672">import</span> NewTopic
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>admin_client <span style="color:#f92672">=</span> KafkaAdminClient(bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 kubeevents 和 kubeaudit 多个topic</span>
+</span></span><span style="display:flex;"><span>admin_client<span style="color:#f92672">.</span>create_topics([
+</span></span><span style="display:flex;"><span>    NewTopic(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubeevents&#39;</span>, num_partitions<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, replication_factor<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>),
+</span></span><span style="display:flex;"><span>    NewTopic(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubeaudit&#39;</span>, num_partitions<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, replication_factor<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>),
+</span></span><span style="display:flex;"><span>    ])
+</span></span></code></pre></div><p><em>创建topic时手动指定分区所在的broker,<code>replica_assignments</code></em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaAdminClient
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka.admin <span style="color:#f92672">import</span> NewTopic
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka.errors <span style="color:#f92672">import</span> TopicAlreadyExistsError
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>admin_client <span style="color:#f92672">=</span> KafkaAdminClient(bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.151:9092&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># {0: [1, 2, 0]} 0表示partition 0 ,[1,2,0]对应brokerid 其中列表中第一个id为主分片</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    admin_client<span style="color:#f92672">.</span>create_topics([
+</span></span><span style="display:flex;"><span>        NewTopic(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubeevents&#39;</span>, num_partitions<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, replication_factor<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>),
+</span></span><span style="display:flex;"><span>        NewTopic(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubeaudit&#39;</span>, num_partitions<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>, replication_factor<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,replica_assignments<span style="color:#f92672">=</span>{<span style="color:#ae81ff">0</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>], <span style="color:#ae81ff">1</span>: [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], <span style="color:#ae81ff">2</span>: [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]}),
+</span></span><span style="display:flex;"><span>        ])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> TopicAlreadyExistsError:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-da72bccd00d9cae50240b122f9fef791">1.3 - kubernetes</h1>
+    <div class="lead">库|python</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    <p>kubernetes版本: <code>1.23.17</code></p>
+<p>python版本：<code>3.6+</code></p>
+<p>安装：<code>pip install kubernetes==23.6.0 </code></p>
+<p>文档：<code>https://github.com/kubernetes-client/python</code></p>
+
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kubernetes <span style="color:#f92672">import</span> client, config,watch
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configs can be set in Configuration class directly or using helper utility</span>
+</span></span><span style="display:flex;"><span>config<span style="color:#f92672">.</span>load_kube_config(config_file<span style="color:#f92672">=</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;C:\Users\pc\Desktop\kubeconfing&#39;</span>)
+</span></span><span style="display:flex;"><span>w <span style="color:#f92672">=</span> watch<span style="color:#f92672">.</span>Watch()
+</span></span><span style="display:flex;"><span>v1 <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>CoreV1Api()
+</span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> w<span style="color:#f92672">.</span>stream(v1<span style="color:#f92672">.</span>list_namespaced_event, <span style="color:#e6db74">&#39;kube-system&#39;</span>, watch<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> ret:
+</span></span><span style="display:flex;"><span>    print(item[<span style="color:#e6db74">&#39;object&#39;</span>]<span style="color:#f92672">.</span>message)
+</span></span></code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a954c348f509983e05c14c4953dddd9c">1.4 - kopf</h1>
+    <div class="lead">kopf是一个kubernetes的operator框架，用于开发自定义的controller。</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    <p>kubernetes版本: <code>1.23.17</code></p>
+<p>python版本：<code>3.6+</code></p>
+<p>安装：<code>pip install kubernetes==23.6.0 </code></p>
+<p>文档：<code>https://github.com/kubernetes-client/python</code>  <code>https://kopf.readthedocs.io/en/stable/index.html</code></p>
+<p>​</p>
+
+
+</div>
+
+
+</div>
+
+
+
+    
+	
+  
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

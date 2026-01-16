@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql安装 on 零露云</title>
+    <link>https://zero-dew.netlify.app/tags/mysql%E5%AE%89%E8%A3%85/</link>
+    <description>Recent content in Mysql安装 on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Mon, 28 Jul 2025 10:57:00 +0800</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/tags/mysql%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mgr</title>
+      <link>https://zero-dew.netlify.app/mysql/mgr.html</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/mysql/mgr.html</guid>
+      <description>&lt;p&gt;MySQL Group Replication（MGR）是 MySQL 官方提供的高可用、高一致性的分布式数据库解决方案，基于原生 MySQL 实现多主/单主架构的同步复制。其核心原理是通过 Paxos 协议变种（Group Communication System, GCS） 实现节点间的数据强一致性，MGR和传统主从复制的本质区别——不是简单的异步复制改进，而是基于paxos的同步复制。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;使用 &lt;strong&gt;Paxos 分布式共识算法&lt;/strong&gt;（具体实现为 &lt;code&gt;XCom&lt;/code&gt;）确保集群内节点状态一致。&lt;/li&gt;&#xA;&lt;li&gt;所有事务需在组内&lt;strong&gt;多数节点（N/2+1）&lt;/strong&gt; 确认后才提交（避免脑裂）。&lt;/li&gt;&#xA;&lt;li&gt;通信基于 &lt;strong&gt;MySQL 插件 &lt;code&gt;group_replication&lt;/code&gt;&lt;/strong&gt; 实现。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre class=&#34;mermaid&#34;&gt;graph LR&#xA;A[客户端发起事务] --&amp;gt; B[本地节点执行]&#xA;B --&amp;gt; C[生成Binlog Event]&#xA;C --&amp;gt; D[广播到组内所有节点]&#xA;D --&amp;gt; E[多数节点验证冲突]&#xA;E --&amp;gt; F{多数节点通过?}&#xA;F --&amp;gt;|Yes| G[提交事务并通知组]&#xA;F --&amp;gt;|No| H[回滚事务]&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

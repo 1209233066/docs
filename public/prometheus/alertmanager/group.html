@@ -1,0 +1,1491 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>告警收敛 | 零露云</title>
+<meta name="description" content="告警收敛,减少告警噪音">
+<meta property="og:url" content="https://zero-dew.netlify.app/prometheus/alertmanager/group.html">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="告警收敛">
+  <meta property="og:description" content="告警收敛,减少告警噪音">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2025-06-26T15:04:12+08:00">
+    <meta property="article:modified_time" content="2025-06-26T15:04:12+08:00">
+    <meta property="article:tag" content="Alertmanager">
+
+  <meta itemprop="name" content="告警收敛">
+  <meta itemprop="description" content="告警收敛,减少告警噪音">
+  <meta itemprop="datePublished" content="2025-06-26T15:04:12+08:00">
+  <meta itemprop="dateModified" content="2025-06-26T15:04:12+08:00">
+  <meta itemprop="wordCount" content="282">
+  <meta itemprop="keywords" content="Alertmanager">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="告警收敛">
+  <meta name="twitter:description" content="告警收敛,减少告警噪音">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page td-blog">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+  <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">文档中心</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docshugo-li">
+  <input type="checkbox" id="m-docshugo-check"/>
+  <label for="m-docshugo-check"><a href="/docs/hugo/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docshugo"><i class="fa-solid fa-screwdriver-wrench"></i><span class="">建站</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugobuild-sitehtml-li">
+  <input type="checkbox" id="m-hugobuild-sitehtml-check"/>
+  <label for="m-hugobuild-sitehtml-check"><a href="/hugo/build-site.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-hugobuild-sitehtml"><span class="">hugo 工具</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugoshortcodehtml-li">
+  <input type="checkbox" id="m-hugoshortcodehtml-check"/>
+  <label for="m-hugoshortcodehtml-check"><a href="/hugo/shortcode.html" title="shortcode" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-hugoshortcodehtml"><span class="">hugo短代码</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugoclock-dashboardhtml-li">
+  <input type="checkbox" id="m-hugoclock-dashboardhtml-check"/>
+  <label for="m-hugoclock-dashboardhtml-check"><a href="/hugo/clock-dashboard.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-hugoclock-dashboardhtml"><span class="">时钟和天气</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugoeasyimghtml-li">
+  <input type="checkbox" id="m-hugoeasyimghtml-check"/>
+  <label for="m-hugoeasyimghtml-check"><a href="/hugo/easyimg.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-hugoeasyimghtml"><span class="">图床工具</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docskubernetes-li">
+  <input type="checkbox" id="m-docskubernetes-check"/>
+  <label for="m-docskubernetes-check"><a href="/docs/kubernetes/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docskubernetes"><i class="fa-solid fa-ship"></i><span class="">kubernetes</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-kuberneteskubernetes_setup-li">
+  <input type="checkbox" id="m-kuberneteskubernetes_setup-check"/>
+  <label for="m-kuberneteskubernetes_setup-check"><a href="/kubernetes/kubernetes_setup/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-kuberneteskubernetes_setup"><span class="">环境搭建</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kuberneteskubernetes_setupquitstarthtml-li">
+  <input type="checkbox" id="m-kuberneteskubernetes_setupquitstarthtml-check"/>
+  <label for="m-kuberneteskubernetes_setupquitstarthtml-check"><a href="/kubernetes/kubernetes_setup/quitstart.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kuberneteskubernetes_setupquitstarthtml"><span class="">kubeadm环境搭建</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kuberneteskubernetes_setupkubeazhtml-li">
+  <input type="checkbox" id="m-kuberneteskubernetes_setupkubeazhtml-check"/>
+  <label for="m-kuberneteskubernetes_setupkubeazhtml-check"><a href="/kubernetes/kubernetes_setup/kubeaz.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kuberneteskubernetes_setupkubeazhtml"><span class="">kubeaz环境搭建</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kuberneteskubernetes_setupkubeadmhtml-li">
+  <input type="checkbox" id="m-kuberneteskubernetes_setupkubeadmhtml-check"/>
+  <label for="m-kuberneteskubernetes_setupkubeadmhtml-check"><a href="/kubernetes/kubernetes_setup/kubeadm.html" title="kubeadm工具" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kuberneteskubernetes_setupkubeadmhtml"><span class="">kubeadm tools</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-kubernetesetcd-li">
+  <input type="checkbox" id="m-kubernetesetcd-check"/>
+  <label for="m-kubernetesetcd-check"><a href="/kubernetes/etcd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-kubernetesetcd"><span class="">etcd</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesetcdhtml-li">
+  <input type="checkbox" id="m-kubernetesetcdhtml-check"/>
+  <label for="m-kubernetesetcdhtml-check"><a href="/kubernetes/etcd.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesetcdhtml"><span class="">etcd</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-kubernetescoredns-li">
+  <input type="checkbox" id="m-kubernetescoredns-check"/>
+  <label for="m-kubernetescoredns-check"><a href="/kubernetes/coredns/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-kubernetescoredns"><span class="">coredns</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetescorednshtml-li">
+  <input type="checkbox" id="m-kubernetescorednshtml-check"/>
+  <label for="m-kubernetescorednshtml-check"><a href="/kubernetes/coredns.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetescorednshtml"><span class="">快速开始</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetespluginhtml-li">
+  <input type="checkbox" id="m-kubernetespluginhtml-check"/>
+  <label for="m-kubernetespluginhtml-check"><a href="/kubernetes/plugin.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetespluginhtml"><span class="">基础插件</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesdemohtml-li">
+  <input type="checkbox" id="m-kubernetesdemohtml-check"/>
+  <label for="m-kubernetesdemohtml-check"><a href="/kubernetes/demo.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesdemohtml"><span class="">示例</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-kubernetesserviceless-li">
+  <input type="checkbox" id="m-kubernetesserviceless-check"/>
+  <label for="m-kubernetesserviceless-check"><a href="/kubernetes/serviceless/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-kubernetesserviceless"><span class="">serviceless</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesservicelessappolohtml-li">
+  <input type="checkbox" id="m-kubernetesservicelessappolohtml-check"/>
+  <label for="m-kubernetesservicelessappolohtml-check"><a href="/kubernetes/serviceless/appolo.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesservicelessappolohtml"><span class="">appolo</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesservicelessnacoshtml-li">
+  <input type="checkbox" id="m-kubernetesservicelessnacoshtml-check"/>
+  <label for="m-kubernetesservicelessnacoshtml-check"><a href="/kubernetes/serviceless/nacos.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesservicelessnacoshtml"><span class="">nacos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesservicelessdubbohtml-li">
+  <input type="checkbox" id="m-kubernetesservicelessdubbohtml-check"/>
+  <label for="m-kubernetesservicelessdubbohtml-check"><a href="/kubernetes/serviceless/dubbo.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesservicelessdubbohtml"><span class="">dubbo</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesingresshtml-li">
+  <input type="checkbox" id="m-kubernetesingresshtml-check"/>
+  <label for="m-kubernetesingresshtml-check"><a href="/kubernetes/ingress.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesingresshtml"><span class="">Ingress</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kuberneteshpahtml-li">
+  <input type="checkbox" id="m-kuberneteshpahtml-check"/>
+  <label for="m-kuberneteshpahtml-check"><a href="/kubernetes/hpa.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kuberneteshpahtml"><span class="">Hpa</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesrbachtml-li">
+  <input type="checkbox" id="m-kubernetesrbachtml-check"/>
+  <label for="m-kubernetesrbachtml-check"><a href="/kubernetes/rbac.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesrbachtml"><span class="">RBAC实践</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetessriovhtml-li">
+  <input type="checkbox" id="m-kubernetessriovhtml-check"/>
+  <label for="m-kubernetessriovhtml-check"><a href="/kubernetes/sriov.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetessriovhtml"><span class="">sriov</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesdashboardhtml-li">
+  <input type="checkbox" id="m-kubernetesdashboardhtml-check"/>
+  <label for="m-kubernetesdashboardhtml-check"><a href="/kubernetes/dashboard.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesdashboardhtml"><span class="">dashboard</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsobservability-li">
+  <input type="checkbox" id="m-docsobservability-check" checked/>
+  <label for="m-docsobservability-check"><a href="/docs/observability/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsobservability"><i class="fa-solid fa-bell"></i><span class="">observability</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-observabilitylogs-li">
+  <input type="checkbox" id="m-observabilitylogs-check"/>
+  <label for="m-observabilitylogs-check"><a href="/Observability/logs/" title="ELK" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-observabilitylogs"><span class="">ELK stack</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkkibanahtml-li">
+  <input type="checkbox" id="m-elkkibanahtml-check"/>
+  <label for="m-elkkibanahtml-check"><a href="/elk/kibana.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkkibanahtml"><span class="">kibana</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-observabilitylogsfilebeat-li">
+  <input type="checkbox" id="m-observabilitylogsfilebeat-check"/>
+  <label for="m-observabilitylogsfilebeat-check"><a href="/Observability/logs/filebeat/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-observabilitylogsfilebeat"><span class="">filebeat</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkfilebeatfilebeathtml-li">
+  <input type="checkbox" id="m-elkfilebeatfilebeathtml-check"/>
+  <label for="m-elkfilebeatfilebeathtml-check"><a href="/elk/filebeat/filebeat.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkfilebeatfilebeathtml"><span class="">filebeat_install</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-observabilitylogsfilebeatconfig-li">
+  <input type="checkbox" id="m-observabilitylogsfilebeatconfig-check"/>
+  <label for="m-observabilitylogsfilebeatconfig-check"><a href="/Observability/logs/filebeat/config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-observabilitylogsfilebeatconfig"><span class="">config</span></a></label>
+  
+  <ul class="ul-5 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkfilebeatconfiggeneralhtml-li">
+  <input type="checkbox" id="m-elkfilebeatconfiggeneralhtml-check"/>
+  <label for="m-elkfilebeatconfiggeneralhtml-check"><a href="/elk/filebeat/config/general.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkfilebeatconfiggeneralhtml"><span class="">通用配置</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkfilebeatconfiginputshtml-li">
+  <input type="checkbox" id="m-elkfilebeatconfiginputshtml-check"/>
+  <label for="m-elkfilebeatconfiginputshtml-check"><a href="/elk/filebeat/config/inputs.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkfilebeatconfiginputshtml"><span class="">filebeat_inputs</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkfilebeatconfigextendhtml-li">
+  <input type="checkbox" id="m-elkfilebeatconfigextendhtml-check"/>
+  <label for="m-elkfilebeatconfigextendhtml-check"><a href="/elk/filebeat/config/extend.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkfilebeatconfigextendhtml"><span class="">扩展配置</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkfilebeatconfigoutputhtml-li">
+  <input type="checkbox" id="m-elkfilebeatconfigoutputhtml-check"/>
+  <label for="m-elkfilebeatconfigoutputhtml-check"><a href="/elk/filebeat/config/output.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkfilebeatconfigoutputhtml"><span class="">filebeat_output</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkfilebeatconfigprocessorshtml-li">
+  <input type="checkbox" id="m-elkfilebeatconfigprocessorshtml-check"/>
+  <label for="m-elkfilebeatconfigprocessorshtml-check"><a href="/elk/filebeat/config/processors.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkfilebeatconfigprocessorshtml"><span class="">filebeat_processors</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkfilebeatconfigautodiscoverhtml-li">
+  <input type="checkbox" id="m-elkfilebeatconfigautodiscoverhtml-check"/>
+  <label for="m-elkfilebeatconfigautodiscoverhtml-check"><a href="/elk/filebeat/config/autodiscover.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkfilebeatconfigautodiscoverhtml"><span class="">filebeat_autodiscover</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-observabilitylogslogstash-li">
+  <input type="checkbox" id="m-observabilitylogslogstash-check"/>
+  <label for="m-observabilitylogslogstash-check"><a href="/Observability/logs/logstash/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-observabilitylogslogstash"><span class="">logstash</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkexamplelogstashlogstash_installhtml-li">
+  <input type="checkbox" id="m-elkexamplelogstashlogstash_installhtml-check"/>
+  <label for="m-elkexamplelogstashlogstash_installhtml-check"><a href="/elk/example/logstash/logstash_install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkexamplelogstashlogstash_installhtml"><span class="">logstash_install</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elklogstashinputhtml-li">
+  <input type="checkbox" id="m-elklogstashinputhtml-check"/>
+  <label for="m-elklogstashinputhtml-check"><a href="/elk/logstash/input.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elklogstashinputhtml"><span class="">logstash-input</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elklogstashoutputhtml-li">
+  <input type="checkbox" id="m-elklogstashoutputhtml-check"/>
+  <label for="m-elklogstashoutputhtml-check"><a href="/elk/logstash/output.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elklogstashoutputhtml"><span class="">logstash-output</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elklogstashfilterhtml-li">
+  <input type="checkbox" id="m-elklogstashfilterhtml-check"/>
+  <label for="m-elklogstashfilterhtml-check"><a href="/elk/logstash/filter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elklogstashfilterhtml"><span class="">logstash-filter</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkexamplenginxhtml-li">
+  <input type="checkbox" id="m-elkexamplenginxhtml-check"/>
+  <label for="m-elkexamplenginxhtml-check"><a href="/elk/example/nginx.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkexamplenginxhtml"><span class="">收集nginx日志</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkexamplelinuxhtml-li">
+  <input type="checkbox" id="m-elkexamplelinuxhtml-check"/>
+  <label for="m-elkexamplelinuxhtml-check"><a href="/elk/example/linux.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkexamplelinuxhtml"><span class="">收集操作系统日志</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-observabilitygrafana-li">
+  <input type="checkbox" id="m-observabilitygrafana-check"/>
+  <label for="m-observabilitygrafana-check"><a href="/Observability/grafana/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-observabilitygrafana"><span class="">grafana</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-grafanaquitstarthtml-li">
+  <input type="checkbox" id="m-grafanaquitstarthtml-check"/>
+  <label for="m-grafanaquitstarthtml-check"><a href="/grafana/quitstart.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-grafanaquitstarthtml"><span class="">quitstart</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsobservabilityprometheus-li">
+  <input type="checkbox" id="m-docsobservabilityprometheus-check" checked/>
+  <label for="m-docsobservabilityprometheus-check"><a href="/docs/observability/prometheus/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsobservabilityprometheus"><span class="">prometheus</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusinstallhtml-li">
+  <input type="checkbox" id="m-prometheusinstallhtml-check"/>
+  <label for="m-prometheusinstallhtml-check"><a href="/prometheus/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusinstallhtml"><span class="">install</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusprometheus-operatorhtml-li">
+  <input type="checkbox" id="m-prometheusprometheus-operatorhtml-check"/>
+  <label for="m-prometheusprometheus-operatorhtml-check"><a href="/prometheus/prometheus-operator.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusprometheus-operatorhtml"><span class="">operator</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusconfightml-li">
+  <input type="checkbox" id="m-prometheusconfightml-check"/>
+  <label for="m-prometheusconfightml-check"><a href="/prometheus/config.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusconfightml"><span class="">config</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetes-sd-configshtml-li">
+  <input type="checkbox" id="m-prometheuskubernetes-sd-configshtml-check"/>
+  <label for="m-prometheuskubernetes-sd-configshtml-check"><a href="/prometheus/kubernetes-sd-configs.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetes-sd-configshtml"><span class="">kubernetes_sd_configs</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusconsul-sd-configshtml-li">
+  <input type="checkbox" id="m-prometheusconsul-sd-configshtml-check"/>
+  <label for="m-prometheusconsul-sd-configshtml-check"><a href="/prometheus/consul-sd-configs.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusconsul-sd-configshtml"><span class="">consul_sd_configs</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuspromeqlhtml-li">
+  <input type="checkbox" id="m-prometheuspromeqlhtml-check"/>
+  <label for="m-prometheuspromeqlhtml-check"><a href="/prometheus/promeql.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuspromeqlhtml"><span class="">PromeQL</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusn9ehtml-li">
+  <input type="checkbox" id="m-prometheusn9ehtml-check"/>
+  <label for="m-prometheusn9ehtml-check"><a href="/prometheus/n9e.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusn9ehtml"><span class="">夜莺·监控系统</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusfederationhtml-li">
+  <input type="checkbox" id="m-prometheusfederationhtml-check"/>
+  <label for="m-prometheusfederationhtml-check"><a href="/prometheus/federation.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusfederationhtml"><span class="">federation</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusappendixhtml-li">
+  <input type="checkbox" id="m-prometheusappendixhtml-check"/>
+  <label for="m-prometheusappendixhtml-check"><a href="/prometheus/appendix.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusappendixhtml"><span class="">附录</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusexporter-li">
+  <input type="checkbox" id="m-prometheusexporter-check"/>
+  <label for="m-prometheusexporter-check"><a href="/prometheus/exporter/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusexporter"><span class="">exporter</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporternode_exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporternode_exporterhtml-check"/>
+  <label for="m-prometheusexporternode_exporterhtml-check"><a href="/prometheus/exporter/node_exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporternode_exporterhtml"><span class="">node_exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterblackboxhtml-li">
+  <input type="checkbox" id="m-prometheusexporterblackboxhtml-check"/>
+  <label for="m-prometheusexporterblackboxhtml-check"><a href="/prometheus/exporter/blackbox.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterblackboxhtml"><span class="">blackbox</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterjmx_exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporterjmx_exporterhtml-check"/>
+  <label for="m-prometheusexporterjmx_exporterhtml-check"><a href="/prometheus/exporter/jmx_exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterjmx_exporterhtml"><span class="">jmx_exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporternginx-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporternginx-exporterhtml-check"/>
+  <label for="m-prometheusexporternginx-exporterhtml-check"><a href="/prometheus/exporter/nginx-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporternginx-exporterhtml"><span class="">nginx-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterminiohtml-li">
+  <input type="checkbox" id="m-prometheusexporterminiohtml-check"/>
+  <label for="m-prometheusexporterminiohtml-check"><a href="/prometheus/exporter/minio.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterminiohtml"><span class="">minio</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterredis-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexporterredis-exporterhtml-check"/>
+  <label for="m-prometheusexporterredis-exporterhtml-check"><a href="/prometheus/exporter/redis-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterredis-exporterhtml"><span class="">redis-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexportermysql-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexportermysql-exporterhtml-check"/>
+  <label for="m-prometheusexportermysql-exporterhtml-check"><a href="/prometheus/exporter/mysql-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexportermysql-exporterhtml"><span class="">mysql-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexportermongo-exporterhtml-li">
+  <input type="checkbox" id="m-prometheusexportermongo-exporterhtml-check"/>
+  <label for="m-prometheusexportermongo-exporterhtml-check"><a href="/prometheus/exporter/mongo-exporter.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexportermongo-exporterhtml"><span class="">mongo-exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusexporterprometheus-sdkhtml-li">
+  <input type="checkbox" id="m-prometheusexporterprometheus-sdkhtml-check"/>
+  <label for="m-prometheusexporterprometheus-sdkhtml-check"><a href="/prometheus/exporter/prometheus-sdk.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusexporterprometheus-sdkhtml"><span class="">prometheus-sdk</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-prometheusalertmanager-li">
+  <input type="checkbox" id="m-prometheusalertmanager-check" checked/>
+  <label for="m-prometheusalertmanager-check"><a href="/prometheus/alertmanager/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusalertmanager"><span class="">alertmanager</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusalertmanagerinstallhtml-li">
+  <input type="checkbox" id="m-prometheusalertmanagerinstallhtml-check"/>
+  <label for="m-prometheusalertmanagerinstallhtml-check"><a href="/prometheus/alertmanager/install.html" title="部署alertmanager" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusalertmanagerinstallhtml"><span class="">install</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusalertmanagerconfightml-li">
+  <input type="checkbox" id="m-prometheusalertmanagerconfightml-check"/>
+  <label for="m-prometheusalertmanagerconfightml-check"><a href="/prometheus/alertmanager/config.html" title="配置alertmanager" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusalertmanagerconfightml"><span class="">config</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusalertmanageramtoolhtml-li">
+  <input type="checkbox" id="m-prometheusalertmanageramtoolhtml-check"/>
+  <label for="m-prometheusalertmanageramtoolhtml-check"><a href="/prometheus/alertmanager/amtool.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusalertmanageramtoolhtml"><span class="">amtool</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-prometheusalertmanagergrouphtml-li">
+  <input type="checkbox" id="m-prometheusalertmanagergrouphtml-check" checked/>
+  <label for="m-prometheusalertmanagergrouphtml-check"><a href="/prometheus/alertmanager/group.html" class="align-left ps-0  active td-sidebar-link td-sidebar-link__page" id="m-prometheusalertmanagergrouphtml"><span class="td-sidebar-nav-active-item">告警收敛</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusmonitor-li">
+  <input type="checkbox" id="m-prometheusmonitor-check"/>
+  <label for="m-prometheusmonitor-check"><a href="/prometheus/monitor/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusmonitor"><span class="">monitor</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusmonitorprometheushtml-li">
+  <input type="checkbox" id="m-prometheusmonitorprometheushtml-check"/>
+  <label for="m-prometheusmonitorprometheushtml-check"><a href="/prometheus/monitor/prometheus.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusmonitorprometheushtml"><span class="">prometheus</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusmonitoralertmanagerhtml-li">
+  <input type="checkbox" id="m-prometheusmonitoralertmanagerhtml-check"/>
+  <label for="m-prometheusmonitoralertmanagerhtml-check"><a href="/prometheus/monitor/alertmanager.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusmonitoralertmanagerhtml"><span class="">alertmanager</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusmonitorpushgatewayhtml-li">
+  <input type="checkbox" id="m-prometheusmonitorpushgatewayhtml-check"/>
+  <label for="m-prometheusmonitorpushgatewayhtml-check"><a href="/prometheus/monitor/pushgateway.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusmonitorpushgatewayhtml"><span class="">pushgateway</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheusvictorametrics-li">
+  <input type="checkbox" id="m-prometheusvictorametrics-check"/>
+  <label for="m-prometheusvictorametrics-check"><a href="/prometheus/victorametrics/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheusvictorametrics"><span class="">victorametrics</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheusvictoriametricsvictoriametricshtml-li">
+  <input type="checkbox" id="m-prometheusvictoriametricsvictoriametricshtml-check"/>
+  <label for="m-prometheusvictoriametricsvictoriametricshtml-check"><a href="/prometheus/victoriaMetrics/victoriaMetrics.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheusvictoriametricsvictoriametricshtml"><span class="">victoriaMetrics</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-prometheuskubernetes-li">
+  <input type="checkbox" id="m-prometheuskubernetes-check"/>
+  <label for="m-prometheuskubernetes-check"><a href="/prometheus/kubernetes/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-prometheuskubernetes"><span class="">kubernetes</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-apiserverhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-apiserverhtml-check"/>
+  <label for="m-prometheuskuberneteskube-apiserverhtml-check"><a href="/prometheus/kubernetes/kube-apiserver.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-apiserverhtml"><span class="">kube-apiserver</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-controllerhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-controllerhtml-check"/>
+  <label for="m-prometheuskuberneteskube-controllerhtml-check"><a href="/prometheus/kubernetes/kube-controller.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-controllerhtml"><span class="">kube-controller</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-controllerhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-controllerhtml-check"/>
+  <label for="m-prometheuskuberneteskube-controllerhtml-check"><a href="/prometheus/kubernetes/kube-controller.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-controllerhtml"><span class="">kube-controller</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-proxyhtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-proxyhtml-check"/>
+  <label for="m-prometheuskuberneteskube-proxyhtml-check"><a href="/prometheus/kubernetes/kube-proxy.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-proxyhtml"><span class="">kube-proxy</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskubelethtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskubelethtml-check"/>
+  <label for="m-prometheuskuberneteskubelethtml-check"><a href="/prometheus/kubernetes/kubelet.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskubelethtml"><span class="">kubelet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetesetcdhtml-li">
+  <input type="checkbox" id="m-prometheuskubernetesetcdhtml-check"/>
+  <label for="m-prometheuskubernetesetcdhtml-check"><a href="/prometheus/kubernetes/etcd.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetesetcdhtml"><span class="">etcd</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetescorednshtml-li">
+  <input type="checkbox" id="m-prometheuskubernetescorednshtml-check"/>
+  <label for="m-prometheuskubernetescorednshtml-check"><a href="/prometheus/kubernetes/coredns.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetescorednshtml"><span class="">coredns</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskubernetescadvisorhtml-li">
+  <input type="checkbox" id="m-prometheuskubernetescadvisorhtml-check"/>
+  <label for="m-prometheuskubernetescadvisorhtml-check"><a href="/prometheus/kubernetes/cadvisor.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskubernetescadvisorhtml"><span class="">cadvisor</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-prometheuskuberneteskube-state-metricshtml-li">
+  <input type="checkbox" id="m-prometheuskuberneteskube-state-metricshtml-check"/>
+  <label for="m-prometheuskuberneteskube-state-metricshtml-check"><a href="/prometheus/kubernetes/kube-state-metrics.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-prometheuskuberneteskube-state-metricshtml"><span class="">kube-state-metrics</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdevops-li">
+  <input type="checkbox" id="m-docsdevops-check"/>
+  <label for="m-docsdevops-check"><a href="/docs/devops/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdevops"><i class="fa-brands fa-jenkins"></i><span class="">devops</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-kubernetesargocdhtml-li">
+  <input type="checkbox" id="m-kubernetesargocdhtml-check"/>
+  <label for="m-kubernetesargocdhtml-check"><a href="/kubernetes/argoCD.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-kubernetesargocdhtml"><span class="">ArgoCD</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdevopsjenkins-li">
+  <input type="checkbox" id="m-docsdevopsjenkins-check"/>
+  <label for="m-docsdevopsjenkins-check"><a href="/docs/devops/jenkins/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdevopsjenkins"><span class="">jenkins</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-devopsjenkinshtml-li">
+  <input type="checkbox" id="m-devopsjenkinshtml-check"/>
+  <label for="m-devopsjenkinshtml-check"><a href="/devops/jenkins.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-devopsjenkinshtml"><span class="">jenkins</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-devopsgroovyhtml-li">
+  <input type="checkbox" id="m-devopsgroovyhtml-check"/>
+  <label for="m-devopsgroovyhtml-check"><a href="/devops/groovy.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-devopsgroovyhtml"><span class="">Groovy</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-devopse69c80e4bdb3e5ae9ee8b7b5html-li">
+  <input type="checkbox" id="m-devopse69c80e4bdb3e5ae9ee8b7b5html-check"/>
+  <label for="m-devopse69c80e4bdb3e5ae9ee8b7b5html-check"><a href="/devops/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-devopse69c80e4bdb3e5ae9ee8b7b5html"><span class="">最佳实践</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdevopsjenkinsjenkinslibreadme-li">
+  <input type="checkbox" id="m-docsdevopsjenkinsjenkinslibreadme-check"/>
+  <label for="m-docsdevopsjenkinsjenkinslibreadme-check"><a href="/docs/devops/jenkins/jenkinslib/readme/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsdevopsjenkinsjenkinslibreadme"><span class=""></span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdevopssonar-li">
+  <input type="checkbox" id="m-docsdevopssonar-check"/>
+  <label for="m-docsdevopssonar-check"><a href="/docs/devops/sonar/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdevopssonar"><span class="">sonar</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-devopssonarqubehtml-li">
+  <input type="checkbox" id="m-devopssonarqubehtml-check"/>
+  <label for="m-devopssonarqubehtml-check"><a href="/devops/sonarqube.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-devopssonarqubehtml"><span class="">sonarqube</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdevopsgitlab-li">
+  <input type="checkbox" id="m-docsdevopsgitlab-check"/>
+  <label for="m-docsdevopsgitlab-check"><a href="/docs/devops/gitlab/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdevopsgitlab"><span class="">gitlab</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-devopsgitlabhtml-li">
+  <input type="checkbox" id="m-devopsgitlabhtml-check"/>
+  <label for="m-devopsgitlabhtml-check"><a href="/devops/gitlab.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-devopsgitlabhtml"><span class="">gitlab</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-devopsgitlab-cicdhtml-li">
+  <input type="checkbox" id="m-devopsgitlab-cicdhtml-check"/>
+  <label for="m-devopsgitlab-cicdhtml-check"><a href="/devops/gitlab-cicd.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-devopsgitlab-cicdhtml"><span class="">ci/cd</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdevopsredmine-li">
+  <input type="checkbox" id="m-docsdevopsredmine-check"/>
+  <label for="m-docsdevopsredmine-check"><a href="/docs/devops/redmine/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdevopsredmine"><span class="">redmine</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-devopsredminehtml-li">
+  <input type="checkbox" id="m-devopsredminehtml-check"/>
+  <label for="m-devopsredminehtml-check"><a href="/devops/redmine.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-devopsredminehtml"><span class="">redmine</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdevopsterraform-li">
+  <input type="checkbox" id="m-docsdevopsterraform-check"/>
+  <label for="m-docsdevopsterraform-check"><a href="/docs/devops/terraform/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdevopsterraform"><span class="">terraform</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdevopsterraformterraform-li">
+  <input type="checkbox" id="m-docsdevopsterraformterraform-check"/>
+  <label for="m-docsdevopsterraformterraform-check"><a href="/docs/devops/terraform/terraform/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsdevopsterraformterraform"><span class=""></span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docslinux-li">
+  <input type="checkbox" id="m-docslinux-check"/>
+  <label for="m-docslinux-check"><a href="/docs/linux/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docslinux"><i class="fa-brands fa-linux"></i><span class="">linux</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-linuxsystemhtml-li">
+  <input type="checkbox" id="m-linuxsystemhtml-check"/>
+  <label for="m-linuxsystemhtml-check"><a href="/linux/system.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-linuxsystemhtml"><span class="">问题排查</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-linuxcommandhtml-li">
+  <input type="checkbox" id="m-linuxcommandhtml-check"/>
+  <label for="m-linuxcommandhtml-check"><a href="/linux/command.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-linuxcommandhtml"><span class="">常用命令</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-linuxpostfixhtml-li">
+  <input type="checkbox" id="m-linuxpostfixhtml-check"/>
+  <label for="m-linuxpostfixhtml-check"><a href="/linux/postfix.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-linuxpostfixhtml"><span class="">postfix</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-linuxlvmhtml-li">
+  <input type="checkbox" id="m-linuxlvmhtml-check"/>
+  <label for="m-linuxlvmhtml-check"><a href="/linux/lvm.html" title="LVM (logical volume manager)" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-linuxlvmhtml"><span class="">LVM</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-linuxrsysloghtml-li">
+  <input type="checkbox" id="m-linuxrsysloghtml-check"/>
+  <label for="m-linuxrsysloghtml-check"><a href="/linux/rsyslog.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-linuxrsysloghtml"><span class="">rsyslog</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-linuxnginx-li">
+  <input type="checkbox" id="m-linuxnginx-check"/>
+  <label for="m-linuxnginx-check"><a href="/linux/nginx/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-linuxnginx"><span class="">nginx</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-nginxinstallhtml-li">
+  <input type="checkbox" id="m-nginxinstallhtml-check"/>
+  <label for="m-nginxinstallhtml-check"><a href="/nginx/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-nginxinstallhtml"><span class="">安装nginx</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-nginxconfhtml-li">
+  <input type="checkbox" id="m-nginxconfhtml-check"/>
+  <label for="m-nginxconfhtml-check"><a href="/nginx/conf.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-nginxconfhtml"><span class="">配置nginx</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-nginxhttphtml-li">
+  <input type="checkbox" id="m-nginxhttphtml-check"/>
+  <label for="m-nginxhttphtml-check"><a href="/nginx/http.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-nginxhttphtml"><span class="">http服务器</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-nginxupstreamhtml-li">
+  <input type="checkbox" id="m-nginxupstreamhtml-check"/>
+  <label for="m-nginxupstreamhtml-check"><a href="/nginx/upstream.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-nginxupstreamhtml"><span class="">反向代理</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-nginxlocationhtml-li">
+  <input type="checkbox" id="m-nginxlocationhtml-check"/>
+  <label for="m-nginxlocationhtml-check"><a href="/nginx/location.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-nginxlocationhtml"><span class="">location指令</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-linuxansible-li">
+  <input type="checkbox" id="m-linuxansible-check"/>
+  <label for="m-linuxansible-check"><a href="/linux/ansible/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-linuxansible"><span class="">ansible</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ansiblequitstarthtml-li">
+  <input type="checkbox" id="m-ansiblequitstarthtml-check"/>
+  <label for="m-ansiblequitstarthtml-check"><a href="/ansible/quitstart.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-ansiblequitstarthtml"><span class="">Quitstart</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docslinuxansible1-li">
+  <input type="checkbox" id="m-docslinuxansible1-check"/>
+  <label for="m-docslinuxansible1-check"><a href="/docs/linux/ansible/1/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docslinuxansible1"><span class=""></span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docscode-li">
+  <input type="checkbox" id="m-docscode-check"/>
+  <label for="m-docscode-check"><a href="/docs/code/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docscode"><i class="fa-solid fa-code-branch"></i><span class="">code</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docscodegolang-li">
+  <input type="checkbox" id="m-docscodegolang-check"/>
+  <label for="m-docscodegolang-check"><a href="/docs/code/golang/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docscodegolang"><i class="fa-brands fa-golang"></i><span class="">golang</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golanginstallhtml-li">
+  <input type="checkbox" id="m-golanginstallhtml-check"/>
+  <label for="m-golanginstallhtml-check"><a href="/golang/install.html" title="环境安装" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golanginstallhtml"><span class="">go环境安装</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangvariablehtml-li">
+  <input type="checkbox" id="m-golangvariablehtml-check"/>
+  <label for="m-golangvariablehtml-check"><a href="/golang/variable.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangvariablehtml"><span class="">常量和变量</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangtypehtml-li">
+  <input type="checkbox" id="m-golangtypehtml-check"/>
+  <label for="m-golangtypehtml-check"><a href="/golang/type.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangtypehtml"><span class="">数据类型</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangoperatorhtml-li">
+  <input type="checkbox" id="m-golangoperatorhtml-check"/>
+  <label for="m-golangoperatorhtml-check"><a href="/golang/operator.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangoperatorhtml"><span class="">运算符</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangcontrolhtml-li">
+  <input type="checkbox" id="m-golangcontrolhtml-check"/>
+  <label for="m-golangcontrolhtml-check"><a href="/golang/control.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangcontrolhtml"><span class="">流程控制语句</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangfunctionhtml-li">
+  <input type="checkbox" id="m-golangfunctionhtml-check"/>
+  <label for="m-golangfunctionhtml-check"><a href="/golang/function.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangfunctionhtml"><span class="">函数</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangstructhtml-li">
+  <input type="checkbox" id="m-golangstructhtml-check"/>
+  <label for="m-golangstructhtml-check"><a href="/golang/struct.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangstructhtml"><span class="">结构体</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golanginterfacehtml-li">
+  <input type="checkbox" id="m-golanginterfacehtml-check"/>
+  <label for="m-golanginterfacehtml-check"><a href="/golang/interface.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golanginterfacehtml"><span class="">接口</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docscodegolangpackage-li">
+  <input type="checkbox" id="m-docscodegolangpackage-check"/>
+  <label for="m-docscodegolangpackage-check"><a href="/docs/code/golang/package/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docscodegolangpackage"><span class="">package</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagepackagehtml-li">
+  <input type="checkbox" id="m-golangpackagepackagehtml-check"/>
+  <label for="m-golangpackagepackagehtml-check"><a href="/golang/package/package.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagepackagehtml"><span class="">包管理</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagefmthtml-li">
+  <input type="checkbox" id="m-golangpackagefmthtml-check"/>
+  <label for="m-golangpackagefmthtml-check"><a href="/golang/package/fmt.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagefmthtml"><span class="">fmt</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageoshtml-li">
+  <input type="checkbox" id="m-golangpackageoshtml-check"/>
+  <label for="m-golangpackageoshtml-check"><a href="/golang/package/os.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageoshtml"><span class="">os</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagepathhtml-li">
+  <input type="checkbox" id="m-golangpackagepathhtml-check"/>
+  <label for="m-golangpackagepathhtml-check"><a href="/golang/package/path.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagepathhtml"><span class="">path</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageiohtml-li">
+  <input type="checkbox" id="m-golangpackageiohtml-check"/>
+  <label for="m-golangpackageiohtml-check"><a href="/golang/package/io.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageiohtml"><span class="">io</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagetimehtml-li">
+  <input type="checkbox" id="m-golangpackagetimehtml-check"/>
+  <label for="m-golangpackagetimehtml-check"><a href="/golang/package/time.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagetimehtml"><span class="">time</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagehttphtml-li">
+  <input type="checkbox" id="m-golangpackagehttphtml-check"/>
+  <label for="m-golangpackagehttphtml-check"><a href="/golang/package/http.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagehttphtml"><span class="">net/http</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageflaghtml-li">
+  <input type="checkbox" id="m-golangpackageflaghtml-check"/>
+  <label for="m-golangpackageflaghtml-check"><a href="/golang/package/flag.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageflaghtml"><span class="">flag</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagepflaghtml-li">
+  <input type="checkbox" id="m-golangpackagepflaghtml-check"/>
+  <label for="m-golangpackagepflaghtml-check"><a href="/golang/package/pflag.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagepflaghtml"><span class="">pflag</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagecobrahtml-li">
+  <input type="checkbox" id="m-golangpackagecobrahtml-check"/>
+  <label for="m-golangpackagecobrahtml-check"><a href="/golang/package/cobra.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagecobrahtml"><span class="">cobra</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageviperhtml-li">
+  <input type="checkbox" id="m-golangpackageviperhtml-check"/>
+  <label for="m-golangpackageviperhtml-check"><a href="/golang/package/viper.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageviperhtml"><span class="">viper</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackagerafthtml-li">
+  <input type="checkbox" id="m-golangpackagerafthtml-check"/>
+  <label for="m-golangpackagerafthtml-check"><a href="/golang/package/raft.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackagerafthtml"><span class="">raft</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageuuidhtml-li">
+  <input type="checkbox" id="m-golangpackageuuidhtml-check"/>
+  <label for="m-golangpackageuuidhtml-check"><a href="/golang/package/uuid.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageuuidhtml"><span class="">uuid</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-golangpackageredishtml-li">
+  <input type="checkbox" id="m-golangpackageredishtml-check"/>
+  <label for="m-golangpackageredishtml-check"><a href="/golang/package/redis.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-golangpackageredishtml"><span class="">redis</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docscodepython-li">
+  <input type="checkbox" id="m-docscodepython-check"/>
+  <label for="m-docscodepython-check"><a href="/docs/code/python/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docscodepython"><i class="fa-brands fa-python"></i><span class="">python</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docscodepythonpackage-li">
+  <input type="checkbox" id="m-docscodepythonpackage-check"/>
+  <label for="m-docscodepythonpackage-check"><a href="/docs/code/python/package/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docscodepythonpackage"><span class="">package</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pythonpackagepackagehtml-li">
+  <input type="checkbox" id="m-pythonpackagepackagehtml-check"/>
+  <label for="m-pythonpackagepackagehtml-check"><a href="/python/package/package.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-pythonpackagepackagehtml"><span class="">包管理</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pythonpackagekafkahtml-li">
+  <input type="checkbox" id="m-pythonpackagekafkahtml-check"/>
+  <label for="m-pythonpackagekafkahtml-check"><a href="/python/package/kafka.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-pythonpackagekafkahtml"><span class="">kafka</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pythonpackagekuberneteshtml-li">
+  <input type="checkbox" id="m-pythonpackagekuberneteshtml-check"/>
+  <label for="m-pythonpackagekuberneteshtml-check"><a href="/python/package/kubernetes.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-pythonpackagekuberneteshtml"><span class="">kubernetes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pythonpackagekopfhtml-li">
+  <input type="checkbox" id="m-pythonpackagekopfhtml-check"/>
+  <label for="m-pythonpackagekopfhtml-check"><a href="/python/package/kopf.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-pythonpackagekopfhtml"><span class="">kopf</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdatabase-li">
+  <input type="checkbox" id="m-docsdatabase-check"/>
+  <label for="m-docsdatabase-check"><a href="/docs/database/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabase"><i class="fa-solid fa-database"></i><span class="">database</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdatabasemysql-li">
+  <input type="checkbox" id="m-docsdatabasemysql-check"/>
+  <label for="m-docsdatabasemysql-check"><a href="/docs/database/mysql/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabasemysql"><span class="">mysql</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlinstall56html-li">
+  <input type="checkbox" id="m-mysqlinstall56html-check"/>
+  <label for="m-mysqlinstall56html-check"><a href="/mysql/install5.6.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlinstall56html"><span class="">install mysql5.6</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlinstall57html-li">
+  <input type="checkbox" id="m-mysqlinstall57html-check"/>
+  <label for="m-mysqlinstall57html-check"><a href="/mysql/install5.7.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlinstall57html"><span class="">install mysql5.7</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlmaster_slavehtml-li">
+  <input type="checkbox" id="m-mysqlmaster_slavehtml-check"/>
+  <label for="m-mysqlmaster_slavehtml-check"><a href="/mysql/master_slave.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlmaster_slavehtml"><span class="">master_slave</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlmhahtml-li">
+  <input type="checkbox" id="m-mysqlmhahtml-check"/>
+  <label for="m-mysqlmhahtml-check"><a href="/mysql/mha.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlmhahtml"><span class="">mha</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlmgrhtml-li">
+  <input type="checkbox" id="m-mysqlmgrhtml-check"/>
+  <label for="m-mysqlmgrhtml-check"><a href="/mysql/mgr.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlmgrhtml"><span class="">mgr</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlmysqldumphtml-li">
+  <input type="checkbox" id="m-mysqlmysqldumphtml-check"/>
+  <label for="m-mysqlmysqldumphtml-check"><a href="/mysql/mysqldump.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlmysqldumphtml"><span class="">mysqldump</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlxtrabackuphtml-li">
+  <input type="checkbox" id="m-mysqlxtrabackuphtml-check"/>
+  <label for="m-mysqlxtrabackuphtml-check"><a href="/mysql/xtrabackup.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlxtrabackuphtml"><span class="">xtrabackup</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqlmy_cnfhtml-li">
+  <input type="checkbox" id="m-mysqlmy_cnfhtml-check"/>
+  <label for="m-mysqlmy_cnfhtml-check"><a href="/mysql/my_cnf.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqlmy_cnfhtml"><span class="">config</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-mysqllongtengchuxinghtml-li">
+  <input type="checkbox" id="m-mysqllongtengchuxinghtml-check"/>
+  <label for="m-mysqllongtengchuxinghtml-check"><a href="/mysql/longtengchuxing.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-mysqllongtengchuxinghtml"><span class="">mysql数据库搬迁</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdatabasemongodb-li">
+  <input type="checkbox" id="m-docsdatabasemongodb-check"/>
+  <label for="m-docsdatabasemongodb-check"><a href="/docs/database/mongodb/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabasemongodb"><span class="">mongodb</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdatabaseredis-li">
+  <input type="checkbox" id="m-docsdatabaseredis-check"/>
+  <label for="m-docsdatabaseredis-check"><a href="/docs/database/redis/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabaseredis"><span class="">redis</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-redisinstallhtml-li">
+  <input type="checkbox" id="m-redisinstallhtml-check"/>
+  <label for="m-redisinstallhtml-check"><a href="/redis/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-redisinstallhtml"><span class="">安装部署</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-redisredis-shake212html-li">
+  <input type="checkbox" id="m-redisredis-shake212html-check"/>
+  <label for="m-redisredis-shake212html-check"><a href="/redis/redis-shake2.1.2.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-redisredis-shake212html"><span class="">redis-shake2.1.2</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-redisredis-shake3111html-li">
+  <input type="checkbox" id="m-redisredis-shake3111html-check"/>
+  <label for="m-redisredis-shake3111html-check"><a href="/redis/redis-shake3.1.11.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-redisredis-shake3111html"><span class="">redis-shake3.1.11</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-redislongtengchuxing2html-li">
+  <input type="checkbox" id="m-redislongtengchuxing2html-check"/>
+  <label for="m-redislongtengchuxing2html-check"><a href="/redis/longtengchuxing2.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-redislongtengchuxing2html"><span class="">redis数据库搬迁方案2</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-redis840html-li">
+  <input type="checkbox" id="m-redis840html-check"/>
+  <label for="m-redis840html-check"><a href="/redis/8.4.0.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-redis840html"><span class="">Redis8.4.0版本</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdatabasepostgres-li">
+  <input type="checkbox" id="m-docsdatabasepostgres-check"/>
+  <label for="m-docsdatabasepostgres-check"><a href="/docs/database/postgres/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabasepostgres"><span class="">postgres</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdatabasetidb-li">
+  <input type="checkbox" id="m-docsdatabasetidb-check"/>
+  <label for="m-docsdatabasetidb-check"><a href="/docs/database/tidb/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabasetidb"><span class="">tidb</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tidbpctahtml-li">
+  <input type="checkbox" id="m-tidbpctahtml-check"/>
+  <label for="m-tidbpctahtml-check"><a href="/tidb/pcta.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-tidbpctahtml"><span class="">pcta</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tidbprerunhtml-li">
+  <input type="checkbox" id="m-tidbprerunhtml-check"/>
+  <label for="m-tidbprerunhtml-check"><a href="/tidb/prerun.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-tidbprerunhtml"><span class="">环境检查</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tidbinstallhtml-li">
+  <input type="checkbox" id="m-tidbinstallhtml-check"/>
+  <label for="m-tidbinstallhtml-check"><a href="/tidb/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-tidbinstallhtml"><span class="">集群安装</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tidb03tiuphtml-li">
+  <input type="checkbox" id="m-tidb03tiuphtml-check"/>
+  <label for="m-tidb03tiuphtml-check"><a href="/tidb/03tiup.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-tidb03tiuphtml"><span class="">tiup工具</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tidbchecksshhtml-li">
+  <input type="checkbox" id="m-tidbchecksshhtml-check"/>
+  <label for="m-tidbchecksshhtml-check"><a href="/tidb/checkssh.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-tidbchecksshhtml"><span class="">checkssh</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdatabaseelasticsearch-li">
+  <input type="checkbox" id="m-docsdatabaseelasticsearch-check"/>
+  <label for="m-docsdatabaseelasticsearch-check"><a href="/docs/database/elasticsearch/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabaseelasticsearch"><span class="">elasticsearch</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elasticsearchinstallhtml-li">
+  <input type="checkbox" id="m-elasticsearchinstallhtml-check"/>
+  <label for="m-elasticsearchinstallhtml-check"><a href="/elasticsearch/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elasticsearchinstallhtml"><span class="">单机版本安装</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elasticsearchclusterhtml-li">
+  <input type="checkbox" id="m-elasticsearchclusterhtml-check"/>
+  <label for="m-elasticsearchclusterhtml-check"><a href="/elasticsearch/cluster.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elasticsearchclusterhtml"><span class="">集群版本安装</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elasticsearchconfigurehtml-li">
+  <input type="checkbox" id="m-elasticsearchconfigurehtml-check"/>
+  <label for="m-elasticsearchconfigurehtml-check"><a href="/elasticsearch/configure.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elasticsearchconfigurehtml"><span class="">配置文件</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elasticsearchrestfullapihtml-li">
+  <input type="checkbox" id="m-elasticsearchrestfullapihtml-check"/>
+  <label for="m-elasticsearchrestfullapihtml-check"><a href="/elasticsearch/RestfullAPI.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elasticsearchrestfullapihtml"><span class="">RestfullAPI</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdatabasekafka-li">
+  <input type="checkbox" id="m-docsdatabasekafka-check"/>
+  <label for="m-docsdatabasekafka-check"><a href="/docs/database/kafka/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabasekafka"><span class="">kafka</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkkafkazookeeperhtml-li">
+  <input type="checkbox" id="m-elkkafkazookeeperhtml-check"/>
+  <label for="m-elkkafkazookeeperhtml-check"><a href="/elk/kafka/zookeeper.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkkafkazookeeperhtml"><span class="">部署zookeeper</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-databasekafkainstallhtml-li">
+  <input type="checkbox" id="m-databasekafkainstallhtml-check"/>
+  <label for="m-databasekafkainstallhtml-check"><a href="/database/kafka/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-databasekafkainstallhtml"><span class="">部署kafka</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-databasekafkaconfightml-li">
+  <input type="checkbox" id="m-databasekafkaconfightml-check"/>
+  <label for="m-databasekafkaconfightml-check"><a href="/database/kafka/config.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-databasekafkaconfightml"><span class="">kafka核心概念和配置文件</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-databasekafkaauthticationhtml-li">
+  <input type="checkbox" id="m-databasekafkaauthticationhtml-check"/>
+  <label for="m-databasekafkaauthticationhtml-check"><a href="/database/kafka/authtication.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-databasekafkaauthticationhtml"><span class="">Kafka认证和授权</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-databasekafkareplicationhtml-li">
+  <input type="checkbox" id="m-databasekafkareplicationhtml-check"/>
+  <label for="m-databasekafkareplicationhtml-check"><a href="/database/kafka/replication.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-databasekafkareplicationhtml"><span class="">Kafka 如何进行复制</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-databasekafkamonitorhtml-li">
+  <input type="checkbox" id="m-databasekafkamonitorhtml-check"/>
+  <label for="m-databasekafkamonitorhtml-check"><a href="/database/kafka/monitor.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-databasekafkamonitorhtml"><span class="">kafka_exporter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elkkafkakafka-managerhtml-li">
+  <input type="checkbox" id="m-elkkafkakafka-managerhtml-check"/>
+  <label for="m-elkkafkakafka-managerhtml-check"><a href="/elk/kafka/kafka-manager.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-elkkafkakafka-managerhtml"><span class="">kafka可视化管理工具</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsdatabaserabbitmq-li">
+  <input type="checkbox" id="m-docsdatabaserabbitmq-check"/>
+  <label for="m-docsdatabaserabbitmq-check"><a href="/docs/database/rabbitmq/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabaserabbitmq"><span class="">RabbitMQ</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-rabbitmqinstallhtml-li">
+  <input type="checkbox" id="m-rabbitmqinstallhtml-check"/>
+  <label for="m-rabbitmqinstallhtml-check"><a href="/rabbitmq/install.html" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-rabbitmqinstallhtml"><span class="">快速开始</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdatabaserocketmq-li">
+  <input type="checkbox" id="m-docsdatabaserocketmq-check"/>
+  <label for="m-docsdatabaserocketmq-check"><a href="/docs/database/rocketmq/" title="" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsdatabaserocketmq"><span class="">rocketMQ</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+<a id="print" href="/_print/prometheus/alertmanager/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            
+            <div class="taxonomy taxonomy-terms-cloud taxo-categories">
+      <h5 class="taxonomy-title">Categories</h5>
+      <ul class="taxonomy-terms">
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/2026/" data-taxonomy-term="2026"><span class="taxonomy-label">2026</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/alertmanager/" data-taxonomy-term="alertmanager"><span class="taxonomy-label">Alertmanager</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/ansible/" data-taxonomy-term="ansible"><span class="taxonomy-label">Ansible</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/coredns/" data-taxonomy-term="coredns"><span class="taxonomy-label">Coredns</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/devops/" data-taxonomy-term="devops"><span class="taxonomy-label">Devops</span><span class="taxonomy-count">7</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/easyimg/" data-taxonomy-term="easyimg"><span class="taxonomy-label">Easyimg</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/echart/" data-taxonomy-term="echart"><span class="taxonomy-label">Echart</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/elk/" data-taxonomy-term="elk"><span class="taxonomy-label">ELK</span><span class="taxonomy-count">18</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/etcd/" data-taxonomy-term="etcd"><span class="taxonomy-label">Etcd</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/exis/" data-taxonomy-term="exis"><span class="taxonomy-label">Exis</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/exporter/" data-taxonomy-term="exporter"><span class="taxonomy-label">Exporter</span><span class="taxonomy-count">23</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/fastapi/" data-taxonomy-term="fastapi"><span class="taxonomy-label">Fastapi</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/golang/" data-taxonomy-term="golang"><span class="taxonomy-label">Golang</span><span class="taxonomy-count">22</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/grafana/" data-taxonomy-term="grafana"><span class="taxonomy-label">Grafana&#34;</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/hugo/" data-taxonomy-term="hugo"><span class="taxonomy-label">Hugo</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/kafka/" data-taxonomy-term="kafka"><span class="taxonomy-label">Kafka</span><span class="taxonomy-count">7</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/kubernetes/" data-taxonomy-term="kubernetes"><span class="taxonomy-label">Kubernetes</span><span class="taxonomy-count">10</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/linux/" data-taxonomy-term="linux"><span class="taxonomy-label">Linux</span><span class="taxonomy-count">4</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/lvm/" data-taxonomy-term="lvm"><span class="taxonomy-label">Lvm</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/mysql/" data-taxonomy-term="mysql"><span class="taxonomy-label">Mysql</span><span class="taxonomy-count">9</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/network/" data-taxonomy-term="network"><span class="taxonomy-label">Network</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/nginx/" data-taxonomy-term="nginx"><span class="taxonomy-label">Nginx</span><span class="taxonomy-count">5</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/prometheus/" data-taxonomy-term="prometheus"><span class="taxonomy-label">Prometheus</span><span class="taxonomy-count">36</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/python/" data-taxonomy-term="python"><span class="taxonomy-label">Python</span><span class="taxonomy-count">5</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/rabbitmq/" data-taxonomy-term="rabbitmq"><span class="taxonomy-label">Rabbitmq</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/redis/" data-taxonomy-term="redis"><span class="taxonomy-label">Redis</span><span class="taxonomy-count">5</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/serviceless/" data-taxonomy-term="serviceless"><span class="taxonomy-label">Serviceless</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/tidb/" data-taxonomy-term="tidb"><span class="taxonomy-label">Tidb</span><span class="taxonomy-count">5</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/victorametrics/" data-taxonomy-term="victorametrics"><span class="taxonomy-label">Victorametrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/victoriametrics/" data-taxonomy-term="victoriametrics"><span class="taxonomy-label">VictoriaMetrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/vue/" data-taxonomy-term="vue"><span class="taxonomy-label">Vue</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E5%81%87%E6%9C%9F/" data-taxonomy-term="%E5%81%87%E6%9C%9F"><span class="taxonomy-label">假期</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E5%91%8A%E8%AD%A6/" data-taxonomy-term="%E5%91%8A%E8%AD%A6"><span class="taxonomy-label">告警</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/" data-taxonomy-term="%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="taxonomy-label">夜莺·监控系统</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E5%A8%B1%E4%B9%90/" data-taxonomy-term="%E5%A8%B1%E4%B9%90"><span class="taxonomy-label">娱乐</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E7%9B%91%E6%8E%A7/" data-taxonomy-term="%E7%9B%91%E6%8E%A7"><span class="taxonomy-label">监控</span><span class="taxonomy-count">30</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E8%82%A1%E7%A5%A8/" data-taxonomy-term="%E8%82%A1%E7%A5%A8"><span class="taxonomy-label">股票</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E8%8B%B1%E8%AF%AD/" data-taxonomy-term="%E8%8B%B1%E8%AF%AD"><span class="taxonomy-label">英语</span><span class="taxonomy-count">1</span></a></li>
+        </ul>
+    </div>
+  <div class="taxonomy taxonomy-terms-cloud taxo-tags">
+      <h5 class="taxonomy-title">Tags</h5>
+      <ul class="taxonomy-terms">
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/8.x/" data-taxonomy-term="8.x"><span class="taxonomy-label">8.x</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/akshare/" data-taxonomy-term="akshare"><span class="taxonomy-label">Akshare</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/alertmanager/" data-taxonomy-term="alertmanager"><span class="taxonomy-label">Alertmanager</span><span class="taxonomy-count">5</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/amtool/" data-taxonomy-term="amtool"><span class="taxonomy-label">Amtool</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/ansible/" data-taxonomy-term="ansible"><span class="taxonomy-label">Ansible</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/appolo/" data-taxonomy-term="appolo"><span class="taxonomy-label">Appolo</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/autodiscover/" data-taxonomy-term="autodiscover"><span class="taxonomy-label">Autodiscover</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/blackbox/" data-taxonomy-term="blackbox"><span class="taxonomy-label">Blackbox</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/cicd/" data-taxonomy-term="cicd"><span class="taxonomy-label">Cicd</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/cobra/" data-taxonomy-term="cobra"><span class="taxonomy-label">Cobra</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/command/" data-taxonomy-term="command"><span class="taxonomy-label">Command</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/consul_sd_configs/" data-taxonomy-term="consul_sd_configs"><span class="taxonomy-label">Consul_sd_configs</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/coredns/" data-taxonomy-term="coredns"><span class="taxonomy-label">Coredns</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/dashboard/" data-taxonomy-term="dashboard"><span class="taxonomy-label">Dashboard</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/demo/" data-taxonomy-term="demo"><span class="taxonomy-label">Demo</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/dubbo/" data-taxonomy-term="dubbo"><span class="taxonomy-label">Dubbo</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/echart/" data-taxonomy-term="echart"><span class="taxonomy-label">Echart</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/elasticsearch/" data-taxonomy-term="elasticsearch"><span class="taxonomy-label">Elasticsearch</span><span class="taxonomy-count">4</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/etcd/" data-taxonomy-term="etcd"><span class="taxonomy-label">Etcd</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/exporter/" data-taxonomy-term="exporter"><span class="taxonomy-label">Exporter</span><span class="taxonomy-count">24</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/fastapi/" data-taxonomy-term="fastapi"><span class="taxonomy-label">Fastapi</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/federation/" data-taxonomy-term="federation"><span class="taxonomy-label">Federation</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/filebeat/" data-taxonomy-term="filebeat"><span class="taxonomy-label">Filebeat</span><span class="taxonomy-count">10</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/filebrowser-/" data-taxonomy-term="filebrowser"><span class="taxonomy-label">Filebrowser </span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/flag/" data-taxonomy-term="flag"><span class="taxonomy-label">Flag</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/fmt/" data-taxonomy-term="fmt"><span class="taxonomy-label">Fmt</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/gitlab/" data-taxonomy-term="gitlab"><span class="taxonomy-label">Gitlab</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/golang/" data-taxonomy-term="golang"><span class="taxonomy-label">Golang</span><span class="taxonomy-count">22</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/grafana/" data-taxonomy-term="grafana"><span class="taxonomy-label">Grafana</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/groovy/" data-taxonomy-term="groovy"><span class="taxonomy-label">Groovy</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/ha/" data-taxonomy-term="ha"><span class="taxonomy-label">Ha</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/hpa/" data-taxonomy-term="hpa"><span class="taxonomy-label">Hpa</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/http%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-taxonomy-term="http%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="taxonomy-label">Http服务器</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/hugo/" data-taxonomy-term="hugo"><span class="taxonomy-label">Hugo</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/ingress/" data-taxonomy-term="ingress"><span class="taxonomy-label">Ingress</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/input/" data-taxonomy-term="input"><span class="taxonomy-label">Input</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/install/" data-taxonomy-term="install"><span class="taxonomy-label">Install</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/io/" data-taxonomy-term="io"><span class="taxonomy-label">Io</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/jenkins/" data-taxonomy-term="jenkins"><span class="taxonomy-label">Jenkins</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/jmx_exporter/" data-taxonomy-term="jmx_exporter"><span class="taxonomy-label">Jmx_exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/jupyter-notebook/" data-taxonomy-term="jupyter-notebook"><span class="taxonomy-label">Jupyter-Notebook</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/kafka/" data-taxonomy-term="kafka"><span class="taxonomy-label">Kafka</span><span class="taxonomy-count">6</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/kafka-manager/" data-taxonomy-term="kafka-manager"><span class="taxonomy-label">Kafka-Manager&#34;</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/kibana/" data-taxonomy-term="kibana"><span class="taxonomy-label">Kibana</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/kubeadm/" data-taxonomy-term="kubeadm"><span class="taxonomy-label">Kubeadm</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/kubeaz/" data-taxonomy-term="kubeaz"><span class="taxonomy-label">Kubeaz</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/kubernetes/" data-taxonomy-term="kubernetes"><span class="taxonomy-label">Kubernetes</span><span class="taxonomy-count">14</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/kubernetes_sd_configs/" data-taxonomy-term="kubernetes_sd_configs"><span class="taxonomy-label">Kubernetes_sd_configs</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/linux/" data-taxonomy-term="linux"><span class="taxonomy-label">Linux</span><span class="taxonomy-count">6</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/location%E6%8C%87%E4%BB%A4/" data-taxonomy-term="location%E6%8C%87%E4%BB%A4"><span class="taxonomy-label">Location指令</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/log/" data-taxonomy-term="log"><span class="taxonomy-label">Log</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/logstash/" data-taxonomy-term="logstash"><span class="taxonomy-label">Logstash</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/lvm/" data-taxonomy-term="lvm"><span class="taxonomy-label">Lvm</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/mail/" data-taxonomy-term="mail"><span class="taxonomy-label">Mail</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/mha/" data-taxonomy-term="mha"><span class="taxonomy-label">Mha</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/minio/" data-taxonomy-term="minio"><span class="taxonomy-label">Minio</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/mongo-exporter/" data-taxonomy-term="mongo-exporter"><span class="taxonomy-label">Mongo-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/monitor/" data-taxonomy-term="monitor"><span class="taxonomy-label">Monitor</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/music_tag_web/" data-taxonomy-term="music_tag_web"><span class="taxonomy-label">Music_tag_web</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/mysql-exporter/" data-taxonomy-term="mysql-exporter"><span class="taxonomy-label">Mysql-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/mysqldump/" data-taxonomy-term="mysqldump"><span class="taxonomy-label">Mysqldump</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/mysql%E5%AE%89%E8%A3%85/" data-taxonomy-term="mysql%E5%AE%89%E8%A3%85"><span class="taxonomy-label">Mysql安装</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/mysql%E9%85%8D%E7%BD%AE/" data-taxonomy-term="mysql%E9%85%8D%E7%BD%AE"><span class="taxonomy-label">Mysql配置</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/nacos/" data-taxonomy-term="nacos"><span class="taxonomy-label">Nacos</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/navidrome/" data-taxonomy-term="navidrome"><span class="taxonomy-label">Navidrome</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/net/http/" data-taxonomy-term="net/http"><span class="taxonomy-label">Net/Http</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/nginx/" data-taxonomy-term="nginx"><span class="taxonomy-label">Nginx</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/nginx-exporter/" data-taxonomy-term="nginx-exporter"><span class="taxonomy-label">Nginx-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/nginx.conf/" data-taxonomy-term="nginx.conf"><span class="taxonomy-label">Nginx.conf</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/node_exporter/" data-taxonomy-term="node_exporter"><span class="taxonomy-label">Node_exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/operator/" data-taxonomy-term="operator"><span class="taxonomy-label">Operator</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/os/" data-taxonomy-term="os"><span class="taxonomy-label">Os</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/output/" data-taxonomy-term="output"><span class="taxonomy-label">Output</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/package/" data-taxonomy-term="package"><span class="taxonomy-label">Package</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/path/" data-taxonomy-term="path"><span class="taxonomy-label">Path</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/pcta/" data-taxonomy-term="pcta"><span class="taxonomy-label">Pcta</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/pflag/" data-taxonomy-term="pflag"><span class="taxonomy-label">Pflag</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/plugin/" data-taxonomy-term="plugin"><span class="taxonomy-label">Plugin</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/prerun/" data-taxonomy-term="prerun"><span class="taxonomy-label">Prerun</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/processors/" data-taxonomy-term="processors"><span class="taxonomy-label">Processors</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/promeql/" data-taxonomy-term="promeql"><span class="taxonomy-label">PromeQL</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/prometheus/" data-taxonomy-term="prometheus"><span class="taxonomy-label">Prometheus</span><span class="taxonomy-count">37</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/prometheus-sdk/" data-taxonomy-term="prometheus-sdk"><span class="taxonomy-label">Prometheus-Sdk</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/pushgateway/" data-taxonomy-term="pushgateway"><span class="taxonomy-label">Pushgateway</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/python/" data-taxonomy-term="python"><span class="taxonomy-label">Python</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/qemu/" data-taxonomy-term="qemu"><span class="taxonomy-label">Qemu</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/raft/" data-taxonomy-term="raft"><span class="taxonomy-label">Raft</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/rbac/" data-taxonomy-term="rbac"><span class="taxonomy-label">RBAC</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/redis/" data-taxonomy-term="redis"><span class="taxonomy-label">Redis</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/redis-exporter/" data-taxonomy-term="redis-exporter"><span class="taxonomy-label">Redis-Exporter</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/redmine/" data-taxonomy-term="redmine"><span class="taxonomy-label">Redmine</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/shortcode/" data-taxonomy-term="shortcode"><span class="taxonomy-label">Shortcode</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/sonarqube/" data-taxonomy-term="sonarqube"><span class="taxonomy-label">Sonarqube</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/sriov/" data-taxonomy-term="sriov"><span class="taxonomy-label">Sriov</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/tidb/" data-taxonomy-term="tidb"><span class="taxonomy-label">Tidb</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/time/" data-taxonomy-term="time"><span class="taxonomy-label">Time</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/tiup%E5%B7%A5%E5%85%B7/" data-taxonomy-term="tiup%E5%B7%A5%E5%85%B7"><span class="taxonomy-label">Tiup工具</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/uuid/" data-taxonomy-term="uuid"><span class="taxonomy-label">Uuid</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/victorametrics/" data-taxonomy-term="victorametrics"><span class="taxonomy-label">Victorametrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/victoriametrics/" data-taxonomy-term="victoriametrics"><span class="taxonomy-label">VictoriaMetrics</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/vim-cmd/" data-taxonomy-term="vim-cmd"><span class="taxonomy-label">Vim-Cmd</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/viper/" data-taxonomy-term="viper"><span class="taxonomy-label">Viper</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/vue/" data-taxonomy-term="vue"><span class="taxonomy-label">Vue</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/xtrabackup/" data-taxonomy-term="xtrabackup"><span class="taxonomy-label">Xtrabackup</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/zookeeper/" data-taxonomy-term="zookeeper"><span class="taxonomy-label">Zookeeper</span><span class="taxonomy-count">4</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE/" data-taxonomy-term="%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE"><span class="taxonomy-label">主从配置</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%81%9A%E9%A5%AD/" data-taxonomy-term="%E5%81%9A%E9%A5%AD"><span class="taxonomy-label">做饭</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%87%BD%E6%95%B0/" data-taxonomy-term="%E5%87%BD%E6%95%B0"><span class="taxonomy-label">函数</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%8F%98%E9%87%8F/" data-taxonomy-term="%E5%8F%98%E9%87%8F"><span class="taxonomy-label">变量</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7/" data-taxonomy-term="%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7"><span class="taxonomy-label">图床工具</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%A4%87%E4%BB%BD/" data-taxonomy-term="%E5%A4%87%E4%BB%BD"><span class="taxonomy-label">备份</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/" data-taxonomy-term="%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="taxonomy-label">夜莺·监控系统</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85/" data-taxonomy-term="%E5%AE%89%E8%A3%85"><span class="taxonomy-label">安装</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85mysql/" data-taxonomy-term="%E5%AE%89%E8%A3%85mysql"><span class="taxonomy-label">安装mysql</span><span class="taxonomy-count">2</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85rabbitmq/" data-taxonomy-term="%E5%AE%89%E8%A3%85rabbitmq"><span class="taxonomy-label">安装rabbitmq</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" data-taxonomy-term="%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2"><span class="taxonomy-label">安装部署</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%B8%B8%E9%87%8F/" data-taxonomy-term="%E5%B8%B8%E9%87%8F"><span class="taxonomy-label">常量</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E5%BB%BA%E7%AB%99/" data-taxonomy-term="%E5%BB%BA%E7%AB%99"><span class="taxonomy-label">建站</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE/" data-taxonomy-term="%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE"><span class="taxonomy-label">扩展配置</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E6%8E%A5%E5%8F%A3/" data-taxonomy-term="%E6%8E%A5%E5%8F%A3"><span class="taxonomy-label">接口</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-taxonomy-term="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="taxonomy-label">数据类型</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E6%96%B9%E5%90%91%E4%BB%A3%E7%90%86/" data-taxonomy-term="%E6%96%B9%E5%90%91%E4%BB%A3%E7%90%86"><span class="taxonomy-label">方向代理</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E6%97%85%E6%B8%B8/" data-taxonomy-term="%E6%97%85%E6%B8%B8"><span class="taxonomy-label">旅游</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E6%97%B6%E9%92%9F%E5%92%8C%E5%A4%A9%E6%B0%94/" data-taxonomy-term="%E6%97%B6%E9%92%9F%E5%92%8C%E5%A4%A9%E6%B0%94"><span class="taxonomy-label">时钟和天气</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/" data-taxonomy-term="%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="taxonomy-label">流程控制语句</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/" data-taxonomy-term="%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE"><span class="taxonomy-label">环境设置</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E7%94%B5%E5%BD%B1/" data-taxonomy-term="%E7%94%B5%E5%BD%B1"><span class="taxonomy-label">电影</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" data-taxonomy-term="%E7%BB%93%E6%9E%84%E4%BD%93"><span class="taxonomy-label">结构体</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E7%BE%8E%E9%A3%9F/" data-taxonomy-term="%E7%BE%8E%E9%A3%9F"><span class="taxonomy-label">美食</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/" data-taxonomy-term="%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D"><span class="taxonomy-label">英语单词</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E8%AE%A1%E5%88%92/" data-taxonomy-term="%E8%AE%A1%E5%88%92"><span class="taxonomy-label">计划</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83/" data-taxonomy-term="%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83"><span class="taxonomy-label">认证授权</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E8%BF%81%E7%A7%BB%E6%A1%88%E4%BE%8B/" data-taxonomy-term="%E8%BF%81%E7%A7%BB%E6%A1%88%E4%BE%8B"><span class="taxonomy-label">迁移案例</span><span class="taxonomy-count">4</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/" data-taxonomy-term="%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="taxonomy-label">运算符</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE/" data-taxonomy-term="%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="taxonomy-label">通用配置</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E9%85%8D%E7%BD%AE/" data-taxonomy-term="%E9%85%8D%E7%BD%AE"><span class="taxonomy-label">配置</span><span class="taxonomy-count">3</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" data-taxonomy-term="%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="taxonomy-label">问题排查</span><span class="taxonomy-count">1</span></a></li>
+        <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/%E9%99%84%E5%BD%95/" data-taxonomy-term="%E9%99%84%E5%BD%95"><span class="taxonomy-label">附录</span><span class="taxonomy-count">1</span></a></li>
+        </ul>
+    </div>
+  
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5 pe-md-4" role="main">
+            <a class="td-rss-button" title="RSS" href="/prometheus/alertmanager/index.xml" target="_blank" rel="noopener">
+              <i class="fa-solid fa-rss" aria-hidden="true"></i>
+            </a>
+            
+<div class="td-content">
+	<h1>告警收敛</h1>
+	<div class="lead">告警收敛,减少告警噪音</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+		<time datetime="2025-06-26" class="text-body-secondary">Thursday, June 26, 2025</time>
+	</div>
+	<header class="article-meta">
+		<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/categories/%E5%91%8A%E8%AD%A6/" data-taxonomy-term="%E5%91%8A%E8%AD%A6"><span class="taxonomy-label">告警</span></a></li>
+    </ul>
+</div>
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    <li><a class="taxonomy-term" href="https://zero-dew.netlify.app/tags/alertmanager/" data-taxonomy-term="alertmanager"><span class="taxonomy-label">Alertmanager</span></a></li>
+    </ul>
+</div>
+
+<p class="reading-time"><i class="fa-solid fa-clock" aria-hidden="true"></i>&nbsp; 2 minute read &nbsp;</p>
+</header>
+	<p>需求：
+1.按照故障等级，故障名称进行告警收敛
+顶级路由<code>group_wait</code> 和 <code>repeat_interval</code> 验证步骤：</p>
+<ol>
+<li>发送告警示例1，预期30s后收到告警</li>
+<li>等待步骤1完成后，再次发送告警示例1，预期10m + 30s 后收到告警
+顶级路由<code>group_interval</code>  验证步骤：</li>
+<li>发送告警示例1，在过20s后发送告警示例2，预期在告警2发送后20s收到告警</li>
+</ol>
+<p>子路由 <code>group_wait</code> 和 <code>repeat_interval</code> 验证步骤：</p>
+<ol>
+<li>发送告警示例3，预期10m后收到告警</li>
+<li>等待步骤1完成后，再次发送告警示例3，预期1h后收到告警</li>
+</ol>
+<p>子路由 <code>group_interval</code>  验证步骤：</p>
+<ol>
+<li>发送告警示例3，在过5m后发送告警示例4，预期在告警4发送后10m收到告警</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">global</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resolve_timeout</span>: <span style="color:#ae81ff">30m</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">route</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">receiver</span>: <span style="color:#e6db74">&#39;webhook&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">group_by</span>: [<span style="color:#e6db74">&#39;alertname&#39;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">group_wait</span>: <span style="color:#ae81ff">30s</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">group_interval</span>: <span style="color:#ae81ff">5m</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">repeat_interval</span>: <span style="color:#ae81ff">10m</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">routes</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">receiver</span>: <span style="color:#e6db74">&#39;webhook&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">group_by</span>: [<span style="color:#e6db74">&#39;alertname&#39;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">group_wait</span>: <span style="color:#ae81ff">10m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">group_interval</span>: <span style="color:#ae81ff">20m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">repeat_interval</span>: <span style="color:#ae81ff">1h</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchers</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">alertname=~&#34;database|web&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">severity=&#34;E4&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">receivers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#39;webhook&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">webhook_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#39;http://127.0.0.1:5001&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">send_resolved</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div>
+  
+  
+  
+  
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="告警示例1" aria-controls="tabs-00-00" aria-selected="true">
+        告警示例1
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="告警示例2" aria-controls="tabs-00-01" aria-selected="false">
+        告警示例2
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-02" role="tab"
+          data-td-tp-persist="告警示例3" aria-controls="tabs-00-02" aria-selected="false">
+        告警示例3
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-03" role="tab"
+          data-td-tp-persist="告警示例4" aria-controls="tabs-00-03" aria-selected="false">
+        告警示例4
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;labels&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;alertname&#34;: &#34;cpuHigh&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;instance&#34;: &#34;node01:9100&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;job&#34;: &#34;node_exporter&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;severity&#34;: &#34;E3&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;annotations&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;description&#34;: &#34;node01:9100 of job node_exporter has been used cpu &gt;85 more than 5 minutes. (current value: 89.99%)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;summary&#34;: &#34;Instance node01:9100 cpu usage more than 85%&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;generatorURL&#34;: &#34;http://prometheus.pytc.com/prom&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">]&#39;</span> <span style="color:#e6db74">&#34;http://127.0.0.1:9093/alert/api/v2/alerts&#34;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;labels&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;alertname&#34;: &#34;cpuHigh&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;instance&#34;: &#34;node02:9100&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;job&#34;: &#34;node_exporter&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;severity&#34;: &#34;E3&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;annotations&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;description&#34;: &#34;node02:9100 of job node_exporter has been used cpu &gt;85 more than 5 minutes. (current value: 99.99%)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;summary&#34;: &#34;Instance node02:9100 cpu usage more than 85%&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;generatorURL&#34;: &#34;http://prometheus.pytc.com/prom&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">]&#39;</span> <span style="color:#e6db74">&#34;http://127.0.0.1:9093/alert/api/v2/alerts&#34;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-02" role="tabpanel" aria-labelled-by="tabs-00-02-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;labels&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;alertname&#34;: &#34;database&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;instance&#34;: &#34;node01:9100&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;job&#34;: &#34;node_exporter&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;severity&#34;: &#34;E3&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;annotations&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;description&#34;: &#34;node01:9100 of job node_exporter has been used cpu &gt;85 more than 5 minutes. (current value: 89.99%)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;summary&#34;: &#34;Instance node01:9100 cpu usage more than 85%&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;generatorURL&#34;: &#34;http://prometheus.pytc.com/prom&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">]&#39;</span> <span style="color:#e6db74">&#34;http://127.0.0.1:9093/alert/api/v2/alerts&#34;</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-03" role="tabpanel" aria-labelled-by="tabs-00-03-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;labels&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;alertname&#34;: &#34;database&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;instance&#34;: &#34;node01:9100&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;job&#34;: &#34;node_exporter&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;severity&#34;: &#34;E4&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;annotations&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;description&#34;: &#34;node01:9100 of job node_exporter has been used cpu &gt;85 more than 5 minutes. (current value: 89.99%)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;summary&#34;: &#34;Instance node01:9100 cpu usage more than 85%&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;generatorURL&#34;: &#34;http://prometheus.pytc.com/prom&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">]&#39;</span> <span style="color:#e6db74">&#34;http://127.0.0.1:9093/alert/api/v2/alerts&#34;</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+
+	<ul class="list-unstyled d-flex justify-content-between align-items-center mb-0 pt-5">
+  <li>
+    <a class="btn btn-primary disabled"><span class="me-1">←</span>Previous</a>
+  </li>
+  <li>
+    <a href="/prometheus/alertmanager/amtool.html" aria-label="Next - amtool" class="btn btn-primary">Next<span class="ms-1">→</span></a>
+  </li>
+</ul>
+
+	</div>
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

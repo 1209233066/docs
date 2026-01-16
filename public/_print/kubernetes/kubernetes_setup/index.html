@@ -1,0 +1,1557 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/kubernetes/kubernetes_setup/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/kubernetes/kubernetes_setup/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>环境搭建 | 零露云</title>
+<meta name="description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+<meta property="og:url" content="https://zero-dew.netlify.app/kubernetes/kubernetes_setup/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="环境搭建">
+  <meta property="og:description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="环境搭建">
+  <meta itemprop="description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+  <meta itemprop="datePublished" content="2025-05-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-20T00:00:00+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="环境搭建">
+  <meta name="twitter:description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section td-blog">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5 pe-md-4" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/kubernetes/kubernetes_setup/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">环境搭建</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-c3188cc99ff9218efbcfa8aa68cadd56">kubeadm环境搭建</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-eca395938eb773382579cec33e1f3ce5">kubeaz环境搭建</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-5c10bf9a703182f522d9ebb359005d06">kubeadm工具</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="">
+    <h1 id="pg-c3188cc99ff9218efbcfa8aa68cadd56">kubeadm环境搭建</h1>
+	<div class="lead">构建一套高可用、可扩展的kubernetes生态环境</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-21" class="text-body-secondary">Wednesday, May 21, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+
+
+    <p>阅读该文档你将了解到：</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 从0到1搭建kubernetes环境</li>
+<li><input checked="" disabled="" type="checkbox"> 基于kubernetes的可观测平台构建</li>
+<li><input checked="" disabled="" type="checkbox"> CI/CD  环境与k8s的集成</li>
+</ul>
+<p>本示例完全实现下图架构,并试图对 <code>cni/可观测性/cicd</code> 能力进行扩展。力图构建一套生产环境可用的模型。</p>
+
+
+</div>
+
+<p>​</p>
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="架构" aria-controls="tabs-01-00" aria-selected="true">
+        架构
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="服务器列表" aria-controls="tabs-01-01" aria-selected="false">
+        服务器列表
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <img src="https://kubernetes.io/zh-cn/docs/images/kubeadm-ha-topology-stacked-etcd.svg">
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <p><em>通过自建dns 或 <code>/etc/hosts</code> 文件实现对所有主机间的主机名解析</em></p>
+<p><em>独立挂载<code>/var/lib/docker</code> 、<code>/var/lib/kubelet</code> 、<code>etcd</code>数据目录</em></p>
+<table>
+  <thead>
+      <tr>
+          <th>hostname</th>
+          <th>os</th>
+          <th>ipaddress</th>
+          <th>roles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>master01</td>
+          <td>centos7.9</td>
+          <td>192.168.0.108/24</td>
+          <td>master、node、keepalived、nginx、nfs</td>
+      </tr>
+      <tr>
+          <td>master02</td>
+          <td>centos7.9</td>
+          <td>192.168.0.140/24</td>
+          <td>master、node、keepalived、nginx</td>
+      </tr>
+      <tr>
+          <td>master03</td>
+          <td>centos7.9</td>
+          <td>192.168.0.162/24</td>
+          <td>master、node、keepalived、nginx</td>
+      </tr>
+      <tr>
+          <td>node01</td>
+          <td>centos7.9</td>
+          <td></td>
+          <td>node</td>
+      </tr>
+      <tr>
+          <td>node02</td>
+          <td>centos7.9</td>
+          <td></td>
+          <td>node</td>
+      </tr>
+      <tr>
+          <td>virtualhost</td>
+          <td></td>
+          <td>192.168.0.144/24</td>
+          <td>vip</td>
+      </tr>
+  </tbody>
+</table>
+
+    </div>
+</div>
+
+
+  
+  
+  
+  
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          aria-controls="tabs-02-00" aria-selected="false">
+        <strong>系统优化</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="系统初始化" aria-controls="tabs-02-01" aria-selected="true">
+        系统初始化
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-02" role="tab"
+          data-td-tp-persist="lb" aria-controls="tabs-02-02" aria-selected="false">
+        LB
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-03" role="tab"
+          data-td-tp-persist="keepalived" aria-controls="tabs-02-03" aria-selected="false">
+        keepalived
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-2-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># author: 1209233066@qq.com</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># description:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#	init linux env for kuernetes v24-</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   function:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           1. sethostname </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           2. turn off swap</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           3. turn off selinux</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           4. turn off firewalld</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           5. turn on kernel for netfilter/ip_nonlocal_bind</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           6. turn on ipvs modle</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           7. modify cgroup driver for docker</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           8. allow bind nonlocal ip</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           </span>
+</span></span><span style="display:flex;"><span>LC_ALL<span style="color:#f92672">=</span>C
+</span></span><span style="display:flex;"><span>SetEnv<span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 设置主机名和时区</span>
+</span></span><span style="display:flex;"><span>	hostnamectl set-hostname <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>	timedatectl set-timezone Asia/Shanghai
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 关闭swap分区 </span>
+</span></span><span style="display:flex;"><span>    swapoff -a 
+</span></span><span style="display:flex;"><span>    sed -i <span style="color:#e6db74">&#39;/swap/s|^|#|g&#39;</span> /etc/fstab
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 关闭selinux </span>
+</span></span><span style="display:flex;"><span>    setenforce <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    sed -i <span style="color:#e6db74">&#39;s|SELINUX=enforcing|SELINUX=disabled|g&#39;</span> /etc/selinux/config
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 关闭firewalld</span>
+</span></span><span style="display:flex;"><span>    systemctl disable --now firewalld
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 加载 br_netfilter 模块</span>
+</span></span><span style="display:flex;"><span>    echo br_netfilter &gt;/etc/modules-load.d/br_netfilter.conf
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 加载ipvs 模块</span>
+</span></span><span style="display:flex;"><span>    ls /usr/lib/modules/<span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span>/kernel/net/netfilter/ipvs |awk -F <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#e6db74">&#39;{print $1}&#39;</span> &gt;/etc/modules-load.d/ipvs.conf
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 加载/etc/modules-load.d 下配置文件</span>
+</span></span><span style="display:flex;"><span>    systemctl restart systemd-modules-load
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 开启 bridge-nf-call-iptables内核功能</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 开启 bridge-nf-call-ip6tables 内核功能</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 开启数据包内核转发功能</span>
+</span></span><span style="display:flex;"><span>    sysctl -w net.bridge.bridge-nf-call-iptables<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    sysctl -w net.bridge.bridge-nf-call-ip6tables<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    sysctl -w net.ipv4.ip_forward<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    sysctl -w net.ipv4.ip_nonlocal_bind<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	echo -e <span style="color:#e6db74">&#34;net.bridge.bridge-nf-call-iptables = 1\nnet.bridge.bridge-nf-call-ip6tables = 1\nnet.ipv4.ip_forward = 1\nnet.ipv4.ip_nonlocal_bind = 1&#34;</span> &gt;/etc/sysctl.d/kubernetes.conf
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>	yum install ipvsadm -y
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>	curl https://get.docker.com|bash -s -- --mirror Aliyun --version 20.10.24 <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	mkdir /etc/docker <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	echo -e <span style="color:#e6db74">&#39;{\n\t&#34;exec-opts&#34;: [&#34;native.cgroupdriver=systemd&#34;]\n}&#39;</span> &gt;/etc/docker/daemon.json
+</span></span><span style="display:flex;"><span>	systemctl daemon-reload
+</span></span><span style="display:flex;"><span>	systemctl enable docker --now
+</span></span><span style="display:flex;"><span>	systemctl status docker
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SetEnv
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-02" role="tabpanel" aria-labelled-by="tabs-02-02-tab" tabindex="2">
+        <div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">L4负载均衡，在所有master节点执行</h4>
+<pre><code>sysctl -w net.ipv4.ip_nonlocal_bind=1
+</code></pre>
+</div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user  nginx;
+</span></span><span style="display:flex;"><span>worker_processes  1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>events <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    worker_connections  1024;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>stream <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        log_format main <span style="color:#e6db74">&#39;$remote_addr [$time_local] &#39;</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;$protocol $status $bytes_sent $bytes_received &#39;</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;$session_time &#34;$upstream_addr&#34; &#39;</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;&#34;$upstream_bytes_sent&#34; &#34;$upstream_bytes_received&#34; &#34;$upstream_connect_time&#34;&#39;</span>;
+</span></span><span style="display:flex;"><span>        upstream kube_apiserver <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                server 192.168.0.108:6443 weight<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> max_fails<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> fail_timeout<span style="color:#f92672">=</span>30s;
+</span></span><span style="display:flex;"><span>                server 192.168.0.140:6443 weight<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> max_fails<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> fail_timeout<span style="color:#f92672">=</span>30s;
+</span></span><span style="display:flex;"><span>                server 192.168.0.162:6443 weight<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> max_fails<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> fail_timeout<span style="color:#f92672">=</span>30s;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                listen 192.168.0.144:16443;
+</span></span><span style="display:flex;"><span>                proxy_connect_timeout 2s;
+</span></span><span style="display:flex;"><span>                proxy_timeout 900s;
+</span></span><span style="display:flex;"><span>                proxy_pass kube_apiserver;
+</span></span><span style="display:flex;"><span>                access_log  logs/kubeapiserver.log main;
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-03" role="tabpanel" aria-labelled-by="tabs-02-03-tab" tabindex="2">
+        <p>三个节点使用相同的<code> BACKUP</code> 和 <code>priority 100</code> 初始化时拥有对等角色,vrrp初次选举时如果<code>priority </code> 相同则会选择ip较大的节点拥有vip，因此不用担心相同<code>priority</code> 脑裂问题。
+而<code>state BACKUP</code> 是为了让非抢占参数<code>nopreempt</code> 能够生效</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">参数</th>
+          <th style="text-align: left">赋值</th>
+          <th style="text-align: left">作用说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">router_id</td>
+          <td style="text-align: left">不同</td>
+          <td style="text-align: left">标识本主机，便于日志区分</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">virtual_router_id</td>
+          <td style="text-align: left">相同</td>
+          <td style="text-align: left">VRRP组标识，主备必须一致</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">state BACKUP</td>
+          <td style="text-align: left">相同</td>
+          <td style="text-align: left">所有节点设置为BACKUP，目的是为了让非抢占参数<code>nopreempt</code> 能够生效</td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;/etc/keepalived/keepalived.conf<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">! Configuration File for keepalived
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">####################### main config ########################
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">global_defs {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   notification_email {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      810654947@qq.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      1209233066@qq.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   notification_email_from 810654947@qq.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   smtp_server smtp.qq.com 587
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   smtp_connect_timeout 30
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   # 标识本主机，便于日志区分。每个主机不同
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   router_id 1921680108
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   vrrp_garp_master_delay 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   script_user root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">vrrp_script check_port {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   script &#34;/etc/keepalived/check_port.sh 16443&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   interval 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   weight -30
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">################### Vrrp instance config ###################
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">vrrp_instance VI_1 { 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   # MASTER|BACKUP
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   state BACKUP
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   priority 100
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   interface ens192
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   virtual_router_id 51
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   advert_int 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   # 当初始化节点是MASTER时不生效
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   nopreempt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   authentication {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      auth_type PASS
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      auth_pass 1111
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   virtual_ipaddress {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      192.168.0.144/24
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   track_script {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      check_port
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><p>健康检查脚本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;/etc/keepalived/check_port.sh<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">count=$(ss -lntp|grep -c  &#34;$1&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[ $count -ge 1 ] &amp;&amp; exit 0 || pkill keepalived; exit 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>chmod +x /etc/keepalived/check_port.sh
+</span></span></code></pre></div><p>keepalived 启动脚本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /usr/lib/systemd/system/keepalived.service <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description = keepalived daemon 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After = network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Type=forking
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/usr/local/sbin/keepalived --log-console -f /etc/keepalived/keepalived.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Restart=always
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RestartSec=5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>systemctl enable --now keepalived
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="kubeadm-安装">kubeadm 安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[kubernetes]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">name=Kubernetes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">enabled=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gpgcheck=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">repo_gpgcheck=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install -y kubelet-1.23.17-0.x86_64 kubeadm-1.23.17-0.x86_64  kubectl-1.23.17-0.x86_64 
+</span></span></code></pre></div><h4 id="初始化集群"><strong>初始化集群</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm init --control-plane-endpoint <span style="color:#e6db74">&#34;192.168.0.144:16443&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--image-repository k8s-gcr.m.daocloud.io <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--kubernetes-version 1.23.17 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--upload-certs <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--pod-network-cidr <span style="color:#e6db74">&#34;10.244.0.0/16&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--service-cidr <span style="color:#e6db74">&#34;172.168.0.0/16&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-v5
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl enable kubelet --now
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p $HOME/.kube
+</span></span><span style="display:flex;"><span>cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+</span></span><span style="display:flex;"><span>chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span>:<span style="color:#66d9ef">$(</span>id -g<span style="color:#66d9ef">)</span> $HOME/.kube/config
+</span></span></code></pre></div><p><strong>命令自动补全</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install bash-completion -y
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;source &lt;(kubectl completion bash)&#39;</span> &gt;&gt;~/.bashrc
+</span></span><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><h4 id="安装基础cni插件flannel"><strong>安装基础cni插件flannel</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+</span></span></code></pre></div><h4 id="安装ingress-controller"><strong>安装ingress controller</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+</span></span><span style="display:flex;"><span>k8s.gcr.io/ingress-nginx/controller:v1.1.2  
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">externalIPs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">192.168.0.236</span>
+</span></span></code></pre></div><h4 id="安装dashboard"><strong>安装dashboard</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-BASH" data-lang="BASH"><span style="display:flex;"><span>kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.2/high-availability-1.21+.yaml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-BASH" data-lang="BASH"><span style="display:flex;"><span>kubectl apply -f https://raw.githubusercontent.com/kubernetes/kubernetes/refs/tags/v1.23.2/cluster/addons/dashboard/dashboard.yaml
+</span></span></code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">报错</h4>
+
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>x509: cannot validate certificate <span style="color:#66d9ef">for</span> 192.168.0.xxx because it doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t contain any IP SANs
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Failed probe&#34;</span> probe<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;metric-storage-ready&#34;</span> err<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no metrics to serve&#34;</span>
+</span></span></code></pre></div><p>解决办法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--kubelet-insecure-tls
+</span></span></code></pre></div>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl genrsa -out dashboard.key <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>openssl req -new -key dashboard.key -out ca.csr -subj <span style="color:#e6db74">&#34;/C=CN/ST=Gd/L=SZ/O=zero-dew.com/CN=dashboard.zero-dew.com&#34;</span>
+</span></span><span style="display:flex;"><span>openssl x509 -req -in ca.csr -out dashboard.crt -signkey  dashboard.key -days <span style="color:#ae81ff">3650</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl -n kubernetes-dashboard create secret tls dashboard-tls --cert<span style="color:#f92672">=</span>dashboard.crt --key<span style="color:#f92672">=</span>dashboard.key
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt; &#39;EOF&#39; |kubectl apply -f -
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: networking.k8s.io/v1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: Ingress
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: dashboard
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  namespace: kubernetes-dashboard
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  annotations:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    nginx.ingress.kubernetes.io/backend-protocol: &#34;HTTPS&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ingressClassName: nginx
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  tls:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - hosts:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - dashboard.zero-dew.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    secretName: dashboard-tls
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  rules:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - host: dashboard.zero-dew.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    http:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      paths:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - path: /
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pathType: Prefix
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        backend:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          service:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            name: kubernetes-dashboard
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            port:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              number: 443
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.0.236 A dashboard.zero-dew.com
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://dashboard.zero-dew.com
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl create sa dashboard-admin -n kubernetes-dashboard
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl create clusterrolebinding dashboard-admin --clusterrole<span style="color:#f92672">=</span>cluster-admin --serviceaccount<span style="color:#f92672">=</span>kubernetes-dashboard:dashboard-admin 
+</span></span><span style="display:flex;"><span>kubectl describe secret dashboard-admin-token-vm6lm  -n kubernetes-dashboard
+</span></span></code></pre></div><h4 id="安装nfs--storage-class"><strong>安装nfs  storage class</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://www.cnblogs.com/punchlinux/p/16552183.html</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Namespace</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRole</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resources</span>: [<span style="color:#e6db74">&#34;nodes&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">verbs</span>: [<span style="color:#e6db74">&#34;get&#34;</span>, <span style="color:#e6db74">&#34;list&#34;</span>, <span style="color:#e6db74">&#34;watch&#34;</span>]
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resources</span>: [<span style="color:#e6db74">&#34;persistentvolumes&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">verbs</span>: [<span style="color:#e6db74">&#34;get&#34;</span>, <span style="color:#e6db74">&#34;list&#34;</span>, <span style="color:#e6db74">&#34;watch&#34;</span>, <span style="color:#e6db74">&#34;create&#34;</span>, <span style="color:#e6db74">&#34;delete&#34;</span>]
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resources</span>: [<span style="color:#e6db74">&#34;persistentvolumeclaims&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">verbs</span>: [<span style="color:#e6db74">&#34;get&#34;</span>, <span style="color:#e6db74">&#34;list&#34;</span>, <span style="color:#e6db74">&#34;watch&#34;</span>, <span style="color:#e6db74">&#34;update&#34;</span>]
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#34;storage.k8s.io&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resources</span>: [<span style="color:#e6db74">&#34;storageclasses&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">verbs</span>: [<span style="color:#e6db74">&#34;get&#34;</span>, <span style="color:#e6db74">&#34;list&#34;</span>, <span style="color:#e6db74">&#34;watch&#34;</span>]
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resources</span>: [<span style="color:#e6db74">&#34;events&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">verbs</span>: [<span style="color:#e6db74">&#34;create&#34;</span>, <span style="color:#e6db74">&#34;update&#34;</span>, <span style="color:#e6db74">&#34;patch&#34;</span>]
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRoleBinding</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">roleRef</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">apiGroup</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRole</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">subjects</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Role</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">leader-locking-nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">endpoints</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">get</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">list</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">watch</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">create</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">update</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">patch</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">RoleBinding</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">leader-locking-nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">roleRef</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">apiGroup</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Role</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">leader-locking-nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">subjects</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">storage.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">StorageClass</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">managed-nfs-storage</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">storageclass.kubernetes.io/is-default-class</span>: <span style="color:#e6db74">&#34;true&#34;</span>  <span style="color:#75715e"># 设置为默认sc</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">provisioner</span>: <span style="color:#ae81ff">k8s-sigs.io/nfs-subdir-external-provisioner</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">allowVolumeExpansion</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e">#允许动态扩容，比如kubectl edit pvc</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">reclaimPolicy</span>: <span style="color:#ae81ff">Retain	</span> <span style="color:#75715e">#PV的删除策略默认为delete,删除后pv立即删除NFS server的数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">mountOptions</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#- vers=4.1 #NFS版本，containerd有部分参数异常</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#- noresvport  #告知NFS客户端在重新建立网络连接时，使用新的传输控制协议端口</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">noatime </span> <span style="color:#75715e">#访问文件时不更新文件inode中的时间戳，高并发环境可提高性能</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#mountOptions: &#34;vers=4.1,noresvport,noatime&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">archiveOnDelete</span>: <span style="color:#e6db74">&#34;true&#34;</span>  <span style="color:#75715e">#删除pod时保留pod数据，默认为false时不保留数据</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">strategy</span>: <span style="color:#75715e">#部署策略</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Recreate</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">serviceAccountName</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-provisioner</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">#image: k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner:v4.0.2 </span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">image</span>: <span style="color:#ae81ff">registry.cn-hangzhou.aliyuncs.com/liangxiaohui/nfs-subdir-external-provisioner:v4.0.2</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">volumeMounts</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-root</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/persistentvolumes</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">PROVISIONER_NAME</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">value</span>: <span style="color:#ae81ff">k8s-sigs.io/nfs-subdir-external-provisioner</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">NFS_SERVER</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">value</span>: <span style="color:#ae81ff">10.4.7.250</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">NFS_PATH</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">value</span>: <span style="color:#ae81ff">/data/volumes</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nfs-client-root</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">nfs</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">server</span>: <span style="color:#ae81ff">192.168.0.108</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/data/volumes</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolumeClaim</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pvc-test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">accessModes</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">ReadWriteMany</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">requests</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1Gi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">storageClassName</span>: <span style="color:#ae81ff">managed-nfs-storage</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">run</span>: <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nfs-storage</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">args</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sleep</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;1000&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">busybox</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resources</span>: {}
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dnsPolicy</span>: <span style="color:#ae81ff">ClusterFirst</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Always</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">dyncmic-pvc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">pvc-test</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># yum install rpcbind nfs-utils -y</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># systemctl enable rpcbind nfs --now </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># systemctl status  rpcbind nfs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># install -d /data/volumes</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo &#34;/data/volumes  *(rw,sync,no_root_squash)&#34; &gt;/etc/exports</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># root@harbor:~# exportfs -r</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># showmount -e 192.168.0.108</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># mount -t nfs 192.168.0.108:/data/volumes /mnt  </span>
+</span></span></code></pre></div><h4 id="安装multus-cni插件--spiderpool"><strong>安装multus cni插件 + SpiderPool</strong></h4>
+<p><img src="https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/18630fde0b43e38addb4a83c437c833c39854ffe/docs/images/multus-pod-image.svg" alt=""></p>
+<p>安装多网卡cni <code>multus</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset.yml
+</span></span></code></pre></div><p>安装ipam  <code>SpiderPool</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>helm repo add spiderpool https://spidernet-io.github.io/spiderpool
+</span></span><span style="display:flex;"><span>helm fetch spiderpool/spiderpool
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>helm install spiderpool spiderpool/spiderpool <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--set multus.enableMultusConfig<span style="color:#f92672">=</span>false <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--set global.imageRegistryOverride<span style="color:#f92672">=</span>ghcr.m.daocloud.io <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--wait --namespace kube-system 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee <span style="color:#e6db74">&lt;&lt;EOF|kubectl apply -f -
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: spiderpool.spidernet.io/v2beta1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: SpiderIPPool
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: macvlan-ipv4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  default: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  subnet: 192.168.0.0/24
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ips:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - &#34;192.168.0.213-192.168.0.216&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - &#34;192.168.0.174-192.168.0.209&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;EOF | kubectl apply -f -
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: &#34;k8s.cni.cncf.io/v1&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: NetworkAttachmentDefinition
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: macvlan1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  namespace: kube-system
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  config: &#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;cniVersion&#34;: &#34;0.3.0&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;type&#34;: &#34;macvlan&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;master&#34;: &#34;ens192&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;mode&#34;: &#34;bridge&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      		&#34;ipam&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;type&#34;: &#34;spiderpool&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;promiscuous&#34;: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><p>测试mcvlan</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;EOF|kubectl apply -f -
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: apps/v1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: DaemonSet
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: test
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  selector:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    matchLabels:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      app: test
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  template:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      labels:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        app: test
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      annotations:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        k8s.v1.cni.cncf.io/networks: macvlan
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      tolerations:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - effect: &#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        key: &#34;node-role.kubernetes.io/master&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      containers:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - name: test
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        securityContext:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          privileged: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        image: quay.io/libpod/alpine:3.10.2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        command: [&#34;sleep&#34;,&#34;1000&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><h4 id="prometheus监控告警">prometheus监控告警</h4>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">目标</h4>
+
+    <ol>
+<li>对基础组件的指标采集。<code>kube-apiserver</code>、<code>kube-scheduler</code>、<code>kube-controllermanager</code>、<code>kubelet</code>、<code>kubeproxy</code>、<code>etcd</code>、<code>coredns</code>、<code>cni</code>、<code>csi</code>、<code>cri</code>、<code>node</code></li>
+<li>通过label 或annotation 通过kubernetes_sd_config 的对业务pod动态发现</li>
+<li>完善一个kubernetes基础平台的dashbaord</li>
+<li>完善一个kubernetes基础平台的alert 模版和告警规则</li>
+</ol>
+
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apiVersion: apps/v1
+</span></span><span style="display:flex;"><span>kind: DaemonSet
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  name: node-exporter
+</span></span><span style="display:flex;"><span>  namespace: kube-system
+</span></span><span style="display:flex;"><span>spec:
+</span></span><span style="display:flex;"><span>  selector:
+</span></span><span style="display:flex;"><span>    matchLabels:
+</span></span><span style="display:flex;"><span>      app: node-exporter
+</span></span><span style="display:flex;"><span>  template:
+</span></span><span style="display:flex;"><span>    metadata:
+</span></span><span style="display:flex;"><span>      labels:
+</span></span><span style="display:flex;"><span>        app: node-exporter
+</span></span><span style="display:flex;"><span>    spec:
+</span></span><span style="display:flex;"><span>      tolerations:
+</span></span><span style="display:flex;"><span>      - key: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        operator: <span style="color:#e6db74">&#34;Exists&#34;</span>
+</span></span><span style="display:flex;"><span>      volumes:
+</span></span><span style="display:flex;"><span>      - name: root
+</span></span><span style="display:flex;"><span>        hostPath:
+</span></span><span style="display:flex;"><span>          path: /
+</span></span><span style="display:flex;"><span>      hostNetwork: true
+</span></span><span style="display:flex;"><span>      hostPID: true
+</span></span><span style="display:flex;"><span>      containers:
+</span></span><span style="display:flex;"><span>      - name: node-exporter
+</span></span><span style="display:flex;"><span>        image: quay.io/prometheus/node-exporter:v1.6.1
+</span></span><span style="display:flex;"><span>        args:
+</span></span><span style="display:flex;"><span>        - --path.rootfs<span style="color:#f92672">=</span>/host
+</span></span><span style="display:flex;"><span>        volumeMounts:
+</span></span><span style="display:flex;"><span>        - mountPath: /host
+</span></span><span style="display:flex;"><span>          name: root
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">scrape_configs</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">node-exporter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://192.168.0.144:16443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 测试改成false也没问题</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:9100&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#e6db74">&#39;etcd&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/etcd/ca.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/etcd/peer.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/etcd/peer.key</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://192.168.0.144:16443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 测试改成false也没问题</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__meta_kubernetes_node_label_kubernetes_io_role]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#e6db74">&#34;master&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>: <span style="color:#ae81ff">keep</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:2379&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kube-apiserver</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">honor_timestamps</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scrape_interval</span>: <span style="color:#ae81ff">1m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scrape_timeout</span>: <span style="color:#ae81ff">1m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metrics_path</span>: <span style="color:#ae81ff">/metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">follow_redirects</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enable_http2</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://192.168.0.144:16443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 测试改成false也没问题</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__meta_kubernetes_node_label_kubernetes_io_role]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#e6db74">&#34;master&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>: <span style="color:#ae81ff">keep</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:6443&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kubelet</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">honor_timestamps</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scrape_interval</span>: <span style="color:#ae81ff">1m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scrape_timeout</span>: <span style="color:#ae81ff">1m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metrics_path</span>: <span style="color:#ae81ff">/metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">follow_redirects</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enable_http2</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://192.168.0.144:16443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 测试改成false也没问题</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">node</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#ae81ff">__address__]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">(.*):(.*)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#e6db74">&#34;$1:10250&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#ae81ff">kube-state-metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes_sd_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">api_server</span>: <span style="color:#ae81ff">https://192.168.0.144:16443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls_config</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ca_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cert_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.crt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">key_file</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/apiserver-kubelet-client.key</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 测试改成false也没问题</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">insecure_skip_verify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">role</span>: <span style="color:#ae81ff">service</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relabel_configs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#e6db74">&#34;__meta_kubernetes_service_name&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>: <span style="color:#ae81ff">keep</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#e6db74">&#34;kube-state-metrics&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">source_labels</span>: [<span style="color:#e6db74">&#34;__meta_kubernetes_service_label_prometheus_io_external&#34;</span>,<span style="color:#e6db74">&#34;__meta_kubernetes_service_label_prometheus_io_ports&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">regex</span>: <span style="color:#ae81ff">([0-9\.]+);(\d+)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replacement</span>: <span style="color:#ae81ff">$1:$2</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">action</span>: <span style="color:#ae81ff">replace</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">target_label</span>: <span style="color:#ae81ff">__address__</span>
+</span></span></code></pre></div><h4 id="filebeat日志采集">filebeat日志采集</h4>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">目标</h4>
+
+    <ol>
+<li>采集基础组件：<code>kube-apiserver</code>、<code>kube-scheduler</code>、<code>kube-controllermanager</code>、<code>kubelet</code>、<code>kubeproxy</code>、<code>etcd</code>、<code>coredns</code>、<code>cni</code>、<code>csi</code>、<code>cri</code>、<code>node</code></li>
+<li>通过label 或annotation 对业务pod动态发现</li>
+</ol>
+
+
+</div>
+
+<details>
+  <summary>Details</summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl annotation ns kube-system filebeat<span style="color:#f92672">=</span>true
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">filebeat.autodiscover</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">providers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">kubernetes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">node</span>: <span style="color:#ae81ff">${NODE_NAME}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">templates</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">condition</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">or</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">equals</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">kubernetes.labels.filebeat</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">equals</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">kubernetes.namespace_labels.filebeat</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">config</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">filestream</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">id</span>: <span style="color:#ae81ff">container-${data.kubernetes.container.id}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">prospector.scanner.symlinks</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">/var/log/containers/*-${data.kubernetes.container.id}.log</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">parsers</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">container</span>: <span style="color:#ae81ff">~</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">multiline</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">type</span>: <span style="color:#ae81ff">pattern</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">pattern</span>: <span style="color:#e6db74">&#39;^\[&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">negate</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">match</span>: <span style="color:#ae81ff">after</span>
+</span></span></code></pre></div></details>
+<h4 id="skywalking">skywalking</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># kubeadm token create</span>
+</span></span><span style="display:flex;"><span>43bjhh.j2l5jqrixcd022zc
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># kubeadm token list</span>
+</span></span><span style="display:flex;"><span>TOKEN                     TTL         EXPIRES                USAGES                   DESCRIPTION                                                EXTRA GROUPS
+</span></span><span style="display:flex;"><span>43bjhh.j2l5jqrixcd022zc   23h         2025-11-28T12:14:03Z   authentication,signing   &lt;none&gt;                                                     system:bootstrappers:kubeadm:default-node-token
+</span></span></code></pre></div><h4 id="继续添加master节点"><strong>继续添加master节点</strong></h4>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm init phase upload-certs --upload-certs
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># kubeadm token create --print-join-command</span>
+</span></span></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm join 192.168.0.144:16443 --token mhnut3.z7xz7l9xzoj8vorg <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--discovery-token-ca-cert-hash sha256:3e77b765acb011d12cfb2649040ba6b51dd07ac6ee1746ce540740fc9d31bea3 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--control-plane --certificate-key 33bdaf597978b2355117cb742562dbaf4b91a20abb8e3a9f145439122b4eae48 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-v5
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl enable kubelet
+</span></span></code></pre></div><h4 id="添加node节点"><strong>添加node节点</strong></h4>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># kubeadm token create --print-join-command</span>
+</span></span></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm join 192.168.0.144:16443 --token hmop0f.c82n8s9ns25thhqh --discovery-token-ca-cert-hash sha256:3e77b765acb011d12cfb2649040ba6b51dd07ac6ee1746ce540740fc9d31bea3 -v5
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl enable kubelet
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-eca395938eb773382579cec33e1f3ce5">kubeaz环境搭建</h1>
+	<div class="lead">构建一套高可用、可扩展的kubernetes生态环境</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-21" class="text-body-secondary">Wednesday, May 21, 2025</time>
+        
+	</div>
+	<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone  https://github.com/easzlab/kubeasz.git
+</span></span></code></pre></div><p>环境</p>
+<table>
+  <thead>
+      <tr>
+          <th>主机</th>
+          <th>ip</th>
+          <th>资源</th>
+          <th>kernel</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>master01</td>
+          <td>192.168.0.243</td>
+          <td>2c 4g 100GB</td>
+          <td>centos7 3.10</td>
+      </tr>
+      <tr>
+          <td>master02</td>
+          <td>192.168.0.244</td>
+          <td>2c 4g 100GB</td>
+          <td>centos7 3.10</td>
+      </tr>
+      <tr>
+          <td>master03</td>
+          <td>192.168.0.245</td>
+          <td>2c 4g 100GB</td>
+          <td>centos7 3.10</td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>
+<p>时间同步</p>
+<p><code>chrony</code> 是一个优秀的 <code>NTP</code> 实现，性能比ntp好，且配置管理方便；它既可作时间服务器服务端，也可作客户端。</p>
+<p><strong>安装chronyd服务</strong>:	<code> yum install chrony</code></p>
+<p><strong>配置时间服务器地址</strong>:</p>
+<pre tabindex="0"><code># server &lt;时间服务器&gt;  &lt;客户端向服务端发起时间同步的最小间隔，示例中4 表示 2^4=64s&gt; &lt;客户端向服务端发起时间同步的最大间隔，示例中10表示 2^10=1024s&gt; 
+server ntp.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp1.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp2.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp3.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp4.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp5.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp6.aliyun.com minpoll 4 maxpoll 10 iburst
+server 192.168.0.251 minpoll 4 maxpoll 10 iburst
+</code></pre><p><strong>作为服务端时，允许连接的客户端</strong>:</p>
+<pre tabindex="0"><code>allow 192.168.0.0/16
+</code></pre><p><strong>启动守护进程：</strong></p>
+<blockquote>
+<p>客户端监听本机的323/udp 端口，服务端监听 123/udp</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl enable chronyd --now
+</span></span><span style="display:flex;"><span>systemctl status chronyd 
+</span></span></code></pre></div><p><strong>chronyc 作为客户端命令 查看配置的时间服务器</strong></p>
+<p><img src="https://img2024.cnblogs.com/blog/2108528/202502/2108528-20250213144507664-645070835.png" alt=""></p>
+<p><strong>追踪查看时间同步的详细信息</strong></p>
+<p><img src="https://img2024.cnblogs.com/blog/2108528/202502/2108528-20250213144524152-429284700.png" alt=""></p>
+<p><strong>作为服务端，查看当前连接过来的客户端</strong></p>
+<p><img src="https://img2024.cnblogs.com/blog/2108528/202502/2108528-20250213144538920-686752789.png" alt=""></p>
+</li>
+<li>
+<p>关闭firewalld</p>
+</li>
+<li>
+<p>关闭 selinux</p>
+</li>
+<li>
+<p><a href="https://github.com/easzlab/kubeasz/blob/3.1.1/docs/setup/00-planning_and_overall_intro.md" target="_blank">使用kubeasz</a></p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>deploy ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum install ansible -y</span>
+</span></span><span style="display:flex;"><span>deploy ~<span style="color:#f92672">]</span><span style="color:#75715e"># ansible --version</span>
+</span></span><span style="display:flex;"><span>ansible 2.9.27
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 秘钥认证</span>
+</span></span><span style="display:flex;"><span>ssh-keygen -t rsa -P <span style="color:#e6db74">&#39;&#39;</span> -f /root/.ssh/id_rsa
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> host in 192.168.0.251 192.168.0.252 192.168.0.253;<span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>	sshpass -p pytc@2024 ssh-copy-id $host
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone  https://github.com/easzlab/kubeasz.git
+</span></span><span style="display:flex;"><span>cd kubeasz/
+</span></span><span style="display:flex;"><span>git checkout 3.6.5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/etc/kubeasz/ezctl new cluster01 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 是bash 脚本</span>
+</span></span><span style="display:flex;"><span>wget https://github.com/easzlab/kubeasz/releases/download/3.1.1/ezdown
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 下载 kubeasz代码、二进制、离线镜像 到/etc/kubeasz</span>
+</span></span><span style="display:flex;"><span>bash ezdown -D
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在/etc/kubeasz/clusters/k8s-01/ 下生成集群配置文件和ansible主机模板 k8s-01 是集群名称</span>
+</span></span><span style="display:flex;"><span>cd /etc/kubeasz
+</span></span><span style="display:flex;"><span>deploy kubeasz<span style="color:#f92672">]</span><span style="color:#75715e"># ./ezctl new k8s-01</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 集群名称 k8s-01 </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 可以但组件安装./ezctl setup k8s-01 01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 也可以 ./ezctl setup k8s-01 all  全部安装</span>
+</span></span><span style="display:flex;"><span>deploy kubeasz<span style="color:#f92672">]</span><span style="color:#75715e"># ./ezctl setup k8s-01 all </span>
+</span></span></code></pre></div><p>kubelete 无法启动，通过docker info 查看得知 kubelet 启动配置 和docker  的cgroup-driver 不一致。修改kubelete 的启动文件后正常</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  --cgroup-driver<span style="color:#f92672">=</span>cgroupfs
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@ceph-deploy kubeasz<span style="color:#f92672">]</span><span style="color:#75715e"># kubectl version</span>
+</span></span><span style="display:flex;"><span>Client Version: version.Info<span style="color:#f92672">{</span>Major:<span style="color:#e6db74">&#34;1&#34;</span>, Minor:<span style="color:#e6db74">&#34;21&#34;</span>, GitVersion:<span style="color:#e6db74">&#34;v1.21.0&#34;</span>, GitCommit:<span style="color:#e6db74">&#34;cb303e613a121a29364f75cc67d3d580833a7479&#34;</span>, GitTreeState:<span style="color:#e6db74">&#34;clean&#34;</span>, BuildDate:<span style="color:#e6db74">&#34;2021-04-08T16:31:21Z&#34;</span>, GoVersion:<span style="color:#e6db74">&#34;go1.16.1&#34;</span>, Compiler:<span style="color:#e6db74">&#34;gc&#34;</span>, Platform:<span style="color:#e6db74">&#34;linux/amd64&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>Server Version: version.Info<span style="color:#f92672">{</span>Major:<span style="color:#e6db74">&#34;1&#34;</span>, Minor:<span style="color:#e6db74">&#34;21&#34;</span>, GitVersion:<span style="color:#e6db74">&#34;v1.21.0&#34;</span>, GitCommit:<span style="color:#e6db74">&#34;cb303e613a121a29364f75cc67d3d580833a7479&#34;</span>, GitTreeState:<span style="color:#e6db74">&#34;clean&#34;</span>, BuildDate:<span style="color:#e6db74">&#34;2021-04-08T16:25:06Z&#34;</span>, GoVersion:<span style="color:#e6db74">&#34;go1.16.1&#34;</span>, Compiler:<span style="color:#e6db74">&#34;gc&#34;</span>, Platform:<span style="color:#e6db74">&#34;linux/amd64&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>后面的增删该都是通过 <code>./ezctl </code></p>
+<p>集群升级</p>
+<ol>
+<li>创建两套完整的集群。</li>
+<li>一台一台先升级master，master 升级完。在升级node</li>
+</ol>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-5c10bf9a703182f522d9ebb359005d06">kubeadm工具</h1>
+	<div class="lead">介绍kubeadm工具的使用。搭建集群/节点扩容/版本升级</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-07-15" class="text-body-secondary">Tuesday, July 15, 2025</time>
+        
+	</div>
+	<hr>
+<p><strong>任务：</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 什么是bootstraptoken,在kubernetes中的应用</li>
+<li><input disabled="" type="checkbox"> kube-apiserver 的认证方式有哪些，输出最佳实践</li>
+<li><input disabled="" type="checkbox"> kubeadm 配置文件结构体，支持哪些配置和字段</li>
+</ul>
+<p>authentication  认证</p>
+<p>authorization   授权</p>
+<hr>
+<p>执行kubeadm init 阶段将<code>ClusterConfiguration</code> 配置上传到kube-system名称空间下<code>kubeadm-config</code> configmap中，</p>
+<p>执行<code>kubeadm join</code>、<code>kubeadm reset</code>、 <code>kubeadm upgrade</code> 时读取该配置</p>
+<p><code>kubeadm config migrate</code> 来转换旧配置文件</p>
+<p><code>kubeadm config validate</code> 可用于验证配置文件</p>
+<p><code>kubeadm config images list</code></p>
+<p><code>kubeadm config images pull</code></p>
+<p><code>kubeadm config print</code></p>
+<p><code>kubeadm token create</code></p>
+<p>配置文件包含5中类型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apiVersion: kubeadm.k8s.io/v1beta3
+</span></span><span style="display:flex;"><span>kind: InitConfiguration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apiVersion: kubeadm.k8s.io/v1beta3
+</span></span><span style="display:flex;"><span>kind: ClusterConfiguration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apiVersion: kubelet.config.k8s.io/v1beta1
+</span></span><span style="display:flex;"><span>kind: KubeletConfiguration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apiVersion: kubeproxy.config.k8s.io/v1alpha1
+</span></span><span style="display:flex;"><span>kind: KubeProxyConfiguration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apiVersion: kubeadm.k8s.io/v1beta3
+</span></span><span style="display:flex;"><span>kind: JoinConfiguration
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm config print init-defaults
+</span></span><span style="display:flex;"><span>kubeadm config print join-defaults
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm config print init-defaults <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--component-configs KubeProxyConfiguration <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--component-configs KubeletConfiguration
+</span></span></code></pre></div><p><code>kubeadm/app/apis/kubeadm/types.go</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">InitConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bootstrapTokens</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">groups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">system:bootstrappers:kubeadm:default-node-token</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">token</span>: <span style="color:#ae81ff">abcdef.0123456789abcdef</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ttl</span>: <span style="color:#ae81ff">24h0m0s</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">usages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">signing</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">authentication</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">localAPIEndpoint</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">advertiseAddress</span>: <span style="color:#ae81ff">192.168.0.161</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">bindPort</span>: <span style="color:#ae81ff">6443</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nodeRegistration</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">criSocket</span>: <span style="color:#ae81ff">/var/run/dockershim.sock</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">seagullcore01-uat-s2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">taints</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dryRun</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">imageRepository</span>: <span style="color:#ae81ff">k8s-gcr.m.daocloud.io</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kubernetesVersion</span>: <span style="color:#ae81ff">1.23.17</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiServer</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">timeoutForControlPlane</span>: <span style="color:#ae81ff">4m0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">certificatesDir</span>: <span style="color:#ae81ff">/etc/kubernetes/pki</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clusterName</span>: <span style="color:#ae81ff">kubernetes</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">controllerManager</span>: {}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dns</span>: {}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">etcd</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">local</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dataDir</span>: <span style="color:#ae81ff">/var/lib/etcd</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">networking</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dnsDomain</span>: <span style="color:#ae81ff">cluster.local</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">serviceSubnet</span>: <span style="color:#ae81ff">172.168.0.0</span><span style="color:#ae81ff">/16</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">scheduler</span>: {}
+</span></span></code></pre></div><p><code>kubeadm/app/apis/config/types.go</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeproxy.config.k8s.io/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">KubeProxyConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bindAddress</span>: <span style="color:#ae81ff">0.0.0.0</span>            <span style="color:#75715e"># kube-proxy 监听的地址</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">healthzBindAddress</span>: <span style="color:#e6db74">&#34;&#34;</span>          <span style="color:#75715e"># /healthz 默认 0.0.0.0:10256</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metricsBindAddress</span>: <span style="color:#e6db74">&#34;&#34;</span>          <span style="color:#75715e"># /metrics 默认 0.0.0.0:10249</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">hostnameOverride</span>: <span style="color:#e6db74">&#34;&#34;</span>        <span style="color:#75715e"># kube-proxy 实例的名称，默认 `hostname`</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bindAddressHardFail</span>: <span style="color:#66d9ef">false</span>  <span style="color:#75715e"># 当为true,kube-proxy监听ip和端口失败，报致命错误并退出</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">enableProfiling</span>: <span style="color:#66d9ef">false</span>          <span style="color:#75715e"># 允许 /debug/pprof</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clientConnection</span>:                       <span style="color:#75715e"># 连接apiserver的配置</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kubeconfig</span>: <span style="color:#ae81ff">/var/lib/kube-proxy/kubeconfig.conf</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">acceptContentTypes</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">burst</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contentType</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">qps</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;ipvs&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ipvs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">scheduler</span>: <span style="color:#e6db74">&#34;rr&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clusterCIDR</span>: <span style="color:#e6db74">&#34;172.168.0.0/16&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">configSyncPeriod</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">oomScoreAdj</span>: -<span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">portRange</span>: <span style="color:#e6db74">&#34;20000-65535&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeproxy.config.k8s.io/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">KubeProxyConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bindAddress</span>: <span style="color:#ae81ff">0.0.0.0</span>            <span style="color:#75715e"># kube-proxy 监听的地址</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">healthzBindAddress</span>: <span style="color:#e6db74">&#34;&#34;</span>          <span style="color:#75715e"># /healthz 默认 0.0.0.0:10256</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metricsBindAddress</span>: <span style="color:#e6db74">&#34;&#34;</span>          <span style="color:#75715e"># /metrics 默认 0.0.0.0:10249</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">hostnameOverride</span>: <span style="color:#e6db74">&#34;&#34;</span>        <span style="color:#75715e"># kube-proxy 实例的名称，默认 `hostname`</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bindAddressHardFail</span>: <span style="color:#66d9ef">false</span>  <span style="color:#75715e"># 当为true,kube-proxy监听ip和端口失败，报致命错误并退出</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">enableProfiling</span>: <span style="color:#66d9ef">false</span>          <span style="color:#75715e"># 允许 /debug/pprof</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clientConnection</span>:                       <span style="color:#75715e"># 连接apiserver的配置</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kubeconfig</span>: <span style="color:#ae81ff">/var/lib/kube-proxy/kubeconfig.conf</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">acceptContentTypes</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">burst</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contentType</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">qps</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;ipvs&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ipvs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">scheduler</span>: <span style="color:#e6db74">&#34;rr&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clusterCIDR</span>: <span style="color:#e6db74">&#34;172.168.0.0/16&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">configSyncPeriod</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">oomScoreAdj</span>: -<span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">portRange</span>: <span style="color:#e6db74">&#34;20000-65535&#34;</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubelet.config.k8s.io/v1beta1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">KubeletConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">authentication</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">anonymous</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">webhook</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">cacheTTL</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">x509</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">clientCAFile</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">authorization</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">mode</span>: <span style="color:#ae81ff">Webhook</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">webhook</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">cacheAuthorizedTTL</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">cacheUnauthorizedTTL</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cgroupDriver</span>: <span style="color:#ae81ff">cgroupfs</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clusterDNS</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">172.168.0.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clusterDomain</span>: <span style="color:#ae81ff">cluster.local</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cpuManagerReconcilePeriod</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">evictionPressureTransitionPeriod</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">fileCheckFrequency</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">healthzBindAddress</span>: <span style="color:#ae81ff">0.0.0.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">healthzPort</span>: <span style="color:#ae81ff">10248</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">httpCheckFrequency</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">imageMinimumGCAge</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">logging</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">flushFrequency</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">options</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">json</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">infoBufferSize</span>: <span style="color:#e6db74">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">verbosity</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">memorySwap</span>: {}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nodeStatusReportFrequency</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nodeStatusUpdateFrequency</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">rotateCertificates</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">runtimeRequestTimeout</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">shutdownGracePeriod</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">shutdownGracePeriodCriticalPods</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">staticPodPath</span>: <span style="color:#ae81ff">/etc/kubernetes/manifests</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">streamingConnectionIdleTimeout</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">syncFrequency</span>: <span style="color:#ae81ff">0s</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumeStatsAggPeriod</span>: <span style="color:#ae81ff">0s</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm config print join-defaults
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">JoinConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">caCertPath</span>: <span style="color:#ae81ff">/etc/kubernetes/pki/ca.crt</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">discovery</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">bootstrapToken</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apiServerEndpoint</span>: <span style="color:#ae81ff">kube-apiserver:6443</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">token</span>: <span style="color:#ae81ff">abcdef.0123456789abcdef</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">unsafeSkipCAVerification</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">timeout</span>: <span style="color:#ae81ff">5m0s</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tlsBootstrapToken</span>: <span style="color:#ae81ff">abcdef.0123456789abcdef</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nodeRegistration</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">criSocket</span>: <span style="color:#ae81ff">/var/run/dockershim.sock</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">master01</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">taints</span>: <span style="color:#66d9ef">null</span>
+</span></span></code></pre></div><p><a href="https://kubernetes.io/zh-cn/docs/reference/setup-tools/kubeadm/" target="_blank">Kubeadm | Kubernetes</a></p>
+<p><a href="https://kubernetes.io/zh-cn/docs/setup/production-environment/tools/kubeadm/" target="_blank">使用 kubeadm 引导集群 | Kubernetes</a></p>
+<p><a href="https://kubernetes.io/zh-cn/docs/reference/setup-tools/kubeadm/" target="_blank">Kubeadm | Kubernetes</a></p>
+<p><a href="https://kubernetes.io/zh-cn/docs/reference/config-api/kubeadm-config.v1beta3/" target="_blank">kubeadm 配置（v1beta3） | Kubernetes</a></p>
+<p>控制平面与 kubelet 之间可以存在<strong>一个</strong>次要版本的偏差，但 kubelet 的版本不可以超过 API 服务器的版本。 例如，1.7.0 版本的 kubelet 可以完全兼容 1.8.0 版本的 API 服务器，反之则不可以。</p>
+<p><a href="https://kubernetes.io/zh-cn/releases/version-skew-policy/" target="_blank">版本偏差策略 | Kubernetes</a></p>
+<p><a href="https://kubernetes.io/zh-cn/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#version-skew-policy" target="_blank">使用 kubeadm 创建集群 | Kubernetes</a></p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

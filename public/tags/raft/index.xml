@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Raft on 零露云</title>
+    <link>https://zero-dew.netlify.app/tags/raft/</link>
+    <description>Recent content in Raft on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Fri, 09 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/tags/raft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>raft</title>
+      <link>https://zero-dew.netlify.app/golang/package/raft.html</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/golang/package/raft.html</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pkg.go.dev/github.com/coreos/etcd/raft&#34; target=&#34;_blank&#34;&gt;raft package - github.com/coreos/etcd/raft - Go Packages&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Raft 是一种协议，节点集群可以使用它来维护复制的状态机。 状态机通过使用复制的日志保持同步。 有关 Raft 的更多详细信息，请参阅“寻找可理解的共识算法” （https://ramcloud.stanford.edu/raft.pdf） 迭戈·翁加罗 （Diego Ongaro） 和约翰·奥斯特豪特 （John Ousterhout）。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

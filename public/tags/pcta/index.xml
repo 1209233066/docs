@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pcta on 零露云</title>
+    <link>https://zero-dew.netlify.app/tags/pcta/</link>
+    <description>Recent content in Pcta on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Mon, 11 Aug 2025 14:23:22 +0800</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/tags/pcta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pcta</title>
+      <link>https://zero-dew.netlify.app/tidb/pcta.html</link>
+      <pubDate>Mon, 11 Aug 2025 14:23:22 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tidb/pcta.html</guid>
+      <description>tidb prerun</description>
+    </item>
+  </channel>
+</rss>

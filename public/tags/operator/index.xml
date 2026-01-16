@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Operator on 零露云</title>
+    <link>https://zero-dew.netlify.app/tags/operator/</link>
+    <description>Recent content in Operator on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/tags/operator/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kopf</title>
+      <link>https://zero-dew.netlify.app/python/package/kopf.html</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/python/package/kopf.html</guid>
+      <description>&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;&#xA;&#xA;&#xA;    &lt;p&gt;kubernetes版本: &lt;code&gt;1.23.17&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;python版本：&lt;code&gt;3.6+&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装：&lt;code&gt;pip install kubernetes==23.6.0 &lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;文档：&lt;code&gt;https://github.com/kubernetes-client/python&lt;/code&gt;  &lt;code&gt;https://kopf.readthedocs.io/en/stable/index.html&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;​&lt;/p&gt;&#xA;&#xA;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

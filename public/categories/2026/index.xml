@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2026 on 零露云</title>
+    <link>https://zero-dew.netlify.app/categories/2026/</link>
+    <description>Recent content in 2026 on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Thu, 01 Jan 2026 08:34:29 +0800</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/categories/2026/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026年指引</title>
+      <link>https://zero-dew.netlify.app/2026-01-01/plan.html</link>
+      <pubDate>Thu, 01 Jan 2026 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/2026-01-01/plan.html</guid>
+      <description>&lt;h3 id=&#34;股市&#34;&gt;股市&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;航天&lt;/li&gt;&#xA;&lt;li&gt;机器人&lt;/li&gt;&#xA;&lt;li&gt;智能驾驶&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;通过python 爬虫获取涨停板信息实现选股&lt;/p&gt;&#xA;&lt;h3 id=&#34;新知识&#34;&gt;新知识&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 老男孩教育的阿里云使用方法&lt;/li&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.bilibili.com/video/BV1Gb4y177WE?spm_id_from=333.788.videopod.sections&amp;amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&#34; target=&#34;_blank&#34;&gt;白丁client-go&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.bilibili.com/video/BV1AG411b72E?spm_id_from=333.788.player.switch&amp;amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&amp;amp;trackid=web_related_0.router-related-2206146-8qdn5.1767424348229.501&#34; target=&#34;_blank&#34;&gt;Client-Go 之 Indexer 原理分析及示例演示_哔哩哔哩_bilibili&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.bilibili.com/video/BV1oz4y1478V/?spm_id_from=333.1387.homepage.video_card.click&amp;amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&#34; target=&#34;_blank&#34;&gt;1. 控制器是什么？_哔哩哔哩_bilibili&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.bilibili.com/video/BV1o14y1Q7T3/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&#34; target=&#34;_blank&#34;&gt;4. Kubebuilder 的介绍与安装_哔哩哔哩_bilibili&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://192.168.0.161:3001/i/9ee5449b-913f-4f31-978d-c6f7d19b41d9.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;client-go 是与k8s api交互的golang客户端&lt;/p&gt;&#xA;&lt;p&gt;operator = crd+ controller&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://192.168.0.161:3001/i/7b67dc18-2714-4a7a-bd63-aba7b56acc8c.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://192.168.0.161:3001/i/a6b86251-23a7-4bb5-bf92-205702692597.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://192.168.0.161:3001/i/a77367e9-4a09-45c8-9997-43a15a237fa9.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;华菱线缆 看多 l不低于22.4 加仓&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

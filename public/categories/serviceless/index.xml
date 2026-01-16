@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serviceless on 零露云</title>
+    <link>https://zero-dew.netlify.app/categories/serviceless/</link>
+    <description>Recent content in Serviceless on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Tue, 05 Aug 2025 10:13:52 +0800</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/categories/serviceless/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>appolo</title>
+      <link>https://zero-dew.netlify.app/kubernetes/serviceless/appolo.html</link>
+      <pubDate>Tue, 05 Aug 2025 10:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/kubernetes/serviceless/appolo.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>nacos</title>
+      <link>https://zero-dew.netlify.app/kubernetes/serviceless/nacos.html</link>
+      <pubDate>Tue, 05 Aug 2025 10:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/kubernetes/serviceless/nacos.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>dubbo</title>
+      <link>https://zero-dew.netlify.app/kubernetes/serviceless/dubbo.html</link>
+      <pubDate>Tue, 05 Aug 2025 10:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/kubernetes/serviceless/dubbo.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

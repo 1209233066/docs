@@ -1,0 +1,121 @@
+currentBuild.displayName ="构建分支：${env.branch}"
+currentBuild.description="部署主机： ${env.hosts}"
+pipeline {
+    agent any
+    options {
+      buildDiscarder logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '5', daysToKeepStr: '1', numToKeepStr: '5')
+      disableConcurrentBuilds()
+    }
+    parameters {
+        choice choices: ['master', 'yanlian'], description: '''master 对应dev环境
+yanlian 对应uat环境''', name: 'branch'
+
+        activeChoice choiceType: 'PT_CHECKBOX', description: '选择要部署的主机',
+         filterLength: 1, filterable: true, name: 'hosts',
+         randomName: 'choice-parameter-78253821059628',
+          script: groovyScript(
+            fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], 
+            script: [classpath: [], oldScript: '', sandbox: true, 
+            script: '''return ["seagullcore01-dev-s2:selected", "pcloud-dev05gz",
+            "seagullcore01-uat-s2"]'''
+            ])
+    }
+
+    stages {
+
+        stage('checkout') {
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'git',
+                gitToolName: 'git-tool')]) {
+                    sh '''
+                    git clone https://gitee.com/bj-pytc/pcloud-core.git ${BUILD_NUMBER}
+                    cd ${BUILD_NUMBER}
+                    git checkout ${branch}
+                    git pull origin ${branch}
+                    git branch -v
+                    '''
+                }
+            }
+        }
+        stage('codeScan') {
+            environment {
+              SONAR_SCANNER_HOME = "/opt/sonar-scanner"
+              PATH = "${SONAR_SCANNER_HOME}/bin:$PATH"
+            }
+            steps {
+                withSonarQubeEnv(installationName: 'sonarQube',credentialsId: 'sonarQubetoken') {
+                  script {
+                      sh '''
+                      sonar-scanner \
+                      -Dsonar.host.url=http://175.178.65.213:9000 \
+                      -Dsonar.projectKey=seagull-core \
+                      -Dsonar.projectName=seagull-core \
+                      -Dsonar.projectVersion="${branch}" \
+                      -Dsonar.login="${SONAR_AUTH_TOKEN}" \
+                      -Dsonar.ws.timeout=30 \
+                      -Dsonar.projectDescription='seagull-core' \
+                      -Dsonar.links.homepage=https://e.gitee.com/bj-pytc/repos/bj-pytc/pcloud-core/sources \
+                      -Dsonar.links.ci=http://175.178.65.213:18080/job/seagull-core/job/seagull-core/ \
+                      -Dsonar.sourceEncoding=UTF-8 \
+                      -Dsonar.branch.name=${branch}
+                      '''
+                  }
+                }
+
+            }
+        }
+        stage('build') {
+            steps {
+                sh '''
+                cd ${BUILD_NUMBER}
+                source /etc/profile &>/dev/null
+                go mod tidy
+                make build-linux-amd64
+                tar czf  seagullCore.tar.gz seagullCore'''
+            }
+        }
+
+        stage('deploy') {
+            parallel {
+                stage('deploy2host') {
+                    steps {
+                        sh '''
+                        cd ${BUILD_NUMBER}
+                        IFS=',' read -r -a H <<< "$hosts";
+
+                        for host in  ${H[@]};
+                        do 
+                            scp -rp seagullCore.tar.gz ${host}:/tmp/ &&
+                            ssh ${host} "tar xvf /tmp/seagullCore.tar.gz -C /opt/seagullCore/ && systemctl restart seagullCore.service && systemctl status seagullCore.service"
+                            
+                        done
+                        '''
+                    }
+                }
+
+                stage('release') {
+                    steps {
+                        sh '''
+                        cd ${BUILD_NUMBER}
+                        if [ ${branch} == "master" ];then
+                            scp -rp seagullCore.tar.gz pcloud-dev02gz:/opt/download/seagull/dev/
+                        elif [ ${branch} == "yanlian" ];then
+                            scp -rp seagullCore.tar.gz pcloud-dev02gz:/opt/download/seagull/uat/
+                        fi
+                        '''
+                    }
+                }
+            }
+        }
+
+    }
+    post{
+        always {
+            // 保留最近两次构建
+                sh '''
+                rm -fr `expr  ${BUILD_NUMBER} - 2`
+                '''
+            }
+
+    }
+}

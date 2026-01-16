@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 零露云</title>
+    <link>https://zero-dew.netlify.app/tags/</link>
+    <description>Recent content in Tags on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Sun, 11 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang</title>
+      <link>https://zero-dew.netlify.app/tags/golang/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/golang/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>运算符</title>
+      <link>https://zero-dew.netlify.app/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>计划</title>
+      <link>https://zero-dew.netlify.app/tags/%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Thu, 01 Jan 2026 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E8%AE%A1%E5%88%92/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>图床工具</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Uuid</title>
+      <link>https://zero-dew.netlify.app/tags/uuid/</link>
+      <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/uuid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>8.x</title>
+      <link>https://zero-dew.netlify.app/tags/8.x/</link>
+      <pubDate>Tue, 23 Dec 2025 10:10:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/8.x/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>https://zero-dew.netlify.app/tags/kubernetes/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Operator</title>
+      <link>https://zero-dew.netlify.app/tags/operator/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/operator/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Redis</title>
+      <link>https://zero-dew.netlify.app/tags/redis/</link>
+      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/redis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Autodiscover</title>
+      <link>https://zero-dew.netlify.app/tags/autodiscover/</link>
+      <pubDate>Wed, 12 Nov 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/autodiscover/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Filebeat</title>
+      <link>https://zero-dew.netlify.app/tags/filebeat/</link>
+      <pubDate>Wed, 12 Nov 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/filebeat/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kafka</title>
+      <link>https://zero-dew.netlify.app/tags/kafka/</link>
+      <pubDate>Mon, 10 Nov 2025 10:10:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/kafka/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zookeeper</title>
+      <link>https://zero-dew.netlify.app/tags/zookeeper/</link>
+      <pubDate>Mon, 10 Nov 2025 10:10:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/zookeeper/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>认证授权</title>
+      <link>https://zero-dew.netlify.app/tags/%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83/</link>
+      <pubDate>Mon, 10 Nov 2025 10:10:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Qemu</title>
+      <link>https://zero-dew.netlify.app/tags/qemu/</link>
+      <pubDate>Mon, 27 Oct 2025 16:12:16 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/qemu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sriov</title>
+      <link>https://zero-dew.netlify.app/tags/sriov/</link>
+      <pubDate>Mon, 27 Oct 2025 16:12:16 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/sriov/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://zero-dew.netlify.app/tags/python/</link>
+      <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://zero-dew.netlify.app/tags/linux/</link>
+      <pubDate>Fri, 10 Oct 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Logstash</title>
+      <link>https://zero-dew.netlify.app/tags/logstash/</link>
+      <pubDate>Fri, 10 Oct 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/logstash/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fastapi</title>
+      <link>https://zero-dew.netlify.app/tags/fastapi/</link>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/fastapi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vue</title>
+      <link>https://zero-dew.netlify.app/tags/vue/</link>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/vue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>旅游</title>
+      <link>https://zero-dew.netlify.app/tags/%E6%97%85%E6%B8%B8/</link>
+      <pubDate>Mon, 06 Oct 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E6%97%85%E6%B8%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>美食</title>
+      <link>https://zero-dew.netlify.app/tags/%E7%BE%8E%E9%A3%9F/</link>
+      <pubDate>Mon, 06 Oct 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E7%BE%8E%E9%A3%9F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Elasticsearch</title>
+      <link>https://zero-dew.netlify.app/tags/elasticsearch/</link>
+      <pubDate>Sat, 27 Sep 2025 15:02:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Log</title>
+      <link>https://zero-dew.netlify.app/tags/log/</link>
+      <pubDate>Wed, 17 Sep 2025 16:12:16 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/log/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Exporter</title>
+      <link>https://zero-dew.netlify.app/tags/exporter/</link>
+      <pubDate>Fri, 12 Sep 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kafka-Manager&#34;</title>
+      <link>https://zero-dew.netlify.app/tags/kafka-manager/</link>
+      <pubDate>Fri, 12 Sep 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/kafka-manager/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monitor</title>
+      <link>https://zero-dew.netlify.app/tags/monitor/</link>
+      <pubDate>Fri, 12 Sep 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/monitor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>https://zero-dew.netlify.app/tags/nginx/</link>
+      <pubDate>Fri, 12 Sep 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/nginx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prometheus</title>
+      <link>https://zero-dew.netlify.app/tags/prometheus/</link>
+      <pubDate>Fri, 12 Sep 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kibana</title>
+      <link>https://zero-dew.netlify.app/tags/kibana/</link>
+      <pubDate>Wed, 10 Sep 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/kibana/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>英语单词</title>
+      <link>https://zero-dew.netlify.app/tags/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</link>
+      <pubDate>Fri, 15 Aug 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jupyter-Notebook</title>
+      <link>https://zero-dew.netlify.app/tags/jupyter-notebook/</link>
+      <pubDate>Tue, 12 Aug 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/jupyter-notebook/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pcta</title>
+      <link>https://zero-dew.netlify.app/tags/pcta/</link>
+      <pubDate>Mon, 11 Aug 2025 14:23:22 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/pcta/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Appolo</title>
+      <link>https://zero-dew.netlify.app/tags/appolo/</link>
+      <pubDate>Tue, 05 Aug 2025 10:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/appolo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dubbo</title>
+      <link>https://zero-dew.netlify.app/tags/dubbo/</link>
+      <pubDate>Tue, 05 Aug 2025 10:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/dubbo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nacos</title>
+      <link>https://zero-dew.netlify.app/tags/nacos/</link>
+      <pubDate>Tue, 05 Aug 2025 10:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/nacos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>安装部署</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Fri, 01 Aug 2025 10:10:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>迁移案例</title>
+      <link>https://zero-dew.netlify.app/tags/%E8%BF%81%E7%A7%BB%E6%A1%88%E4%BE%8B/</link>
+      <pubDate>Fri, 01 Aug 2025 10:10:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E8%BF%81%E7%A7%BB%E6%A1%88%E4%BE%8B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ha</title>
+      <link>https://zero-dew.netlify.app/tags/ha/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/ha/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mha</title>
+      <link>https://zero-dew.netlify.app/tags/mha/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/mha/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mysqldump</title>
+      <link>https://zero-dew.netlify.app/tags/mysqldump/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/mysqldump/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mysql安装</title>
+      <link>https://zero-dew.netlify.app/tags/mysql%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/mysql%E5%AE%89%E8%A3%85/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mysql配置</title>
+      <link>https://zero-dew.netlify.app/tags/mysql%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/mysql%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>备份</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%A4%87%E4%BB%BD/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%A4%87%E4%BB%BD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>安装mysql</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85mysql/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>安装rabbitmq</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85rabbitmq/</link>
+      <pubDate>Mon, 28 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85rabbitmq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>做饭</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%81%9A%E9%A5%AD/</link>
+      <pubDate>Sun, 27 Jul 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%81%9A%E9%A5%AD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>电影</title>
+      <link>https://zero-dew.netlify.app/tags/%E7%94%B5%E5%BD%B1/</link>
+      <pubDate>Sun, 27 Jul 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E7%94%B5%E5%BD%B1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xtrabackup</title>
+      <link>https://zero-dew.netlify.app/tags/xtrabackup/</link>
+      <pubDate>Wed, 23 Jul 2025 10:10:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/xtrabackup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubeadm</title>
+      <link>https://zero-dew.netlify.app/tags/kubeadm/</link>
+      <pubDate>Tue, 15 Jul 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/kubeadm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vim-Cmd</title>
+      <link>https://zero-dew.netlify.app/tags/vim-cmd/</link>
+      <pubDate>Wed, 09 Jul 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/vim-cmd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>主从配置</title>
+      <link>https://zero-dew.netlify.app/tags/%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 04 Jul 2025 10:57:00 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Akshare</title>
+      <link>https://zero-dew.netlify.app/tags/akshare/</link>
+      <pubDate>Wed, 02 Jul 2025 08:34:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/akshare/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Filebrowser </title>
+      <link>https://zero-dew.netlify.app/tags/filebrowser-/</link>
+      <pubDate>Mon, 30 Jun 2025 15:04:12 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/filebrowser-/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Music_tag_web</title>
+      <link>https://zero-dew.netlify.app/tags/music_tag_web/</link>
+      <pubDate>Mon, 30 Jun 2025 15:04:12 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/music_tag_web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Navidrome</title>
+      <link>https://zero-dew.netlify.app/tags/navidrome/</link>
+      <pubDate>Mon, 30 Jun 2025 15:04:12 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/navidrome/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Alertmanager</title>
+      <link>https://zero-dew.netlify.app/tags/alertmanager/</link>
+      <pubDate>Thu, 26 Jun 2025 15:04:12 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/alertmanager/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tiup工具</title>
+      <link>https://zero-dew.netlify.app/tags/tiup%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Thu, 19 Jun 2025 20:53:33 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/tiup%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mail</title>
+      <link>https://zero-dew.netlify.app/tags/mail/</link>
+      <pubDate>Tue, 17 Jun 2025 16:12:16 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/mail/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Input</title>
+      <link>https://zero-dew.netlify.app/tags/input/</link>
+      <pubDate>Thu, 12 Jun 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/input/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Output</title>
+      <link>https://zero-dew.netlify.app/tags/output/</link>
+      <pubDate>Thu, 12 Jun 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/output/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Processors</title>
+      <link>https://zero-dew.netlify.app/tags/processors/</link>
+      <pubDate>Thu, 12 Jun 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/processors/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>扩展配置</title>
+      <link>https://zero-dew.netlify.app/tags/%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 12 Jun 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>通用配置</title>
+      <link>https://zero-dew.netlify.app/tags/%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 12 Jun 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coredns</title>
+      <link>https://zero-dew.netlify.app/tags/coredns/</link>
+      <pubDate>Sat, 31 May 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/coredns/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Demo</title>
+      <link>https://zero-dew.netlify.app/tags/demo/</link>
+      <pubDate>Sat, 31 May 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/demo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Plugin</title>
+      <link>https://zero-dew.netlify.app/tags/plugin/</link>
+      <pubDate>Sat, 31 May 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/plugin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Echart</title>
+      <link>https://zero-dew.netlify.app/tags/echart/</link>
+      <pubDate>Sun, 25 May 2025 14:40:56 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/echart/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Location指令</title>
+      <link>https://zero-dew.netlify.app/tags/location%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Fri, 23 May 2025 16:44:03 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/location%E6%8C%87%E4%BB%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx.conf</title>
+      <link>https://zero-dew.netlify.app/tags/nginx.conf/</link>
+      <pubDate>Fri, 23 May 2025 14:51:35 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/nginx.conf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Http服务器</title>
+      <link>https://zero-dew.netlify.app/tags/http%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 22 May 2025 16:10:32 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/http%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>方向代理</title>
+      <link>https://zero-dew.netlify.app/tags/%E6%96%B9%E5%90%91%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Thu, 22 May 2025 15:43:37 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E6%96%B9%E5%90%91%E4%BB%A3%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Command</title>
+      <link>https://zero-dew.netlify.app/tags/command/</link>
+      <pubDate>Wed, 21 May 2025 16:12:16 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/command/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>问题排查</title>
+      <link>https://zero-dew.netlify.app/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</link>
+      <pubDate>Wed, 21 May 2025 16:12:16 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ansible</title>
+      <link>https://zero-dew.netlify.app/tags/ansible/</link>
+      <pubDate>Wed, 21 May 2025 16:08:09 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/ansible/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dashboard</title>
+      <link>https://zero-dew.netlify.app/tags/dashboard/</link>
+      <pubDate>Wed, 21 May 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/dashboard/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ingress</title>
+      <link>https://zero-dew.netlify.app/tags/ingress/</link>
+      <pubDate>Wed, 21 May 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/ingress/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubeaz</title>
+      <link>https://zero-dew.netlify.app/tags/kubeaz/</link>
+      <pubDate>Wed, 21 May 2025 15:22:40 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/kubeaz/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hpa</title>
+      <link>https://zero-dew.netlify.app/tags/hpa/</link>
+      <pubDate>Wed, 21 May 2025 15:16:30 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/hpa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cicd</title>
+      <link>https://zero-dew.netlify.app/tags/cicd/</link>
+      <pubDate>Tue, 20 May 2025 22:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/cicd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Etcd</title>
+      <link>https://zero-dew.netlify.app/tags/etcd/</link>
+      <pubDate>Tue, 20 May 2025 22:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/etcd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gitlab</title>
+      <link>https://zero-dew.netlify.app/tags/gitlab/</link>
+      <pubDate>Tue, 20 May 2025 22:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/gitlab/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Redmine</title>
+      <link>https://zero-dew.netlify.app/tags/redmine/</link>
+      <pubDate>Tue, 20 May 2025 22:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/redmine/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sonarqube</title>
+      <link>https://zero-dew.netlify.app/tags/sonarqube/</link>
+      <pubDate>Tue, 20 May 2025 22:13:52 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/sonarqube/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jenkins</title>
+      <link>https://zero-dew.netlify.app/tags/jenkins/</link>
+      <pubDate>Tue, 20 May 2025 21:47:29 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Groovy</title>
+      <link>https://zero-dew.netlify.app/tags/groovy/</link>
+      <pubDate>Tue, 20 May 2025 21:44:02 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/groovy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Install</title>
+      <link>https://zero-dew.netlify.app/tags/install/</link>
+      <pubDate>Tue, 20 May 2025 08:30:28 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/install/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lvm</title>
+      <link>https://zero-dew.netlify.app/tags/lvm/</link>
+      <pubDate>Sun, 18 May 2025 18:15:33 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/lvm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prerun</title>
+      <link>https://zero-dew.netlify.app/tags/prerun/</link>
+      <pubDate>Sat, 17 May 2025 14:23:22 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/prerun/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tidb</title>
+      <link>https://zero-dew.netlify.app/tags/tidb/</link>
+      <pubDate>Sat, 17 May 2025 14:23:22 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/tidb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RBAC</title>
+      <link>https://zero-dew.netlify.app/tags/rbac/</link>
+      <pubDate>Wed, 14 May 2025 15:32:48 +0800</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/rbac/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Amtool</title>
+      <link>https://zero-dew.netlify.app/tags/amtool/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/amtool/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Grafana</title>
+      <link>https://zero-dew.netlify.app/tags/grafana/</link>
+      <pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/grafana/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>夜莺·监控系统</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%A4%9C%E8%8E%BA%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blackbox</title>
+      <link>https://zero-dew.netlify.app/tags/blackbox/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/blackbox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Consul_sd_configs</title>
+      <link>https://zero-dew.netlify.app/tags/consul_sd_configs/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/consul_sd_configs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Federation</title>
+      <link>https://zero-dew.netlify.app/tags/federation/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/federation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jmx_exporter</title>
+      <link>https://zero-dew.netlify.app/tags/jmx_exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/jmx_exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes_sd_configs</title>
+      <link>https://zero-dew.netlify.app/tags/kubernetes_sd_configs/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/kubernetes_sd_configs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Minio</title>
+      <link>https://zero-dew.netlify.app/tags/minio/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/minio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mongo-Exporter</title>
+      <link>https://zero-dew.netlify.app/tags/mongo-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/mongo-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mysql-Exporter</title>
+      <link>https://zero-dew.netlify.app/tags/mysql-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/mysql-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx-Exporter</title>
+      <link>https://zero-dew.netlify.app/tags/nginx-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/nginx-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Node_exporter</title>
+      <link>https://zero-dew.netlify.app/tags/node_exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/node_exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PromeQL</title>
+      <link>https://zero-dew.netlify.app/tags/promeql/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/promeql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prometheus-Sdk</title>
+      <link>https://zero-dew.netlify.app/tags/prometheus-sdk/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/prometheus-sdk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pushgateway</title>
+      <link>https://zero-dew.netlify.app/tags/pushgateway/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/pushgateway/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Redis-Exporter</title>
+      <link>https://zero-dew.netlify.app/tags/redis-exporter/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/redis-exporter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Victorametrics</title>
+      <link>https://zero-dew.netlify.app/tags/victorametrics/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/victorametrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>VictoriaMetrics</title>
+      <link>https://zero-dew.netlify.app/tags/victoriametrics/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/victoriametrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>安装</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%AE%89%E8%A3%85/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>配置</title>
+      <link>https://zero-dew.netlify.app/tags/%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>附录</title>
+      <link>https://zero-dew.netlify.app/tags/%E9%99%84%E5%BD%95/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E9%99%84%E5%BD%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cobra</title>
+      <link>https://zero-dew.netlify.app/tags/cobra/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/cobra/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flag</title>
+      <link>https://zero-dew.netlify.app/tags/flag/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/flag/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fmt</title>
+      <link>https://zero-dew.netlify.app/tags/fmt/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/fmt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://zero-dew.netlify.app/tags/hugo/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Io</title>
+      <link>https://zero-dew.netlify.app/tags/io/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/io/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Net/Http</title>
+      <link>https://zero-dew.netlify.app/tags/net/http/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/net/http/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Os</title>
+      <link>https://zero-dew.netlify.app/tags/os/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/os/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Package</title>
+      <link>https://zero-dew.netlify.app/tags/package/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/package/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Path</title>
+      <link>https://zero-dew.netlify.app/tags/path/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/path/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pflag</title>
+      <link>https://zero-dew.netlify.app/tags/pflag/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/pflag/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Raft</title>
+      <link>https://zero-dew.netlify.app/tags/raft/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/raft/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shortcode</title>
+      <link>https://zero-dew.netlify.app/tags/shortcode/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/shortcode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Time</title>
+      <link>https://zero-dew.netlify.app/tags/time/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/time/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Viper</title>
+      <link>https://zero-dew.netlify.app/tags/viper/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/viper/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>函数</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%87%BD%E6%95%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>变量</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%8F%98%E9%87%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>常量</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%B8%B8%E9%87%8F/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%B8%B8%E9%87%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>建站</title>
+      <link>https://zero-dew.netlify.app/tags/%E5%BB%BA%E7%AB%99/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E5%BB%BA%E7%AB%99/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>接口</title>
+      <link>https://zero-dew.netlify.app/tags/%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E6%8E%A5%E5%8F%A3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>数据类型</title>
+      <link>https://zero-dew.netlify.app/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>时钟和天气</title>
+      <link>https://zero-dew.netlify.app/tags/%E6%97%B6%E9%92%9F%E5%92%8C%E5%A4%A9%E6%B0%94/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E6%97%B6%E9%92%9F%E5%92%8C%E5%A4%A9%E6%B0%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>流程控制语句</title>
+      <link>https://zero-dew.netlify.app/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>环境设置</title>
+      <link>https://zero-dew.netlify.app/tags/%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>结构体</title>
+      <link>https://zero-dew.netlify.app/tags/%E7%BB%93%E6%9E%84%E4%BD%93/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/tags/%E7%BB%93%E6%9E%84%E4%BD%93/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

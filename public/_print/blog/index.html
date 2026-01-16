@@ -1,0 +1,2938 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/blog/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/blog/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>博客 | 零露云</title>
+<meta name="description" content="羽翼未丰而遭众忌，乃招祸之端；
+谋未行而先令人知，乃凶兆之端。
+网站汇集了主流开源软件cve漏洞 磁盘压测工具 网络压测工具 redis压测工具
+freessl">
+<meta property="og:url" content="https://zero-dew.netlify.app/blog/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="博客">
+  <meta property="og:description" content="羽翼未丰而遭众忌，乃招祸之端；
+谋未行而先令人知，乃凶兆之端。
+网站汇集了主流开源软件cve漏洞 磁盘压测工具 网络压测工具 redis压测工具
+freessl">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="博客">
+  <meta itemprop="description" content="羽翼未丰而遭众忌，乃招祸之端；
+谋未行而先令人知，乃凶兆之端。
+网站汇集了主流开源软件cve漏洞 磁盘压测工具 网络压测工具 redis压测工具
+freessl">
+  <meta itemprop="datePublished" content="2026-01-01T08:34:29+08:00">
+  <meta itemprop="dateModified" content="2026-01-01T08:34:29+08:00">
+  <meta itemprop="wordCount" content="7">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="博客">
+  <meta name="twitter:description" content="羽翼未丰而遭众忌，乃招祸之端；
+谋未行而先令人知，乃凶兆之端。
+网站汇集了主流开源软件cve漏洞 磁盘压测工具 网络压测工具 redis压测工具
+freessl">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/blog/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">博客</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-6af4350d198495dae4de1a7c61f39edb">Cgroup</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-cae6ba33891c1098bc17a78540097bd9">Echart</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-7b8b7327cad85cb70214c51fbf8a8a9b">音乐</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-5eea090aa12f8789072cc8fb65a285c4">Stock</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-25f292a7f743e1f4cbe2ed9ac479e741">Stock-2026年</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-afd9e7d8f1f0c99aa8cbae828f301ff8">exsi命令行工具</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-3e2c442cde94d549973ea287b0baf75b">食谱</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-aa993353434506add6819ae83d2c86d2">fastapi</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-c2858eeb20fbe5d56481c7c320202a29">vue</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-018912e84e94b1328a52aa5ab63a6f4e">电影</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-d13beabb0d27e6779004f177b4327a34">jupyter-notebook</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-776726c586c2a3dd81a992d07a5bc0c6">英语单词</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-629d246188a1da4e505627c0a5af0573">吃喝玩乐</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-8c75c3f875133ed1c6c3b8f40830d778">2026年指引</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+
+<div class="alert alert-primary" role="alert">
+
+
+    <p>羽翼未丰而遭众忌，乃招祸之端；</p>
+<p>谋未行而先令人知，乃凶兆之端。</p>
+
+
+</div>
+
+<p><a href="https://www.cvedetails.com/" target="_blank">网站汇集了主流开源软件cve漏洞</a>
+磁盘压测工具
+网络压测工具
+redis压测工具</p>
+<p><a href="https://freessl.cn/" target="_blank">freessl</a></p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-6af4350d198495dae4de1a7c61f39edb">Cgroup</h1>
+	<div class="lead">k8s cgroup</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-25" class="text-body-secondary">Sunday, May 25, 2025</time>
+        
+	</div>
+	<p>任务：</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 通过cgroupfs 限制cpu/memory/diskio</li>
+<li><input checked="" disabled="" type="checkbox"> 通过systemd 限制cpu/memory/diskio</li>
+<li><input checked="" disabled="" type="checkbox"> 通过cgroupfs 限制kubernetes 容器的cpu/memory/diskio</li>
+</ul>
+<hr>
+<p>cgroups 由 Google 工程师于 2006 年提出，并在 2007 年被合并到 Linux 2.6.24 内核。虽然目前有两个版本的 cgroups，但大多数发行版和机制都使用v1版本。</p>
+<p>在linux中一切皆文件的宗旨下，cgroup通过文件结构来实现对进程的控制和限制，目录结构：</p>
+
+  
+  
+  
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          aria-controls="tabs-00-00" aria-selected="false">
+        <strong>目录结构</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="tab 1" aria-controls="tabs-00-01" aria-selected="true">
+        Tab 1
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-02" role="tab"
+          data-td-tp-persist="tab 2" aria-controls="tabs-00-02" aria-selected="false">
+        Tab 2
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <p><img src="https://www.redhat.com/rhdc/managed-files/styles/wysiwyg_full_width/private/sysadmin/2020-09/CGroup_Diagram.png.webp?itok=eaJUZX0z" alt=""></p>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-02" role="tabpanel" aria-labelled-by="tabs-00-02-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/sys/fs/cgroup/
+</span></span><span style="display:flex;"><span>├── blkio					<span style="color:#75715e"># 限制进程对硬盘的读写速率</span>
+</span></span><span style="display:flex;"><span>├── cpu -&gt; cpu,cpuacct
+</span></span><span style="display:flex;"><span>├── cpuacct -&gt; cpu,cpuacct
+</span></span><span style="display:flex;"><span>├── cpu,cpuacct			    <span style="color:#75715e"># 限制和监控进程的CPU消耗</span>
+</span></span><span style="display:flex;"><span>├── cpuset					<span style="color:#75715e"># 绑定进程到特定CPU核心或内存节点（NUMA 架构）</span>
+</span></span><span style="display:flex;"><span>├── devices					<span style="color:#75715e"># 控制进程对设备文件（如 /dev/sda）的访问权限（读/写/创建设备）</span>
+</span></span><span style="display:flex;"><span>├── freezer					<span style="color:#75715e"># 暂停/恢复 进程组中的所有进程</span>
+</span></span><span style="display:flex;"><span>├── hugetlb					<span style="color:#75715e"># 限制大页内存的使用量。</span>
+</span></span><span style="display:flex;"><span>├── memory					<span style="color:#75715e"># 控制内存用量 和 Swap 交换空间</span>
+</span></span><span style="display:flex;"><span>├── net_cls -&gt; net_cls,net_prio
+</span></span><span style="display:flex;"><span>├── net_cls,net_prio
+</span></span><span style="display:flex;"><span>├── net_prio -&gt; net_cls,net_prio
+</span></span><span style="display:flex;"><span>├── perf_event				<span style="color:#75715e"># 允许性能监控工具（如 perf）追踪 CGroup 内进程的性能事件</span>
+</span></span><span style="display:flex;"><span>├── pids					<span style="color:#75715e"># 限制 CGroup 内允许的 最大进程数量</span>
+</span></span><span style="display:flex;"><span>└── systemd
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="管理cgroup">管理cgroup</h3>
+<p>cgroup作为linux内核的一部分，在用户层面centos提供了三种管理cgroup的工具，分别为：<em>libcgroup</em>、 <em>cgroupfs</em>  、<em>systemd</em>
+
+
+<div class="alert alert-primary" role="alert">
+
+
+    <ul>
+<li><em>libcgroup（已经弃用）</em> 是一个用户空间的 cgroup 管理库和工具集，提供了命令行工具（如 cgcreate、cgexec、cgclassify 等）和 C 语言 API。</li>
+<li><em>cgroupfs</em> 不是一个单独的工具，而是指 Linux 内核通过挂载 cgroup 文件系统，暴露出来的接口。通过操作 /sys/fs/cgroup 目录，用户和程序通过直接操作 cgroup（如创建目录、写入参数文件）来管理资源。</li>
+<li><em>systemd</em> 是现代 Linux 的初始化系统和服务管理器，它内置了对 cgroup 的原生支持</li>
+</ul>
+
+
+</div>
+</p>
+<p><strong>任务一：通过cgroupfs 限制cpu/memory/diskio</strong></p>
+
+  
+  
+  
+  
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          aria-controls="tabs-02-00" aria-selected="false">
+        <strong>cgroupfs管理cgroup</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="管理cpu" aria-controls="tabs-02-01" aria-selected="true">
+        管理cpu
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-02" role="tab"
+          data-td-tp-persist="管理内存" aria-controls="tabs-02-02" aria-selected="false">
+        管理内存
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-03" role="tab"
+          data-td-tp-persist="管理磁盘io" aria-controls="tabs-02-03" aria-selected="false">
+        管理磁盘io
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-2-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        <ol>
+<li>
+<p>创建新的cpu 子系统</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /sys/fs/cgroup/cpu,cpuacct/m
+</span></span></code></pre></div></li>
+<li>
+<p>找到所有进程及子进程</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># ps -ef|grep /usr/bin/m</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#ae81ff">65787</span>  <span style="color:#ae81ff">61380</span> <span style="color:#ae81ff">99</span> 16:46 pts/1    00:02:07 /usr/bin/m
+</span></span><span style="display:flex;"><span>root      <span style="color:#ae81ff">65850</span>  <span style="color:#ae81ff">63340</span>  <span style="color:#ae81ff">0</span> 16:47 pts/2    00:00:00 grep --color<span style="color:#f92672">=</span>auto /usr/bin/m
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># pstree -p 65787</span>
+</span></span><span style="display:flex;"><span>m<span style="color:#f92672">(</span>65787<span style="color:#f92672">)</span>─┬─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65788<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         ├─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65789<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         ├─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65790<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         └─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65791<span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>配额cpu限额</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> pid in <span style="color:#ae81ff">65787</span> <span style="color:#ae81ff">65788</span> <span style="color:#ae81ff">65789</span> <span style="color:#ae81ff">65790</span> 65791; <span style="color:#66d9ef">do</span> echo $pid &gt;/sys/fs/cgroup/cpu,cpuacct/m/tasks;<span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">200000</span> &gt;/sys/fs/cgroup/cpu,cpuacct/m/cpu.cfs_quota_us <span style="color:#75715e"># 在一个周期内允许使用的 CPU 时间（μs）,默认-1不限制</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">100000</span> &gt;/sys/fs/cgroup/cpu,cpuacct/m/cpu.cfs_period_us <span style="color:#75715e"># 调度周期，单位为微秒（μs），通常设为 100000（即 100ms）</span>
+</span></span></code></pre></div></li>
+<li>
+<p>验证是否生效，使用 <code>top</code> 或查看 <code>cpu.stat </code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># cat  /sys/fs/cgroup/cpu,cpuacct/m/cpu.stat </span>
+</span></span><span style="display:flex;"><span>nr_periods <span style="color:#ae81ff">3083</span> 			<span style="color:#75715e"># 自创建以来经历了多少个调度周期</span>
+</span></span><span style="display:flex;"><span>nr_throttled <span style="color:#ae81ff">2716</span>   		<span style="color:#75715e"># 因为达到cgroup限制而中断的次数（中断后等待下一次调度）</span>
+</span></span><span style="display:flex;"><span>throttled_time <span style="color:#ae81ff">521614106629</span> <span style="color:#75715e"># 因达到cgroup限制中断停止的时长（纳秒）</span>
+</span></span></code></pre></div></li>
+<li>
+<p>清理子cgroup</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># rmdir /sys/fs/cgroup/cpu,cpuacct/m</span>
+</span></span><span style="display:flex;"><span>rmdir: failed to remove ‘/sys/fs/cgroup/cpu,cpuacct/m’: Device or resource busy
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># cat /sys/fs/cgroup/cpu,cpuacct/m/cgroup.procs </span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">65787</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># echo 65787 &gt;/sys/fs/cgroup/cpu,cpuacct/cgroup.procs </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># cat /sys/fs/cgroup/cpu,cpuacct/m/cgroup.procs </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># rmdir /sys/fs/cgroup/cpu,cpuacct/m</span>
+</span></span></code></pre></div></li>
+</ol>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-02" role="tabpanel" aria-labelled-by="tabs-02-02-tab" tabindex="2">
+        <ol>
+<li>
+<p>创建新的内存子系统</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /sys/fs/cgroup/memory/m
+</span></span></code></pre></div></li>
+<li>
+<p>找到所有进程及子进程</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># ps -ef|grep /usr/bin/m</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#ae81ff">65787</span>  <span style="color:#ae81ff">61380</span> <span style="color:#ae81ff">99</span> 16:46 pts/1    00:02:07 /usr/bin/m
+</span></span><span style="display:flex;"><span>root      <span style="color:#ae81ff">65850</span>  <span style="color:#ae81ff">63340</span>  <span style="color:#ae81ff">0</span> 16:47 pts/2    00:00:00 grep --color<span style="color:#f92672">=</span>auto /usr/bin/m
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 ~<span style="color:#f92672">]</span><span style="color:#75715e"># pstree -p 65787</span>
+</span></span><span style="display:flex;"><span>m<span style="color:#f92672">(</span>65787<span style="color:#f92672">)</span>─┬─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65788<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         ├─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65789<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         ├─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65790<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         └─<span style="color:#f92672">{</span>m<span style="color:#f92672">}(</span>65791<span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>配额内存限额</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> pid in <span style="color:#ae81ff">65787</span> <span style="color:#ae81ff">65788</span> <span style="color:#ae81ff">65789</span> <span style="color:#ae81ff">65790</span> 65791; <span style="color:#66d9ef">do</span> echo $pid &gt;/sys/fs/cgroup/memory/m/cgroup.procs;<span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>echo 1g &gt;/sys/fs/cgroup/memory/m/memory.limit_in_bytes
+</span></span></code></pre></div></li>
+</ol>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-03" role="tabpanel" aria-labelled-by="tabs-02-03-tab" tabindex="2">
+        
+    </div>
+</div>
+
+
+  
+  
+  
+<ul class="nav nav-tabs" id="tabs-3" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
+          aria-controls="tabs-03-00" aria-selected="false">
+        <strong>systemd管理cgroup</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-03-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-01" role="tab"
+          data-td-tp-persist="方式一" aria-controls="tabs-03-01" aria-selected="true">
+        方式一
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-03-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-02" role="tab"
+          data-td-tp-persist="方式二" aria-controls="tabs-03-02" aria-selected="false">
+        方式二
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-3-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-03-01" role="tabpanel" aria-labelled-by="tabs-03-01-tab" tabindex="3">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 动态设置进程不超过2个cpu</span>
+</span></span><span style="display:flex;"><span>~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl set-property m.service CPUQuota=200%</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 使用命令行设置进程不超过2G</span>
+</span></span><span style="display:flex;"><span>~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl set-property m.service  MemoryLimit=2G</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-02" role="tabpanel" aria-labelled-by="tabs-03-02-tab" tabindex="3">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee &gt;/usr/lib/systemd/system/m.service <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=A demo for load cpu
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/usr/bin/m
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 限制2核心cpu
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CPUQuota=200%
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee &gt;/usr/lib/systemd/system/m.service <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=A demo for load memory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/usr/bin/m
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 限制2G 内存
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">MemoryLimit=2G
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p><strong>任务二：通过cgroupfs 调整kubernetes容器的限制</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;EOF | kubectl apply -f - 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: apps/v1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: Deployment
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  creationTimestamp: null
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  labels:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    app: cgrouptest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: cgrouptest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  replicas: 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  selector:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    matchLabels:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      app: cgrouptest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  strategy: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  template:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      creationTimestamp: null
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      labels:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        app: cgrouptest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      containers:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - image: harbor.pytc.com/library/m:latest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        name: m
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        resources:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          limits:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            cpu: 1000m
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            memory: 128Mi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - image: harbor.pytc.com/library/m:latest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        name: m2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        resources:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          limits:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            cpu: 2000m
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            memory: 128Mi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><p>获取pod uid</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># kubectl get pod -l app=cgrouptest -ojsonpath=&#39;{.items[0].metadata.uid}{&#34;\n&#34;}&#39;|tr &#34;-&#34; &#34;_&#34;</span>
+</span></span><span style="display:flex;"><span>5dba196d_897b_4ebb_865e_0e43b612575d
+</span></span></code></pre></div><p>获取pod中容器的containerID</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 ~<span style="color:#f92672">]</span><span style="color:#75715e"># kubectl get pod -l app=cgrouptest -ojsonpath=&#39;{range .items[0].status.containerStatuses[*] } {.name}{&#34;\t&#34;}{.containerID}{&#34;\n&#34;}{end}&#39;</span>
+</span></span><span style="display:flex;"><span> m      containerd://05d994653b88f6fe97254c206efba6dc34f6e03a0ede108be081d71a0e1c6857
+</span></span><span style="display:flex;"><span> m2     containerd://3f06542e87e0fb80b38c86181b8fdd48580c258969770c56466cd68498deb2a5
+</span></span></code></pre></div><p>查看容器的限制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice<span style="color:#f92672">]</span><span style="color:#75715e"># cat /sys/fs/cgroup/cpu/kubepods.slice/kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice/cri-containerd-05d994653b88f6fe97254c206efba6dc34f6e03a0ede108be081d71a0e1c6857.scope/cpu.cfs_quota_us </span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">100000</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice<span style="color:#f92672">]</span><span style="color:#75715e">#  cat /sys/fs/cgroup/cpu/kubepods.slice/kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice/cri-containerd-3f06542e87e0fb80b38c86181b8fdd48580c258969770c56466cd68498deb2a5.scope/cpu.cfs_quota_us</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200000</span>
+</span></span></code></pre></div><p>修改容器的限制，并观察变化</p>
+
+
+<div class="alert alert-warning" role="alert">
+
+
+    <p><strong>报错：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice<span style="color:#f92672">]</span><span style="color:#75715e"># echo 400000 &gt;/sys/fs/cgroup/cpu/kubepods.slice/kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice/cri-containerd-05d994653b88f6fe97254c206efba6dc34f6e03a0ede108be081d71a0e1c6857.scope/cpu.cfs_quota_us </span>
+</span></span><span style="display:flex;"><span>-bash: echo: write error: Invalid argument
+</span></span></code></pre></div><p><strong>排查和解决:</strong></p>
+<p>设置问题：由于容器上一层pod 中 <code>cpu.cfs_quota_us </code>的值为300000（即两个容器的资源限制总和不会超过3个核心），在cgroup中子系统受父级限制。因此最大设置不能超过 300000。</p>
+<p>资源限制问题： 同时对于该示例中一个pod包含两个容器，即使两个容器<code>cpu.cfs_quota_us </code>的值都设置为300000。操作系统也不会分配6个cpu。原因是cgroup中子系统受父级限制。因此两个容器合计最大可以使用3个核心。</p>
+<p>突破限制： 首先修改父级<code>cpu.cfs_quota_us</code> 限制，其次修改容器限制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice<span style="color:#f92672">]</span><span style="color:#75715e"># cat  /sys/fs/cgroup/cpu/kubepods.slice/kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice/cpu.cfs_quota_us </span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">300000</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice<span style="color:#f92672">]</span><span style="color:#75715e"># echo 300000 &gt;/sys/fs/cgroup/cpu/kubepods.slice/kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice/cri-containerd-05d994653b88f6fe97254c206efba6dc34f6e03a0ede108be081d71a0e1c6857.scope/cpu.cfs_quota_us </span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@master-01 kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice<span style="color:#f92672">]</span><span style="color:#75715e"># echo  500000 &gt;/sys/fs/cgroup/cpu/kubepods.slice/kubepods-pod5dba196d_897b_4ebb_865e_0e43b612575d.slice/cpu.cfs_quota_us </span>
+</span></span></code></pre></div>
+
+</div>
+
+<h3 id="故障处理">故障处理</h3>
+
+
+<div class="alert alert-warning" role="alert">
+
+
+    使用 <code>umount -a</code> 后 cgroup文件系统被卸载，以下为重新挂载 cgroup 文件系统的步骤。
+
+</div>
+
+<p><strong>重建基础结构</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mount -t tmpfs tmpfs /sys/fs/cgroup
+</span></span></code></pre></div>
+  
+  
+<ul class="nav nav-tabs" id="tabs-6" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-06-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-00" role="tab"
+          data-td-tp-persist="**挂载 cgroup v2**" aria-controls="tabs-06-00" aria-selected="true">
+        <strong>挂载 cgroup v2</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-06-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-01" role="tab"
+          data-td-tp-persist="**挂载 cgroup v1**" aria-controls="tabs-06-01" aria-selected="false">
+        <strong>挂载 cgroup v1</strong>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-6-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-06-00" role="tabpanel" aria-labelled-by="tabs-06-00-tab" tabindex="6">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /sys/fs/cgroup/unified
+</span></span><span style="display:flex;"><span>mount -t cgroup2 none /sys/fs/cgroup/unified
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-06-01" role="tabpanel" aria-labelled-by="tabs-06-01-tab" tabindex="6">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>controllers<span style="color:#f92672">=(</span>blkio  cpu,cpuacct  cpuset  devices  freezer  hugetlb  memory   net_cls,net_prio  perf_event  pids systemd <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> ctrl in <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>controllers[@]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>   mkdir -p /sys/fs/cgroup/$ctrl
+</span></span><span style="display:flex;"><span>   mount -t cgroup -o $ctrl cgroup /sys/fs/cgroup/$ctrl
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 特别处理 systemd 控制器</span>
+</span></span><span style="display:flex;"><span>umount /sys/fs/cgroup/systemd
+</span></span><span style="display:flex;"><span>mount -t cgroup -o none,name<span style="color:#f92672">=</span>systemd systemd /sys/fs/cgroup/systemd
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建符号链接</span>
+</span></span><span style="display:flex;"><span>cd  /sys/fs/cgroup/
+</span></span><span style="display:flex;"><span>ln -sv  cpu,cpuacct cpuacct
+</span></span><span style="display:flex;"><span>ln -sv  cpu,cpuacct cpu
+</span></span><span style="display:flex;"><span>ln -sv  net_cls,net_prio net_cls 
+</span></span><span style="display:flex;"><span>ln -sv  net_cls,net_prio net_prio
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="示例代码">示例代码</h3>
+<p>cpu 压测代码</p>
+<details>
+  <summary>Details</summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;runtime&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;sync/atomic&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义全局变量阻止编译器优化</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">counter</span> <span style="color:#66d9ef">uint64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 获取逻辑 CPU 核心数 (如 4 核 8 线程则返回 8)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// numCPU := runtime.NumCPU()</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">numCPU</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 设置 Go 运行时使用的最大 CPU 核数</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">GOMAXPROCS</span>(<span style="color:#a6e22e">numCPU</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 为每个逻辑 CPU 核心启动一个满载 goroutine</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">numCPU</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">worker</span>()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 阻塞主线程防止退出</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">select</span> {}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CPU 密集型任务函数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">worker</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 原子操作循环 (避免循环被 Go 编译器优化)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">AddUint64</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">counter</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></details>
+<p>内存压测代码</p>
+<details>
+  <summary>Details</summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;runtime&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">targetMem</span> = <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#75715e">// 2GB</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 创建内存池避免被GC回收</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">memoryHolder</span> [][]<span style="color:#66d9ef">byte</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 分块分配更贴近真实场景</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">blockSize</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#75715e">// 每次分配100MB</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">allocated</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">allocated</span> &lt; <span style="color:#a6e22e">targetMem</span>; <span style="color:#a6e22e">allocated</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">blockSize</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">block</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">byte</span>, <span style="color:#a6e22e">blockSize</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">memoryHolder</span> = append(<span style="color:#a6e22e">memoryHolder</span>, <span style="color:#a6e22e">block</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 读取内存数据防止优化</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">block</span>); <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">4096</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">block</span>[<span style="color:#a6e22e">i</span>] = byte(<span style="color:#a6e22e">i</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">256</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 打印当前分配状态</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printMemUsage</span>()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\n📊 内存分配完成，持续占用中...&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;✅ 可使用以下命令监控：&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;   top -p $(pgrep your_program_name)&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;   watch -n 1 &#39;ps -eo pid,rss,comm | grep your_program_name&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 保持程序运行直到kill</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ticker</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">NewTicker</span>(<span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">ticker</span>.<span style="color:#a6e22e">Stop</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ticker</span>.<span style="color:#a6e22e">C</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printMemUsage</span>()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">printMemUsage</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">MemStats</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">ReadMemStats</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">m</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;➤ 系统视角内存: %.2fGB | Alloc=%.2fMB | Sys=%.2fMB\n&#34;</span>,
+</span></span><span style="display:flex;"><span>		float64(<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">HeapSys</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>		float64(<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">HeapAlloc</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>		float64(<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">Sys</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></details>
+<p><a href="https://docs.redhat.com/zh-cn/documentation/red_hat_enterprise_linux/7/html/resource_management_guide/chap-introduction_to_control_groups" target="_blank">https://docs.redhat.com/zh-cn/documentation/red_hat_enterprise_linux/7/html/resource_management_guide/chap-introduction_to_control_groups</a>
+<a href="https://segmentfault.com/a/1190000009732550" target="_blank">https://segmentfault.com/a/1190000009732550</a></p>
+<p><a href="https://www.redhat.com/sysadmin/cgroups-part-one" target="_blank">https://www.redhat.com/sysadmin/cgroups-part-one</a></p>
+<p><a href="https://www.redhat.com/sysadmin/cgroups-part-two" target="_blank">https://www.redhat.com/sysadmin/cgroups-part-two</a></p>
+<p><a href="https://www.redhat.com/sysadmin/cgroups-part-three" target="_blank">https://www.redhat.com/sysadmin/cgroups-part-three</a></p>
+<p><a href="https://www.redhat.com/sysadmin/cgroups-part-four" target="_blank">https://www.redhat.com/sysadmin/cgroups-part-four</a></p>
+<p><a href="https://www.redhat.com/en/services/training/do080-deploying-containerized-applications-technical-overview?intcmp=701f20000012ngPAAQ" target="_blank">https://www.redhat.com/en/services/training/do080-deploying-containerized-applications-technical-overview?intcmp=701f20000012ngPAAQ</a></p>
+<p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/resource_management_guide/index" target="_blank">https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/resource_management_guide/index</a></p>
+<p><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/resource_management_guide/chap-introduction_to_control_groups" target="_blank">https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/resource_management_guide/chap-introduction_to_control_groups</a></p>
+<p><a href="https://isovalent.com/blog/post/demystifying-cni/" target="_blank">https://isovalent.com/blog/post/demystifying-cni/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/346050404" target="_blank">https://zhuanlan.zhihu.com/p/346050404</a></p>
+<p><a href="https://systemd-by-example.com/" target="_blank">https://systemd-by-example.com/</a></p>
+<p><a href="https://www.ibm.com/support/pages/node/6393890?mhsrc=ibmsearch_a&amp;mhq=cgroup" target="_blank">https://www.ibm.com/support/pages/node/6393890?mhsrc=ibmsearch_a&mhq=cgroup</a></p>
+<p><a href="https://www.redhat.com/en/services/training/do080-deploying-containerized-applications-technical-overview?intcmp=701f20000012ngPAAQ&amp;section=overview" target="_blank">https://www.redhat.com/en/services/training/do080-deploying-containerized-applications-technical-overview?intcmp=701f20000012ngPAAQ&section=overview</a></p>
+<p><a href="https://www.redhat.com/sysadmin/cgroups-part-three" target="_blank">https://www.redhat.com/sysadmin/cgroups-part-three</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/346050404" target="_blank">https://zhuanlan.zhihu.com/p/346050404</a></p>
+<p><a href="https://blog.csdn.net/qq_37041791/article/details/126031351" target="_blank">https://blog.csdn.net/qq_37041791/article/details/126031351</a></p>
+<iframe src="http://114.132.158.2/" width="100%" height="800" frameborder="0"></iframe>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-cae6ba33891c1098bc17a78540097bd9">Echart</h1>
+	<div class="lead">echart 是一个基于 JavaScript 的开源可视化库，用于创建各种类型的图表，如折线图、柱状图、饼图等。它提供了丰富的配置选项和交互功能，使得开发者可以轻松地将数据以直观的方式呈现给用户。</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-25" class="text-body-secondary">Sunday, May 25, 2025</time>
+        
+	</div>
+	<p><img src="https://rpic.origz.com/api.php?category=photography" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;ECharts&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 引入刚刚下载的 ECharts 文件 --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 为 ECharts 准备一个定义了宽高的 DOM --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 600px;height:400px;&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 基于准备好的dom，初始化echarts实例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myChart</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">echarts</span>.<span style="color:#a6e22e">init</span>(document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;main&#39;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 指定图表的配置项和数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">option</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ECharts 入门示例&#39;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tooltip</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">legend</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;销量&#39;</span>]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">xAxis</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;衬衫&#39;</span>, <span style="color:#e6db74">&#39;羊毛衫&#39;</span>, <span style="color:#e6db74">&#39;雪纺衫&#39;</span>, <span style="color:#e6db74">&#39;裤子&#39;</span>, <span style="color:#e6db74">&#39;高跟鞋&#39;</span>, <span style="color:#e6db74">&#39;袜子&#39;</span>]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">yAxis</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">series</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;销量&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bar&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">36</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>]
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 使用刚指定的配置项和数据显示图表。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">myChart</span>.<span style="color:#a6e22e">setOption</span>(<span style="color:#a6e22e">option</span>);
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-7b8b7327cad85cb70214c51fbf8a8a9b">音乐</h1>
+	<div class="lead">自建音乐播放器</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-06-30" class="text-body-secondary">Monday, June 30, 2025</time>
+        
+	</div>
+	<p>组件：</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> navidrome 音乐服务端程序</li>
+<li><input checked="" disabled="" type="checkbox"> music-tag-web 负责刮削音乐原数据信息</li>
+<li><input checked="" disabled="" type="checkbox"> filebrowser 负责通过网页端上传音乐文件</li>
+</ul>
+<hr>
+<h3 id="部署">部署</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p data/filebrowser 
+</span></span><span style="display:flex;"><span>touch data/filebrowser/database.db
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>services:
+</span></span><span style="display:flex;"><span>  navidrome:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#image: deluan/navidrome:latest</span>
+</span></span><span style="display:flex;"><span>    image: harbor.pytc.com/music/navidrome:0.54.3
+</span></span><span style="display:flex;"><span>    container_name: navidrome
+</span></span><span style="display:flex;"><span>    privileged: true
+</span></span><span style="display:flex;"><span>    ports:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8001:4533&#34;</span>
+</span></span><span style="display:flex;"><span>    volumes:
+</span></span><span style="display:flex;"><span>      - ./data/music:/music <span style="color:#75715e"># 音乐</span>
+</span></span><span style="display:flex;"><span>      - ./data/navidrome:/data <span style="color:#75715e"># 数据库和cache</span>
+</span></span><span style="display:flex;"><span>    command:
+</span></span><span style="display:flex;"><span>    - /navidrome 
+</span></span><span style="display:flex;"><span>    - --datafolder<span style="color:#f92672">=</span>/data
+</span></span><span style="display:flex;"><span>    - --musicfolder<span style="color:#f92672">=</span>/music
+</span></span><span style="display:flex;"><span>    restart: unless-stopped
+</span></span><span style="display:flex;"><span>  music-tag:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#image: xhongc/music_tag_web:latest</span>
+</span></span><span style="display:flex;"><span>    image: harbor.pytc.com/music/xhongc/music_tag_web:2.3.2
+</span></span><span style="display:flex;"><span>    container_name: music-tag-web
+</span></span><span style="display:flex;"><span>    ports:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8002:8002&#34;</span>
+</span></span><span style="display:flex;"><span>    volumes:
+</span></span><span style="display:flex;"><span>      - ./data/music:/app/media:rw
+</span></span><span style="display:flex;"><span>      - ./data/music-tag/config:/app/data
+</span></span><span style="display:flex;"><span>    restart: unless-stopped
+</span></span><span style="display:flex;"><span>  filebrowser:
+</span></span><span style="display:flex;"><span>    image: harbor.pytc.com/music/filebrowser/filebrowser:v2.31.2
+</span></span><span style="display:flex;"><span>    container_name: filebrowser
+</span></span><span style="display:flex;"><span>    ports:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8003:80&#34;</span>
+</span></span><span style="display:flex;"><span>    volumes:
+</span></span><span style="display:flex;"><span>      - ./data/filebrowser/database.db:/database.db
+</span></span><span style="display:flex;"><span>      - ./data/music:/srv
+</span></span></code></pre></div><h3 id="使用">使用</h3>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-5eea090aa12f8789072cc8fb65a285c4">Stock</h1>
+	<div class="lead">学习金融知识，实战股票投资<a href="https://www.szse.cn/" target="_blank">上证</a>|<a href="https://www.szse.cn/" target="_blank">深证</a></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-07-02" class="text-body-secondary">Wednesday, July 02, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">交易原则</h4>
+
+    <p><font color=red>保住本金再图收益，买在分歧时，卖在人声鼎沸处</font></p>
+<ul>
+<li>买入：换手率大于5%，最近5个交易日有涨停或大于7%冲高，中高位时防止利空庄家拉高套现</li>
+<li>买入：市场普遍大跌，第二天缩量下跌，可在第二天或第三天逢低买入绩优股</li>
+<li>卖出：市场普遍高开大涨，无量</li>
+<li>短期高位票 &amp; 叠加人气票 当天跌幅超过6% 不要急于抄底，当天大概率放量跌停第二天开始缩量下跌。第三天可以考虑买入</li>
+<li>主升浪行情，买流通流通股市值大于100亿小于500亿板块龙头，小市值股票更容易被量化操纵无法走出大行情</li>
+</ul>
+<hr>
+<p><strong>二十届四中全会中提到：</strong></p>
+<p><code>打造新兴支柱产业，加快新能源、新材料（半导体材料、PVA 膜、COC/COP、碳纤维复核材料）、航空航天、低空经济</code></p>
+<p><code>布局未来产业，推动量子科技、生物制造、氢能和核聚变能、脑机接口、具身智能、第六代移动通信等成为新的经济增长点</code></p>
+<p><strong>锚定工业化：</strong></p>
+<ol>
+<li>
+<p>电动汽车 + 智能驾驶 + 飞行汽车 + 换电 + 特快充电</p>
+</li>
+<li>
+<p>清洁能源（光、风、核、氢）+ 电网</p>
+</li>
+<li>
+<p>机器人 （关注IPO）</p>
+</li>
+<li>
+<p>工业材料：
+铜 + 银 + 铝  + 碳纤维 + 半导体材料</p>
+</li>
+<li>
+<p>人工智能(算力 + 芯片 +  数据中心 + 服务器 + 存储)
+集成电路</p>
+</li>
+<li>
+<p>通讯 (光纤光缆 + 卫星通信 + 6g )
+<a href="https://www.imt2030.org.cn/html/default/zhongwen/tuijinzujianjie/chengyuandanwei/index.html?index=1" target="_blank">6g推动小组</a> 主要成员：中兴通讯 中移动 中联通 中电信 海能达 h3c(紫光)</p>
+</li>
+</ol>
+<p><strong>国际地缘：</strong></p>
+<ol>
+<li>国产替代 （芯片、操作系统、软件）</li>
+<li>军工</li>
+<li>稀土</li>
+<li>海运 + 港口</li>
+</ol>
+
+
+</div>
+
+<hr>
+<h3 id="基本概念">基本概念</h3>
+<p><font color=#008080><strong>PB</strong></font>：计算公式 <code>市净率 = 股价 / 每股账面值</code>，也就是市值与总资产的比率</p>
+<p><font color=#008080><strong>PE</strong></font>：计算公式 <code>市盈率=现时股价 / 公司盈利</code> 也就是市值与利润的比率。PE计算公司盈利时，往往基于上一年业绩，未必能够反映企业最新情况，例如当公司业务有变动或转型，这个计法就未必适合。</p>
+<p><font color=#008080><strong>换手率</strong></font></p>
+<p><font color=#008080><strong>筹码峰</strong></font></p>
+<p><font color=#008080><strong>换手率</strong></font></p>
+<hr>
+<p><font color=#008080><strong>货币中的M1、M2：</strong></font></p>
+
+
+<div class="alert alert-primary" role="alert">
+
+
+    中国的货币统计口径（M0, M1, M2）主要覆盖的是<strong>银行体系</strong>的存款。一旦钱进入了<strong>证券公司</strong>的账户，它就暂时退出了央行的货币统计范围。<strong>当钱在证券账户时</strong>：它被称为“保证金”，是你在证券公司的资产，但这笔钱实际上存放在一个专门的第三方存管账户中。对于央行来说，这部分钱在统计时被视作<strong>非存款类金融机构的存款</strong>，<strong>不纳入M1或M2的统计范围</strong>。因此，当大量资金涌入股市时，在统计上会表现为银行体系内的存款减少，可能引起M1甚至M2增速的下降。
+
+</div>
+
+<p>计算公式：<code>M1=流通中现金 + 活期存款</code>，<code>M2 = M1 + 准货币</code>，<code>准货币=企业和居民的定期存款+货币市场基金份额（例如余额宝）、住房公积金存款等</code></p>
+<p><em>正剪刀差（M1增速 &gt; M2增速）</em>：通常表示流动的热钱多，经济活跃市场信息强劲</p>
+<ul>
+<li>企业层面： 企业更愿意将定期存款（属于M2）转换为活期存款（属于M1），以准备用于支付货款、工资、进行新的投资等。这表明企业看好未来，经营和扩张意愿强烈。</li>
+<li>居民层面： 居民可能更倾向于消费或投资股市等，而不是进行长期储蓄。</li>
+<li>总体： 货币的流通速度加快，更多的钱从“沉睡”的储蓄状态进入“活跃”的交易状态，预示着经济趋向过热，可能伴随通货膨胀压力。通常出现在经济上行或繁荣期。</li>
+</ul>
+<p><em>负剪刀差（M1增速 &lt; M2增速）</em>：经济下行压力大，市场信心不足，存在“流动性陷阱”风险</p>
+<ul>
+<li><em>企业层面：</em> 由于找不到好的投资机会，或者对前景悲观，企业将大量资金以定期存款等形式“窖藏”起来，导致活期存款（M1）增长放缓，而定期存款（M2）部分增长较快。这被称为“企业存款定期化”。</li>
+<li><em>居民层面：</em> 由于收入预期不佳或避险情绪上升，居民更倾向于减少消费和购房，将钱存入长期储蓄账户。</li>
+<li><em>总体：</em> 货币的流通速度减慢，资金“沉淀”在银行体系内，无法有效转化为实际需求和投资。即使央行降准降息（释放流动性），钱也流不到实体经济中去，这是典型的<strong>通缩</strong>风险信号。通常出现在经济下行或衰退期。</li>
+</ul>
+<hr>
+<p><font color=#008080><strong>货币政策-MLF（Medium-term Lending Facility）：</strong></font>是中央银行提供中期（三个月以上通常为一年）基础货币的货币政策工具，MLF的发放对象是符合监管要求的商业银行和政策性银行，发放方式为质押（质押物可以是：国债、央行票据、政策性金融债、高等级信用债等优质债券）方式</p>
+<hr>
+<p><font color=#008080><strong>货币政策-LPR：</strong></font>贷款市场报价利率（LPR）是指由各报价行按照公开市场操作利率加点形成的利率，由全国银行间同业拆借中心计算得出，为银行贷款提供定价参考。具体来说，LPR主要由中期借贷便利利率（MLF）加点形成，反映了市场资金成本和银行的加点成本。LPR包括1年期和5年期以上两个品种，分别用于不同期限的贷款定价。LPR的形成机制确保了其能够及时反映市场利率变化，为实体经济融资成本的降低提供政策引导</p>
+<hr>
+<p><font color=#008080><strong>货币政策-回购/逆回购：</strong></font></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>操作</strong></th>
+          <th style="text-align: left"><strong>资金流向</strong></th>
+          <th style="text-align: left"><strong>抵押品流向</strong></th>
+          <th style="text-align: left"><strong>目的</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>逆回购</strong></td>
+          <td style="text-align: left">央行 → 市场</td>
+          <td style="text-align: left">市场 → 央行</td>
+          <td style="text-align: left"><strong>释放流动性</strong>（放水）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>正回购</strong></td>
+          <td style="text-align: left">市场 → 央行</td>
+          <td style="text-align: left">央行 → 市场</td>
+          <td style="text-align: left"><strong>回收流动性</strong>（抽水）</td>
+      </tr>
+  </tbody>
+</table>
+<p>持仓</p>
+<p>2025年11月23日15:07:55 摩尔线程正式上市交易，可能带动AI硬件股票上攻</p>
+<p>特朗普批准英伟达H200恢复对华出口</p>
+<p>首条固态电池产线建成</p>
+<p>中日关系</p>
+<table>
+  <thead>
+      <tr>
+          <th>代码</th>
+          <th>名称</th>
+          <th>操作</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>001333</td>
+          <td>光华股份</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>000547</td>
+          <td>航天发展</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>605366</td>
+          <td>宏柏新材</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>000792</td>
+          <td>盐湖股份</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>002607</td>
+          <td>中公教育</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>301091</td>
+          <td>深城交</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>600089</td>
+          <td>特变电工</td>
+          <td>⭐ 东方电缆、国电南瑞</td>
+      </tr>
+      <tr>
+          <td>002340</td>
+          <td>格林美</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>920985</td>
+          <td>海泰新能</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>000821</td>
+          <td>京山轻机</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>600062</td>
+          <td>华润双鹤</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>603982</td>
+          <td>泉峰汽车</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>000009</td>
+          <td>中国宝安</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>002122</td>
+          <td>汇洲智能</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>001208</td>
+          <td>华菱线缆</td>
+          <td>⭐</td>
+      </tr>
+      <tr>
+          <td>603979</td>
+          <td>金诚信</td>
+          <td>⭐</td>
+      </tr>
+      <tr>
+          <td>002642</td>
+          <td>荣联科技</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>002600</td>
+          <td>领益智造</td>
+          <td>⭐</td>
+      </tr>
+      <tr>
+          <td>002196</td>
+          <td>方正电机</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>300397</td>
+          <td>天和防务</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>000938</td>
+          <td>紫光股份</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>688353</td>
+          <td>华盛锂电</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>000158</td>
+          <td>常山北明</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>001298</td>
+          <td>好上好</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>002085</td>
+          <td>万丰奥威</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>300498</td>
+          <td>温氏股份</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>603191</td>
+          <td>望变电气</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>920826</td>
+          <td>盖世食品</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>603650</td>
+          <td>彤程新材</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>688726</td>
+          <td>拉普拉斯</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>300024</td>
+          <td>机器人</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>688458</td>
+          <td>美芯晟</td>
+          <td>未见底不要加仓</td>
+      </tr>
+      <tr>
+          <td>000001</td>
+          <td>平安银行</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>科华数据</td>
+          <td>厦门 + 数据中心 + 沐熙合作</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>振华科技</td>
+          <td>蚂蚁上树态势，⭐⭐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>沃尔核材</td>
+          <td>27.5考虑建仓</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>安妮股份</td>
+          <td>15号=》12快建仓</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>广大特材&gt;、中际联合</td>
+          <td>观察</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>再升科技、天通股份、⭐金风科技</td>
+          <td>等待回调</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-25f292a7f743e1f4cbe2ed9ac479e741">Stock-2026年</h1>
+	<div class="lead">学习金融知识，实战股票投资<a href="https://www.szse.cn/" target="_blank">上证</a>|<a href="https://www.szse.cn/" target="_blank">深证</a></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-07-02" class="text-body-secondary">Wednesday, July 02, 2025</time>
+        
+	</div>
+	<pre tabindex="0"><code>航天一院（中国运载火箭技术研究院，CASC 一院）
+├─ 003009 中天火箭（一院控股 51.26%，固体小火箭+商业发射）  		☆
+航天八院（上海航天技术研究院，CASC 八院）
+├─ 600151 航天机电（八院控股 34.05%，光伏组件+汽车热管理+卫星应用）
+—— 以下公司不在一院/八院体系，顺带列清，避免混淆 ——
+航天五院（中国空间技术研究院，CASC 五院）
+├─ 600118 中国卫星（五院控股 51.32%，小卫星+遥感应用） 			☆☆
+└─ 601698 中国卫通（五院为实际控制人，卫星运营+通信广播）
+航天九院（中国航天电子技术研究院，CASC 九院）
+├─ 600879 航天电子（九院控股 35.78%，航天电子设备+测控通信）			☆☆
+└─ 688562 航天软件（九院间接控股，工业软件+信息化）
+航天六院（中国航天推进技术研究院，CASC 六院）
+├─ 600343 航天动力（六院控股 39.07%，液体火箭发动机技术衍生——泵阀、消防、化工装备）☆☆
+航天七院（四川航天技术研究院，CASC 七院）
+├─ 600855 航天长峰（七院下属，安保+医疗工程，前面已出现）
+中国航天建设集团（CASC 工程服务板块）
+├─ 603698 航天工程（煤气化工程 EPC，航天粉煤加压气化技术） ☆
+航天十一院（中国航天空气动力技术研究院，CASC 十一院）
+├─ 002389 航天彩虹（十一院控股 38.62%，彩虹无人机+膜材料）
+航天科工系（CASIC，与 CASC 并列的另一央企）
+├─ 600271 航天信息（税控+企业数字化）
+├─ 600501 航天晨光（核工装备+环保装备）
+├─ 000547 航天发展（电子对抗+电磁安防）  ☆☆
+├─ 002025 航天电器（高端连接器）		 ☆
+├─ 300747 锐科激光（光纤激光器）	     ☆
+└─ 科创板在审 航天南湖（预警雷达）
+港股红筹
+├─ 00331 航天控股（中国航天国际控股有限公司，CASC 香港投融资平台）
+└─ 01045 亚太卫星（亚太通信卫星，CASC 卫星运营海外窗口）
+乐凯胶片（600135）
+实际控制人是“中国航天科技集团”通过乐凯集团，但无明确对应研究院，归口集团层面管理。
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>无线电创新院（全称：无线电频谱开发利用和技术创新研究院）于2025年12月30日在雄安新区注册成立，是我国无线电管理技术领域首家以“技术创新+成果转化”为目标的新型研发机构，由国家无线电监测中心、雄安新区管委会、河北省工信厅、中国卫星网络集团、南京航空航天大学、北京交通大学、中国电子科技集团（CETC）7家单位联合共建。
+</span></span><span style="display:flex;"><span>一、主要业务方向
+</span></span><span style="display:flex;"><span>服务卫星互联网产业
+</span></span><span style="display:flex;"><span>牵头向国际电信联盟（ITU）提交了CTC-1、CTC-2两个巨型星座（各96 714颗，合计超19万颗卫星）的频轨资源申请，被视为我国卫星互联网“国家队”。
+</span></span><span style="display:flex;"><span>电磁空间技术研究
+</span></span><span style="display:flex;"><span>聚焦频谱认知、空天地一体电磁安全、低空空域监管等关键技术，为雄安新区数字城市建设和低空经济提供技术支撑。
+</span></span><span style="display:flex;"><span>频谱资源价值挖掘
+</span></span><span style="display:flex;"><span>搭建“政产学研用”一体化平台，推动无线电频谱高效利用、标准制定与产业孵化，形成从芯片、载荷、地面设备到应用服务的全链条创新生态。
+</span></span><span style="display:flex;"><span>二、关联上市公司（通过股东CETC体系）
+</span></span><span style="display:flex;"><span>中国电子科技集团（CETC）是无线电创新院七家共建方之一，其控股或参股的A股上市公司中，已明确参与卫星互联网/商业航天核心环节的主要有：
+</span></span><span style="display:flex;"><span>表格
+</span></span><span style="display:flex;"><span>复制
+</span></span><span style="display:flex;"><span>证券简称	股票代码	在卫星互联网链条中的角色
+</span></span><span style="display:flex;"><span>普天科技	002122	星地融合通信基础设施、地面站建设
+</span></span><span style="display:flex;"><span>电科数字	600850	星载计算载荷、数据中心、AI星载平台
+</span></span><span style="display:flex;"><span>电科芯片	688081	星载/终端射频芯片、北斗短报文芯片
+</span></span><span style="display:flex;"><span>电科网安	300479	星间/星地抗量子密码与数据安全
+</span></span><span style="display:flex;"><span>四创电子	600990	星载电源系统、低空监视雷达
+</span></span><span style="display:flex;"><span>国睿科技	600562	地面相控阵监测雷达、微波器件
+</span></span><span style="display:flex;"><span>天奥电子	002935	星载原子钟、发射场T0测控设备
+</span></span><span style="display:flex;"><span>东信和平	002017	卫星物联网eSIM及终端安全模块
+</span></span><span style="display:flex;"><span>莱斯信息	688631	空管自动化系统、低空经济平台
+</span></span><span style="display:flex;"><span>国博电子	688361	星载有源相控阵T/R组件及射频芯片
+</span></span></code></pre></div><p><a href="https://www.ndrc.gov.cn/xxgk/zcfb/fzggwl/202512/P020251224301773999332.pdf" target="_blank">2026新发布鼓励外商投资产业目录</a></p>
+<p>我来查看你提供的国家发展改革委发布的鼓励外商投资产业目录文件，了解新增产业和重点鼓励产业的具体内容。
+根据《鼓励外商投资产业目录（2025年版）》，我为您梳理了新增产业和重点鼓励产业的主要内容：</p>
+<h2 id="新增产业亮点">新增产业亮点</h2>
+<p><strong>1. 新能源与储能产业</strong></p>
+<ul>
+<li>新型储能技术：钠离子电池、液流电池、铅炭电池、压缩空气储能、重力储能、飞轮储能、氢储能等</li>
+<li>氢能全产业链：制备、储运、燃料电池、加氢站建设</li>
+<li>虚拟电厂运营及相关技术研发</li>
+</ul>
+<p><strong>2. 智能制造与高端装备</strong></p>
+<ul>
+<li>人形机器人及关键零部件（减速机、电机、控制器等）</li>
+<li>半导体设备：光刻机、单晶炉、研磨抛光设备</li>
+<li>3D打印设备、量子计算机系统研发制造</li>
+</ul>
+<p><strong>3. 生物医药创新</strong></p>
+<ul>
+<li>细胞治疗药物、核酸类药物、核药开发</li>
+<li>罕见病用药、儿童专科用药</li>
+<li>脑机接口核心器件研发制造</li>
+</ul>
+<p><strong>4. 绿色低碳技术</strong></p>
+<ul>
+<li>碳捕集与封存(CCS/CCUS)设备制造</li>
+<li>零碳燃料发动机(氢、氨、醇醚燃料)</li>
+<li>生物基材料、可降解塑料全链条开发</li>
+</ul>
+<h2 id="重点鼓励产业">重点鼓励产业</h2>
+<p><strong>1. 先进制造业</strong></p>
+<ul>
+<li>新能源汽车全产业链：电池、电机、电控、充电设施</li>
+<li>航空航天：民用飞机、航空发动机、卫星制造</li>
+<li>集成电路：28纳米及以下芯片制造、先进封装测试</li>
+</ul>
+<p><strong>2. 现代服务业</strong></p>
+<ul>
+<li>跨境电商及供应链服务</li>
+<li>在线医疗、教育、办公系统开发</li>
+<li>工业设计、研发服务外包(KPO)</li>
+</ul>
+<p><strong>3. 现代农业</strong></p>
+<ul>
+<li>智慧农业装备、农产品冷链物流</li>
+<li>畜禽智能化养殖技术</li>
+<li>农业废弃物资源化利用</li>
+</ul>
+<p><strong>4. 区域优势产业</strong></p>
+<ul>
+<li>中西部地区：能源化工、新材料、特色农业</li>
+<li>东北地区：冰雪装备、生物医药、现代农业</li>
+<li>长江经济带：高端制造、绿色产业</li>
+</ul>
+<p>目录体现了中国推动高质量发展、促进绿色低碳转型、加快科技创新的政策导向，为外商投资提供了明确的方向指引。</p>
+<p><strong>能源全产业链</strong></p>
+<pre class="mermaid">flowchart LR
+subgraph P[能源]
+  subgraph A[化石能源]
+	powerA(火力发电)
+	powerB(石油)
+	powerC(燃气)
+  end
+  
+  subgraph B[新型能源]
+	NewPowerA(风电)
+	NewPowerB(核能)
+	NewPowerC(氢能)
+	NewPowerD(光伏)
+	NewPowerD(抽水发电)
+  end
+end
+  subgraph C[输送渠道]
+	trasportA(管道运输)
+	trasportB(高压运输)
+  end
+
+  subgraph D[储能]
+	BatteryA(三元锂电池)
+	BatteryB(固态电池)
+  end
+  
+
+  
+  subgraph E[消费终端]
+	ConsumerA(电动汽车)
+	ConsumerB(无人机)
+	ConsumerC(机器人)
+  end
+  
+P -..-&gt; C -..-&gt;D -..-&gt; E</pre>
+<p><strong>电子消费终端</strong></p>
+<pre class="mermaid">flowchart LR
+  subgraph E[消费终端]
+	ConsumerA(电动汽车)
+	ConsumerB(无人机)
+	ConsumerC(机器人)
+  end
+  subgraph common[公共供应商]
+    carC[电池供应商]
+  	carD[电机供应商]
+  end
+  subgraph EA[电动汽车]
+  	carA[汽车集成商]
+  	carB[智能驾驶]
+  	carE[一体压铸]
+  	carF[轮胎/底盘]
+  end
+  
+  subgraph EB[无人机集中关注深圳]
+  	airA[消费机无人机大疆/影石头]
+  	airB[低空载人/载物]
+  end
+  subgraph EC[机器人]
+  	robotA[集成商]
+  	robotB[皮肤材料]
+  	robotC[关节]
+  end
+  ConsumerA -..-&gt;EA
+  ConsumerA -..-&gt;common
+  ConsumerB -..-&gt;EB
+  ConsumerB -..-&gt;|固态高密度|common
+  
+  ConsumerC -..-&gt;EC
+  ConsumerC -..-&gt;|固态高密度|common</pre>
+<p><strong>碳酸锂电池</strong></p>
+<ol>
+<li>
+<p>长期持有首选：盐湖股份</p>
+<ul>
+<li>
+<p>成本全球最低，即使碳酸锂跌至 5 万元/吨仍有 40%+ 毛利率，抗周期能力最强。</p>
+</li>
+<li>
+<p>中国五矿入主后，2026 起连续资产注入，权益产能 6→11 万吨，复合增速 13%，确定性高。</p>
+</li>
+<li>
+<p>政策定位“世界级盐湖产业基地”，资源税、环保审批等风险最低</p>
+<p>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>优质弹性标的：天齐锂业</p>
+<ul>
+<li>
+<p>掌控 Greenbushes+SQM，资源品位与规模无替代品；固态电池用超薄锂箔、硫化锂等前沿技术已商业化，享受技术溢价。</p>
+</li>
+<li>
+<p>债务高峰已过，2025 起自由现金流大幅回正，锂价每上涨 1 万元，业绩弹性约 25 亿元</p>
+<p>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>波段交易标的：志存锂业、永兴材料、盛新锂能</p>
+<ul>
+<li>三者共同特征：2025-2027 年产能翻倍，但现金成本 5.5-7 万元/吨，仅适合在锂价 8 万元以上参与反弹。</li>
+<li>永兴材料分红率 50%，现金流稳健，防御性稍好；志存锂业未上市，需通过一级或并购基金参与，风险最高。</li>
+</ul>
+</li>
+</ol>
+<p><strong>磷酸铁锂</strong></p>
+<p><strong>钙钛矿电池</strong></p>
+<ul>
+<li>京山轻机</li>
+</ul>
+<p><strong>电池关键材料环节</strong></p>
+<ul>
+<li>正极：振华新材、容百科技、当升科技（层状氧化物路线）</li>
+<li>负极：贝特瑞、华阳股份、璞泰来（硬碳）</li>
+<li>电解液六氟磷酸锂：天赐材料、新宙邦、多氟多（NaPF6盐）</li>
+<li>铝箔（集流体）：鼎胜新材、南山铝业</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FROM python:3.11.12-alpine3.21
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>LABEL maintainer<span style="color:#f92672">=</span>1209233066@qq.com
+</span></span><span style="display:flex;"><span>RUN apk add gcc musl-dev linux-headers
+</span></span><span style="display:flex;"><span>RUN pip3 install akshare jupyter notebook pandas -i https://mirrors.aliyun.com/pypi/simple/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>WORKDIR /opt
+</span></span><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;jupyter&#34;</span>,<span style="color:#e6db74">&#34;notebook&#34;</span>,<span style="color:#e6db74">&#34;--ip&#34;</span>,<span style="color:#e6db74">&#34;0.0.0.0&#34;</span>,<span style="color:#e6db74">&#34;--port&#34;</span>,<span style="color:#e6db74">&#34;80&#34;</span>,<span style="color:#e6db74">&#34;--allow-root&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build . -t ak
+</span></span><span style="display:flex;"><span>docker run -d --name ak -v <span style="color:#e6db74">`</span>pwd<span style="color:#e6db74">`</span>:/opt -p 80:80  ak
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. 获取交易时间，排除非交易时间
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. 告警:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     每隔五分钟向dingtalk 发送一次
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     涨跌超5%告警
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     涨跌速超2%告警
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> akshare <span style="color:#66d9ef">as</span> ak
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取A股实时数据</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> ak<span style="color:#f92672">.</span>stock_zh_a_spot_em()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将数据转换为DataFrame</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 假设我们想要获取多个股票的实时数据，例如股票代码列表</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>stock_codes<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;000001&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;000009&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;000547&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;000792&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;000821&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;000938&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;001333&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;002085&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;002340&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;002607&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;002642&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;002803&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;300498&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;301091&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;600089&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;600062&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;603191&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;603650&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;603982&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;605366&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;835985&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;603315&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;300085&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;600536&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;300397&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;002122&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;600876&#34;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#34;836826&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 筛选指定股票的实时数据</span>
+</span></span><span style="display:flex;"><span>stock_data <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;代码&#34;</span>]<span style="color:#f92672">.</span>isin(stock_codes)]
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># # 选择我们想要展示的列</span>
+</span></span><span style="display:flex;"><span>columns_to_display <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;代码&#34;</span>, <span style="color:#e6db74">&#34;名称&#34;</span>, <span style="color:#e6db74">&#34;最低&#34;</span>,<span style="color:#e6db74">&#34;最新价&#34;</span>,<span style="color:#e6db74">&#34;最高&#34;</span>, <span style="color:#e6db74">&#34;涨跌幅&#34;</span>,<span style="color:#e6db74">&#34;涨速&#34;</span>,<span style="color:#e6db74">&#34;5分钟涨跌&#34;</span>,<span style="color:#e6db74">&#34;换手率&#34;</span>,<span style="color:#e6db74">&#34;成交量&#34;</span>,<span style="color:#e6db74">&#34;量比&#34;</span>,<span style="color:#e6db74">&#34;年初至今涨跌幅&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>stock_data_display <span style="color:#f92672">=</span> stock_data[columns_to_display]
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#print(stock_data_display)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># # 按照涨跌幅倒序排列</span>
+</span></span><span style="display:flex;"><span>stock_data_sorted <span style="color:#f92672">=</span> stock_data_display<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5分钟涨跌&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># # # 打印结果</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;近期成交信条超过5%涨幅的考虑卖出，不追高！！！&#34;</span>)
+</span></span><span style="display:flex;"><span>print(stock_data_sorted)
+</span></span></code></pre></div><h3 id="prometheus指标">prometheus指标</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">python:3.11.12-alpine3.21</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> maintainer<span style="color:#f92672">=</span><span style="color:#ae81ff">1209233066</span>@qq.com<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add gcc musl-dev linux-headers<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip3 install akshare pandas prometheus_client apscheduler -i https://mirrors.aliyun.com/pypi/simple/<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span> ./stock_metrics.py /opt/stock_metrics.py<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">6500</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34; python3&#34;</span>,<span style="color:#e6db74">&#34;/opt/stock_metrics.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/python3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">成交量占比{code=&#34;000001&#34;,name=&#34;平安银行&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">换手率{code=&#34;000001&#34;,name=&#34;平安银行&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">涨跌幅{code=&#34;000001&#34;,name=&#34;平安银行&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">年初至今涨跌幅{code=&#34;000001&#34;,name=&#34;平安银行&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> prometheus_client <span style="color:#f92672">import</span> start_http_server, Gauge
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> apscheduler.schedulers.blocking <span style="color:#f92672">import</span> BlockingScheduler
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> akshare <span style="color:#66d9ef">as</span> ak
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 暴露prometheus指标 http://xxxx:6500</span>
+</span></span><span style="display:flex;"><span>start_http_server(<span style="color:#ae81ff">6500</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g1<span style="color:#f92672">=</span>Gauge(<span style="color:#e6db74">&#34;stock_amount_rate&#34;</span>,<span style="color:#e6db74">&#34;量比%&#34;</span>,[<span style="color:#e6db74">&#34;code&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>])
+</span></span><span style="display:flex;"><span>g2<span style="color:#f92672">=</span>Gauge(<span style="color:#e6db74">&#34;stock_turnover_rate&#34;</span>,<span style="color:#e6db74">&#34;换手率&#34;</span>,[<span style="color:#e6db74">&#34;code&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>])
+</span></span><span style="display:flex;"><span>g3<span style="color:#f92672">=</span>Gauge(<span style="color:#e6db74">&#34;stock_price_change&#34;</span>,<span style="color:#e6db74">&#34;涨跌幅&#34;</span>,[<span style="color:#e6db74">&#34;code&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>])
+</span></span><span style="display:flex;"><span>g4<span style="color:#f92672">=</span>Gauge(<span style="color:#e6db74">&#34;stock_year_to_date_changed_rate&#34;</span>,<span style="color:#e6db74">&#34;年初至今涨跌幅&#34;</span>,[<span style="color:#e6db74">&#34;code&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_data</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取A股实时数据</span>
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> ak<span style="color:#f92672">.</span>stock_zh_a_spot_em()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 将数据转换为DataFrame</span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 假设我们想要获取多个股票的实时数据，例如股票代码列表</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    stock_codes<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;000001&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;000009&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;000547&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;000792&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;000821&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;000938&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;001333&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;002085&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;002340&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;002607&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;002642&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;002803&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;300498&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;301091&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;600089&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;600062&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;603191&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;603650&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;603982&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;605366&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;835985&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;688726&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;300085&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;600536&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;300397&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;002122&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;600876&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;836826&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;688366&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;600779&#34;</span>,<span style="color:#e6db74">&#34;300024&#34;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 筛选指定股票的实时数据</span>
+</span></span><span style="display:flex;"><span>    stock_data <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;代码&#34;</span>]<span style="color:#f92672">.</span>isin(stock_codes)]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># # 选择我们想要展示的列</span>
+</span></span><span style="display:flex;"><span>    columns_to_display <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;代码&#34;</span>, <span style="color:#e6db74">&#34;名称&#34;</span>, <span style="color:#e6db74">&#34;最低&#34;</span>,<span style="color:#e6db74">&#34;最新价&#34;</span>,<span style="color:#e6db74">&#34;最高&#34;</span>, <span style="color:#e6db74">&#34;涨跌幅&#34;</span>,<span style="color:#e6db74">&#34;涨速&#34;</span>,<span style="color:#e6db74">&#34;5分钟涨跌&#34;</span>,<span style="color:#e6db74">&#34;换手率&#34;</span>,<span style="color:#e6db74">&#34;成交额&#34;</span>,<span style="color:#e6db74">&#34;流通市值&#34;</span>,<span style="color:#e6db74">&#34;量比&#34;</span>,<span style="color:#e6db74">&#34;年初至今涨跌幅&#34;</span>,<span style="color:#e6db74">&#34;量比&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    stock_data_display <span style="color:#f92672">=</span> stock_data[columns_to_display]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#print(stock_data_display)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># # 按照涨跌幅倒序排列</span>
+</span></span><span style="display:flex;"><span>    stock_data_sorted <span style="color:#f92672">=</span> stock_data_display<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5分钟涨跌&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    stock_data_list<span style="color:#f92672">=</span>stock_data_sorted<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>tolist()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> stock_data_list:
+</span></span><span style="display:flex;"><span>        g1<span style="color:#f92672">.</span>labels(item[<span style="color:#ae81ff">0</span>],item[<span style="color:#ae81ff">1</span>])<span style="color:#f92672">.</span>set(item[<span style="color:#ae81ff">13</span>])
+</span></span><span style="display:flex;"><span>        g2<span style="color:#f92672">.</span>labels(item[<span style="color:#ae81ff">0</span>],item[<span style="color:#ae81ff">1</span>])<span style="color:#f92672">.</span>set(item[<span style="color:#ae81ff">8</span>])
+</span></span><span style="display:flex;"><span>        g3<span style="color:#f92672">.</span>labels(item[<span style="color:#ae81ff">0</span>],item[<span style="color:#ae81ff">1</span>])<span style="color:#f92672">.</span>set(item[<span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>        g4<span style="color:#f92672">.</span>labels(item[<span style="color:#ae81ff">0</span>],item[<span style="color:#ae81ff">1</span>])<span style="color:#f92672">.</span>set(item[<span style="color:#ae81ff">12</span>])
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;exec successfull!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###############################################main</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 初次启动执行一次</span>
+</span></span><span style="display:flex;"><span>get_data()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 实例化定时任务        </span>
+</span></span><span style="display:flex;"><span>scheduler <span style="color:#f92672">=</span> BlockingScheduler(timezone<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 添加每日</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1) 09:00-12:00</span>
+</span></span><span style="display:flex;"><span>scheduler<span style="color:#f92672">.</span>add_job(
+</span></span><span style="display:flex;"><span>    get_data,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;cron&#39;</span>,
+</span></span><span style="display:flex;"><span>    day_of_week<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mon-fri&#39;</span>,
+</span></span><span style="display:flex;"><span>    hour<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;9-12&#39;</span>,
+</span></span><span style="display:flex;"><span>    minute<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;8&#39;</span>,
+</span></span><span style="display:flex;"><span>    second<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2) 13:00-15:00</span>
+</span></span><span style="display:flex;"><span>scheduler<span style="color:#f92672">.</span>add_job(
+</span></span><span style="display:flex;"><span>    get_data,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;cron&#39;</span>,
+</span></span><span style="display:flex;"><span>    day_of_week<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mon-fri&#39;</span>,
+</span></span><span style="display:flex;"><span>    hour<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;13-15&#39;</span>,
+</span></span><span style="display:flex;"><span>    minute<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;8&#39;</span>,
+</span></span><span style="display:flex;"><span>    second<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;定时任务已启动，将在每日下午3:05执行...&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;按 Ctrl+C 退出&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 启动调度器</span>
+</span></span><span style="display:flex;"><span>    scheduler<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> (<span style="color:#a6e22e">KeyboardInterrupt</span>, <span style="color:#a6e22e">SystemExit</span>):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">定时任务已停止&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -p6500:6500 stock_metrics
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-afd9e7d8f1f0c99aa8cbae828f301ff8">exsi命令行工具</h1>
+	<div class="lead">通过命令行工具vim-cmd 对虚拟机启动、停止、克隆、销毁</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-07-09" class="text-body-secondary">Wednesday, July 09, 2025</time>
+        
+	</div>
+	<table>
+  <thead>
+      <tr>
+          <th>功能</th>
+          <th>命令</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>列出虚拟机</td>
+          <td><code>vim-cmd vmsvc/getallvms</code></td>
+      </tr>
+      <tr>
+          <td>强制关闭虚拟机</td>
+          <td><code>vim-cmd vmsvc/power.off &lt;Vmid&gt; </code></td>
+      </tr>
+      <tr>
+          <td>正常关闭</td>
+          <td><code>vim-cmd vmsvc/power.shutdown &lt;Vmid&gt; </code></td>
+      </tr>
+      <tr>
+          <td>重启</td>
+          <td><code>vim-cmd vmsvc/power.reset &lt;Vmid&gt;</code></td>
+      </tr>
+      <tr>
+          <td>启动</td>
+          <td><code>vim-cmd vmsvc/power.on&lt;Vmid&gt; </code></td>
+      </tr>
+      <tr>
+          <td>查看电源状态</td>
+          <td><code>vim-cmd vmsvc/power.getstate &lt;Vmid&gt;</code></td>
+      </tr>
+      <tr>
+          <td>获取完整配置</td>
+          <td><code>vim-cmd vmsvc/get.config &lt;Vmid&gt;</code></td>
+      </tr>
+      <tr>
+          <td>查看摘要信息</td>
+          <td><code>vim-cmd vmsvc/get.summary &lt;Vmid&gt;</code></td>
+      </tr>
+      <tr>
+          <td>获取网络配置</td>
+          <td><code>vim-cmd vmsvc/get.networks &lt;Vmid&gt;</code></td>
+      </tr>
+      <tr>
+          <td>创建快照</td>
+          <td><code>vim-cmd vmsvc/snapshot.create &lt;Vmid&gt; &quot;Snapshot Name&quot; &quot;Description&quot;</code></td>
+      </tr>
+      <tr>
+          <td>列出快照</td>
+          <td><code>vim-cmd vmsvc/snapshot.get &lt;Vmid&gt;</code></td>
+      </tr>
+      <tr>
+          <td>恢复快照</td>
+          <td><code>vim-cmd vmsvc/snapshot.revert &lt;Vmid&gt; &lt;SnapshotId&gt;</code></td>
+      </tr>
+      <tr>
+          <td>删除快照</td>
+          <td><code>vim-cmd vmsvc/snapshot.remove &lt;Vmid&gt; &lt;SnapshotId&gt;</code></td>
+      </tr>
+      <tr>
+          <td>注册新虚拟机</td>
+          <td><code>vim-cmd solo/registervm &lt;/vmfs/volumes/datastore1/Clone_VM_DIR/VM_NAME.vmx&gt;</code></td>
+      </tr>
+      <tr>
+          <td>取消注册</td>
+          <td><code>vim-cmd vmsvc/unregister 54</code></td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>new_vm<span style="color:#f92672">=</span>node-1-s3
+</span></span><span style="display:flex;"><span>template_vm<span style="color:#f92672">=</span>template_vm
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建新虚拟机目录</span>
+</span></span><span style="display:flex;"><span>mkdir /vmfs/volumes/data/<span style="color:#e6db74">${</span>new_vm<span style="color:#e6db74">}</span>/
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 复制虚拟机文件</span>
+</span></span><span style="display:flex;"><span>find /vmfs/volumes/data/<span style="color:#e6db74">${</span>template_vm<span style="color:#e6db74">}</span>/ -type f  ! -name *.log  -exec cp <span style="color:#f92672">{}</span> /vmfs/volumes/data/<span style="color:#e6db74">${</span>new_vm<span style="color:#e6db74">}</span>/ <span style="color:#ae81ff">\;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 修改虚拟机配置文件</span>
+</span></span><span style="display:flex;"><span>sed -i -e <span style="color:#e6db74">&#34;/^displayName/c\displayName = \&#34;</span><span style="color:#e6db74">${</span>new_vm<span style="color:#e6db74">}</span><span style="color:#e6db74">\&#34;&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e <span style="color:#e6db74">&#39;/^uuid\.bios/c\uuid.bios = &#34;&#34;&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e <span style="color:#e6db74">&#39;/^uuid\.location/c\uuid.location = &#34;&#34;&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e <span style="color:#e6db74">&#39;/^ethernet0\.generatedAddress =/c\ethernet0.generatedAddress = &#34;&#34;&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e <span style="color:#e6db74">&#39;/swap/d&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e <span style="color:#e6db74">&#34;/^numvcpus/c\numvcpus = 4&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e <span style="color:#e6db74">&#34;/^memSize/c\memSize = 8192&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       /vmfs/volumes/data/<span style="color:#e6db74">${</span>new_vm<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>template_vm<span style="color:#e6db74">}</span>.vmx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注册虚拟机</span>
+</span></span><span style="display:flex;"><span>id<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>vim-cmd solo/registervm /vmfs/volumes/data/<span style="color:#e6db74">${</span>new_vm<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>template_vm<span style="color:#e6db74">}</span>.vmx<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>vim-cmd vmsvc/power.on <span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>vim-cmd vmsvc/power.getstate <span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>tidb 导出数据 dm 和 dumping</p>
+<p>pump 组件的功能</p>
+<p>tiup dmctl 命令的使用</p>
+<p>br backup 命令的使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建新虚拟机目录</span>
+</span></span><span style="display:flex;"><span>mkdir /vmfs/volumes/data/mongodb-uat02-s3/
+</span></span><span style="display:flex;"><span>cp -a /vmfs/volumes/data/mongodb-uat01-s3/* /vmfs/volumes/data/mongodb-uat02-s3/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir /vmfs/volumes/data/mongodb-uat03-s3/
+</span></span><span style="display:flex;"><span>cp -a /vmfs/volumes/data/mongodb-uat01-s3/* /vmfs/volumes/data/mongodb-uat03-s3/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 复制所有文件到克隆目录</span>
+</span></span><span style="display:flex;"><span>find . -type f -exec cp --parents <span style="color:#e6db74">&#34;{}&#34;</span> /vmfs/volumes/66f36c11-47342fc7-cae6-246e96cd12a4/vm-clone-49 <span style="color:#ae81ff">\;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 编辑克隆机的VMX文件</span>
+</span></span><span style="display:flex;"><span>vi /vmfs/volumes/66f36c11-47342fc7-cae6-246e96cd12a4/vm-clone-49/源虚拟机名.vmx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 修改以下关键参数：</span>
+</span></span><span style="display:flex;"><span>displayName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;克隆虚拟机名&#34;</span>  <span style="color:#75715e"># 更改虚拟机名称</span>
+</span></span><span style="display:flex;"><span>uuid.bios <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>               <span style="color:#75715e"># 清空BIOS UUID</span>
+</span></span><span style="display:flex;"><span>ethernet0.generatedAddress <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>  <span style="color:#75715e"># 清空MAC地址</span>
+</span></span><span style="display:flex;"><span>scsi0:0.fileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;克隆目录名/磁盘名.vmdk&#34;</span>  <span style="color:#75715e"># 更新磁盘路径</span>
+</span></span></code></pre></div><h3 id="vim-cmd-主要命令空间解析"><code>vim-cmd</code> 主要命令空间解析</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">命令空间</th>
+          <th style="text-align: left">功能描述</th>
+          <th style="text-align: left">常用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong><code>vmsvc/</code></strong></td>
+          <td style="text-align: left">虚拟机生命周期管理</td>
+          <td style="text-align: left">启动/停止/重启/迁移虚拟机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>hostsvc/</code></strong></td>
+          <td style="text-align: left">主机系统管理</td>
+          <td style="text-align: left">主机维护模式、服务控制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>hbrsvc/</code></strong></td>
+          <td style="text-align: left">基于主机的复制</td>
+          <td style="text-align: left">虚拟机备份与复制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>proxysvc/</code></strong></td>
+          <td style="text-align: left">代理服务</td>
+          <td style="text-align: left">网络和连接管理</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>internalsvc/</code></strong></td>
+          <td style="text-align: left">内部服务</td>
+          <td style="text-align: left">高级调试和诊断</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>solo/</code></strong></td>
+          <td style="text-align: left">独立操作</td>
+          <td style="text-align: left">特定硬件操作</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>vimsvc/</code></strong></td>
+          <td style="text-align: left">vCenter 服务</td>
+          <td style="text-align: left">集群和高级功能</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-3e2c442cde94d549973ea287b0baf75b">食谱</h1>
+	<div class="lead">学习做饭</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-07-27" class="text-body-secondary">Sunday, July 27, 2025</time>
+        
+	</div>
+	<h3 id="洋葱炒牛肉">洋葱炒牛肉</h3>
+<ul>
+<li>姜丝、小米辣椒、牛里脊肉、洋葱</li>
+<li>牛肉切薄片攥干水分加入料酒、生抽用手搅拌均匀,静待10min后加入淀粉和植物油</li>
+<li>急火爆炒，洋葱/姜丝/小米辣椒&ndash;&gt;牛肉变色就熟了</li>
+</ul>
+<h3 id="清蒸鲈鱼鲳鱼">清蒸鲈鱼/鲳鱼</h3>
+<p>广东人对鱼的喜爱，可谓是情有独钟。粤式蒸鱼，选用新鲜的鲈鱼或鲳鱼，搭配姜丝、葱丝，用清蒸的方式保留鱼的鲜美，是广东家庭中常见的健康菜品。制作这道菜，关键在于鱼的新鲜度和蒸的火候。新鲜的鱼，肉质细嫩，蒸制时只需简单调味，便能凸显其原味。蒸鱼时，先用大火将水烧开，再将鱼放入蒸锅，保持中火蒸制，一般10分钟左右即可。出锅前，撒上葱花，淋上热油，一道色香味俱全的粤式蒸鱼便完成了。</p>
+<h3 id="冰糖葫芦">冰糖葫芦</h3>
+<p>微波炉  糖:水=3:1</p>
+<p>电磁炉熬糖：</p>
+<p>开中火，开火后不要搅拌。水：糖 = 1：1</p>
+<p>煮沸&ndash;&gt;成黄色，冒泡。</p>
+<p>测试糖稀是否熬好，将变成黄色的糖稀取少量放在冷水中，如果变硬了吃起来是脆的说明可以了</p>
+<p>此时电磁炉调小火候至100°，准备让水果沾糖稀</p>
+<p>沾糖稀时仅仅沾取糖稀中冒泡的泡泡，防止糖稀过厚或者把水果烫熟。成功的冰糖葫芦表面光滑清脆</p>
+<p>水果表面不能有水分，不能破损</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-aa993353434506add6819ae83d2c86d2">fastapi</h1>
+	<div class="lead">fastapi</div>
+	<div class="td-byline mb-4">
+		
+        
+		<time datetime="2025-10-09" class="text-body-secondary">Thursday, October 09, 2025</time>
+        
+	</div>
+	<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> uvicorn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">root</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;admin&#34;</span>,<span style="color:#e6db74">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;111111&#34;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    uvicorn<span style="color:#f92672">.</span>run(<span style="color:#e6db74">&#34;main:app&#34;</span>, host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, port<span style="color:#f92672">=</span><span style="color:#ae81ff">8000</span>, reload<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-c2858eeb20fbe5d56481c7c320202a29">vue</h1>
+	<div class="lead">vue</div>
+	<div class="td-byline mb-4">
+		
+        
+		<time datetime="2025-10-09" class="text-body-secondary">Thursday, October 09, 2025</time>
+        
+	</div>
+	<p><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html" target="_blank">微信开发者工具</a></p>
+<p><a href="https://mp.weixin.qq.com/" target="_blank">微信公众平台</a></p>
+<p>AppID(小程序ID) wxca40a0ec9d888178</p>
+<p>AppSecret(小程序密钥) 19fb61a0a5d06ea7021d114a808a4afe</p>
+<p>vue项目学些</p>
+<p>开发环境：ESLint  + vscode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --net<span style="color:#f92672">=</span>host -v <span style="color:#e6db74">`</span>pwd<span style="color:#e6db74">`</span>:/opt/ -it node:20.19.0 bash
+</span></span><span style="display:flex;"><span>npm config set registry https://registry.npmmirror.com
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装Vue CLI</span>
+</span></span><span style="display:flex;"><span>npm install -g @vue/cli
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建项目</span>
+</span></span><span style="display:flex;"><span>cd /opt
+</span></span><span style="display:flex;"><span>vue create my-vue-project
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 进入项目目录</span>
+</span></span><span style="display:flex;"><span>cd my-vue-project
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 启动开发服务器</span>
+</span></span><span style="display:flex;"><span>npm run serve
+</span></span></code></pre></div><p><a href="https://www.bilibili.com/video/BV1Za4y1r7KE?spm_id_from=333.788.player.switch&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&amp;p=10" target="_blank">vue3讲解</a></p>
+<p><a href="https://www.bilibili.com/video/BV1gr421F7ok?spm_id_from=333.788.player.switch&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&amp;p=30" target="_blank">vue-admin-template模版讲解</a></p>
+<p><a href="https://github.com/PanJiaChen/vue-admin-template/tree/master" target="_blank">PanJiaChen/vue-admin-template: a vue2.0 minimal admin template</a></p>
+<p><a href="https://github.com/zxwk1998/vue-admin-better/tree/master?tab=readme-ov-file" target="_blank">zxwk1998/vue-admin-better: 🎉 vue admin,vue3 admin,vue3.0 admin,vue后台管理,vue-admin,vue3.0-admin,admin,vue-admin,vue-element-admin,ant-design,vab admin pro,vab admin plus,vue admin plus,vue admin pro</a></p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-018912e84e94b1328a52aa5ab63a6f4e">电影</h1>
+	<div class="lead">电影观看时间表</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-07-27" class="text-body-secondary">Sunday, July 27, 2025</time>
+        
+	</div>
+	<p>电影下载网站：https://xuexizhinan.com/ 4k高清通过夸克下载</p>
+<p>2025-7-27 &laquo;希特勒-恶魔崛起&raquo;</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-d13beabb0d27e6779004f177b4327a34">jupyter-notebook</h1>
+	<div class="lead">jupyter-notebook 运行python程序</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-08-12" class="text-body-secondary">Tuesday, August 12, 2025</time>
+        
+	</div>
+	<p><strong>安装jupyter-notebook</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FROM python:3.11.12-alpine3.21
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>LABEL maintainer<span style="color:#f92672">=</span>1209233066@qq.com
+</span></span><span style="display:flex;"><span>RUN apk add gcc musl-dev linux-headers
+</span></span><span style="display:flex;"><span>RUN pip3 install akshare jupyter notebook pandas -i https://mirrors.aliyun.com/pypi/simple/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>WORKDIR /opt
+</span></span><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;jupyter&#34;</span>,<span style="color:#e6db74">&#34;notebook&#34;</span>,<span style="color:#e6db74">&#34;--ip&#34;</span>,<span style="color:#e6db74">&#34;0.0.0.0&#34;</span>,<span style="color:#e6db74">&#34;--port&#34;</span>,<span style="color:#e6db74">&#34;80&#34;</span>,<span style="color:#e6db74">&#34;--allow-root&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>启动jupyter-notebook</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jupyter-notebook --ip 0.0.0.0 --port <span style="color:#ae81ff">80</span> --allow-root
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-776726c586c2a3dd81a992d07a5bc0c6">英语单词</h1>
+	<div class="lead">每日积累5个单词，预计一年学习1000 个</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-08-15" class="text-body-secondary">Friday, August 15, 2025</time>
+        
+	</div>
+	<p>&#x1f4c5; 2025年8月15日09:04:21</p>
+<ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> remote [adj]</p>
+<ol>
+<li>(时间/距离) 遥远的、偏僻的 ，同义词<code>distant</code>。示例: <code>in remote future 在遥远的未来</code></li>
+<li>(关系)疏远的、远离的、冷淡的，同义词<code>distant</code>。示例：<code>his wife was a remote woman 他的妻子是个冷淡的人</code></li>
+<li>极不相同的，相差很大的。示例：<code>this question is remote from the topic under discussion 这个问题不在我讨论范围内</code></li>
+</ol>
+<hr>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> remove [v]</p>
+<ol>
+<li>
+<p>搬迁、移动。示例：<code>Due to the flood,the residents removed to a safer location 居民因洪水被搬迁到更安全的地方</code></p>
+</li>
+<li>
+<p>移开，挪走。 示例: <code>The  waiter removed a pile of the dishes to the kitchen 服务员把一堆餐具挪到了厨房</code></p>
+</li>
+<li>
+<p>去除、消除、脱去（衣服等）。示例：</p>
+<ol>
+<li><code>remove grease from clothes 去除衣服上的污渍</code></li>
+<li><code>remove EdWin's doubt 打消edwin的疑虑</code></li>
+<li><code>the threat of redundancy was suddenly removed  裁员威胁一下子消除了</code></li>
+</ol>
+</li>
+<li>
+<p>开除、撤职。 示例：<code>the chief of police was removed from office for failing to do his duty 警察局长因渎职而被免职</code></p>
+</li>
+</ol>
+<hr>
+</li>
+</ul>
+<p>&#x1f4c5;2025年8月19日08:58:23</p>
+<ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> removal [n]</p>
+<ol>
+<li>
+<p>迁移、迁居。示例：<code>A van come for the removal of our furniture 使用一辆货车搬走了我们的家具</code></p>
+</li>
+<li>
+<p>去除、切除。示例：<code>After removal soup,fish was served. 撤掉汤，鱼就上了</code></p>
+<p>​								  <code>the removal of tonisls 扁桃体切除</code></p>
+</li>
+<li>
+<p>免职、开除。示例：<code>A surge of popular discontent led to the removal of the president from office 民众不满情绪的激增导致总统被免职</code></p>
+</li>
+</ol>
+<hr>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> remain [v]</p>
+<ol>
+<li>
+<p>剩下、余留。示例：<code>In the late autumn,few apple remined on the tree. 晚秋，树上没剩几个苹果</code></p>
+</li>
+<li>
+<p>仍然是、依旧是、保持不变。示例：<code>to remain slient.保持沉默</code></p>
+<p>​															 <code>The affair remained a complete mystery. 整件事仍然是个谜</code></p>
+<p><code>it remains to be seen 情况仍未明确，要看怎么发展【固定词组】</code></p>
+<p><code>there are many different types of automatic door, with each relying on specific signals to tell them when to open. although these methods differ,the main principles remain the same.自动门有许多不同类型，每种类型都依靠特定的信号来告诉它们如何打开。尽管这些方法不同，但主要原理保持相同 </code></p>
+</li>
+</ol>
+<hr>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> remainder [n]</p>
+<ol>
+<li>剩余物，剩余时间，残余部分，其他人员。示例：<code>The old woman will spend the remiander of her life in the country. 老妇人将在乡下度过余生</code></li>
+<li>余数、余项、差数。示例：<code>The remainder when 17 divided by 4 is 1. 17除4余数为1</code></li>
+</ol>
+<hr>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> remains [n]</p>
+<ol>
+<li>残留(物)、废墟、遗迹、遗体。示例：<code>here is a remains of a temple. 这里是一座寺庙的废墟</code></li>
+</ol>
+<hr>
+</li>
+</ul>
+<p>&#x1f4c5; 2025年8月28日15:53:58</p>
+<ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> remedy</p>
+<p>【n】</p>
+<ol>
+<li>治疗、治疗法、药品。示例：<code>this doctor often use herbal remedies 这位医生经常使用草药</code></li>
+<li>补救、纠正（办法）。示例 <code>your only remedy is to appeal to law 你唯一的补救措施是诉诸法律</code></li>
+</ol>
+<p>【vt】</p>
+<ol>
+<li>医治、治疗。示例：<code>Aspilin may remedy headache. 阿司匹林可以治疗头痛</code></li>
+<li>补救、纠正。示例：<code>remedy a loss 补偿损失</code></li>
+<li>革除、消除。示例：<code>The government took over the railways hoping to remedy confusion and inefficiency 政府接管了铁路希望消除混乱和低效问题。</code></li>
+<li><code>remedy for ... 对xxx的补救</code></li>
+</ol>
+<hr>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> remember [v]</p>
+<ol>
+<li>记得、回想起、不忘记。示例：<code>It's to be remembered that life isn't always a bed of roses  记住,生活并非总是一帆风顺的</code></li>
+<li>向&hellip;送礼、代&hellip;问候。示例：<code>He always remembers me on my birthday 他总是在我生日的时候送我礼物</code></li>
+<li><code>remember as ... 记得（某人、某物原来样子）是...</code></li>
+<li><code>remember in 遵照遗嘱把财产留给某人</code></li>
+</ol>
+<hr>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> remind [vt]</p>
+<ol>
+<li>
+<p>提醒、使想起。示例：<code>She asked me over telephone to remind you about the party. 她电话通知我提醒你参加聚会</code></p>
+<p><code>The old lady reminded me of my dead mother. 这位老太太让我想起了已经去世的母亲</code></p>
+</li>
+</ol>
+<p>派生词 <em>reminder</em> [n] 引起回忆的事、提示信。示例：<code>Britain's new rule is a reminder to bankers that society has an interest in their perfrmance ,not just for the short term but for the long term. 英国的新规定提醒银行家们，社会对他们的业绩感兴趣，不仅是短期业绩，还包括长期业绩</code></p>
+<hr>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> render [v]</p>
+<ol>
+<li>
+<p>使得，使称为。示例：<code>The tone rendered the statement in unsult.这种语气使这句话成为一种侮辱</code></p>
+</li>
+<li>
+<p>给予，回报。示例：<code>If we can at any time render you a similar service,we shall be glad to do so .如果我们能在任何时候为您提供类似的服务，我们将很乐意这样做 </code></p>
+</li>
+<li>
+<p>提出，呈报。示例：<code>she needed him to hear her out and render advice. 她需要他倾听，并清楚建议</code></p>
+</li>
+<li>
+<p><code>render into</code> 翻译</p>
+<p><code>render a service to...</code> 帮助&hellip;</p>
+<p><code>render up</code> 移交或交出某物，屈服、放弃</p>
+</li>
+</ol>
+<hr>
+</li>
+</ul>
+<p>&#x1f4c5; 2025年9月5日16:54:56</p>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"> contemporary [adj]</p>
+<ol>
+<li>
+<p>同时代的、同时发生的。示例: <code>The event contemporary with the Second world War.这个事件与第二次时间大战同时发生</code></p>
+</li>
+<li>
+<p>现代的，当代的。示例：<code>contemporary cars are more streamlined than older ones 当代汽车更具流线型</code></p>
+<p><code>contemporary art 当代艺术</code></p>
+<p><code>contemporary music 当代音乐</code></p>
+</li>
+</ol>
+<hr>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> contempt [n]</p>
+<ol>
+<li>轻视、蔑视。示例：<code>His contempt for foreigners is obvious 他对外国人的蔑视是显而易见的</code></li>
+</ol>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> content</p>
+<hr>
+</li>
+</ul>
+<p>&#x1f4c5; 2025年11月17日21:19:07</p>
+<ul>
+<li><input disabled="" type="checkbox"> hints [n]
+<ol>
+<li>提示、建议、提示词。示例：<code>The hints given by the teacher are very helpful. 教师给出的提示非常有帮助</code></li>
+</ol>
+</li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-629d246188a1da4e505627c0a5af0573">吃喝玩乐</h1>
+	<div class="lead">收集值得去的地方</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-10-06" class="text-body-secondary">Monday, October 06, 2025</time>
+        
+	</div>
+	
+  
+
+  
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          aria-controls="tabs-00-00" aria-selected="false">
+        <strong>壶口瀑布（AAAAA级）</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="概述" aria-controls="tabs-00-01" aria-selected="true">
+        概述
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-02" role="tab"
+          data-td-tp-persist="最佳游览时间" aria-controls="tabs-00-02" aria-selected="false">
+        最佳游览时间
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-03" role="tab"
+          data-td-tp-persist="主要景点" aria-controls="tabs-00-03" aria-selected="false">
+        主要景点
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <p>位于陕西省宜川县，晋陕大峡谷中段</p>
+<p><img src="/blog/vacation/%E5%A3%B6%E5%8F%A3%E7%80%91%E5%B8%83.png" alt="拍摄于2025年10月1"></p>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-02" role="tabpanel" aria-labelled-by="tabs-00-02-tab" tabindex="0">
+        <ul>
+<li><strong>春季（3-5月）</strong>：冰地解冻，水势增大，桃花盛开，有“三月桃花汛”之称。</li>
+<li><strong>秋季（9-11月）</strong>：雨季过去，河水奔腾，有“壶口秋风”之说。</li>
+</ul>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-03" role="tabpanel" aria-labelled-by="tabs-00-03-tab" tabindex="0">
+        <ul>
+<li><strong>孟门山</strong>：位于壶口瀑布下游，是两块梭形巨石，俯瞰如舟，远眺如门。</li>
+<li><strong>龙洞</strong>：位于壶口瀑布下游，是一个天然石洞，可以仰观壶口瀑布，感受“黄河之水天上来”的壮丽景观。</li>
+<li><strong>空中悬壶</strong>：黄河水奔腾呼啸，跃入深潭，溅起巨大的浪花，如巨壶翻滚</li>
+</ul>
+
+    </div>
+</div>
+
+<hr>
+
+  
+
+  
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          aria-controls="tabs-01-00" aria-selected="false">
+        <strong>小径湾</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="概述" aria-controls="tabs-01-01" aria-selected="true">
+        概述
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="最佳游览时间" aria-controls="tabs-01-02" aria-selected="false">
+        最佳游览时间
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-03" role="tab"
+          data-td-tp-persist="主要景点" aria-controls="tabs-01-03" aria-selected="false">
+        主要景点
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <p>惠州市大亚湾区霞涌街道，适合游泳、日光浴和赶海</p>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <p><strong>最佳季节</strong>：5-10月海水温暖，适合下水</p>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-03" role="tabpanel" aria-labelled-by="tabs-01-03-tab" tabindex="1">
+        <p>摩托艇、帆船、桨板、沿海绿道骑行</p>
+
+    </div>
+</div>
+
+<hr>
+
+  
+
+  
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          aria-controls="tabs-02-00" aria-selected="false">
+        <strong>盐田海滨栈道</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="概述" aria-controls="tabs-02-01" aria-selected="true">
+        概述
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-02" role="tab"
+          data-td-tp-persist="最佳游览时间" aria-controls="tabs-02-02" aria-selected="false">
+        最佳游览时间
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-02-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-03" role="tab"
+          data-td-tp-persist="主要景点" aria-controls="tabs-02-03" aria-selected="false">
+        主要景点
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-2-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-02" role="tabpanel" aria-labelled-by="tabs-02-02-tab" tabindex="2">
+        
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-02-03" role="tabpanel" aria-labelled-by="tabs-02-03-tab" tabindex="2">
+        
+    </div>
+</div>
+
+<hr>
+
+  
+
+  
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-3" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
+          aria-controls="tabs-03-00" aria-selected="false">
+        <strong>杨梅坑</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-03-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-01" role="tab"
+          data-td-tp-persist="概述" aria-controls="tabs-03-01" aria-selected="true">
+        概述
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-03-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-02" role="tab"
+          data-td-tp-persist="最佳游览时间" aria-controls="tabs-03-02" aria-selected="false">
+        最佳游览时间
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-03-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-03" role="tab"
+          data-td-tp-persist="主要景点" aria-controls="tabs-03-03" aria-selected="false">
+        主要景点
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-3-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-03-01" role="tabpanel" aria-labelled-by="tabs-03-01-tab" tabindex="3">
+        
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-02" role="tabpanel" aria-labelled-by="tabs-03-02-tab" tabindex="3">
+        
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-03" role="tabpanel" aria-labelled-by="tabs-03-03-tab" tabindex="3">
+        
+    </div>
+</div>
+
+<hr>
+
+  
+
+  
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-4" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
+          aria-controls="tabs-04-00" aria-selected="false">
+        <strong>西涌天文台</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-04-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-01" role="tab"
+          data-td-tp-persist="概述" aria-controls="tabs-04-01" aria-selected="true">
+        概述
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-04-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-02" role="tab"
+          data-td-tp-persist="最佳游览时间" aria-controls="tabs-04-02" aria-selected="false">
+        最佳游览时间
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-04-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-03" role="tab"
+          data-td-tp-persist="主要景点" aria-controls="tabs-04-03" aria-selected="false">
+        主要景点
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-4-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-04-01" role="tabpanel" aria-labelled-by="tabs-04-01-tab" tabindex="4">
+        
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-04-02" role="tabpanel" aria-labelled-by="tabs-04-02-tab" tabindex="4">
+        
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-04-03" role="tabpanel" aria-labelled-by="tabs-04-03-tab" tabindex="4">
+        
+    </div>
+</div>
+
+<hr>
+<p>张掖七彩丹霞</p>
+<p>敦煌鸣沙山月牙泉</p>
+
+  
+
+  
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-5" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-05-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-00" role="tab"
+          aria-controls="tabs-05-00" aria-selected="false">
+        <strong>黑独山</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-05-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-01" role="tab"
+          data-td-tp-persist="概述" aria-controls="tabs-05-01" aria-selected="true">
+        概述
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-05-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-02" role="tab"
+          data-td-tp-persist="最佳游览时间" aria-controls="tabs-05-02" aria-selected="false">
+        最佳游览时间
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-05-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-03" role="tab"
+          data-td-tp-persist="主要景点" aria-controls="tabs-05-03" aria-selected="false">
+        主要景点
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-5-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-05-00" role="tabpanel" aria-labelled-by="tabs-05-00-tab" tabindex="5">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-05-01" role="tabpanel" aria-labelled-by="tabs-05-01-tab" tabindex="5">
+        <p>黑独山——地球上最像月球的“水墨丹青“，位于青海省海西州茫崖市冷湖镇</p>
+<p><img src="/blog/vacation/%E9%BB%91%E7%8B%AC%E5%B1%B1.png" alt="拍摄于2025年10月1"></p>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-05-02" role="tabpanel" aria-labelled-by="tabs-05-02-tab" tabindex="5">
+        <ul>
+<li>
+<p><strong>全年可拍</strong>：4–10月气候温和；冬季冷至−20℃但雪景别有风味。</p>
+</li>
+<li>
+<p><strong>黄金时段</strong>：</p>
+<ul>
+<li>日出前30 min蓝调→山体呈银灰；</li>
+<li>傍晚17:30–19:30低角度侧光→黑白灰层次最丰富，夕阳照胭脂山显粉；</li>
+<li>夜晚22:00后肉眼可见银河，可拍“月面+星空”剪影。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-05-03" role="tabpanel" aria-labelled-by="tabs-05-03-tab" tabindex="5">
+        <ul>
+<li><strong>孟门山</strong>：位于壶口瀑布下游，是两块梭形巨石，俯瞰如舟，远眺如门。</li>
+<li><strong>龙洞</strong>：位于壶口瀑布下游，是一个天然石洞，可以仰观壶口瀑布，感受“黄河之水天上来”的壮丽景观。</li>
+<li><strong>空中悬壶</strong>：黄河水奔腾呼啸，跃入深潭，溅起巨大的浪花，如巨壶翻滚</li>
+</ul>
+
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-8c75c3f875133ed1c6c3b8f40830d778">2026年指引</h1>
+	<div class="lead">2026年规划和指引</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2026-01-01" class="text-body-secondary">Thursday, January 01, 2026</time>
+        
+	</div>
+	<h3 id="股市">股市</h3>
+<ul>
+<li>航天</li>
+<li>机器人</li>
+<li>智能驾驶</li>
+</ul>
+<p>通过python 爬虫获取涨停板信息实现选股</p>
+<h3 id="新知识">新知识</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 老男孩教育的阿里云使用方法</li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1Gb4y177WE?spm_id_from=333.788.videopod.sections&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">白丁client-go</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1AG411b72E?spm_id_from=333.788.player.switch&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&amp;trackid=web_related_0.router-related-2206146-8qdn5.1767424348229.501" target="_blank">Client-Go 之 Indexer 原理分析及示例演示_哔哩哔哩_bilibili</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1oz4y1478V/?spm_id_from=333.1387.homepage.video_card.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">1. 控制器是什么？_哔哩哔哩_bilibili</a></li>
+<li><input disabled="" type="checkbox"> <a href="https://www.bilibili.com/video/BV1o14y1Q7T3/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76" target="_blank">4. Kubebuilder 的介绍与安装_哔哩哔哩_bilibili</a></li>
+</ul>
+<p><img src="http://192.168.0.161:3001/i/9ee5449b-913f-4f31-978d-c6f7d19b41d9.png" alt=""></p>
+<p>client-go 是与k8s api交互的golang客户端</p>
+<p>operator = crd+ controller</p>
+<p><img src="http://192.168.0.161:3001/i/7b67dc18-2714-4a7a-bd63-aba7b56acc8c.png" alt=""></p>
+<p><img src="http://192.168.0.161:3001/i/a6b86251-23a7-4bb5-bf92-205702692597.png" alt=""></p>
+<p><img src="http://192.168.0.161:3001/i/a77367e9-4a09-45c8-9997-43a15a237fa9.png" alt=""></p>
+<p>华菱线缆 看多 l不低于22.4 加仓</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

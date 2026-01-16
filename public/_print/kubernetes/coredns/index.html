@@ -1,0 +1,1025 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/kubernetes/coredns/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/kubernetes/coredns/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>coredns | 零露云</title>
+<meta name="description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+<meta property="og:url" content="https://zero-dew.netlify.app/kubernetes/coredns/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="coredns">
+  <meta property="og:description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="coredns">
+  <meta itemprop="description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+  <meta itemprop="datePublished" content="2025-06-04T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-04T00:00:00+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="coredns">
+  <meta name="twitter:description" content="Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section td-blog">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5 pe-md-4" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/kubernetes/coredns/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">coredns</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-6f870bba994b1b821803cd715828f8ab">快速开始</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-d11a373a06597e58266f084a9f1fdd5a">基础插件</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-d6e10aa56c3961e7ad7d849aacfab3cd">示例</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="">
+    <h1 id="pg-6f870bba994b1b821803cd715828f8ab">快速开始</h1>
+	<div class="lead">coredns|kubernetes</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-30" class="text-body-secondary">Friday, May 30, 2025</time>
+        
+	</div>
+	<p><img src="https://rpic.origz.com/api.php?category=photography" alt=""></p>
+<p><a href="https://coredns.io/manual/toc/" target="_blank">CoreDNS</a>是由Go语言编写的<a href="https://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">开源</a>DNS服务，通过大量插件实现了复杂的功能。因此在实现上不同于<a href="https://www.isc.org/bind/" target="_blank">BIND</a>，<a href="https://www.knot-dns.cz/" target="_blank">Knot</a>，<a href="https://www.powerdns.com/" target="_blank">PowerDNS</a>，<a href="https://www.unbound.net/" target="_blank">Unbound</a> 等dns软件</p>
+<h3 id="基本概念">基本概念</h3>
+<p><strong>A/AAAA 记录</strong></p>
+<p><strong>SRV 记录</strong></p>
+<p><strong>PTR 记录</strong>  是dns的反向解析，用于将ip地址解析为域名。例如存在一条A记录：  <code>172.168.0.1 kubernetes.default.svc.cluster.local</code>  使用PTR可以通过 172.168.0.1 找到对应的域名为<code>kubernetes.default.svc.in-addr.arpa</code> 域名。
+PTR 记录存储在 DNS 的 <code>.arpa</code> 顶级域中，<code>.arpa</code> 是一个用于管理网络基础设施的域，是为互联网定义的<a href="https://tools.ietf.org/html/rfc881" target="_blank">第一个</a>顶级域名。（“arpa”这个名字可以追溯到互联网的早期：它的名字来源于高级研究计划署 (ARPA)，它创建了互联网的重要前身 ARPANET。）
+二级域名 <code>.in-addr</code> 代表了ipv4，因此表示为 <code>.in-addr.arpa</code> 。对于ipv6 对应 <code>.ip6.arpa</code></p>
+<h3 id="安装部署">安装部署</h3>
+
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="容器" aria-controls="tabs-00-00" aria-selected="true">
+        容器
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="二进制" aria-controls="tabs-00-01" aria-selected="false">
+        二进制
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name coredns -p53:53 coredns/coredns:latest
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <p>下载</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/coredns/coredns/releases/download/v1.10.0/coredns_1.10.0_linux_amd64.tgz
+</span></span><span style="display:flex;"><span>tar xf coredns_1.10.0_linux_amd64.tgz -C /usr/bin/
+</span></span></code></pre></div><p>启动</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@lavm-ioreaqndwv ~<span style="color:#f92672">]</span><span style="color:#75715e"># coredns -dns.port1053</span>
+</span></span><span style="display:flex;"><span>.:1053
+</span></span><span style="display:flex;"><span>CoreDNS-1.10.0
+</span></span><span style="display:flex;"><span>linux/amd64, go1.19.1, 596a9f9
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="配置文件">配置文件</h3>
+
+
+<div class="alert alert-primary" role="alert">
+
+
+    <ul>
+<li>
+<p>启动时默认查找当前目录下的<code>Corefile</code>配置文件， 可通过 <code>coredns -conf /etc/Corefile</code> 指定自定义配置文件</p>
+</li>
+<li>
+<p><code>#</code>开头视为注释</p>
+</li>
+<li>
+<p><code>{$ENV_VAR}</code> 引用操作系统变量</p>
+</li>
+<li>
+<p>支持片段定义和引用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 定义一个名为plg的片段</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>plg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    errors
+</span></span><span style="display:flex;"><span>    forward . 8.8.8.8 223.5.5.5
+</span></span><span style="display:flex;"><span>    reload
+</span></span><span style="display:flex;"><span>    log
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 引用片段</span>
+</span></span><span style="display:flex;"><span>    import plg
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ul>
+
+
+</div>
+
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">server 块的定义</h4>
+
+    <p>定义一组dns服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;zone&gt;<span style="color:#f92672">[</span>:&lt;port&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    &lt;plugin1&gt; <span style="color:#f92672">[</span>参数...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    &lt;plugin2&gt; <span style="color:#f92672">[</span>参数...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>     &lt;plugin1&gt; <span style="color:#f92672">[</span>参数...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>     &lt;plugin1&gt; <span style="color:#f92672">[</span>参数...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>coredns.io:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>     &lt;plugin1&gt; <span style="color:#f92672">[</span>参数...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><strong>配置示例：</strong> 配置了两个server,每个server有自己的插件链</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># server 定义语法 [zone] [port...] {...}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 对所有域名执行解析</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>plg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    errors
+</span></span><span style="display:flex;"><span>    forward . 8.8.8.8 223.5.5.5
+</span></span><span style="display:flex;"><span>    reload
+</span></span><span style="display:flex;"><span>    log
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    prometheus :9153
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        1.2.3.4 zero-dew.cn
+</span></span><span style="display:flex;"><span>        fallthrough
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    import plg
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 仅解析 .com</span>
+</span></span><span style="display:flex;"><span>com.:54 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    prometheus :9154
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        1.2.3.4 zero-dew.cn
+</span></span><span style="display:flex;"><span>        1.2.3.5 zero-dew.com
+</span></span><span style="display:flex;"><span>        fallthrough
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    import plg
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-d11a373a06597e58266f084a9f1fdd5a">基础插件</h1>
+	<div class="lead">plugin|kubernetes</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-31" class="text-body-secondary">Saturday, May 31, 2025</time>
+        
+	</div>
+	<p><img src="https://rpic.origz.com/api.php?category=photography" alt=""></p>
+<p>目前coredns1.12.1已集成了30+内置插件，同时也支持用户在编译时引入更多的外部插件(<em>类似nginx</em>)，插件在<code>corefile</code>中的位置不影响插件的执行顺序（<a href="https://github.com/coredns/coredns/blob/master/plugin.cfg" target="_blank"><code>plugin.cfg</code></a> 文件定义顺序决定）。<code>./coredns --plugins</code> 查看当前coredns支持哪些插件</p>
+<h3 id="health">health</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/health/" target="_blank">https://coredns.io/plugins/health/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    提供一个<code>http://0.0.0.0:8080/health</code> 的接口检查coredns是否就绪。主要关注coredns进程本身,通常使用在livenessProbe
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        lameduck 5s <span style="color:#75715e">#当CoreDNS收到终止信号（如 Pod 被删除或重启时），会先进入lameduck状态 5 秒，在这 5 秒内/health检查仍然会返回 200 OK， /ready 不会返回 OK。</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">#作用：给负载均衡器（如 kube-proxy、Service、Ingress）时间把流量切走，避免请求丢失。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="ready">ready</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/ready/" target="_blank">https://coredns.io/plugins/ready/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    提供一个<code>http://0.0.0.0:8181/ready </code> 的接口,当所有plugins都就绪是返回200,如果某个plugin不可用时返回503。可以用于readinessProbe
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="reload">reload</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/reload/" target="_blank">https://coredns.io/plugins/reload/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    <p>定期检查 Corefile 是否发生变化，通过读取并计算其 SHA512 校验和来实现自动重新加载</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># INTERVAL和JITTER是Go语言时间持续时间。默认的INTERVAL是30s，默认的JITTER是15s</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># INTERVAL 的最小值为2s， JITTER的最小值为 1s</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果 JITTER大于INTERVAL的一半，它将被设置为INTERVAL的一半。</span>
+</span></span><span style="display:flex;"><span>reload <span style="color:#f92672">[</span>INTERVAL<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>JITTER<span style="color:#f92672">]</span>
+</span></span></code></pre></div>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="log">log</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/log/" target="_blank">https://coredns.io/plugins/log/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    记录日志，支持对日志格式的定制
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="errors">errors</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/errors/" target="_blank">https://coredns.io/plugins/errors/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    查询处理过程中遇到的任何错误都会被打印到标准输出
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="prometheus">prometheus</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/metrics/" target="_blank">https://coredns.io/plugins/metrics/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    暴露一组prometheus格式的指标
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><strong>主要指标</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>指标解释</th>
+          <th>指标</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>版本信息</td>
+          <td><code>coredns_build_info{version, revision, goversion}</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>开启的插件</td>
+          <td><code>coredns_plugin_enabled{server, zone, view, name}</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>99%查询响应时长</td>
+          <td><code>histogram_quantile(0.99,coredns_dns_request_duration_seconds_bucket)</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>reload失败次数</td>
+          <td><code>coredns_reload_failed_total</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>最后重启时间</td>
+          <td><code>coredns_hosts_reload_timestamp_seconds </code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>健康检查失败次数</td>
+          <td><code>coredns_health_request_failures_total </code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>缓存命中率</td>
+          <td><code>coredns_cache_hits_total/coredns_dns_requests_total</code></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="trace">trace</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/trace/" target="_blank">https://coredns.io/plugins/trace/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    链路追踪
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -p 9411:9411 openzipkin/zipkin
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span>      trace zipkin
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="forward">forward</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/forward/" target="_blank">https://coredns.io/plugins/forward/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    <p>转发dns查询到上游dns服务器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># FROM 定义要转发的域，TO可以是上游dnsip或/etc/resolv.conf文件</span>
+</span></span><span style="display:flex;"><span>forward FROM TO... <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    except IGNORED_NAMES...
+</span></span><span style="display:flex;"><span>    force_tcp
+</span></span><span style="display:flex;"><span>    prefer_udp
+</span></span><span style="display:flex;"><span>    expire DURATION
+</span></span><span style="display:flex;"><span>    max_fails INTEGER
+</span></span><span style="display:flex;"><span>    tls CERT KEY CA
+</span></span><span style="display:flex;"><span>    tls_servername NAME
+</span></span><span style="display:flex;"><span>    policy random|round_robin|sequential
+</span></span><span style="display:flex;"><span>    health_check DURATION <span style="color:#f92672">[</span>no_rec<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>domain FQDN<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    max_concurrent MAX
+</span></span><span style="display:flex;"><span>    next RCODE_1 <span style="color:#f92672">[</span>RCODE_2<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>RCODE_3...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span>      trace zipkin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      forward . 223.5.5.5 114.114.114.114 <span style="color:#f92672">{</span> expire 10s <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="cache">cache</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/cache/" target="_blank">https://coredns.io/plugins/cache/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    <p>缓存从后端（上游、数据库等）获取到的数据，默认 3600s</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cache <span style="color:#f92672">[</span>TTL<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ZONES...<span style="color:#f92672">]</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    success CAPACITY <span style="color:#f92672">[</span>TTL<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>MINTTL<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    denial CAPACITY <span style="color:#f92672">[</span>TTL<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>MINTTL<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    prefetch AMOUNT <span style="color:#f92672">[[</span>DURATION<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>PERCENTAGE%<span style="color:#f92672">]]</span>
+</span></span><span style="display:flex;"><span>    serve_stale <span style="color:#f92672">[</span>DURATION<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>REFRESH_MODE<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    servfail DURATION
+</span></span><span style="display:flex;"><span>    disable success|denial <span style="color:#f92672">[</span>ZONES...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    keepttl
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span>      trace zipkin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      forward . 223.5.5.5 114.114.114.114 <span style="color:#f92672">{</span> expire 10s <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      cache <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="hosts">hosts</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/hosts/" target="_blank">https://coredns.io/plugins/hosts/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    <p>提供自定义dns解析的能力，默认5s扫描一次文件的变动</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hosts <span style="color:#f92672">[</span>FILE <span style="color:#f92672">[</span>ZONES...<span style="color:#f92672">]]</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>INLINE<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    ttl SECONDS
+</span></span><span style="display:flex;"><span>    no_reverse
+</span></span><span style="display:flex;"><span>    reload DURATION
+</span></span><span style="display:flex;"><span>    fallthrough <span style="color:#f92672">[</span>ZONES...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+
+</div>
+
+
+  
+
+   
+
+<ul class="nav nav-tabs" id="tabs-10" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-10-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-10-00" role="tab"
+          data-td-tp-persist="样例1" aria-controls="tabs-10-00" aria-selected="true">
+        样例1
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-10-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-10-01" role="tab"
+          data-td-tp-persist="样例2" aria-controls="tabs-10-01" aria-selected="false">
+        样例2
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-10-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-10-00" role="tabpanel" aria-labelled-by="tabs-10-00-tab" tabindex="10">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span>      trace zipkin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      forward . 223.5.5.5 114.114.114.114 <span style="color:#f92672">{</span> expire 10s <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      cache <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      hosts <span style="color:#f92672">{</span> 						<span style="color:#75715e"># 使用本机的/etc/hosts文件</span>
+</span></span><span style="display:flex;"><span>          1.2.3.4 zero-dew.cn 		<span style="color:#75715e"># 扩展定义其他地址解析</span>
+</span></span><span style="display:flex;"><span>          1.2.3.5 zero-dew.com
+</span></span><span style="display:flex;"><span>          ttl <span style="color:#ae81ff">600</span>
+</span></span><span style="display:flex;"><span>          reload 30s
+</span></span><span style="display:flex;"><span>          fallthrough
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-10-01" role="tabpanel" aria-labelled-by="tabs-10-01-tab" tabindex="10">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span>      trace zipkin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      forward . 223.5.5.5 114.114.114.114 <span style="color:#f92672">{</span> expire 10s <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      cache <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      hosts /etc/test.host <span style="color:#f92672">{</span> 		<span style="color:#75715e"># 使用/etc/test.host 文件中定义的地址解析</span>
+</span></span><span style="display:flex;"><span>          1.2.3.4 zero-dew.cn 		<span style="color:#75715e"># 扩展定义其他地址解析</span>
+</span></span><span style="display:flex;"><span>          1.2.3.5 zero-dew.com
+</span></span><span style="display:flex;"><span>          ttl <span style="color:#ae81ff">600</span>
+</span></span><span style="display:flex;"><span>          reload 30s
+</span></span><span style="display:flex;"><span>          fallthrough
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+<p>监控指标</p>
+<ul>
+<li><code>coredns_hosts_entries{}</code> DNS条目数量</li>
+<li><code>coredns_hosts_reload_timestamp_seconds{}</code> 最近重载时间</li>
+</ul>
+<h3 id="kubernetes">kubernetes</h3>
+<blockquote>
+<p><a href="https://coredns.io/plugins/kubernetes/" target="_blank">https://coredns.io/plugins/kubernetes/</a></p>
+</blockquote>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">语法</h4>
+
+    <p>动态提供svc、pod 等dns解析能力</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubernetes <span style="color:#f92672">[</span>ZONES...<span style="color:#f92672">]</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    endpoint URL
+</span></span><span style="display:flex;"><span>    tls CERT KEY CACERT
+</span></span><span style="display:flex;"><span>    kubeconfig KUBECONFIG <span style="color:#f92672">[</span>CONTEXT<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    namespaces NAMESPACE...
+</span></span><span style="display:flex;"><span>    labels EXPRESSION
+</span></span><span style="display:flex;"><span>    pods POD-MODE
+</span></span><span style="display:flex;"><span>    endpoint_pod_names
+</span></span><span style="display:flex;"><span>    ttl TTL
+</span></span><span style="display:flex;"><span>    noendpoints
+</span></span><span style="display:flex;"><span>    fallthrough <span style="color:#f92672">[</span>ZONES...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    ignore empty_service
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span>      trace zipkin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      forward . 223.5.5.5 114.114.114.114 <span style="color:#f92672">{</span> expire 10s <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      cache <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      hosts <span style="color:#f92672">{</span> 						<span style="color:#75715e"># 使用本机的/etc/hosts文件</span>
+</span></span><span style="display:flex;"><span>          1.2.3.4 zero-dew.cn 		<span style="color:#75715e"># 扩展定义其他地址解析</span>
+</span></span><span style="display:flex;"><span>          1.2.3.5 zero-dew.com
+</span></span><span style="display:flex;"><span>          ttl <span style="color:#ae81ff">600</span>
+</span></span><span style="display:flex;"><span>          reload 30s
+</span></span><span style="display:flex;"><span>          fallthrough
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      kubernetes cluster.local in-addr.arpa ip6.arpa <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          kubeconfig /root/.kube/kubeconfig <span style="color:#75715e"># coredns 运行在k8s外</span>
+</span></span><span style="display:flex;"><span>          pods insecure
+</span></span><span style="display:flex;"><span>          fallthrough in-addr.arpa ip6.arpa
+</span></span><span style="display:flex;"><span>          ttl <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dig @192.168.0.106 -p <span style="color:#ae81ff">53</span> a kubernetes.default.svc.cluster.local +short
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 反向解析</span>
+</span></span><span style="display:flex;"><span>dig @192.168.0.106 -p <span style="color:#ae81ff">53</span> -x 172.168.0.1
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-d6e10aa56c3961e7ad7d849aacfab3cd">示例</h1>
+	<div class="lead">demo|kubernetes</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-31" class="text-body-secondary">Saturday, May 31, 2025</time>
+        
+	</div>
+	<p><img src="https://rpic.origz.com/api.php?category=photography" alt=""></p>
+
+  
+  
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="物理机环境下作为dns服务器" aria-controls="tabs-00-00" aria-selected="true">
+        物理机环境下作为dns服务器
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="运行在k8s环境中" aria-controls="tabs-00-01" aria-selected="false">
+        运行在k8s环境中
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      health localhost:8080 <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>            lameduck 5s 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      ready localhost:8181
+</span></span><span style="display:flex;"><span>      reload
+</span></span><span style="display:flex;"><span>      log
+</span></span><span style="display:flex;"><span>      errors
+</span></span><span style="display:flex;"><span>      prometheus :9153
+</span></span><span style="display:flex;"><span>      trace zipkin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      forward . 223.5.5.5 114.114.114.114 <span style="color:#f92672">{</span> expire 10s <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      cache <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      hosts <span style="color:#f92672">{</span> 						<span style="color:#75715e"># 使用本机的/etc/hosts文件</span>
+</span></span><span style="display:flex;"><span>          1.2.3.4 zero-dew.cn 		<span style="color:#75715e"># 扩展定义其他地址解析</span>
+</span></span><span style="display:flex;"><span>          1.2.3.5 zero-dew.com
+</span></span><span style="display:flex;"><span>          ttl <span style="color:#ae81ff">600</span>
+</span></span><span style="display:flex;"><span>          reload 30s
+</span></span><span style="display:flex;"><span>          fallthrough
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tee /usr/lib/systemd/system/coredns.service <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=coredns service https://coredns.io/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/usr/bin/coredns -conf /etc/corefile -pidfile /var/run/coredns.pid 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl enable coredns --now
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    .:53 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        errors
+</span></span><span style="display:flex;"><span>        health <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>           lameduck 5s
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        ready
+</span></span><span style="display:flex;"><span>        kubernetes cluster.local in-addr.arpa ip6.arpa <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>           pods insecure
+</span></span><span style="display:flex;"><span>           fallthrough in-addr.arpa ip6.arpa
+</span></span><span style="display:flex;"><span>           ttl <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        prometheus :9153
+</span></span><span style="display:flex;"><span>        forward . /etc/resolv.conf <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>           max_concurrent <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        hosts <span style="color:#f92672">{</span> 						      
+</span></span><span style="display:flex;"><span>          1.2.3.4 zero-dew.cn
+</span></span><span style="display:flex;"><span>          1.2.3.5 zero-dew.com
+</span></span><span style="display:flex;"><span>          ttl <span style="color:#ae81ff">600</span>
+</span></span><span style="display:flex;"><span>          reload 30s
+</span></span><span style="display:flex;"><span>          fallthrough cluster.local in-addr.arpa ip6.arpa  <span style="color:#75715e"># hosts 执行在kubernetes之前</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        cache <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>        loop
+</span></span><span style="display:flex;"><span>        reload
+</span></span><span style="display:flex;"><span>        loadbalance
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

@@ -1,0 +1,1067 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/Observability/logs/logstash/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/Observability/logs/logstash/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>logstash | 零露云</title>
+<meta name="description" content="Logstash事件处理流水线有三个阶段：输入→过滤器→ 输出
+inputs
+file 从文件读取
+syslog 充当syslog服务器
+redis
+kafka
+beats 处理来自beats事件
+filter
+grok
+mutate
+drop
+clone
+geoip
+output
+elasticsearch
+file
+graphite
+statsd
+Codecs
+json
+multiline
+排序 代码 仓位建议 核心逻辑 止损位 ① 603977 国泰集团 30% 稀有金属矿&#43;民爆，2026订单刚性，PEG0.45，机构榜干净，再涨30%才触监管 破5日线 ③ 601106 中国一重 10% 核电长逻辑，换手低，适合底仓配置，短线爆发力一般 破20日线 ④ 002046 国机精工 5% 航天故事性感，但拉萨席位对倒严重，只能迷你仓博弈 破首板低点">
+<meta property="og:url" content="https://zero-dew.netlify.app/Observability/logs/logstash/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="logstash">
+  <meta property="og:description" content="Logstash事件处理流水线有三个阶段：输入→过滤器→ 输出
+inputs
+file 从文件读取
+syslog 充当syslog服务器
+redis
+kafka
+beats 处理来自beats事件
+filter
+grok
+mutate
+drop
+clone
+geoip
+output
+elasticsearch
+file
+graphite
+statsd
+Codecs
+json
+multiline
+排序 代码 仓位建议 核心逻辑 止损位 ① 603977 国泰集团 30% 稀有金属矿&#43;民爆，2026订单刚性，PEG0.45，机构榜干净，再涨30%才触监管 破5日线 ③ 601106 中国一重 10% 核电长逻辑，换手低，适合底仓配置，短线爆发力一般 破20日线 ④ 002046 国机精工 5% 航天故事性感，但拉萨席位对倒严重，只能迷你仓博弈 破首板低点">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="logstash">
+  <meta itemprop="description" content="Logstash事件处理流水线有三个阶段：输入→过滤器→ 输出
+inputs
+file 从文件读取
+syslog 充当syslog服务器
+redis
+kafka
+beats 处理来自beats事件
+filter
+grok
+mutate
+drop
+clone
+geoip
+output
+elasticsearch
+file
+graphite
+statsd
+Codecs
+json
+multiline
+排序 代码 仓位建议 核心逻辑 止损位 ① 603977 国泰集团 30% 稀有金属矿&#43;民爆，2026订单刚性，PEG0.45，机构榜干净，再涨30%才触监管 破5日线 ③ 601106 中国一重 10% 核电长逻辑，换手低，适合底仓配置，短线爆发力一般 破20日线 ④ 002046 国机精工 5% 航天故事性感，但拉萨席位对倒严重，只能迷你仓博弈 破首板低点">
+  <meta itemprop="datePublished" content="2025-12-06T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-12-06T00:00:00+00:00">
+  <meta itemprop="wordCount" content="48">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="logstash">
+  <meta name="twitter:description" content="Logstash事件处理流水线有三个阶段：输入→过滤器→ 输出
+inputs
+file 从文件读取
+syslog 充当syslog服务器
+redis
+kafka
+beats 处理来自beats事件
+filter
+grok
+mutate
+drop
+clone
+geoip
+output
+elasticsearch
+file
+graphite
+statsd
+Codecs
+json
+multiline
+排序 代码 仓位建议 核心逻辑 止损位 ① 603977 国泰集团 30% 稀有金属矿&#43;民爆，2026订单刚性，PEG0.45，机构榜干净，再涨30%才触监管 破5日线 ③ 601106 中国一重 10% 核电长逻辑，换手低，适合底仓配置，短线爆发力一般 破20日线 ④ 002046 国机精工 5% 航天故事性感，但拉萨席位对倒严重，只能迷你仓博弈 破首板低点">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/Observability/logs/logstash/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">logstash</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-1118f37e282b1f000d6ebbf259286d13">logstash_install</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-a1725c220824bf5195e849bc4136f881">logstash-input</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-5f3628e70e31bf85b61b399a02603abb">logstash-output</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-661fea39a83a2a82899e5e5ac2a6108c">logstash-filter</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>Logstash事件处理流水线有三个阶段：输入→过滤器→ 输出</p>
+<ul>
+<li>
+<p>inputs</p>
+<p>file 从文件读取</p>
+<p>syslog 充当syslog服务器</p>
+<p>redis</p>
+<p>kafka</p>
+<p>beats 处理来自beats事件</p>
+</li>
+<li>
+<p>filter</p>
+<p>grok</p>
+<p>mutate</p>
+<p>drop</p>
+<p>clone</p>
+<p>geoip</p>
+</li>
+<li>
+<p>output</p>
+<p>elasticsearch</p>
+<p>file</p>
+<p>graphite</p>
+<p>statsd</p>
+</li>
+<li>
+<p>Codecs</p>
+<p><strong>json</strong></p>
+<p><strong>multiline</strong></p>
+</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>排序</th>
+          <th>代码</th>
+          <th>仓位建议</th>
+          <th>核心逻辑</th>
+          <th>止损位</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>①</td>
+          <td>603977 国泰集团</td>
+          <td>30%</td>
+          <td>稀有金属矿+民爆，2026订单刚性，PEG0.45，机构榜干净，再涨30%才触监管</td>
+          <td>破5日线</td>
+      </tr>
+      <tr>
+          <td>③</td>
+          <td>601106 中国一重</td>
+          <td>10%</td>
+          <td>核电长逻辑，换手低，适合底仓配置，短线爆发力一般</td>
+          <td>破20日线</td>
+      </tr>
+      <tr>
+          <td>④</td>
+          <td>002046 国机精工</td>
+          <td>5%</td>
+          <td>航天故事性感，但拉萨席位对倒严重，只能迷你仓博弈</td>
+          <td>破首板低点</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-1118f37e282b1f000d6ebbf259286d13">logstash_install</h1>
+	<div class="lead">使用filebeat收集linux操作系统日志</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-12" class="text-body-secondary">Friday, September 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>filebeat版本：<code>7.17.19</code></p>
+<p>logstash版本：<code>7.15.0</code></p>
+<p>elasticsearch版本： <code>7.15.0</code></p>
+
+
+</div>
+
+<p>Logstash 使用jruby 语言开发，软件运行依赖jdk<a href="https://www.elastic.co/support/matrix#matrix_jvm" target="_blank">兼容矩阵</a>，如果无法确认该使用什么版本可以下载带有jdk环境的logstash安装包。</p>
+<p><img src="https://www.elastic.co/guide/en/logstash/7.15/static/images/basic_logstash_pipeline.png" alt=""></p>
+<p><em>安装java（非必须）</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://download.java.net/java/ga/jdk11/openjdk-11_linux-x64_bin.tar.gz
+</span></span><span style="display:flex;"><span>tar xf openjdk-11_linux-x64_bin.tar.gz -C /opt
+</span></span><span style="display:flex;"><span>ln -svf  /opt/<span style="color:#f92672">{</span>jdk-11,jdk<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat&gt;&gt;/etc/profile<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export JAVA_HOME=/opt/jdk
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export JAVA_JRE=$JAVA_HOME/jre
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export PATH=$JAVA_HOME/bin:$JAVA_JRE/bin:$PATH:.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>source /etc/profile
+</span></span><span style="display:flex;"><span>java -version
+</span></span></code></pre></div><p><em>安装logstash</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>version<span style="color:#f92672">=</span>7.15.0
+</span></span><span style="display:flex;"><span>wget https://mirrors.huaweicloud.com/logstash/<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>/logstash-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>-linux-x86_64.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tar xf logstash-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>-linux-x86_64.tar.gz -C /data/elk
+</span></span><span style="display:flex;"><span>ln  -svf /data/elk/logstash-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>  /data/elk/logstash
+</span></span></code></pre></div><blockquote>
+<p>测试运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/data/elk/logstash/bin/logstash -e <span style="color:#e6db74">&#39;input { stdin {} } output { stdout { codec=&gt;rubydebug }}&#39;</span>
+</span></span></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;/data/elk/logstash/config/logstash.conf<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Sample Logstash configuration for creating a simple
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Beats -&gt; Logstash -&gt; Elasticsearch pipeline.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">input {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  beats {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    port =&gt; 5044
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">output {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  elasticsearch {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    hosts =&gt; [&#34;http://192.168.0.114:9200&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    index =&gt; &#34;%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #user =&gt; &#34;elastic&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #password =&gt; &#34;changeme&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /etc/systemd/system/logstash.service <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description= logstash serveice
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WorkingDirectory=/data/elk/logstash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/data/elk/logstash/bin/logstash \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          -f /data/elk/logstash/config/logstash.conf \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          --config.reload.automatic
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">LimitNOFILE=65535
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl daemon-reload 
+</span></span><span style="display:flex;"><span>systemctl enable logstash --now
+</span></span><span style="display:flex;"><span>systemctl status logstash
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-a1725c220824bf5195e849bc4136f881">logstash-input</h1>
+	<div class="lead">logstash之input配置</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-12" class="text-body-secondary">Friday, September 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>filebeat版本：<code>7.17.19</code></p>
+<p>logstash版本：<code>7.15.0</code></p>
+<p>elasticsearch版本： <code>7.15.0</code></p>
+
+
+</div>
+
+<p><img src="https://www.elastic.co/guide/en/logstash/7.15/static/images/basic_logstash_pipeline.png" alt=""></p>
+<h3 id="input-配置">INPUT 配置</h3>
+<p><strong><a href="https://www.elastic.co/guide/en/logstash/7.15/plugins-inputs-redis.html#plugins-inputs-redis-key" target="_blank">redis</a></strong></p>
+<ul>
+<li>
+<p><strong>data_type</strong>[必选参数，数据类型为字符串] 可选值 <code>list</code> <code>channel</code> <code>pattern_channel</code></p>
+</li>
+<li>
+<p><strong>key</strong>[必选参数，数据类型为字符串] 日志记录在那个名字的list /channel中</p>
+</li>
+<li>
+<p><strong>host</strong>[必选参数]  redis绑定的服务ip</p>
+</li>
+<li>
+<p><strong>port</strong> redis绑定的服务端口，默认6379</p>
+</li>
+<li>
+<p><strong>password</strong> redis服务密码</p>
+</li>
+<li>
+<p><strong>threads</strong> [数据类型为整型]多线程消费redis数据，默认1</p>
+</li>
+<li>
+<p><strong>tags</strong>[所有类型intput都支持，数据类型为列表] 添加tag</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>tags <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;linux&#34;</span>,<span style="color:#e6db74">&#34;dev&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>add_field</strong>[所有类型intput都支持，数据类型为hash]添加自定义字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>add_field <span style="color:#f92672">=&gt;</span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;env&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;pro&#34;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;app&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;mobile&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></li>
+<li>
+<p>示例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;/data/elk/logstash/config/logstash.conf<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">input {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  redis {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    data_type =&gt; &#34;list&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    key =&gt; &#34;logstash:beat:logstash&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    host =&gt; &#34;192.168.0.161&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    password =&gt; &#34;mypass&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    threads =&gt; 4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    add_field =&gt; { 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;env&#34; =&gt; &#34;pro&#34; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;app&#34; =&gt; &#34;mobile&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    tags =&gt; [&#34;linux&#34;,&#34;dev&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">output {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  elasticsearch {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    hosts =&gt; [&#34;http://192.168.0.114:9200&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    index =&gt; &#34;logstash-%{+YYYY.MM.dd}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #user =&gt; &#34;elastic&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #password =&gt; &#34;changeme&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div></li>
+</ul>
+<p><strong><a href="https://www.elastic.co/guide/en/logstash/7.15/plugins-inputs-file.html" target="_blank">file</a></strong></p>
+<blockquote>
+<p>将日志读取位置记录在<code>sincedb</code> 文件中，当重启logstash 后仍然可以继续读取。示例中记录在</p>
+<p><code>/data/elk/logstash/data/plugins/inputs/file/.sincedb_452905a167cf4509fd08acb964fdb20c</code></p>
+</blockquote>
+<ul>
+<li>
+<p><strong>path</strong>[必选参数，数据类型为数组]</p>
+</li>
+<li>
+<p><strong>start_position</strong>[数据类型字符串] logstash从哪里开始读取日志，可选参数<code>begining</code> <code>end</code> 默认为<code>end</code>。如果需要从头读取数据请设置为 <code>begining</code></p>
+<p>该参数只作用在logstash 首次启动，也就是不存在<code>sincedb</code> 文件时</p>
+</li>
+<li>
+<p><strong>exclude</strong>[数据类型为数组] 排除匹配的文件不跟踪</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>    file {
+</span></span><span style="display:flex;"><span>        path <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/var/log/*&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;*.gz&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></li>
+<li>
+<p><strong>tags</strong>[所有类型intput都支持，数据类型为列表] 添加tag</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>tags <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;linux&#34;</span>,<span style="color:#e6db74">&#34;dev&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>add_field</strong>[所有类型intput都支持，数据类型为hash]添加自定义字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>add_field <span style="color:#f92672">=&gt;</span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;env&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;pro&#34;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;app&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;mobile&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></li>
+<li>
+<p>示例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;/data/elk/logstash/config/logstash.conf<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">input {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    file {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        path =&gt; [&#34;/var/log/messages&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		start_position =&gt; &#34;beginning&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">output {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  elasticsearch {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    hosts =&gt; [&#34;http://192.168.0.114:9200&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    index =&gt; &#34;logstash-%{+YYYY.MM.dd}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #user =&gt; &#34;elastic&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #password =&gt; &#34;changeme&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div></li>
+</ul>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.15/plugins-inputs-exec.html" target="_blank">exec</a> 周期调用系统命令，logstash收集命令输出</p>
+<ul>
+<li>
+<p><strong>command</strong>[必选参数，数据类型为字符串]  要执行的命令</p>
+</li>
+<li>
+<p><strong>interval</strong> 执行命令的间隔，单位s</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>  exec {
+</span></span><span style="display:flex;"><span>    command <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;TERM=xterm /usr/bin/top -n 1 -b&#34;</span> 
+</span></span><span style="display:flex;"><span>    interval <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>schedule</strong>按照crontab格式周期执行命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>  exec {
+</span></span><span style="display:flex;"><span>    command <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;TERM=xterm /usr/bin/top -n 1 -b&#34;</span> 
+</span></span><span style="display:flex;"><span>    schedule <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;*/1 * * * *&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>tags</strong>[所有类型intput都支持，数据类型为列表] 添加tag</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>tags <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;linux&#34;</span>,<span style="color:#e6db74">&#34;dev&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>add_field</strong>[所有类型intput都支持，数据类型为hash]添加自定义字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>add_field <span style="color:#f92672">=&gt;</span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;env&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;pro&#34;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;app&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;mobile&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></li>
+<li>
+<p>示例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;/data/elk/logstash/config/logstash.conf<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">input {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  exec {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    command =&gt; &#34;TERM=xterm /usr/bin/top -n 1 -b&#34; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    interval =&gt; 30
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">output {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  elasticsearch {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    hosts =&gt; [&#34;http://192.168.0.114:9200&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    index =&gt; &#34;logstash-%{+YYYY.MM.dd}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #user =&gt; &#34;elastic&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #password =&gt; &#34;changeme&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div></li>
+</ul>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.15/plugins-inputs-http.html" target="_blank">http</a> 用户 可以传递纯文本、JSON 或任何格式化数据</p>
+<ul>
+<li>
+<p><strong>host</strong> 默认0.0.0.0</p>
+</li>
+<li>
+<p><strong>port</strong> 默认8080</p>
+</li>
+<li>
+<p><strong>threads</strong> 线程数默认 1</p>
+</li>
+<li>
+<p><strong>user/password</strong> 开启用户名密码认证</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>cat <span style="color:#f92672">&gt;</span><span style="color:#e6db74">/data/e</span>lk<span style="color:#f92672">/</span>logstash<span style="color:#f92672">/</span>config<span style="color:#f92672">/</span>logstash<span style="color:#f92672">.</span>conf<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#39;EOF&#39;</span>
+</span></span><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>  http {
+</span></span><span style="display:flex;"><span>	host <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>	port <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;8080&#34;</span>
+</span></span><span style="display:flex;"><span>	threads <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	password <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;Q!123&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>output {
+</span></span><span style="display:flex;"><span>  elasticsearch {
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://192.168.0.114:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;logstash-%{+YYYY.MM.dd}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#user =&gt; &#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#password =&gt; &#34;changeme&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -u <span style="color:#e6db74">&#39;log:Q!123&#39;</span>  -X POST --data <span style="color:#e6db74">&#39;{&#34;a&#34;:&#34;123&#34;}&#39;</span> 192.168.0.115:8080
+</span></span></code></pre></div></li>
+</ul>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.15/plugins-inputs-kafka.html" target="_blank">kafka</a> 从kafka消费信息</p>
+<ul>
+<li>
+<p><strong>topics</strong>[数据类型数组] 默认值 <code>[&quot;logstash&quot;]</code></p>
+</li>
+<li>
+<p><strong>topics_pattern</strong>[数据类型字符串] 正则模式匹配</p>
+</li>
+<li>
+<p><strong>consumer_threads</strong> 默认值 <code>1</code></p>
+</li>
+<li>
+<p>示例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>cat <span style="color:#f92672">&gt;</span><span style="color:#e6db74">/data/e</span>lk<span style="color:#f92672">/</span>logstash<span style="color:#f92672">/</span>config<span style="color:#f92672">/</span>logstash<span style="color:#f92672">.</span>conf<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#39;EOF&#39;</span>
+</span></span><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>  kafka {
+</span></span><span style="display:flex;"><span>    bootstrap_servers <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;192.168.0.161:9092&#34;</span>   <span style="color:#75715e"># Kafka 集群地址，多个用逗号分隔</span>
+</span></span><span style="display:flex;"><span>    topics            <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;app-log&#34;</span><span style="color:#f92672">]</span>            <span style="color:#75715e"># 消费的 topic</span>
+</span></span><span style="display:flex;"><span>    group_id          <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;logstash-consumer&#34;</span>    <span style="color:#75715e"># 消费者组 ID</span>
+</span></span><span style="display:flex;"><span>    auto_offset_reset <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;earliest&#34;</span>             <span style="color:#75715e"># 从头开始（第一次无 offset 时）</span>
+</span></span><span style="display:flex;"><span>    codec             <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;json&#34;</span>                 <span style="color:#75715e"># 消息体是 JSON 就加，纯文本可删</span>
+</span></span><span style="display:flex;"><span>    decorate_events   <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">true</span>                   <span style="color:#75715e"># 给事件加 @metadata[kafka] 字段（topic/partition/offset）</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>output {
+</span></span><span style="display:flex;"><span>  elasticsearch {
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://192.168.0.114:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;logstash-%{+YYYY.MM.dd}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#user =&gt; &#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#password =&gt; &#34;changeme&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">EOF</span>
+</span></span></code></pre></div></li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-5f3628e70e31bf85b61b399a02603abb">logstash-output</h1>
+	<div class="lead">logstash之output配置</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-12" class="text-body-secondary">Friday, September 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>filebeat版本：<code>7.17.19</code></p>
+<p>logstash版本：<code>7.15.0</code></p>
+<p>elasticsearch版本： <code>7.15.0</code></p>
+
+
+</div>
+
+<p><img src="https://www.elastic.co/guide/en/logstash/7.15/static/images/basic_logstash_pipeline.png" alt=""></p>
+<h3 id="output配置">OUTPUT配置</h3>
+<p><strong><a href="https://www.elastic.co/guide/en/logstash/7.15/plugins-outputs-elasticsearch.html" target="_blank">elasticsearch</a></strong></p>
+<ul>
+<li>
+<p>hosts[非必须，数据类型数组] 默认值<code>http://127.0.0.1:9200</code></p>
+</li>
+<li>
+<p>index[非必须] 默认值 <code>logstash-%{+YYYY.MM.dd}</code></p>
+</li>
+<li>
+<p>user</p>
+</li>
+<li>
+<p>password</p>
+</li>
+<li>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>cat <span style="color:#f92672">&gt;</span><span style="color:#e6db74">/data/e</span>lk<span style="color:#f92672">/</span>logstash<span style="color:#f92672">/</span>config<span style="color:#f92672">/</span>logstash<span style="color:#f92672">.</span>conf<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#39;EOF&#39;</span>
+</span></span><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>  kafka {
+</span></span><span style="display:flex;"><span>    bootstrap_servers <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;192.168.0.161:9092&#34;</span>   <span style="color:#75715e"># Kafka 集群地址，多个用逗号分隔</span>
+</span></span><span style="display:flex;"><span>    topics            <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;app-log&#34;</span>,<span style="color:#e6db74">&#34;sys-log&#34;</span><span style="color:#f92672">]</span>  <span style="color:#75715e"># 消费的 topic</span>
+</span></span><span style="display:flex;"><span>    group_id          <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;logstash-consumer&#34;</span>    <span style="color:#75715e"># 消费者组 ID</span>
+</span></span><span style="display:flex;"><span>    auto_offset_reset <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;earliest&#34;</span>             <span style="color:#75715e"># 从头开始（第一次无 offset 时）</span>
+</span></span><span style="display:flex;"><span>    codec             <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;json&#34;</span>                 <span style="color:#75715e"># 消息体是 JSON 就加，纯文本可删</span>
+</span></span><span style="display:flex;"><span>    decorate_events   <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">true</span>                   <span style="color:#75715e"># 给事件加 @metadata[kafka] 字段（topic/partition/offset）</span>
+</span></span><span style="display:flex;"><span>    consumer_threads <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">5</span>						<span style="color:#75715e"># 开启多线程消费kafka</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># --------- SASL/SCRAM 认证（与 Kafka 保持一致） ---------</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#security_protocol =&gt; &#34;SASL_PLAINTEXT&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#sasl_mechanism    =&gt; &#34;SCRAM-SHA-256&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#sasl_jaas_config  =&gt; &#39;org.apache.kafka.common.security.scram.ScramLoginModule required</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#                      username=&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#                      password=&#34;pytc@2026&#34;;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>output {
+</span></span><span style="display:flex;"><span>  elasticsearch {
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://192.168.0.114:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;logstash-%{+YYYY.MM.dd}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#user =&gt; &#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#password =&gt; &#34;changeme&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">EOF</span>
+</span></span></code></pre></div><p>上面的示例中所有topic日志都收集到了同一个索引中，接下来我们将不同日志分流到不同的index</p>
+<blockquote>
+<p>都有哪些@metadata 元数据</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>cat <span style="color:#f92672">&gt;</span><span style="color:#e6db74">/data/e</span>lk<span style="color:#f92672">/</span>logstash<span style="color:#f92672">/</span>config<span style="color:#f92672">/</span>logstash<span style="color:#f92672">.</span>conf<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#39;EOF&#39;</span>
+</span></span><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>  kafka {
+</span></span><span style="display:flex;"><span>    bootstrap_servers <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;192.168.0.161:9092&#34;</span>   <span style="color:#75715e"># Kafka 集群地址，多个用逗号分隔</span>
+</span></span><span style="display:flex;"><span>    topics            <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;app-log&#34;</span>,<span style="color:#e6db74">&#34;sys-log&#34;</span><span style="color:#f92672">]</span>  <span style="color:#75715e"># 消费的 topic</span>
+</span></span><span style="display:flex;"><span>    group_id          <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;logstash-consumer&#34;</span>    <span style="color:#75715e"># 消费者组 ID</span>
+</span></span><span style="display:flex;"><span>    auto_offset_reset <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;earliest&#34;</span>             <span style="color:#75715e"># 从头开始（第一次无 offset 时）</span>
+</span></span><span style="display:flex;"><span>    codec             <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;json&#34;</span>                 <span style="color:#75715e"># 消息体是 JSON 就加，纯文本可删</span>
+</span></span><span style="display:flex;"><span>    decorate_events   <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">true</span>                   <span style="color:#75715e"># 给事件加 @metadata[kafka] 字段（topic/partition/offset）</span>
+</span></span><span style="display:flex;"><span>    consumer_threads <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">5</span>						<span style="color:#75715e"># 开启多线程消费kafka</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># --------- SASL/SCRAM 认证（与 Kafka 保持一致） ---------</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#security_protocol =&gt; &#34;SASL_PLAINTEXT&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#sasl_mechanism    =&gt; &#34;SCRAM-SHA-256&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#sasl_jaas_config  =&gt; &#39;org.apache.kafka.common.security.scram.ScramLoginModule required</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#                      username=&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#                      password=&#34;pytc@2026&#34;;&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>output {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>@metadata<span style="color:#f92672">][</span>kafka<span style="color:#f92672">][</span>topic<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;app-log&#34;</span> {
+</span></span><span style="display:flex;"><span>    elasticsearch {
+</span></span><span style="display:flex;"><span>        hosts <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://192.168.0.114:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        index <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;app-log-%{+YYYY.MM.dd}&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>@metadata<span style="color:#f92672">][</span>kafka<span style="color:#f92672">][</span>topic<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;sys-log&#34;</span> {
+</span></span><span style="display:flex;"><span>    elasticsearch {
+</span></span><span style="display:flex;"><span>        hosts <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://192.168.0.114:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        index <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;sys-log-%{+YYYY.MM.dd}&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">EOF</span>
+</span></span></code></pre></div><p>通过自定义索引模版，并将<code>sys-log-*</code>和 <code>app-log-*</code> 索引关联该模版</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 如果 ES 7.x 也可用老接口 _template，这里用新版 _index_template</span>
+</span></span><span style="display:flex;"><span>curl -X PUT localhost:9200/_index_template/host-logs-template <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>     -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>     -d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;template&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;settings&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;number_of_shards&#34;: 3,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;number_of_replicas&#34;: 0,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;refresh_interval&#34;: &#34;5s&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;index_patterns&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;sys-log-*&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;app-log-*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;/data/elk/logstash/config/logstash.conf<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">input {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  kafka {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    bootstrap_servers =&gt; &#34;192.168.0.161:9092&#34;   # Kafka 集群地址，多个用逗号分隔
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    topics            =&gt; [&#34;app-log&#34;,&#34;sys-log&#34;]  # 消费的 topic
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    group_id          =&gt; &#34;logstash-consumer&#34;    # 消费者组 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    auto_offset_reset =&gt; &#34;earliest&#34;             # 从头开始（第一次无 offset 时）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    codec             =&gt; &#34;json&#34;                 # 消息体是 JSON 就加，纯文本可删
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    decorate_events   =&gt; true                   # 给事件加 @metadata[kafka] 字段（topic/partition/offset）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    consumer_threads =&gt; 5						# 开启多线程消费kafka
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    # --------- SASL/SCRAM 认证（与 Kafka 保持一致） ---------
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #security_protocol =&gt; &#34;SASL_PLAINTEXT&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #sasl_mechanism    =&gt; &#34;SCRAM-SHA-256&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #sasl_jaas_config  =&gt; &#39;org.apache.kafka.common.security.scram.ScramLoginModule required
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #                      username=&#34;test&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    #                      password=&#34;pytc@2026&#34;;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">output {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  if [@metadata][kafka][topic] == &#34;app-log&#34; {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    elasticsearch {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        hosts =&gt; [&#34;http://192.168.0.114:9200&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        index =&gt; &#34;app-log-%{+YYYY.MM.dd}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  if [@metadata][kafka][topic] == &#34;sys-log&#34; {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    elasticsearch {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        hosts =&gt; [&#34;http://192.168.0.114:9200&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        index =&gt; &#34;sys-log-%{+YYYY.MM.dd}&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div></li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-661fea39a83a2a82899e5e5ac2a6108c">logstash-filter</h1>
+	<div class="lead">logstash之filter配置</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-10-10" class="text-body-secondary">Friday, October 10, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>filebeat版本：<code>7.17.19</code></p>
+<p>logstash版本：<code>7.15.0</code></p>
+<p>elasticsearch版本： <code>7.15.0</code></p>
+
+
+</div>
+
+<p><img src="https://www.elastic.co/guide/en/logstash/7.15/static/images/basic_logstash_pipeline.png" alt=""></p>
+<h3 id="filter配置"><a href="https://www.elastic.co/docs/reference/logstash/versioned-plugins/filter-plugins" target="_blank">filter</a>配置</h3>
+<p><strong><a href="https://www.elastic.co/docs/reference/logstash/versioned-plugins/v4-4-3-plugins-filters-grok" target="_blank">grok</a></strong> 将非结构化的日志格式化为结构化可查询的内容</p>
+<p>apache 访问日志示例</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">39.156.66.10 - - [27/Jun/2023:20:04:38 +0800] &#34;GET /images/apache_pb.gif HTTP/1.1&#34; 200 2326 &#34;http://10.4.7.250/&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.57&#34;
+</code></pre><p>使用grok 对message执行解析</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>cat <span style="color:#f92672">&gt;</span><span style="color:#e6db74">/data/e</span>lk<span style="color:#f92672">/</span>logstash<span style="color:#f92672">/</span>config<span style="color:#f92672">/</span>logstash<span style="color:#f92672">.</span>conf<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#39;EOF&#39;</span>
+</span></span><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>  kafka {
+</span></span><span style="display:flex;"><span>    bootstrap_servers <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;192.168.0.161:9092&#34;</span>   <span style="color:#75715e"># Kafka 集群地址，多个用逗号分隔</span>
+</span></span><span style="display:flex;"><span>    topics            <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;app-log&#34;</span>,<span style="color:#e6db74">&#34;sys-log&#34;</span><span style="color:#f92672">]</span>  <span style="color:#75715e"># 消费的 topic</span>
+</span></span><span style="display:flex;"><span>    group_id          <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;logstash-consumer&#34;</span>    <span style="color:#75715e"># 消费者组 ID</span>
+</span></span><span style="display:flex;"><span>    auto_offset_reset <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;earliest&#34;</span>             <span style="color:#75715e"># 从头开始（第一次无 offset 时）</span>
+</span></span><span style="display:flex;"><span>    codec             <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;json&#34;</span>                 <span style="color:#75715e"># 消息体是 JSON 就加，纯文本可删</span>
+</span></span><span style="display:flex;"><span>    decorate_events   <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">true</span>                   <span style="color:#75715e"># 给事件加 @metadata[kafka] 字段（topic/partition/offset）</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filter {
+</span></span><span style="display:flex;"><span>  grok {
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=&gt;</span> {<span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  geoip {
+</span></span><span style="display:flex;"><span>        source <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;clientip&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>@metadata<span style="color:#f92672">][</span>kafka<span style="color:#f92672">][</span>topic<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;app-log&#34;</span> {
+</span></span><span style="display:flex;"><span>    elasticsearch {
+</span></span><span style="display:flex;"><span>        hosts <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://192.168.0.114:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        index <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;app-log-%{+YYYY.MM.dd}&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>@metadata<span style="color:#f92672">][</span>kafka<span style="color:#f92672">][</span>topic<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;sys-log&#34;</span> {
+</span></span><span style="display:flex;"><span>    elasticsearch {
+</span></span><span style="display:flex;"><span>        hosts <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://192.168.0.114:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        index <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;sys-log-%{+YYYY.MM.dd}&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">EOF</span>
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图床工具 on 零露云</title>
+    <link>https://zero-dew.netlify.app/tags/%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 图床工具 on 零露云</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>零露云©2025版权所有</copyright>
+    <lastBuildDate>Sat, 27 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zero-dew.netlify.app/tags/%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图床工具</title>
+      <link>https://zero-dew.netlify.app/hugo/easyimg.html</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://zero-dew.netlify.app/hugo/easyimg.html</guid>
+      <description>&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;&#xA;&#xA;&#xA;    &lt;p&gt;图床工具 &lt;code&gt;https://github.com/chaos-zhu/easyimg&lt;/code&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run -d --name easyimg -p 3000:3000 -v ./db:/app/db -v ./uploads:/app/uploads ghcr.io/chaos-zhu/easyimg:latest&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

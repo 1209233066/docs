@@ -1,0 +1,1675 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/docs/database/kafka/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/docs/database/kafka/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>零露云</title>
+<meta name="description" content="java版本 zookeeper版本 kafka版本 java8 0.7 至 3.0 java11 0.7 至 3.7 java17 0.7 至 尚硅谷_Kafka入门_
+kafka可视化管理和监控工具EFAK，同样是使用jmx抓取数据">
+<meta property="og:url" content="https://zero-dew.netlify.app/docs/database/kafka/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="零露云">
+  <meta property="og:description" content="java版本 zookeeper版本 kafka版本 java8 0.7 至 3.0 java11 0.7 至 3.7 java17 0.7 至 尚硅谷_Kafka入门_
+kafka可视化管理和监控工具EFAK，同样是使用jmx抓取数据">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="零露云">
+  <meta itemprop="description" content="java版本 zookeeper版本 kafka版本 java8 0.7 至 3.0 java11 0.7 至 3.7 java17 0.7 至 尚硅谷_Kafka入门_
+kafka可视化管理和监控工具EFAK，同样是使用jmx抓取数据">
+  <meta itemprop="datePublished" content="2025-05-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-17T00:00:00+00:00">
+  <meta itemprop="wordCount" content="16">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="零露云">
+  <meta name="twitter:description" content="java版本 zookeeper版本 kafka版本 java8 0.7 至 3.0 java11 0.7 至 3.7 java17 0.7 至 尚硅谷_Kafka入门_
+kafka可视化管理和监控工具EFAK，同样是使用jmx抓取数据">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/database/kafka/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title"></h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-4fd1811155c0b30c4801ab6b3f671eaf">部署zookeeper</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-a2ebb8369fef061edbf7f3c10100d052">部署kafka</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-dc4ad1ef352d1381b1276b6e775efacb">kafka核心概念和配置文件</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-4ca462b874e0f51208f6529a334ea449">Kafka认证和授权</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-5408ed3211021d47e8c86495e76d3ace">Kafka 如何进行复制</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-3f35b0366995d1b427499856875e611b">kafka_exporter</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-25e990c22a9d5ff7c6e251af66967092">kafka可视化管理工具</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <p><img src="https://pic2.zhimg.com/v2-d4bcfceda6ff7e56c16d2191b8d45ee9_r.jpg" alt="img"></p>
+<h3></h3>
+<table>
+  <thead>
+      <tr>
+          <th>java版本</th>
+          <th>zookeeper版本</th>
+          <th>kafka版本</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>java8</td>
+          <td></td>
+          <td>0.7 至 3.0</td>
+      </tr>
+      <tr>
+          <td>java11</td>
+          <td></td>
+          <td>0.7 至 3.7</td>
+      </tr>
+      <tr>
+          <td>java17</td>
+          <td></td>
+          <td>0.7 至</td>
+      </tr>
+  </tbody>
+</table>
+<p><a href="https://www.bilibili.com/video/BV1a4411B7V9?spm_id_from=333.788.player.switch&amp;vd_source=a2dcea2da941e76b21b56f2b3cd2fc76&amp;p=6" target="_blank">尚硅谷_Kafka入门_</a></p>
+<p>kafka可视化管理和监控工具<a href="https://www.kafka-eagle.org/" target="_blank">EFAK</a>，同样是使用jmx抓取数据</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-4fd1811155c0b30c4801ab6b3f671eaf">部署zookeeper</h1>
+	<div class="lead"><em>如何快速启动一个zookeeper服务</em></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-12" class="text-body-secondary">Friday, September 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>jdk版本：<code>openjdk 11</code></p>
+<p>zookeeper版本: <code>3.4.14</code> 支持jdk1.8</p>
+<p>kafka版本：<code>3.3.2</code></p>
+<p>zookeeper可视化工具: <a href="https://github.com/vran-dev/PrettyZoo?tab=readme-ov-file" target="_blank">PrettyZoo</a></p>
+<hr>
+<p><em>通常多个kafka集群通过chroot的方式使用同一个zookeer集群。在Kafka 0.9.0.0 版本之前，除了 broker 之外，消费者也会使用 Zookeeper 来保存一些信息，比如消费者群组的信息、主题信息、消费分区的偏移量</em></p>
+
+
+</div>
+
+<h3 id="安装部署">安装部署</h3>
+<p><strong>安装依赖</strong></p>
+<ul>
+<li>
+<p>jdk</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://download.java.net/java/ga/jdk11/openjdk-11_linux-x64_bin.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tar xf openjdk-11_linux-x64_bin.tar.gz -C /opt
+</span></span><span style="display:flex;"><span>ln -svf  /opt/<span style="color:#f92672">{</span>jdk-11,jdk<span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat&gt;&gt;/etc/profile<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export JAVA_HOME=/opt/jdk
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export JAVA_JRE=$JAVA_HOME/jre
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export PATH=$JAVA_HOME/bin:$JAVA_JRE/bin:$PATH:.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>source /etc/profile
+</span></span><span style="display:flex;"><span>java -version
+</span></span></code></pre></div></li>
+</ul>
+<p><strong>部署安装</strong></p>
+<ul>
+<li>
+<p>下载软件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tar xf zookeeper-3.4.14.tar.gz -C /opt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ln -sv /opt/<span style="color:#f92672">{</span>zookeeper-3.4.14,zookeeper<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p /opt/zookeeper/<span style="color:#f92672">{</span>data,logs<span style="color:#f92672">}</span> 
+</span></span></code></pre></div></li>
+<li>
+<p>修改配置文件</p>
+
+    
+    
+    
+  <ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          aria-controls="tabs-01-00" aria-selected="false">
+        <strong>配置zookeeper</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="**单节点配置**" aria-controls="tabs-01-01" aria-selected="true">
+        <strong>单节点配置</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="**集群配置**" aria-controls="tabs-01-02" aria-selected="false">
+        <strong>集群配置</strong>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /opt/zookeeper/conf/zoo.cfg<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 集群成员间每隔2000毫秒检查一下集群心跳 2s
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">tickTime=2000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># follower 初次连接leader 的tick次数。例如 10 * 2000 =20s ,follower要在20s内连接上leader 否则被视为超时
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">initLimit=10
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># follower 与leader通讯的tick 次数。例如 5*2000=10s,follower要在10s内与leader完成通讯，否则被视为超时
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">syncLimit=5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># zookeeper 会定期在内存中生成快照，并定义把快照内容写入 dataDir
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dataDir=/opt/zookeeper/data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dataLogDir=/opt/zookeeper/log
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 2181 用于接受客户端连接的主要端口
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">clientPort=2181
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /opt/zookeeper/conf/zoo.cfg<span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 集群成员间每隔2000毫秒检查一下集群心跳 2s
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">tickTime=2000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># follower 初次连接leader 的tick次数。例如 10 * 2000 =20s ,follower要在20s内连接上leader 否则被视为超时
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">initLimit=10
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># follower 与leader通讯的tick 次数。例如 5*2000=10s,follower要在10s内与leader完成通讯，否则被视为超时
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">syncLimit=5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># zookeeper 会定期在内存中生成快照，并定义把快照内容写入 dataDir
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dataDir=/opt/zookeeper/data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dataLogDir=/opt/zookeeper/logs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 2181 用于接受客户端连接的主要端口
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">clientPort=2181
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 2888 用于 ZooKeeper 集群内节点从leader同步数据，只有leader才监听该端口
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 3888 用于 ZooKeeper 集群中的 Leader 选举过程中节点之间的通信
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># server.X=host:port:port 这里的X（1～255）必须是一个全局唯一的数字，且需要与 myid文件中的数字相对应
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">server.1=node-1:2888:3888
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">server.2=node-2:2888:3888
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">server.3=node-3:2888:3888
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 为每个节点分配id，在dataDir下myid文件中</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># node-1</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;1&#34;</span> &gt;/opt/zookeeper/data/myid
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># node-2</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;2&#34;</span> &gt;/opt/zookeeper/data/myid
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># node-3</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;3&#34;</span> &gt;/opt/zookeeper/data/myid
+</span></span></code></pre></div><p>​</p>
+
+    </div>
+</div>
+
+</li>
+<li>
+<p>启动服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /usr/lib/systemd/system/zookeeper.service <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=zookeeper service
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Documentation=https://zookeeper.apache.org/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Type=forking
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Environment=JAVA_HOME=/opt/jdk
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/opt/zookeeper/bin/zkServer.sh start
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStop=/opt/zookeeper/bin/zkServer.sh stop
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecReload=/opt/zookeeper/bin/zkServer.sh restart
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Restart=on-failure
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RestartSec=10
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">PIDFile=/opt/zookeeper/data/zookeeper_server.pid
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div>
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    zookeeper 主进程名为 <code>QuorumPeerMain</code>
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>systemctl enable zookeeper --now
+</span></span></code></pre></div></li>
+<li>
+<p>功能验证</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/zookeeper/bin/zkServer.sh  status
+</span></span></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@hdss7-12 bin<span style="color:#f92672">]</span><span style="color:#75715e">#  /opt/zookeeper/bin/zkCli.sh -server localhost:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>zk: localhost:2181<span style="color:#f92672">(</span>CONNECTED<span style="color:#f92672">)</span> 2<span style="color:#f92672">]</span> ls /
+</span></span></code></pre></div></li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-a2ebb8369fef061edbf7f3c10100d052">部署kafka</h1>
+	<div class="lead"><em>如何快速启动一个kafka服务</em></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-12" class="text-body-secondary">Friday, September 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>jdk版本：<code>openjdk 11</code></p>
+<p>zookeeper版本: <code>3.4.14</code></p>
+<p>kafka版本：<code>3.3.2</code></p>
+<hr>
+<p><em>2011年初，美国领英公司（LinkedIn）开源了一款基础架构软件，以奥地利作家弗兰兹·卡夫卡（Franz Kafka）的名字命名，之后 LinkedIn将其贡献给 Apache基金会，随后该软件于2012年10月完成孵化并顺利晋升为Apache顶级项目——这便是大名鼎鼎的Apache Kafka</em></p>
+
+
+</div>
+
+<h3 id="安装部署">安装部署</h3>
+<blockquote>
+<p>作为高吞吐的数据流引擎，磁盘和网络性能对kafka影响最大。24C 、32GB 、1TB 7200转sas盘2块、1gb/s 带宽</p>
+</blockquote>
+<p><strong>安装依赖</strong></p>
+<ul>
+<li>安装<code>jdk</code> 和 <code>zookeeper</code>参考 <a href="zookeeper.html">部署zookeeper</a></li>
+</ul>
+<p><strong>部署安装<sub>【elk建议Kafka 版本 0.8.2.0+】</sub></strong></p>
+<ul>
+<li>
+<p>下载软件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#												 kafaka_&lt;scala版本&gt;-&lt;kafka版本&gt;.tgz	</span>
+</span></span><span style="display:flex;"><span>wget https://archive.apache.org/dist/kafka/3.3.2/kafka_2.13-3.3.2.tgz
+</span></span><span style="display:flex;"><span>tar xf kafka_2.13-3.3.2.tgz -C /opt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ln -sv  /opt/<span style="color:#f92672">{</span>kafka_2.13-3.3.2,kafka<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir /opt/kafka/data
+</span></span></code></pre></div></li>
+<li>
+<p>修改配置文件</p>
+
+    
+    
+    
+  <ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          aria-controls="tabs-01-00" aria-selected="false">
+        <strong>配置kafka</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="**单节点配置**" aria-controls="tabs-01-01" aria-selected="true">
+        <strong>单节点配置</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="**集群配置**" aria-controls="tabs-01-02" aria-selected="false">
+        <strong>集群配置</strong>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kafka_svc<span style="color:#f92672">=</span>kafka-1:9092
+</span></span><span style="display:flex;"><span>broker_id<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>zookeeper_svc<span style="color:#f92672">=</span>zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tee /opt/kafka/config/server.properties <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">broker.id=${broker_id}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 尽量使用域名而不是ip
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">listeners=PLAINTEXT://${kafka_svc}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">advertised.listeners=PLAINTEXT://${kafka_svc}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">log.dirs=/opt/kafka/data/kafka1-logs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">zookeeper.connect=${zookeeper_svc}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">zookeeper.connection.timeout.ms=18000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">delete.topic.enable=true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">unclean.leader.election.enable=false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <p>同一集群中保证<code>broker_id</code>唯一，同时修改 <code>listeners</code> 和 <code>advertised.listeners</code></p>
+
+    </div>
+</div>
+
+</li>
+<li>
+<p>启动服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /usr/lib/systemd/system/kafka.service <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=zookeeper service 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Documentation=https://kafka.apache.org/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Type=forking
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Environment=JAVA_HOME=/opt/jdk
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/opt/kafka/bin/kafka-server-start.sh -daemon /opt/kafka/config/server.properties
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStop=/opt/kafka/bin/kafka-server-stop.sh /opt/kafka/config/server.properties
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl daemon-reload 
+</span></span><span style="display:flex;"><span>systemctl enable kafka --now
+</span></span></code></pre></div></li>
+<li>
+<p>功能验证</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建topics</span>
+</span></span><span style="display:flex;"><span>/opt/kafka/bin/kafka-topics.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bootstrap-server localhost:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--create --topic app-log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看topics</span>
+</span></span><span style="display:flex;"><span>/opt/kafka/bin/kafka-topics.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bootstrap-server localhost:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看topics详情</span>
+</span></span><span style="display:flex;"><span>/opt/kafka/bin/kafka-topics.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bootstrap-server localhost:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--describe <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--topic app-log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 向topics产生一个事件</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;This is my first event\nThis is my second event&#34;</span> |<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/opt/kafka/bin/kafka-console-producer.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bootstrap-server localhost:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--topic  app-log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 从头消费topics事件</span>
+</span></span><span style="display:flex;"><span>/opt/kafka/bin/kafka-console-consumer.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bootstrap-server localhost:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--topic app-log <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--from-beginning 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#This is my first event</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#This is my second event</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除topic</span>
+</span></span><span style="display:flex;"><span>/opt/kafka/bin/kafka-topics.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--bootstrap-server localhost:9092  <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--delete --topic app-log
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建指定分区和副本数量的topic</span>
+</span></span><span style="display:flex;"><span>/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--create --topic app-log <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--replication-factor <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--partitions <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic app-log</span>
+</span></span><span style="display:flex;"><span>Topic: app-log        TopicId: sJH_EE1KT-aYppxi8Eq6qg PartitionCount: <span style="color:#ae81ff">2</span>       ReplicationFactor: <span style="color:#ae81ff">2</span>    Configs: unclean.leader.election.enable<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>        Topic: app-log        Partition: <span style="color:#ae81ff">0</span>    Leader: <span style="color:#ae81ff">2</span>       Replicas: 2,1   Isr: 2,1
+</span></span><span style="display:flex;"><span>        Topic: app-log        Partition: <span style="color:#ae81ff">1</span>    Leader: <span style="color:#ae81ff">1</span>       Replicas: 1,0   Isr: 1,0
+</span></span></code></pre></div></li>
+<li>
+<p>压测</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 生产者压测脚本</span>
+</span></span><span style="display:flex;"><span>kafka-producer-perf-test
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 消费者压测脚本</span>
+</span></span><span style="display:flex;"><span>kafka-consumer-perf-test
+</span></span></code></pre></div></li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-dc4ad1ef352d1381b1276b6e775efacb">kafka核心概念和配置文件</h1>
+	<div class="lead"><em>剖析kafka架构、核心概念和配置</em></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-10-15" class="text-body-secondary">Wednesday, October 15, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>jdk版本：<code>openjdk 11</code></p>
+<p>zookeeper版本: <code>3.4.14</code></p>
+<p>kafka版本：<code>2.13-3.3.2</code>  龙腾出行生产环境使用<code>2.11-2.2.0</code></p>
+<hr>
+<p><em>2011年初，美国领英公司（LinkedIn）开源了一款基础架构软件，以奥地利作家弗兰兹·卡夫卡（Franz Kafka）的名字命名，之后 LinkedIn将其贡献给 Apache基金会，随后该软件于2012年10月完成孵化并顺利晋升为Apache顶级项目——这便是大名鼎鼎的Apache Kafka</em></p>
+
+
+</div>
+
+<h3 id="核心概念">核心概念</h3>
+<ul>
+<li><strong>broker</strong> 一个kafka进程实例可以称作一个broker,主要功能是持久化消息以及将消息队列中的消息从发送端传输到消费端</li>
+<li><strong>topic</strong>主题就好比数据库的表，或者文件系统里的文件夹。一个主题可以有若干个<strong>partition</strong>，是实现分布式和高可用的关键</li>
+<li><strong>producer</strong>生产者可能被称为发布者或写入者。</li>
+<li><strong>consumer</strong>消费者可能被称为订阅者或读者。</li>
+<li><strong>offset</strong>是一个不断递增的整数值，在创建消息时，Kafka 会把它添加到消息里。在给定的分区里，每个消息的偏移量都是唯一的。消费者把每个分区最后读取的消息偏移量保存在 Zookeeper 或 Kafka 上，如果消费者关闭或重启，它的读取状态不会丢失。</li>
+<li><strong>consumer group</strong> 为使消费者按照消息顺序消费和避免重复消费，群组保证每个分区只能被一个消费者使用</li>
+</ul>
+<h3 id="核心配置">核心配置</h3>
+<blockquote>
+<p>kafka不支持动态调整参数，调整后需要重启broker</p>
+</blockquote>
+
+
+  
+  
+
+
+
+  
+
+  
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="**broker端参数**" aria-controls="tabs-01-00" aria-selected="true">
+        <strong>broker端参数</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="**topic级别参数**" aria-controls="tabs-01-01" aria-selected="false">
+        <strong>topic级别参数</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="**jvm参数**" aria-controls="tabs-01-02" aria-selected="false">
+        <strong>jvm参数</strong>
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-03-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-03" role="tab"
+          data-td-tp-persist="**os参数**" aria-controls="tabs-01-03" aria-selected="false">
+        <strong>os参数</strong>
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <p><a href="https://kafka.apache.org/30/documentation.html#brokerconfigs" target="_blank">文档</a></p>
+<ul>
+<li>
+<p><strong>broker.id</strong></p>
+<blockquote>
+<p>Broker唯一标识，不指定时broker随机生成一个</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>log.dirs</strong></p>
+<blockquote>
+<p>kafka数据存放位置，可以填写多个。多个使用<code>,</code>间隔</p>
+</blockquote>
+<p>示例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>zookeeper.connect</strong></p>
+<blockquote>
+<p>ZooKeeper服务器地址，多个使用<code>,</code>间隔。</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>listeners</strong></p>
+<blockquote>
+<p>监听信息。格式:   <code>[协议]://[主机名]:[端口],[[协议]]://[主机名]:[端口]] </code></p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>advertised.listeners</strong></p>
+<blockquote>
+<p>和listeners类似，该参数也是用于发布给clients的监听器，不过该参数主要用于 IaaS 环境，比如云上的机器通常都配有多块网卡（私网网卡和公网网卡）。对于这种机器，用户可以设置该参数绑定公网IP供外部clients使用，然后配置上面的listeners来绑定私网 IP供broker间通信使用</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>auto.create.topics.enable</strong></p>
+<blockquote>
+<p>是否允许自动创建topic,默认值<em>true</em></p>
+</blockquote>
+<p>示例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>delete.topic.enable</strong></p>
+<blockquote>
+<p>是否允许删除topic,默认为true。建议配合acl使用</p>
+</blockquote>
+<p>示例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>log.retention.{hours|minutes|ms}</strong></p>
+<blockquote>
+<p>控制了消息数据的留存时间。如果同时设置，优先选取ms的设置，minutes次之，hours最后。默认值7天</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>log.retention.bytes</strong></p>
+<blockquote>
+<p>空间上控制了消息数据的留存多大的数据。默认值是-1</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>log.flush.interval.messages</strong></p>
+<blockquote>
+<p>写入的消息放置在kafka缓存中，达到指定条记录后写入到磁盘中，这个参数用于控制多少条数据后执行强制刷新</p>
+</blockquote>
+</li>
+<li>
+<p><strong>log.flush.interval.ms</strong></p>
+</li>
+<li>
+<p><strong>log.flush.scheduler.interval.ms</strong></p>
+</li>
+<li>
+<p><strong>unclean.leader.election.enable</strong></p>
+<blockquote>
+<p>如果我们允许不同步的副本成为首领，那么就要承担丢失数据和出现数据不一致的风险。如果不允许它们成为首领，那么就要接受较低的可用性，因为我们必须等待原先的首领恢复到可用状态。 默认为true</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unclean.leader.election.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>min.insync.replicas</strong></p>
+<blockquote>
+<p>至少有多少个副本确认写入成功才会给生成者返回写入成功（数据可靠性）</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unclean.leader.election.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">min.insync.replicas</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>num.network.threads</strong></p>
+<blockquote>
+<p>默认是3</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unclean.leader.election.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">min.insync.replicas</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.network.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>num.io.threads</strong></p>
+<blockquote>
+<p>默认是8</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unclean.leader.election.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">min.insync.replicas</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.network.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.io.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>num.partitions</strong></p>
+<blockquote>
+<p>topic默认分区数</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unclean.leader.election.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">min.insync.replicas</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.network.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.io.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.partitions</span><span style="color:#f92672">=</span><span style="color:#e6db74">3</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>default.replication.factor</strong></p>
+<blockquote>
+<p>topic 默认副本数量</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unclean.leader.election.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">min.insync.replicas</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.network.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.io.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.partitions</span><span style="color:#f92672">=</span><span style="color:#e6db74">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">default.replication.factor</span><span style="color:#f92672">=</span><span style="color:#e6db74">2</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>message.max.bytes</strong></p>
+<blockquote>
+<p>能够接受的最大消息，默认 977kb</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">broker.id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.dirs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/tmp/kafka-logs,/tmp/kafka-log2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zookeeper.connect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         PLAINTEXT表示明文传输     </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://192.168.0.151:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">advertised.listeners</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">PLAINTEXT://120.24.171.66:9092</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auto.create.topics.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">delete.topic.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.hours</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">168</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 						10g</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log.retention.bytes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1073741824</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unclean.leader.election.enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">min.insync.replicas</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.network.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.io.threads</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">num.partitions</span><span style="color:#f92672">=</span><span style="color:#e6db74">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">default.replication.factor</span><span style="color:#f92672">=</span><span style="color:#e6db74">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">message.max.bytes</span><span style="color:#f92672">=</span><span style="color:#e6db74">977</span>
+</span></span></code></pre></div></li>
+</ul>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <ul>
+<li>
+<p><strong>num.partitions</strong></p>
+<blockquote>
+<p>通过设置指定<code>topic partitions</code> 数量来覆盖broker启动文件中的 <code>num.paritions</code>配置。</p>
+<p>分区数量只能增加不能减少，但如果消息是按照不同的键来写入分区的，那么为已有的主题新增分区就会很困难</p>
+</blockquote>
+</li>
+<li>
+<p><strong>log.retention.ms</strong></p>
+</li>
+<li>
+<p><strong>log.retention.bytes</strong></p>
+<blockquote>
+<p>覆盖全局的 log.retention.bytes，每个 topic 设置不同的日志留存尺寸。</p>
+</blockquote>
+</li>
+<li>
+<p><strong>log.segment.bytes</strong></p>
+</li>
+<li>
+<p><strong>log.segment.ms</strong></p>
+</li>
+<li>
+<p><strong>max.message.bytes</strong></p>
+<blockquote>
+<p>覆盖全局的 message.max.bytes，即为每个 topic指定不同的最大消息尺寸。</p>
+</blockquote>
+</li>
+</ul>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-Xmx6g -Xms6g
+</span></span><span style="display:flex;"><span>-XX:MetaspaceSize<span style="color:#f92672">=</span>96m
+</span></span><span style="display:flex;"><span>-XX:+UseG1GC -XX:MaxGCPauseMillis<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>-XX:InitiatingHeapOccupancyPercent<span style="color:#f92672">=</span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>-XX:G1HeapRegionSize<span style="color:#f92672">=</span>16M -XX:MinMetaspaceFreeRatio<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span>-XX:MaxMetaspaceFreeRatio<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>
+</span></span></code></pre></div>
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-03" role="tabpanel" aria-labelled-by="tabs-01-03-tab" tabindex="1">
+        <ul>
+<li>文件描述符</li>
+<li>socket缓冲区</li>
+<li>使用ext4 或xfs</li>
+<li>关闭swap</li>
+<li>设置更长的flush时间</li>
+</ul>
+
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-4ca462b874e0f51208f6529a334ea449">Kafka认证和授权</h1>
+	<div class="lead"><em>Kafka认证和授权</em></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-11-10" class="text-body-secondary">Monday, November 10, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>jdk版本：<code>openjdk 11</code></p>
+<p>zookeeper版本: <code>3.4.14</code></p>
+<p>kafka版本：<code>2.13-3.3.2</code>  龙腾出行生产环境使用<code>2.11-2.2.0</code></p>
+<hr>
+<p><em>2011年初，美国领英公司（LinkedIn）开源了一款基础架构软件，以奥地利作家弗兰兹·卡夫卡（Franz Kafka）的名字命名，之后 LinkedIn将其贡献给 Apache基金会，随后该软件于2012年10月完成孵化并顺利晋升为Apache顶级项目——这便是大名鼎鼎的Apache Kafka</em></p>
+
+
+</div>
+
+<h3 id="用户">用户</h3>
+<p><font color=＃008B8B><strong>创建用户</strong></font></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建用户test 密码123456 加密方式SCRAM-SHA-256</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 kafka_2.13-3.3.2<span style="color:#f92672">]</span><span style="color:#75715e"># bin/kafka-configs.sh \</span>
+</span></span><span style="display:flex;"><span>--bootstrap-server 192.168.0.161:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--alter <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--add-config <span style="color:#e6db74">&#39;SCRAM-SHA-256=[password=123456]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--entity-type users <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--entity-name test
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Completed updating config <span style="color:#66d9ef">for</span> user test.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看用户</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@seagullcore01-uat-s2 kafka_2.13-3.3.2<span style="color:#f92672">]</span><span style="color:#75715e"># bin/kafka-configs.sh \</span>
+</span></span><span style="display:flex;"><span>--bootstrap-server 192.168.0.161:9092 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--describe <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-entity-type users <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--entity-name test 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SCRAM credential configs <span style="color:#66d9ef">for</span> user-principal <span style="color:#e6db74">&#39;test&#39;</span> are SCRAM-SHA-256<span style="color:#f92672">=</span>iterations<span style="color:#f92672">=</span><span style="color:#ae81ff">4096</span>
+</span></span></code></pre></div><p><font color=＃008B8B><strong>修改kafka配置文件并重启服务</strong></font></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt;&gt;config/server.properties <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 添加以下配置
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sasl.enabled.mechanisms=SCRAM-SHA-256
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 如果已有 SSL，可写 SASL_SSL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">security.inter.broker.protocol=SASL_PLAINTEXT
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sasl.mechanism.inter.broker.protocol=SCRAM-SHA-256
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">listeners=SASL_PLAINTEXT://192.168.0.161:9092
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">advertised.listeners=SASL_PLAINTEXT://192.168.0.161:9092
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 用于集群成员间通讯
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">listener.name.sasl_plaintext.scram-sha-256.sasl.jaas.config=\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  org.apache.kafka.common.security.scram.ScramLoginModule required \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  username=&#34;test&#34; \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  password=&#34;123456&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat &gt;config/kafka_server_jaas.conf <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">KafkaServer {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    org.apache.kafka.common.security.scram.ScramLoginModule required
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    username=&#34;test&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    password=&#34;123456&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">};
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export KAFKA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Djava.security.auth.login.config=config/kafka_server_jaas.conf&#34;</span>
+</span></span><span style="display:flex;"><span>./bin/kafka-server-start.sh  config/server.properties
+</span></span></code></pre></div><p><font color=＃008B8B><strong>修改filebeat配置启动密码认证</strong></font></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>filebeat.inputs:
+</span></span><span style="display:flex;"><span>- type: filestream
+</span></span><span style="display:flex;"><span>  enabled: true
+</span></span><span style="display:flex;"><span>  paths:
+</span></span><span style="display:flex;"><span>  - /var/log/messages
+</span></span><span style="display:flex;"><span>output.kafka:
+</span></span><span style="display:flex;"><span>  enabled: true
+</span></span><span style="display:flex;"><span>  hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;192.168.0.161:9092&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  username: test
+</span></span><span style="display:flex;"><span>  password: <span style="color:#e6db74">&#39;123456&#39;</span>
+</span></span><span style="display:flex;"><span>  sasl.mechanism: <span style="color:#e6db74">&#39;SCRAM-SHA-256&#39;</span>
+</span></span><span style="display:flex;"><span>  topic: <span style="color:#e6db74">&#39;foobar&#39;</span>
+</span></span><span style="display:flex;"><span>  required_acks: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  compression: gzip
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 1MB</span>
+</span></span><span style="display:flex;"><span>  max_message_bytes: <span style="color:#ae81ff">1000000</span>
+</span></span></code></pre></div><h3 id="acl鉴权">acl鉴权</h3>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-5408ed3211021d47e8c86495e76d3ace">Kafka 如何进行复制</h1>
+	<div class="lead"><em>剖析kafka副本之间数据如何复制</em></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-11-10" class="text-body-secondary">Monday, November 10, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>jdk版本：<code>openjdk 11</code></p>
+<p>zookeeper版本: <code>3.4.14</code></p>
+<p>kafka版本：<code>2.13-3.3.2</code>  龙腾出行生产环境使用<code>2.11-2.2.0</code></p>
+<hr>
+<p><em>2011年初，美国领英公司（LinkedIn）开源了一款基础架构软件，以奥地利作家弗兰兹·卡夫卡（Franz Kafka）的名字命名，之后 LinkedIn将其贡献给 Apache基金会，随后该软件于2012年10月完成孵化并顺利晋升为Apache顶级项目——这便是大名鼎鼎的Apache Kafka</em></p>
+
+
+</div>
+
+<p>Kafka 组件订阅 Zookeeper 的 /brokers/ids 路径（broker 在 Zookeeper 上的注册路径），当有 broker 加入集群或退出集群时，这些组件就可以获得通知。</p>
+<p><strong>控制器</strong>其实就是一个 broker，只不过它除了具有一般 broker 的功能之外，还负责分区首领的选举</p>
+<p>集群里第一个启动的 broker 通过在Zookeeper 里创建一个临时节点 /controller 让自己成为控制器其他 broker 在启动时也会尝试创建这个节点，不过它们会收到一个“节点已存在”的异常，然后“意识”到控制器节点已存在，也就是说集群里已经有一个控制器了其他 broker 在控制器节点上创建Zookeeper watch 对象，这样它们就可以收到这个节点的变更通知。这种方式可以确保集群里一次只有一个控制器存在。</p>
+<p>每个新选出的控制器通过 Zookeeper 的条件递增操作获得一个全新的、数值更大的 controller epoch。其他 broker 在知道当前 controller epoch 后，如果收到由控制器发出的包含较旧epoch 的消息，就会忽略它们。</p>
+<p>Kafka 使用主题来组织数据，每个主题被分为若干个分区，每个分区有多个副本,副本有以下两种类型。</p>
+<p><strong>首领副本</strong>每个分区都有一个首领副本。为了保证一致性，所有生产者请求和消费者请求都会经过这个副本。</p>
+<p><strong>跟随者副本</strong>首领以外的副本都是跟随者副本。跟随者副本不处理来自客户端的请求，它们唯一的任务就是从首领那里复制消息，保持与首领一致的状态。如果首领发生崩溃，其中的一个跟随者会被提升为新首领。</p>
+<p>为了与首领保持同步，跟随者向首领发送获取数据的请求，这种请求与消费者为了读取消息而发送的请求是一样的。请求消息里包含了跟随者想要获取消息的偏移量，而且这些偏移量总是有序的。</p>
+<p>如果跟随者在 10s 内没有请求任何消息，或者虽然在请求消息，但在 10s 内没有请求最新的数据，那么它就会被认为是不同步的,通过<code>replica.lag.time.max.ms</code>参数来配置超时时长</p>
+<p><strong>首选首领</strong>的主要目的是保证集群的负载均衡。除了当前首领之外，每个分区都有一个首选首领——创建主题时选定的首领就是分区的首</p>
+<p>选首领，如果不是，并且该副本是同步的，那么就会触发首领选举，让首选首领成为当前首领。</p>
+<p><code>auto.leader.rebalance.enable=true</code> 默认已开启</p>
+<p><strong>元数据请求</strong>服务器端的响应消息里指明了这些主题所包含的分区、每个分区都有哪些副本，以及哪个副本是首领。元数据请求可以发送给任意一个 broker，因为所有 broker 都缓存了这些信息。</p>
+<p>客户端会把这些信息缓存起来，并直接往目标 broker 上发送生产请求和获取请求。它们需要时不时地通过发送元数据请求来刷新这些信息（python客户端中通过 <code>metadata_max_age_ms</code>参数来配置）</p>
+<p><strong>生产请求</strong> 通过<code>acks</code>参数broker确认消息的成功写入，在 Linux 系统上，消息会被写到文件系统缓存里，并不保证它们何时会被刷新到磁盘上</p>
+<p><strong>获取请求</strong> broker按照批次向客户端响应数据，客户端同步配置 <code>fetch_min_bytes</code>和<code>fetch_max_wait_ms</code>参数来控制每个批次大小或批次间隔。同时在多副本中消费者只能消费所有ISR副本已经完成复制的消息（也就是kafka数据的高水位），既然有了高水位也就引出了主从分片间数据同步超时时间<code>replica.lag.time.max.ms</code>(超过该时长的副本会被leader partition从ISR列表中提出，从而减少对消费者进度造成影响)</p>
+<pre class="mermaid">flowchart LR
+
+	A(元数据请求)
+	B(生产请求)
+	C(获取请求)
+	Z&gt;请求类型]
+	Z -..-&gt; A
+	Z -..-&gt; B
+	Z -..-&gt; C
+
+
+    style A fill:#bbf,stroke:#333,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+    style B fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+    style C fill:#bbf,stroke:#333,stroke-width:2px,color:#fff,stroke-dasharray: 5 5</pre>
+<p>kafka 数据保留策略：</p>
+<ul>
+<li>
+<p><code>log.dir</code> 确认数据保留位置</p>
+</li>
+<li>
+<p><code>log.retention.hours = 168</code> 和 <code>log.retention.bytes = 1073741824</code> 确认数据保留的时长或大小。</p>
+<p>数据文件按照片段保留数据默认1g（ <code>log.segment.bytes=1073741824</code> ）如果达到片段上限，就关闭当前文件，并打开一个新文件。当前正在写入数据的片段叫作活跃片段。活动片段永远不会被删除，所以如果你要保留数据 1 天(<code>log.retention.hours = 24</code>)，但片段里包含了 5 天的数据，那么这些数据会被保留 5 天</p>
+<p>kafka 提供了工具查看片段中的内容:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/kafka/bin/kafka-dump-log.sh --files 00000000000000000504.log |less
+</span></span></code></pre></div></li>
+</ul>
+<p>JMX 全称为 Java Management Extensions，用来管理和监测 Java 程序。最常用到的就是对于 JVM 的监测和管理，比如 JVM 内存、CPU 使用率、线程数、垃圾收集情况等等。另外，还可以用作日志级别的动态修改，比如 log4j 就支持 JMX 方式动态修改线上服务的日志级别.</p>
+<p>JMX是一个标准接口，不但可以用于管理JVM，还可以管理应用程序自身。下图是JMX的架构</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    ┌─────────┐  ┌─────────┐
+</span></span><span style="display:flex;"><span>    │jconsole │  │   Web   │
+</span></span><span style="display:flex;"><span>    └─────────┘  └─────────┘
+</span></span><span style="display:flex;"><span>         │            │
+</span></span><span style="display:flex;"><span>┌ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─
+</span></span><span style="display:flex;"><span> JVM     ▼            ▼        │
+</span></span><span style="display:flex;"><span>│   ┌─────────┐  ┌─────────┐
+</span></span><span style="display:flex;"><span>  ┌─┤Connector├──┤ Adaptor ├─┐ │
+</span></span><span style="display:flex;"><span>│ │ └─────────┘  └─────────┘ │
+</span></span><span style="display:flex;"><span>  │       MBeanServer        │ │
+</span></span><span style="display:flex;"><span>│ │ ┌──────┐┌──────┐┌──────┐ │
+</span></span><span style="display:flex;"><span>  └─┤MBean1├┤MBean2├┤MBean3├─┘ │
+</span></span><span style="display:flex;"><span>│   └──────┘└──────┘└──────┘
+</span></span><span style="display:flex;"><span> ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-3f35b0366995d1b427499856875e611b">kafka_exporter</h1>
+	<div class="lead"><em>通过kafka-exporter监控broker、producer、consumer</em></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-12" class="text-body-secondary">Friday, September 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>jdk版本：<code>openjdk 11</code></p>
+<p>zookeeper版本: <code>3.4.14</code></p>
+<p>kafka版本：<code>3.3.2</code></p>
+<hr>
+<p><em>2011年初，美国领英公司（LinkedIn）开源了一款基础架构软件，以奥地利作家弗兰兹·卡夫卡（Franz Kafka）的名字命名，之后 LinkedIn将其贡献给 Apache基金会，随后该软件于2012年10月完成孵化并顺利晋升为Apache顶级项目——这便是大名鼎鼎的Apache Kafka</em></p>
+
+
+</div>
+
+<h3 id="kafka_"><strong>kafka_exporter</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/danielqsj/kafka_exporter/releases/download/v1.9.0/kafka_exporter-1.9.0.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tar xf kafka_exporter-1.9.0.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mv kafka_exporter-1.9.0.linux-amd64/kafka_exporter /usr/bin/kafka_exporter 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee /usr/lib/systemd/system/kafka_exporter.service <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=kafka_exporter service
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Documentation=https://github.com/danielqsj/kafka_exporter
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/usr/bin/kafka_exporter \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--web.listen-address=&#34;:9309&#34; \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--kafka.server=192.168.0.151:9092 \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--kafka.server=192.168.0.152:9092 \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--kafka.server=192.168.0.153:9092
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># 监控有密码认证的kafka
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#--sasl.enabled \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#--sasl.username=filebeat \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#--sasl.password=ZmlsZWJlYXRAMjAyNgo= \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#--sasl.mechanism=scram-sha256
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl daemon-reload 
+</span></span><span style="display:flex;"><span>systemctl enable kafka_exporter --now 
+</span></span><span style="display:flex;"><span>systemctl status kafka_exporter
+</span></span></code></pre></div><p>grafna 报表id <code>21078</code></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指标名称</th>
+          <th style="text-align: left">指标含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>kafka_consumergroup_lag</code></td>
+          <td style="text-align: left"><strong>消费者组的滞后消息数</strong>，即消息积压量</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_consumergroup_members</code></td>
+          <td style="text-align: left">消费者组中成员数量</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_consumergroup_current_offset</code></td>
+          <td style="text-align: left">消费者组在当前分区的最新提交偏移量</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_topic_partition_current_offset</code></td>
+          <td style="text-align: left">主题分区在Broker上的最新消息偏移量（生产者偏移）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_brokers</code></td>
+          <td style="text-align: left">Kafka集群中的代理（Broker）数量</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_broker_info</code></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_topic_partitions</code></td>
+          <td style="text-align: left">指定主题的分区数量</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_topic_partition_replicas</code></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kafka_topic_partition_in_sync_replica</code></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>process_cpu_seconds_total</code></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>process_max_fds</code></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>process_open_fds</code></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>process_start_time_seconds</code></td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">kafka</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">KAFKA_brokers异常</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">kafka_broker_info != 1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">2m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;{{ $labels.name }}当前brokers异常：{{ $labels.address }}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">电商生产KAFKA消息整体积压</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">sum(kafka_consumergroup_lag_sum{job=&#34;kafka-exporter&#34;}) by (name,consumergroup, topic)&gt;5000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">2m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;【环境】{{ $labels.name }}\n【消费组】{{ $labels.consumergroup }}\n【topic】{{ $labels.topic }}【积压】：{{ $value | printf \&#34;%.2f\&#34; }}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">电商生产KAFKA消息分区积压</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">(sum(kafka_consumergroup_lag{job=&#34;kafka-exporter&#34;}) by (name,consumergroup, topic, partition)&gt;1500) AND ON() (hour()+8)%24 &gt;= 7 &lt;= 21</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">3m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;【环境】{{ $labels.name }}\n【消费组】{{ $labels.consumergroup }}\n【topic】{{$labels.topic}}【分区】{{ $labels.partition }}【积压】：{{ $value | printf \&#34;%.2f\&#34; }}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">电商生产KAFKA分区数过多</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">sum by(name)(kafka_topic_partitions{job=&#34;kafka-exporter&#34;,topic !~&#34;__.*&#34;})&gt;1500</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">2m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;{{ $labels.name }}当前分区数：{{ $value | printf \&#34;%.2f\&#34; }}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">电商生产KAFKA_brokers丢失</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">kafka_brokers{job=&#34;kafka-exporter&#34;} &lt; 3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">2m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;{{ $labels.name }}当前brokers数：{{ $value | printf \&#34;%.2f\&#34; }}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">alert</span>: <span style="color:#ae81ff">电商生产KAFKA_TopicsReplicas</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expr</span>: <span style="color:#ae81ff">sum(kafka_topic_partition_in_sync_replica{job=&#34;kafka-exporter&#34;}) by (name,topic) &lt;1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">for</span>: <span style="color:#ae81ff">2m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">severity</span>: <span style="color:#ae81ff">critical</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;{{ $labels.name }} Kafka topic in-sync partition：{{ $value | printf \&#34;%.2f\&#34; }}&#34;</span>
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-25e990c22a9d5ff7c6e251af66967092">kafka可视化管理工具</h1>
+	<div class="lead"><em>如何可视化管理kafka,给开发使用</em></div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-09-12" class="text-body-secondary">Friday, September 12, 2025</time>
+        
+	</div>
+	
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">文档环境</h4>
+
+    <p>os 版本： <code>CentOS Linux release 7.9.2009 (Core)</code></p>
+<p>jdk版本：<code>openjdk 11</code></p>
+<p>zookeeper版本: <code>3.4.14</code></p>
+<p>kafka版本：<code>3.3.2</code></p>
+<hr>
+<p><em>2011年初，美国领英公司（LinkedIn）开源了一款基础架构软件，以奥地利作家弗兰兹·卡夫卡（Franz Kafka）的名字命名，之后 LinkedIn将其贡献给 Apache基金会，随后该软件于2012年10月完成孵化并顺利晋升为Apache顶级项目——这便是大名鼎鼎的Apache Kafka</em></p>
+
+
+</div>
+
+<ul>
+<li>
+<p><a href="https://github.com/yahoo/CMAK.git" target="_blank">雅虎开源的kafka管理工具CMAK</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export ZK_HOSTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181&#34;</span>
+</span></span><span style="display:flex;"><span>wget https://github.com/yahoo/CMAK/releases/download/3.0.0.6/cmak-3.0.0.6.zip
+</span></span><span style="display:flex;"><span>unzip cmak-3.0.0.6.zip
+</span></span><span style="display:flex;"><span>cmak-3.0.0.6/bin/cmak
+</span></span></code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">启动报错</h4>
+
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>025-10-13 10:11:20,623 - <span style="color:#f92672">[</span>ERROR<span style="color:#f92672">]</span> k.m.KafkaManager - Failed on input : KMAddCluster<span style="color:#f92672">(</span>ClusterConfig<span style="color:#f92672">(</span>demo,CuratorConfig<span style="color:#f92672">(</span>192.168.0.151:2181,192.168.0.152:2181,192.168.0.153:2181,10,100,1000<span style="color:#f92672">)</span>,true,3.1.0,false,None,None,false,false,true,true,false,false,Some<span style="color:#f92672">(</span>ClusterTuning<span style="color:#f92672">(</span>Some<span style="color:#f92672">(</span>30<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>100<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>100<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>100<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>30<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>5<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>1000<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>1000<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>1000<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>30000<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>1000000<span style="color:#f92672">)</span>,Some<span style="color:#f92672">(</span>7<span style="color:#f92672">)))</span>,PLAINTEXT,None,None<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>org.apache.zookeeper.KeeperException$UnimplementedException: KeeperErrorCode <span style="color:#f92672">=</span> Unimplemented <span style="color:#66d9ef">for</span> /kafka-manager/mutex
+</span></span><span style="display:flex;"><span>        at org.apache.zookeeper.KeeperException.create<span style="color:#f92672">(</span>KeeperException.java:106<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.zookeeper.KeeperException.create<span style="color:#f92672">(</span>KeeperException.java:54<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.zookeeper.ZooKeeper.create<span style="color:#f92672">(</span>ZooKeeper.java:1538<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.utils.ZKPaths.mkdirs<span style="color:#f92672">(</span>ZKPaths.java:291<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl$11.call<span style="color:#f92672">(</span>CreateBuilderImpl.java:746<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl$11.call<span style="color:#f92672">(</span>CreateBuilderImpl.java:723<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.RetryLoop.callWithRetry<span style="color:#f92672">(</span>RetryLoop.java:109<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl.pathInForeground<span style="color:#f92672">(</span>CreateBuilderImpl.java:720<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl.protectedPathInForeground<span style="color:#f92672">(</span>CreateBuilderImpl.java:484<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl.forPath<span style="color:#f92672">(</span>CreateBuilderImpl.java:474<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>2025-10-13 10:11:20,623 - <span style="color:#f92672">[</span>ERROR<span style="color:#f92672">]</span> k.m.ApiError$ - error : KeeperErrorCode <span style="color:#f92672">=</span> Unimplemented <span style="color:#66d9ef">for</span> /kafka-manager/mutex
+</span></span><span style="display:flex;"><span>org.apache.zookeeper.KeeperException$UnimplementedException: KeeperErrorCode <span style="color:#f92672">=</span> Unimplemented <span style="color:#66d9ef">for</span> /kafka-manager/mutex
+</span></span><span style="display:flex;"><span>        at org.apache.zookeeper.KeeperException.create<span style="color:#f92672">(</span>KeeperException.java:106<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.zookeeper.KeeperException.create<span style="color:#f92672">(</span>KeeperException.java:54<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.zookeeper.ZooKeeper.create<span style="color:#f92672">(</span>ZooKeeper.java:1538<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.utils.ZKPaths.mkdirs<span style="color:#f92672">(</span>ZKPaths.java:291<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl$11.call<span style="color:#f92672">(</span>CreateBuilderImpl.java:746<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl$11.call<span style="color:#f92672">(</span>CreateBuilderImpl.java:723<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.RetryLoop.callWithRetry<span style="color:#f92672">(</span>RetryLoop.java:109<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl.pathInForeground<span style="color:#f92672">(</span>CreateBuilderImpl.java:720<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl.protectedPathInForeground<span style="color:#f92672">(</span>CreateBuilderImpl.java:484<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.curator.framework.imps.CreateBuilderImpl.forPath<span style="color:#f92672">(</span>CreateBuilderImpl.java:474<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p><strong>解决办法</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建 kafka-manager 基础路径</span>
+</span></span><span style="display:flex;"><span>create /kafka-manager <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>create /kafka-manager/mutex <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>create /kafka-manager/mutex/locks <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>create  /kafka-manager/mutex/leases <span style="color:#e6db74">&#34;&#34;</span>
+</span></span></code></pre></div>
+
+</div>
+
+</li>
+<li>
+<p><a href="https://github.com/didi/KnowStreaming.git" target="_blank">滴滴开源的kafka管理工具</a></p>
+</li>
+<li>
+<p><a href="https://www.kafkatool.com/download.html" target="_blank">Offset Explorer (kafkatool.com)</a></p>
+</li>
+</ul>
+
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

@@ -1,0 +1,1555 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="https://zero-dew.netlify.app/docs/database/tidb/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://zero-dew.netlify.app/docs/database/tidb/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>零露云</title>
+<meta name="description" content="集群安装 数据同步 数据迁移 数据备份 数据恢复 命令行工具 监控 安全 性能优化 故障处理">
+<meta property="og:url" content="https://zero-dew.netlify.app/docs/database/tidb/">
+  <meta property="og:site_name" content="零露云">
+  <meta property="og:title" content="零露云">
+  <meta property="og:description" content="集群安装 数据同步 数据迁移 数据备份 数据恢复 命令行工具 监控 安全 性能优化 故障处理">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="零露云">
+  <meta itemprop="description" content="集群安装 数据同步 数据迁移 数据备份 数据恢复 命令行工具 监控 安全 性能优化 故障处理">
+  <meta itemprop="datePublished" content="2025-05-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-17T00:00:00+00:00">
+  <meta itemprop="wordCount" content="10">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="零露云">
+  <meta name="twitter:description" content="集群安装 数据同步 数据迁移 数据备份 数据恢复 命令行工具 监控 安全 性能优化 故障处理">
+<link rel="preload" href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" as="style" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<link href="/scss/main.min.18c08ee35308968138c55945e86231cae563e39470a6efcb36f516f6b21b6a02.css" rel="stylesheet" integrity="sha256-GMCO41MIloE4xVlF6GIxyuVj45Rwpu/LNvUW9rIbagI=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">零露云</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><i class="fa-solid fa-house"></i><span>关于</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs"><i class="fa-solid fa-book"></i><span>文档</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><i class="fa-solid fa-blog"></i><span>博客</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/google/docsy/" target="_blank" rel="noopener"><i class='fa-brands fa-github'></i><span></span></a>
+      </li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.a779bd279239ad7d8c03caec2282ddc3.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="25"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/database/tidb/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title"></h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-67eb87020312586dadda63d97ee6dd73">pcta</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-6cd2fa811bb545211e56673b02260128">环境检查</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-c968788ec97c1b8ea0974bc58c38f16b">集群安装</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-187ec7198335d617c91d9604a38255b3">tiup工具</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-b6a1b6b4042adf75eca6f429ffbb92d1">checkssh</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <p><img src="https://docs-download.pingcap.com/media/images/docs-cn/tidb-architecture-v6.png" alt=""></p>
+<h3 id="集群安装">集群安装</h3>
+<h3 id="数据同步">数据同步</h3>
+<h3 id="数据迁移">数据迁移</h3>
+<h3 id="数据备份">数据备份</h3>
+<h3 id="数据恢复">数据恢复</h3>
+<h3 id="命令行工具">命令行工具</h3>
+<h3 id="监控">监控</h3>
+<h3 id="安全">安全</h3>
+<h3 id="性能优化">性能优化</h3>
+<h3 id="故障处理">故障处理</h3>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="">
+    <h1 id="pg-67eb87020312586dadda63d97ee6dd73">pcta</h1>
+	<div class="lead">平凯数据库认证 TiDB 数据库专员（简称 PCTA）是平凯星辰对于数据库从业者安装部署及日常运维分布式关系型数据库能力的认证，要求数据库从业者熟练掌握 TiDB Open Core 架构原理、安装部署、周边工具等基础知识。</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-08-11" class="text-body-secondary">Monday, August 11, 2025</time>
+        
+	</div>
+	<p><img src="https://asktug.com/uploads/default/original/4X/c/d/9/cd9bcb7f3bd551a7febf28c9f79c86cd81589517.png" alt=""></p>
+<p>Tso(timestamp oracle) 用于标识事务的先后顺序</p>
+<h3 id="tidb数据库架构">tidb数据库架构</h3>
+<p><img src="https://docs-download.pingcap.com/media/images/docs-cn/tidb-architecture-v6.png" alt=""></p>
+<h4 id="tidb-server">tidb server</h4>
+<p>tidb server为<font color=red>无状态</font>服务，在生产中可以启动多个实例并通过LB对外提供统一的连接地址。</p>
+<p><strong>主要功能：</strong></p>
+<ol>
+<li>
+<p>对外提供mysql 5.7协议的连接服务 （<code>protocol layer</code>）</p>
+</li>
+<li>
+<p>负责对sql解析、编译、优化并最终生成执行计划 (<code>parese</code>、<code>compile</code>)</p>
+<p><code>parse</code> 通过此法分析器将sql 拆借成一个一个的字段，接着进行此法分析。将解析后的内容传递给 <code>compile</code>, 编译器执行逻辑优化和物理优化生成执行计划</p>
+</li>
+<li>
+<p>执行sql (<code>executor</code>、<code>distsql</code>、<code>kv</code>)、事务（<code>transaction</code>、<code>kv</code>）</p>
+</li>
+<li>
+<p>负责sql语句与tikv 数据结构的转化 。</p>
+<p><strong>表数据与 Key-Value 的映射关系:</strong></p>
+<p>TiDB 会为每个表分配一个表 ID，用 <code>TableID</code> 表示。表 ID 是一个整数，在整个集群内唯一。TiDB 会为表中每行数据分配一个行 ID，用 <code>RowID</code> 表示。行 ID 也是一个整数，在表内唯一。对于行 ID，TiDB 做了一个小优化，如果某个表有整数型的主键，TiDB 会使用主键的值当做这一行数据的行 ID。</p>
+<p>最终将每一行转换成以k:v 格式的数据,其中 <code>tablePrefix</code> 和 <code>recordPrefixSep</code> 都是特定的字符串常量，用于在 Key 空间内区分其他数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Key:   tablePrefix<span style="color:#f92672">{</span>TableID<span style="color:#f92672">}</span>_recordPrefixSep<span style="color:#f92672">{</span>RowID<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>Value: <span style="color:#f92672">[</span>col1, col2, col3, col4<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>索引数据和 Key-Value 的映射关系:</strong></p>
+<p>与表数据映射方案类似，TiDB 为表中每个索引分配了一个索引 ID，用 <code>IndexID</code> 表示。</p>
+<p>对于主键和唯一索引，需要根据键值快速定位到对应的 RowID，因此，按照如下规则编码成 (Key, Value) 键值对：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Key:   tablePrefix<span style="color:#f92672">{</span>tableID<span style="color:#f92672">}</span>_indexPrefixSep<span style="color:#f92672">{</span>indexID<span style="color:#f92672">}</span>_indexedColumnsValue
+</span></span><span style="display:flex;"><span>Value: RowID
+</span></span></code></pre></div><p>对于不需要满足唯一性约束的普通二级索引，一个键值可能对应多行，需要根据键值范围查询对应的 RowID。因此，按照如下规则编码成 (Key, Value) 键值对：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Key:   tablePrefix<span style="color:#f92672">{</span>TableID<span style="color:#f92672">}</span>_indexPrefixSep<span style="color:#f92672">{</span>IndexID<span style="color:#f92672">}</span>_indexedColumnsValue_<span style="color:#f92672">{</span>RowID<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>Value: null
+</span></span></code></pre></div></li>
+<li>
+<p>执行online DDL (<code>schema load</code>、<code>worker</code>、<code>start job</code>)在同一时刻只有一个tidbserver执行该操作</p>
+</li>
+<li>
+<p>垃圾回收（对于update 等多次的修改，数据库会保留历史版本，tidbserver 每隔10分钟(gc lifetime)执行一次历史版本的回收） （gc）</p>
+</li>
+<li>
+<p>缓存（memBuffer）默认使用tidb-server 所有内存。</p>
+<ul>
+<li>sql结果</li>
+<li>线程缓存</li>
+<li>元数据，统计信息</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 每个sql可以使用最大内存</span>
+</span></span><span style="display:flex;"><span>tidb_mem_quota_query
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 超过最大缓存时的动作，可以是杀掉sql</span>
+</span></span><span style="display:flex;"><span>oom-action
+</span></span></code></pre></div></li>
+<li>
+<p>热点小表缓存功能（v6.0版本开始支持对热点表缓存）(<code>cache table</code>)</p>
+<ul>
+<li>
+<p>64MB 以下的表</p>
+</li>
+<li>
+<p>查询频繁，修改极少</p>
+</li>
+<li>
+<p>缓存租约时间内，阻塞写操作。</p>
+</li>
+<li>
+<p>开启热点小表缓存的表，无法执行ddl 修改。</p>
+</li>
+</ul>
+<p><img src="C:%5CUsers%5Cpc%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250801085345694.png" alt=" "></p>
+</li>
+</ol>
+<h4 id="pd">pd</h4>
+<p>被称为<code>placement driver</code> 是整个集群的大脑内置etcd,<font color=red>有状态</font>建议部署奇数实现高可用。</p>
+<ol>
+<li>
+<p>存储每个 TiKV 节点实时的数据分布情况和集群的整体拓扑结构等元数据</p>
+</li>
+<li>
+<p>分配全局id和事务id</p>
+</li>
+<li>
+<p>负责为集群内各组件分配TSO 时间戳。这些时间戳用于为事务和数据分配时间标记。对于事务提供一个开始TSO 和一个结束TSO 。</p>
+<p>TSO 时间戳由两部分组成：</p>
+<ul>
+<li>物理时间戳：自 1970 年 1 月 1 日以来的 UNIX 时间戳，单位为毫秒</li>
+<li>逻辑时间戳：递增计数器，用于需要在一毫秒内使用多个时间戳的情况，或某些事件可能触发时钟进程逆转的情况。在这些情况下，物理时间戳会保持不变，而逻辑时间戳保持递增。该机制可以确保 TSO 时间戳的完整性，确保时间戳始终递增而不会倒退。</li>
+</ul>
+</li>
+<li>
+<p>根据 TiKV 节点上报的数据动态均衡数据分布,例如：</p>
+<ul>
+<li>对tikv执行leader、热点region 均衡</li>
+</ul>
+<ul>
+<li>集群拓扑</li>
+<li>缩容</li>
+<li>故障恢复</li>
+<li>Region merge</li>
+</ul>
+</li>
+<li>
+<p>根据label，支持对region分布的手动调度。</p>
+<p>tikv实例添加zone 、rack、host等标签后，可以通过pd的调度功能实现基于标签不同级别的高可用。（k8s的node节点添加标签后当pod调度时添加亲和反亲和策略）</p>
+</li>
+<li>
+<p>提供 TiDB Dashboard 管控界面</p>
+</li>
+</ol>
+<p><img src="C:%5CUsers%5Cpc%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250808112254855.png" alt="image-20250808112254855"></p>
+<p><img src="C:%5CUsers%5Cpc%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250808112604664.png" alt="image-20250808112604664"></p>
+<h4 id="tikv">TiKV</h4>
+<p>作为分布式存储系统,tikv基于key-value方式存储数据。数据按照key的范围保存到region中，region是tikv的最小存储单元（大小在96MB-144MB之间），每个region默认保证三个副本通过raft协议保证数据的强一致性，而数据的落盘则调用 Facebook 开源的rocksDB实现。<font color=red>有状态服务</font></p>
+<h5 id="rocksdb">RocksDB</h5>
+<p><code>RocksDB</code> 是 Facebook 开源的单机 KV 存储引擎，内部使用LSM存储引擎</p>
+<p><strong>数据存储流程：</strong> 数据存储时先写入wal 预写日志和 memTable中，当memtable 写入达到指定大小后将该memtable 归档并入immutable 的队列中，从新开启一个新的memtable继续接收新的写入。开启一个新线程将队列中的数据持续写入磁盘持久化</p>
+<p>当队列中等待写入磁盘的队列大于5时，rocksdb开启流量控制降低写入速度。</p>
+<p>磁盘中文件按照压缩级别分为6个级别：</p>
+<p>level0 是 immutable的数据复刻，level0数据达到一定大小时rocksdb 执行数据合并压缩（compaction）生成level1文件，依次类推。 每一个文件称为SST（stored string table）</p>
+<p><strong>数据读取流程：</strong> rocksdb中存在一个<em>blockcache</em> 的查询内存空间用于缓存最近查询，如果缓存中不存在则从memtable中查找，如果memtable找不到，继续去磁盘中通过<em>二分查找法</em>继续查找</p>
+<p><strong>数据删除流程：</strong> 无需要查找到原始数据，只需要执行del操作</p>
+<p><strong>RocksDB列族（column family）:</strong> 是rocksdb的数据分片技术，可以按照不同的id分配给不同的<strong>列族</strong>，如果未指定列族则写入default。一个rocksdb 实例可以对应多个列族，每个列族有自己的memtabl 、SST ，共享wal</p>
+<p><img src="C:%5CUsers%5Cpc%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250807084844225.png" alt="image-20250807084844225"></p>
+<h5 id="raft">Raft</h5>
+<p>RocksDB提供单机存储能力，为保证数据的高可用引入了<a href="https://raft.github.io/raft.pdf" target="_blank">raft协议</a>。TiKV 利用 Raft 来做数据复制，每个数据变更都会落地为一条 Raft 日志，通过 Raft 的日志复制功能，将数据安全可靠地同步到复制组的每一个节点中。通过实现 Raft，TiKV 变成了一个分布式的 Key-Value 存储。</p>
+<ul>
+<li>
+<p>Leader选举。</p>
+<p>在raft协议中节点刚创建时所有节点都处于<em>flollower</em>状态，在指定的 <em>election timeout</em>  时间内如果没有找到 <em>leader</em> ,优先达到 <em>election timeout</em> 的节点将发起选举进入<em>candidate</em> 状态并将<code>term+1</code>，在获得多数投票后该成员状态转为 <em>leader</em> 状态。</p>
+<p>集群关系建立后，<em>leader</em>定期向<em>follower</em> 发送心跳消息，在指定的 <em>heartbeat time interval</em> 内未收到 <em>leader</em> 的心跳信息的<em>follwer</em> 将会进入下一个<em>term</em> 并发起选举进去<em>candidate</em>状态，在获得多数投票后该成员状态转为 <em>leader</em> 状态。</p>
+</li>
+<li>
+<p>日志复制</p>
+<p>raft 主从节点之间通过日志复制实现数据的一致性，期间经历以下阶段：</p>
+<ol>
+<li><code>propose</code> leader将写入请求转成raft log 格式</li>
+<li><code>append</code> 保存日志到 <em>leader</em> 本地</li>
+<li><code>replicate</code> 收到集群内大多数节点日志复制成功的确认消息</li>
+<li><code>commited</code> 收到集群内大多数节点日志复制成功并持久化到本地确认消息</li>
+<li><code>apply</code> 成功完成日志的持久化写入</li>
+</ol>
+</li>
+<li>
+<p>成员变更（如添加副本、删除副本、转移 Leader 等操作）</p>
+</li>
+</ul>
+<p><img src="C:%5CUsers%5Cpc%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250807111853595.png" alt="image-20250807111853595"></p>
+<p><img src="C:%5CUsers%5Cpc%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250807112836082.png" alt="image-20250807112836082"></p>
+<h5 id="mvcc">MVCC</h5>
+<p><code>MVCC (Multi-Version Concurrency Control)</code>假设有这样一种场景：某客户端 A 在写一个 Key，另一个客户端 B 同时在对这个 Key 进行读操作。如果没有数据的多版本控制机制，那么这里的读写操作必然互斥。在分布式场景下，这种情况可能会导致性能问题和死锁问题。有了 MVCC，只要客户端 B 执行的读操作的逻辑时间早于客户端 A，那么客户端 B 就可以在客户端 A 写入的同时正确地读原有的值。即使该 Key 被多个写操作修改过多次，客户端 B 也可以按照其逻辑时间读到旧的值。</p>
+<h5 id="transaction">Transaction</h5>
+<ol>
+<li>
+<p><code>Transaction</code>提供了分布式事务能力</p>
+<p>两阶段提交</p>
+<p>第一阶段：<code>prewrite</code>  设置锁信息，并将锁在rocksdb的lock列族中（锁信息仅在事务的第一行所在的tikv实例的lock列族中添加锁，其他行所在tikv lock列族引用该锁的地址）。需要修改的信息放入到default 列族中（修改信息大于255byte 放入default 列族中，小于255bytes放入到write列族中）</p>
+<p>第二阶段：<code>commit</code> 从pd中获取tso,在write列族中写入提交信息。并释放lock 列族中的锁信息</p>
+</li>
+</ol>
+<h5 id="coprocessor">coprocessor</h5>
+<ol>
+<li>coprocessor算子下推(在每个tikv中执行例如 <code>where</code> 、<code>group by</code> 等操作，过滤后再发给tidb server)</li>
+</ol>
+<p><strong>tikv 数据读取流程</strong></p>
+<p>用户从tidb-server 发起查询请求，此时从pd 分配一个tso给到该线程，并告知该线程用户需要读取的数据在哪个tikv节点</p>
+<p><img src="https://docs-download.pingcap.com/media/images/docs-cn/tikv-arch.png" alt=""></p>
+<pre class="mermaid">   graph TB
+   
+       subgraph TiKV node
+       A(Transation)
+       B(MVCC)
+       C(Raft)
+           subgraph rocksdb
+           D[(RocksDB raft)]
+           E[(RocksDB kv)]
+           end
+       end</pre>
+<h3 id="tidb-htap">tidb HTAP</h3>
+<p>TiDB 是PingCAP 公司开源的分布式数据库，兼容mysql协议支持水平扩缩容能力，同时实现HTAP（OLTP online transactional processing 和 OLAP online analytical processing）。具备智能选择（CBO自动或人工选择）能力</p>
+<p><strong>OLTP 特征：</strong></p>
+<ul>
+<li>支持试试更新的行存</li>
+<li>高并发、一致性要求高</li>
+<li>每次操作少量数据</li>
+</ul>
+<p><strong>OLAP 特征：</strong></p>
+<ul>
+<li>
+<p>批量更新列存</p>
+</li>
+<li>
+<p>并发数低</p>
+</li>
+<li>
+<p>每次操作大量数据</p>
+</li>
+<li>
+<p><strong>tiflash：</strong> 是TiDB HTAP(OLAP OLTP ) 形态的关键组件，它是 TiKV 的列存扩展。和普通 TiKV 节点不一样的是，在 TiFlash 内部作为<code>learner</code>角色加入到tikv 的<code>region</code> 通过<code>raft log</code> 异步复制leader数据,tiflash不参与tikv数据选举、投票，数据是以列式的形式进行存储，主要的功能是为分析型的场景加速。可以理解为<font color=red>tikv是行存储，tiflash 是列存储。</font></p>
+<p>MPP架构：每个tiflash 作为worker节点首先过滤符合条件的数据，之后按照 <strong>等值连接</strong> 将具有符合条件的数据执行数据交换到同一台tiflash中执行聚合计算</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>tidb_allow_mpp      
+</span></span><span style="display:flex;"><span>tidb_enforce_mpp
+</span></span></code></pre></div><p><img src="https://docs-download.pingcap.com/media/images/docs-cn/tidb-storage-architecture-1.png" alt=""></p>
+</li>
+</ul>
+<h3 id="60新功能">6.0新功能</h3>
+<ul>
+<li>
+<p>热点小表缓存（表的特征：1. 表的数据不大(小于64MB) 2. 只读表或者修改不频繁的表 3.表的访问特别频繁）用于将表缓存在tidb server 的<code>cache table</code> 中提升读性能。</p>
+<p>开启热点小表缓存的表，无法做ddl 的修改</p>
+<p>实现原理：通过租约的方式缓存表内容，在租约时间范围内该表只能读，写处于阻塞状态。租约到期后批量将写内容更新的tikv，并更新tidb server的<code>cache table</code>重新计算租约时间。 相关参数 <code>tidb_table_cache_lease=5</code></p>
+<p>具体实现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> t1 <span style="color:#66d9ef">cache</span>;
+</span></span></code></pre></div><p><img src="C:%5CUsers%5Cpc%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250810204836420.png" alt="image-20250810204836420"></p>
+</li>
+<li>
+<p><code>placement rules in sql </code> 使用sql的方式精细化调度表在tikv的分布、副本数</p>
+<p>创建一个规则</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> PLACEMENT POLICY P1
+</span></span><span style="display:flex;"><span>PRIMARY_REGION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Beijing&#34;</span>   <span style="color:#75715e">--leader 角色的region位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>REGIONS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Beijing, Tokyo, Shanghai, London&#34;</span>  <span style="color:#75715e">--follower角色的region位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FOLLOWERS <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; <span style="color:#75715e">--follower数量
+</span></span></span></code></pre></div><p>创建表时引用该规则</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> T5 (id INT) PLACEMENT POLICY<span style="color:#f92672">=</span>P1;
+</span></span></code></pre></div></li>
+<li>
+<p>内存悲观锁, 事务的锁信息放置在leader 所在tikv的缓存中不会将锁信息复制到follwer节点，减少了磁盘io。当leader所在节点的tivk宕机后锁信息会丢失此时事务执行回滚。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">--在线开启内存悲观锁
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">set</span> config tikv pessimistic<span style="color:#f92672">-</span>txn.pipelined<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> config tikv pessimistic<span style="color:#f92672">-</span>txn.<span style="color:#66d9ef">in</span><span style="color:#f92672">-</span>memory<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span>;
+</span></span></code></pre></div></li>
+<li>
+<p>topsql 基于cpu的使用量查找对应的sql。</p>
+<p>例如：单个tikv 实例负载较高，此时可以使用topsql 功能查找到对应sql</p>
+</li>
+<li>
+<p>tidb enterprise manager (TiEM) 可视化管理工具</p>
+<ol>
+<li>部署集群</li>
+<li>升级集群</li>
+<li>参数管理</li>
+<li>组件管理</li>
+<li>备份恢复与高可用管理</li>
+<li>集群监控与告警</li>
+<li>集群日志收集</li>
+<li>审计与安全</li>
+</ol>
+</li>
+</ul>
+<h3 id="tidb-cloud">tidb cloud</h3>
+<p>是一个DBaas 服务</p>
+<p><strong>1. 关于 TiKV 或 TiDB Server，下列说法不正确的是?</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> A. 数据被持久化在 TiKV 的 RocksDB 引擎中</li>
+<li><input disabled="" type="checkbox"> B. 对于老版本数据的回收（GC），是由 TiDB Server 在 TiKV 上完成的</li>
+<li><input checked="" disabled="" type="checkbox"> C. 两阶段提交的锁信息被持久化到 TiDB Server 中</li>
+<li><input disabled="" type="checkbox"> D. Region 可以在多个 TiKV 节点上进行调度，但是需要 PD 节点发出调度指令</li>
+</ul>
+<p>解题：tidb server 不存储数据</p>
+<p><strong>2.关于关系型数据与KV的转化，下列说法不正确的是？</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> A. 如果没有定义主键，key中包含RowID，IndexID和TableID，都是int64类型</li>
+<li><input disabled="" type="checkbox"> B. Table ID在整个集群内唯一</li>
+<li><input checked="" disabled="" type="checkbox"> C. 如果定义了主键，那么将使用主键作为RowID</li>
+<li><input disabled="" type="checkbox"> D. 不需要为每张表指定主键</li>
+</ul>
+<p><strong>3.关于关系型数据与 KV 的转化，下列说法</strong>不正确<strong>的是？</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> A. 如果没有定义主键，key 中包含 RowID、IndexID 和 TableID，都是 int64 类型</li>
+<li><input disabled="" type="checkbox"> B. Table ID 在整个集群内唯一</li>
+<li><input checked="" disabled="" type="checkbox"> C. 如果定义了主键，那么将使用主键作为 RowID</li>
+<li><input disabled="" type="checkbox"> D. 不需要为每张表指定主键</li>
+</ul>
+<p><strong>解释：</strong> C 如果定义了主键，并主键为整数型的，TiDB 会使用主键的值当做这一行数据的RowID。</p>
+<ul>
+<li>
+<p>6.0版本region 默认96MB,当达到144MB 是自动分裂</p>
+</li>
+<li>
+<p>所有tidb server都可以接受ddl任务，并将ddl任务放在tikv 队列中。同一时刻只有一个tidb server的worker 模块是ower角色，该worker拥有执行ddl 任务的权利</p>
+</li>
+<li>
+<p>tidb server 的gc 间隔默认10m一次</p>
+</li>
+</ul>
+<p><a href="https://learn.pingcap.cn/learner/course" target="_blank">课程中心</a></p>
+<p><a href="https://docs.pingcap.com/zh/tidb/stable/tidb-architecture/" target="_blank">TiDB 整体架构 | TiDB 文档中心</a></p>
+<p><a href="https://docs.pingcap.com/zh/tidb/stable/tikv-overview/" target="_blank">TiKV 简介 | TiDB 文档中心</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">set</span> <span style="color:#66d9ef">global</span>  tidb_enable_top_sql<span style="color:#f92672">=</span><span style="color:#66d9ef">ON</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">show</span> variables <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%top%&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">------------------------------------+------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Variable_name                      <span style="color:#f92672">|</span> Value      <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">------------------------------------+------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> ft_stopword_file                   <span style="color:#f92672">|</span> (built<span style="color:#f92672">-</span><span style="color:#66d9ef">in</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> innodb_ft_enable_stopword          <span style="color:#f92672">|</span> <span style="color:#66d9ef">ON</span>         <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> innodb_ft_server_stopword_table    <span style="color:#f92672">|</span>            <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> innodb_ft_user_stopword_table      <span style="color:#f92672">|</span>            <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> rpl_stop_slave_timeout             <span style="color:#f92672">|</span> <span style="color:#ae81ff">31536000</span>   <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> tidb_enable_top_sql                <span style="color:#f92672">|</span> <span style="color:#66d9ef">ON</span>         <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> tidb_top_sql_max_meta_count        <span style="color:#f92672">|</span> <span style="color:#ae81ff">5000</span>       <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> tidb_top_sql_max_time_series_count <span style="color:#f92672">|</span> <span style="color:#ae81ff">100</span>        <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">------------------------------------+------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">8</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">01</span> sec)
+</span></span></code></pre></div><h3 id="sql-中的锁和事务">sql 中的锁和事务</h3>
+<p>SQL-92 标准定义了 4 种隔离级别：读未提交 ()、读已提交 ()、可重复读 ()、串行化 ()。 详见下表：<code>READ UNCOMMITTED</code>、<code>READ COMMITTED</code>、<code>REPEATABLE READ</code>、<code>SERIALIZABLE</code></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">隔离级别</th>
+          <th style="text-align: left">脏写</th>
+          <th style="text-align: left">脏读</th>
+          <th style="text-align: left">模糊读取</th>
+          <th style="text-align: left">幻读</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">READ UNCOMMITTED</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">可能</td>
+          <td style="text-align: left">可能</td>
+          <td style="text-align: left">可能</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">READ COMMITTED</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">可能</td>
+          <td style="text-align: left">可能</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">REPEATABLE READ</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">可能</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SERIALIZABLE</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">不可能</td>
+          <td style="text-align: left">不可能</td>
+      </tr>
+  </tbody>
+</table>
+<p>TiDB 语法上支持设置 和 两种隔离级别：<code>READ COMMITTED``REPEATABLE READ</code></p>
+<p>缓存表的功能</p>
+<p>rocksdb 性能与cpu数量的关系</p>
+<p>导入数据后的一致性校验可以借助Coprocessor 由TiKV来完成</p>
+<p>tidb server 各个组件的功能</p>
+<p>GC life time是无法手工调整的</p>
+<p>SQL语句的解析和编译可以与TSO的获取异步执行</p>
+<p>sql 解析和编译流程，物理编译和逻辑编译</p>
+<p>tidb cloud 的功能</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-6cd2fa811bb545211e56673b02260128">环境检查</h1>
+	<div class="lead">prerun| tidb</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-17" class="text-body-secondary">Saturday, May 17, 2025</time>
+        
+	</div>
+	<h3 id="版本选择">版本选择</h3>
+<p>企业版和社区版的区别</p>
+<h3 id="安装前环境检查">安装前环境检查</h3>
+<p><strong>操作系统</strong>
+支持部署在x86_64、arm_64、容器环境的 Linux 操作系统。</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <ul>
+<li>
+<p>TiDB 在 v8.4.0 DMR 和 v8.5.0 版本中移除了对 glibc 2.17 的适配，以及对 CentOS Linux 7 的兼容性测试和支持，建议使用 Rocky Linux 9.1 及以上的版本。</p>
+<p>如果在使用 CentOS Linux 7 的情况下将 TiDB 升级到 v8.4.0 DMR 或 v8.5.0 版本，将存在导致集群不可用的风险。</p>
+</li>
+<li>
+<p>为了更好地服务仍在使用 CentOS Linux 7 的用户，TiDB 从 v8.5.1 版本起重新适配 glibc 2.17，恢复了对 CentOS Linux 7 的兼容性支持和测试。</p>
+</li>
+</ul>
+
+
+</div>
+
+
+  
+  
+  
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          aria-controls="tabs-01-00" aria-selected="false">
+        <strong>软件要求</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="中控机" aria-controls="tabs-01-01" aria-selected="true">
+        中控机
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-01-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-02" role="tab"
+          data-td-tp-persist="目标主机" aria-controls="tabs-01-02" aria-selected="false">
+        目标主机
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <table>
+  <thead>
+      <tr>
+          <th style="text-align: left">软件</th>
+          <th style="text-align: left">版本</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">sshpass</td>
+          <td style="text-align: left">1.06 及以上</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiUP</td>
+          <td style="text-align: left">1.5.0 及以上</td>
+      </tr>
+  </tbody>
+</table>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-01-02" role="tabpanel" aria-labelled-by="tabs-01-02-tab" tabindex="1">
+        <table>
+  <thead>
+      <tr>
+          <th style="text-align: left">软件</th>
+          <th style="text-align: left">版本</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">sshpass</td>
+          <td style="text-align: left">1.06 及以上</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">numa</td>
+          <td style="text-align: left">2.0.12 及以上</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">tar</td>
+          <td style="text-align: left">任意</td>
+      </tr>
+  </tbody>
+</table>
+
+    </div>
+</div>
+
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    <ul>
+<li>生产环境中的 TiDB 和 PD 可以部署和运行在同一台服务器上，如对性能和可靠性有更高的要求，应尽可能分开部署。</li>
+<li>强烈建议分别为生产环境中的 TiDB、TiKV 和 TiFlash 配置至少 8 核的 CPU。强烈推荐使用更高的配置，以获得更好的性能。</li>
+<li>TiKV 硬盘大小配置建议 PCIe SSD 不超过 4 TB，普通 SSD 不超过 1.5 TB。</li>
+</ul>
+
+
+</div>
+
+
+  
+  
+  
+<ul class="nav nav-tabs" id="tabs-3" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
+          aria-controls="tabs-03-00" aria-selected="false">
+        <strong>硬件要求</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-03-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-01" role="tab"
+          data-td-tp-persist="开发及测试环境" aria-controls="tabs-03-01" aria-selected="true">
+        开发及测试环境
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-03-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-02" role="tab"
+          data-td-tp-persist="生产环境" aria-controls="tabs-03-02" aria-selected="false">
+        生产环境
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-3-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-03-01" role="tabpanel" aria-labelled-by="tabs-03-01-tab" tabindex="3">
+        <table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>组件</strong></th>
+          <th style="text-align: left"><strong>CPU</strong></th>
+          <th style="text-align: left"><strong>内存</strong></th>
+          <th style="text-align: left"><strong>本地存储</strong></th>
+          <th style="text-align: left"><strong>网络</strong></th>
+          <th style="text-align: left"><strong>实例数量(最低要求)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">TiDB</td>
+          <td style="text-align: left">8 核+</td>
+          <td style="text-align: left">16 GB+</td>
+          <td style="text-align: left"><a href="https://docs.pingcap.com/zh/tidb/stable/hardware-and-software-requirements/#%e7%a3%81%e7%9b%98%e7%a9%ba%e9%97%b4%e8%a6%81%e6%b1%82" target="_blank">磁盘空间要求</a></td>
+          <td style="text-align: left">千兆网卡</td>
+          <td style="text-align: left">1（可与 PD 同机器）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PD</td>
+          <td style="text-align: left">4 核+</td>
+          <td style="text-align: left">8 GB+</td>
+          <td style="text-align: left">SAS, 200 GB+</td>
+          <td style="text-align: left">千兆网卡</td>
+          <td style="text-align: left">1（可与 TiDB 同机器）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiKV</td>
+          <td style="text-align: left">8 核+</td>
+          <td style="text-align: left">32 GB+</td>
+          <td style="text-align: left">SSD, 200 GB+</td>
+          <td style="text-align: left">千兆网卡</td>
+          <td style="text-align: left">3</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiFlash</td>
+          <td style="text-align: left">32 核+</td>
+          <td style="text-align: left">64 GB+</td>
+          <td style="text-align: left">SSD, 200 GB+</td>
+          <td style="text-align: left">千兆网卡</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiCDC</td>
+          <td style="text-align: left">8 核+</td>
+          <td style="text-align: left">16 GB+</td>
+          <td style="text-align: left">SAS, 200 GB+</td>
+          <td style="text-align: left">千兆网卡</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
+</table>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-03-02" role="tabpanel" aria-labelled-by="tabs-03-02-tab" tabindex="3">
+        <table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>组件</strong></th>
+          <th style="text-align: left"><strong>CPU</strong></th>
+          <th style="text-align: left"><strong>内存</strong></th>
+          <th style="text-align: left"><strong>硬盘类型</strong></th>
+          <th style="text-align: left"><strong>网络</strong></th>
+          <th style="text-align: left"><strong>实例数量(最低要求)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">TiDB</td>
+          <td style="text-align: left">16 核+</td>
+          <td style="text-align: left">48 GB+</td>
+          <td style="text-align: left">SSD</td>
+          <td style="text-align: left">万兆网卡（2 块最佳）</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PD</td>
+          <td style="text-align: left">8 核+</td>
+          <td style="text-align: left">16 GB+</td>
+          <td style="text-align: left">SSD</td>
+          <td style="text-align: left">万兆网卡（2 块最佳）</td>
+          <td style="text-align: left">3</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiKV</td>
+          <td style="text-align: left">16 核+</td>
+          <td style="text-align: left">64 GB+</td>
+          <td style="text-align: left">SSD</td>
+          <td style="text-align: left">万兆网卡（2 块最佳）</td>
+          <td style="text-align: left">3</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiFlash</td>
+          <td style="text-align: left">48 核+</td>
+          <td style="text-align: left">128 GB+</td>
+          <td style="text-align: left">1 or more SSDs</td>
+          <td style="text-align: left">万兆网卡（2 块最佳）</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiCDC</td>
+          <td style="text-align: left">16 核+</td>
+          <td style="text-align: left">64 GB+</td>
+          <td style="text-align: left">SSD</td>
+          <td style="text-align: left">万兆网卡（2 块最佳）</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">监控</td>
+          <td style="text-align: left">8 核+</td>
+          <td style="text-align: left">16 GB+</td>
+          <td style="text-align: left">SAS</td>
+          <td style="text-align: left">千兆网卡</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
+</table>
+
+    </div>
+</div>
+
+<p><strong>网络要求</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">组件</th>
+          <th style="text-align: left">默认端口</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">TiDB</td>
+          <td style="text-align: left">4000</td>
+          <td style="text-align: left">应用及 DBA 工具访问通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiDB</td>
+          <td style="text-align: left">10080</td>
+          <td style="text-align: left">TiDB 状态信息上报通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiKV</td>
+          <td style="text-align: left">20160</td>
+          <td style="text-align: left">TiKV 通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiKV</td>
+          <td style="text-align: left">20180</td>
+          <td style="text-align: left">TiKV 状态信息上报通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PD</td>
+          <td style="text-align: left">2379</td>
+          <td style="text-align: left">提供 TiDB 和 PD 通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PD</td>
+          <td style="text-align: left">2380</td>
+          <td style="text-align: left">PD 集群节点间通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiFlash</td>
+          <td style="text-align: left">9000</td>
+          <td style="text-align: left">TiFlash TCP 服务端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiFlash</td>
+          <td style="text-align: left">3930</td>
+          <td style="text-align: left">TiFlash RAFT 服务和 Coprocessor 服务端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiFlash</td>
+          <td style="text-align: left">20170</td>
+          <td style="text-align: left">TiFlash Proxy 服务端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiFlash</td>
+          <td style="text-align: left">20292</td>
+          <td style="text-align: left">Prometheus 拉取 TiFlash Proxy metrics 端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TiFlash</td>
+          <td style="text-align: left">8234</td>
+          <td style="text-align: left">Prometheus 拉取 TiFlash metrics 端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CDC</td>
+          <td style="text-align: left">8300</td>
+          <td style="text-align: left">CDC 通信接口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Monitoring</td>
+          <td style="text-align: left">9090</td>
+          <td style="text-align: left">Prometheus 服务通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Monitoring</td>
+          <td style="text-align: left">12020</td>
+          <td style="text-align: left">NgMonitoring 服务通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Node_exporter</td>
+          <td style="text-align: left">9100</td>
+          <td style="text-align: left">TiDB 集群每个节点的系统信息上报通信端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Blackbox_exporter</td>
+          <td style="text-align: left">9115</td>
+          <td style="text-align: left">Blackbox_exporter 通信端口，用于 TiDB 集群端口监控</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Grafana</td>
+          <td style="text-align: left">3000</td>
+          <td style="text-align: left">Web 监控服务对外服务和客户端(浏览器)访问端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Alertmanager</td>
+          <td style="text-align: left">9093</td>
+          <td style="text-align: left">告警 web 服务端口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Alertmanager</td>
+          <td style="text-align: left">9094</td>
+          <td style="text-align: left">告警通信端口</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-c968788ec97c1b8ea0974bc58c38f16b">集群安装</h1>
+	<div class="lead">install|tidb</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-20" class="text-body-secondary">Tuesday, May 20, 2025</time>
+        
+	</div>
+	<p><img src="https://docs-download.pingcap.com/media/images/docs-cn/tidb-architecture-v6.png" alt=""></p>
+
+  
+  
+
+  
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link disabled"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          aria-controls="tabs-00-00" aria-selected="false">
+        <strong>环境准备</strong>:
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="主机环境" aria-controls="tabs-00-01" aria-selected="true">
+        主机环境
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-00-02-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-02" role="tab"
+          data-td-tp-persist="系统环境" aria-controls="tabs-00-02" aria-selected="false">
+        系统环境
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        
+    </div>
+    <div class="tab-body tab-pane fade show active"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <table>
+  <thead>
+      <tr>
+          <th>os</th>
+          <th>主机名</th>
+          <th>ip</th>
+          <th>cpu</th>
+          <th>内存</th>
+          <th>磁盘</th>
+          <th>网卡</th>
+          <th>集群</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>centos7.6</td>
+          <td>tidb-dev01-s2</td>
+          <td>192.168.0.223</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>中控机</td>
+      </tr>
+      <tr>
+          <td>centos7.6</td>
+          <td>tidb-cmb01-s3</td>
+          <td>192.168.0.105</td>
+          <td>8</td>
+          <td>8</td>
+          <td>200G</td>
+          <td>千兆</td>
+          <td>cluster01</td>
+      </tr>
+      <tr>
+          <td>centos7.6</td>
+          <td>tidb-cmb02-s3</td>
+          <td>192.168.0.106</td>
+          <td>8</td>
+          <td>8</td>
+          <td>200G</td>
+          <td>千兆</td>
+          <td>cluster01</td>
+      </tr>
+      <tr>
+          <td>centos7.6</td>
+          <td>tidb-cmb03-s3</td>
+          <td>192.168.0.107</td>
+          <td>8</td>
+          <td>8</td>
+          <td>200G</td>
+          <td>千兆</td>
+          <td>cluster01</td>
+      </tr>
+      <tr>
+          <td>centos7.6</td>
+          <td>tidb-cmb04-s3</td>
+          <td>192.168.0.108</td>
+          <td>8</td>
+          <td>8</td>
+          <td>200G</td>
+          <td>千兆</td>
+          <td>cluster02</td>
+      </tr>
+      <tr>
+          <td>centos7.6</td>
+          <td>tidb-cmb05-s3</td>
+          <td>192.168.0.140</td>
+          <td>8</td>
+          <td>8</td>
+          <td>200G</td>
+          <td>千兆</td>
+          <td>cluster02</td>
+      </tr>
+      <tr>
+          <td>centos7.6</td>
+          <td>tidb-cmb06-s3</td>
+          <td>192.168.0.162</td>
+          <td>8</td>
+          <td>8</td>
+          <td>200G</td>
+          <td>千兆</td>
+          <td>cluster02</td>
+      </tr>
+  </tbody>
+</table>
+
+    </div>
+    <div class="tab-body tab-pane fade"
+        id="tabs-00-02" role="tabpanel" aria-labelled-by="tabs-00-02-tab" tabindex="0">
+        <ul>
+<li>
+<p>必备软件</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">软件</th>
+          <th style="text-align: left">版本</th>
+          <th>目标主机</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">sshpass</td>
+          <td style="text-align: left">1.06 及以上</td>
+          <td>中控机 &amp; 集群主机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">numactl</td>
+          <td style="text-align: left">2.0.12 及以上</td>
+          <td>集群主机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">tar</td>
+          <td style="text-align: left">任意</td>
+          <td>集群主机</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>时间同步</p>
+</li>
+<li>
+<p>关闭swap</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;vm.swappiness = 0&#34;</span>&gt;&gt; /etc/sysctl.conf
+</span></span><span style="display:flex;"><span>sysctl -p
+</span></span><span style="display:flex;"><span>swapoff -a <span style="color:#f92672">&amp;&amp;</span> swapon -a
+</span></span></code></pre></div></li>
+<li>
+<p>关闭防火墙</p>
+</li>
+<li>
+<p>关闭selinux</p>
+</li>
+<li>
+<p>关闭透明大页</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@tidb-cmb01-s3 ~<span style="color:#f92672">]</span><span style="color:#75715e"># echo never &gt;/sys/kernel/mm/transparent_hugepage/enabled</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@tidb-cmb01-s3 ~<span style="color:#f92672">]</span><span style="color:#75715e"># cat /sys/kernel/mm/transparent_hugepage/enabled</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># always madvise [never]</span>
+</span></span></code></pre></div></li>
+<li>
+<p>关闭数据目录所在磁盘的i/o调度器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@tidb-cmb01-s3 ~<span style="color:#f92672">]</span><span style="color:#75715e"># echo noop &gt;/sys/block/sd[bc]/queue/scheduler</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@tidb-cmb01-s3 ~<span style="color:#f92672">]</span><span style="color:#75715e"># cat /sys/block/sd[bc]/queue/scheduler</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>noop<span style="color:#f92672">]</span> deadline cfq 
+</span></span></code></pre></div></li>
+<li>
+<p>挂载磁盘</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> mkfs.ext4 /dev/mapper/data-tidb 
+</span></span><span style="display:flex;"><span> mount -o noatime -o nodelalloc -t ext4 /dev/mapper/data-tidb /data/
+</span></span><span style="display:flex;"><span> mkdir -p /data/cluster01
+</span></span><span style="display:flex;"><span> chown -R tidb:tidb /data/cluster01
+</span></span></code></pre></div></li>
+</ul>
+
+    </div>
+</div>
+
+<p><strong>安装tiup工具</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --proto <span style="color:#e6db74">&#39;=https&#39;</span> --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>source /root/.bash_profile
+</span></span></code></pre></div><p><strong>下载离线镜像</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>version<span style="color:#f92672">=</span>v5.2.4
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version=v6.5.12</span>
+</span></span><span style="display:flex;"><span>wget https://download.pingcap.org/tidb-community-server-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>-linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar xf tidb-community-server-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>-linux-amd64.tar.gz
+</span></span></code></pre></div><p><strong>设置本地镜像仓库</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tiup mirror set tidb-community-server-<span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span>-linux-amd64
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 验证设置是否成功</span>
+</span></span><span style="display:flex;"><span>tiup mirror show
+</span></span></code></pre></div><p><strong>配置部署文件</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 通过该命令获取基础配置文件 </span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">tiup cluster template &gt; /tmp/topology.yaml</span>
+</span></span></code></pre></div><p>检查配置文件语法和集群依赖</p>
+<details>
+  <summary>Details</summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">global</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">user</span>: <span style="color:#e6db74">&#34;root&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ssh_port</span>: <span style="color:#ae81ff">22</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">data_dir</span>: <span style="color:#e6db74">&#34;/tidb-data&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">arch</span>: <span style="color:#e6db74">&#34;amd64&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">monitored</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">node_exporter_port</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">blackbox_exporter_port</span>: <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">server_configs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pd</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">replication.location-labels</span>: [<span style="color:#e6db74">&#34;host&#34;</span>, <span style="color:#e6db74">&#34;disk&#34;</span>]
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">pd_servers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.115</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_port</span>: <span style="color:#ae81ff">2379</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">peer_port</span>: <span style="color:#ae81ff">2380</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/pd-2379&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">data_dir</span>: <span style="color:#e6db74">&#34;/tidb-data/pd-2379&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">log_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/pd-2379/log&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.115</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_port</span>: <span style="color:#ae81ff">3379</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">peer_port</span>: <span style="color:#ae81ff">3380</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/pd-3379&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">data_dir</span>: <span style="color:#e6db74">&#34;/tidb-data/pd-3379&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">log_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/pd-3379/log&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.115</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_port</span>: <span style="color:#ae81ff">4379</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">peer_port</span>: <span style="color:#ae81ff">4380</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/pd-4379&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">data_dir</span>: <span style="color:#e6db74">&#34;/tidb-data/pd-4379&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">log_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/pd-4379/log&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tidb_servers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.115</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">4000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">status_port</span>: <span style="color:#ae81ff">10080</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tidb-4000&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">log_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tidb-4000/log&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tikv_servers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.115</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">20160</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">status_port</span>: <span style="color:#ae81ff">20180</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tikv-20160&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">data_dir</span>: <span style="color:#e6db74">&#34;/tidb-data/tikv-20160&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">log_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tikv-20160/log&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">server.labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">tikv1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">disk</span>: <span style="color:#ae81ff">disk1</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.115</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">20161</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">status_port</span>: <span style="color:#ae81ff">20181</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tikv-20161&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">data_dir</span>: <span style="color:#e6db74">&#34;/tidb-data/tikv-20161&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">log_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tikv-20161/log&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">server.labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">tikv2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">disk</span>: <span style="color:#ae81ff">disk2</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.115</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">20162</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">status_port</span>: <span style="color:#ae81ff">20182</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deploy_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tikv-20162&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">data_dir</span>: <span style="color:#e6db74">&#34;/tidb-data/tikv-20162&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">log_dir</span>: <span style="color:#e6db74">&#34;/tidb-deploy/tikv-20162/log&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">config</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">server.labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">host</span>: <span style="color:#ae81ff">tikv3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">disk</span>: <span style="color:#ae81ff">disk3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">monitoring_servers</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">host</span>: <span style="color:#ae81ff">192.168.0.114</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9090</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ng_port</span>: <span style="color:#ae81ff">12020</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy_dir</span>: <span style="color:#ae81ff">/tidb-deploy/prometheus-9090</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">data_dir</span>: <span style="color:#ae81ff">/tidb-data/prometheus-9090</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">log_dir</span>: <span style="color:#ae81ff">/tidb-deploy/prometheus-9090/log</span>
+</span></span></code></pre></div></details>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tiup cluster check /tmp/topology.yaml --user root -p
+</span></span><span style="display:flex;"><span>tiup cluster check /tmp/topology.yaml --apply --user root -p
+</span></span></code></pre></div><p><strong>部署集群</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tiup cluster deploy cluster01 v5.2.4 /tmp/topology.yaml --user root -p
+</span></span></code></pre></div><p><strong>启动集群</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>tidb@tidb-dev01-s2 ~<span style="color:#f92672">]</span>$ tiup cluster start cluster01 --init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Started cluster <span style="color:#e6db74">`</span>cluster01<span style="color:#e6db74">`</span> successfully
+</span></span><span style="display:flex;"><span>The root password of TiDB database has been changed.
+</span></span><span style="display:flex;"><span>The new password is: <span style="color:#e6db74">&#39;jS7y!61*gz8MUZ50_%&#39;</span>.
+</span></span><span style="display:flex;"><span>Copy and record it to somewhere safe, it is only displayed once, and will not be stored.
+</span></span><span style="display:flex;"><span>The generated password can NOT be get and shown again.
+</span></span></code></pre></div><p><strong>查看tiup管理的集群</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tiup cluster list 
+</span></span><span style="display:flex;"><span>tiup cluster display cluster01
+</span></span></code></pre></div><p><strong>验证功能</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql -P <span style="color:#ae81ff">4000</span> -uroot -p<span style="color:#e6db74">&#39;jS7y!61*gz8MUZ50_%&#39;</span> -h 127.0.0.1
+</span></span></code></pre></div><p><strong>dashboar:</strong> <code>http://192.168.0.115:3379/dashboard</code></p>
+<p>默认用户： <code>root</code></p>
+<p>默认密码： <code>jS7y!61*gz8MUZ50_%</code></p>
+<p><strong>销毁集群</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tiup cluster stop cluster01
+</span></span><span style="display:flex;"><span>tiup cluster destroy cluster01
+</span></span></code></pre></div><h3 id="数据备份">数据备份</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tiup install br:v6.5.12
+</span></span></code></pre></div><h3 id="数据迁移">数据迁移</h3>
+<p><a href="https://docs.pingcap.com/zh/tidb/stable/migration-overview/" target="_blank">数据迁移概述 | TiDB 文档中心</a></p>
+<h3 id="数据同步">数据同步</h3>
+<p><a href="https://docs.pingcap.com/zh/tidb/stable/ticdc-overview/" target="_blank">数据同步概述 | TiDB 文档中心</a></p>
+<h3 id="tidb工具链">tidb工具链</h3>
+<p><a href="https://docs.pingcap.com/zh/tidb/stable/ecosystem-tool-user-guide/" target="_blank">TiDB 工具功能概览 | TiDB 文档中心</a></p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-187ec7198335d617c91d9604a38255b3">tiup工具</h1>
+	<div class="lead">tiup|tidb</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-05-20" class="text-body-secondary">Tuesday, May 20, 2025</time>
+        
+	</div>
+	<p><img src="https://docs-download.pingcap.com/media/images/docs-cn/tidb-architecture-v6.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看集群列表</span>
+</span></span><span style="display:flex;"><span>tiup cluster list
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看集群每个组件的运行状态</span>
+</span></span><span style="display:flex;"><span>tiup cluster display &lt;cluster-name&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 启动集群</span>
+</span></span><span style="display:flex;"><span>tiup cluster start &lt;cluster-name&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -R 启动指定组件</span>
+</span></span><span style="display:flex;"><span>tiup cluster start &lt;cluster-name&gt; -R pd
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -N 启动指定进程</span>
+</span></span><span style="display:flex;"><span>tiup cluster start <span style="color:#e6db74">${</span>cluster-name<span style="color:#e6db74">}</span> -N 1.2.3.4:2379,1.2.3.5:2379
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># show-config 查看当前配置</span>
+</span></span><span style="display:flex;"><span>tiup cluster show-config cluster01
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># edit-config 在线编辑配置</span>
+</span></span><span style="display:flex;"><span>tiup cluster edit-config cluster01
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看tiup仓库</span>
+</span></span><span style="display:flex;"><span>tiup mirror  show
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 默认读取变量 ${TIUP_MIRRORS} 的值</span>
+</span></span><span style="display:flex;"><span>tiup mirror set 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>tiup mirror merge
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看仓库中可用的包 , 查看已安装包 tiup list --installed</span>
+</span></span><span style="display:flex;"><span>tiup list
+</span></span></code></pre></div><p><a href="https://docs.pingcap.com/zh/tidb/stable/maintain-tidb-using-tiup/" target="_blank">https://docs.pingcap.com/zh/tidb/stable/maintain-tidb-using-tiup/</a></p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-b6a1b6b4042adf75eca6f429ffbb92d1">checkssh</h1>
+	<div class="lead">checkssh|tidb</div>
+	<div class="td-byline mb-4">
+		By <b>wangendao</b> |
+        
+		<time datetime="2025-06-19" class="text-body-secondary">Thursday, June 19, 2025</time>
+        
+	</div>
+	<p><img src="https://docs-download.pingcap.com/media/images/docs-cn/tidb-architecture-v6.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># description: 在中控机tidb用户下，检查集群节点ssh秘钥认证</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PasswordAuthentication=no  禁用密码认证</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># StrictHostKeyChecking=no 禁用know_hosts 检查</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>declare -A info
+</span></span><span style="display:flex;"><span>clusterName<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>tiup cluster list |awk <span style="color:#e6db74">&#39;NR&gt;2{print $1}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> cls in $clusterName;<span style="color:#66d9ef">do</span>  
+</span></span><span style="display:flex;"><span>  iplist<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>tiup cluster display $cls|awk -F <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#e6db74">&#39;/^[0-9].*/{print $1}&#39;</span>|sort |uniq<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>  info<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;</span>$cls<span style="color:#e6db74">&#34;</span><span style="color:#f92672">]=</span>$iplist
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> cls in <span style="color:#e6db74">${</span>!info[@]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> host in <span style="color:#e6db74">${</span>info[$cls]<span style="color:#e6db74">}</span>;<span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    rsa<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/tidbdata/tiupshare/tiuptool/storage/cluster/clusters/</span><span style="color:#e6db74">${</span>cls<span style="color:#e6db74">}</span><span style="color:#e6db74">/ssh/id_rsa&#34;</span>
+</span></span><span style="display:flex;"><span>    ssh -o PasswordAuthentication<span style="color:#f92672">=</span>no -o StrictHostKeyChecking<span style="color:#f92672">=</span>no -T -i <span style="color:#e6db74">${</span>rsa<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span> exit 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>       printf <span style="color:#e6db74">&#34;集群：%s,主机:%s  [OK]\n&#34;</span> $cls $host
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>       printf <span style="color:#e6db74">&#34;集群：%s,主机:%s  [Failed]\n&#34;</span> $cls $host
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>输出结果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>集群：cluster01,主机:192.168.0.105  <span style="color:#f92672">[</span>OK<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>集群：cluster01,主机:192.168.0.106  <span style="color:#f92672">[</span>OK<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>集群：cluster01,主机:192.168.0.107  <span style="color:#f92672">[</span>OK<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>集群：tidb_dev_001,主机:192.168.0.223  <span style="color:#f92672">[</span>Failed<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>集群：tidb_dev_001,主机:192.168.0.224  <span style="color:#f92672">[</span>OK<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>集群：tidb_dev_001,主机:192.168.0.225  <span style="color:#f92672">[</span>OK<span style="color:#f92672">]</span>
+</span></span></code></pre></div>
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="联系我" aria-label="联系我">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="联系我">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="微信" aria-label="微信">
+    <a target="_blank" rel="noopener" href="/about/#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f" aria-label="微信">
+      <i class="fa-brands fa-weixin"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">零露云©2025版权所有</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.bf0cab613e991fc11bc28a4a07b0aedef47c7c7c2595703ac3adf962fd6a8099.js" integrity="sha256-vwyrYT6ZH8EbwopKB7Cu3vR8fHwllXA6w635Yv1qgJk=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

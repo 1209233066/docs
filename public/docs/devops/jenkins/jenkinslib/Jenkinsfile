@@ -1,0 +1,15 @@
+@Library('jenkinslib') _
+
+def tools=new org.jenkins.hello()
+pipeline {
+    agent any
+    stages {
+        stage("run") {
+            steps {
+                script {
+                    tools.hi("123")
+                }
+            }
+        }
+    }
+}
